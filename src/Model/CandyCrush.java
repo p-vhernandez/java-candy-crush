@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 
 public class CandyCrush extends JFrame {
+
     public CandyCrush() {
         super("Candy Crush");
         setupUI();
