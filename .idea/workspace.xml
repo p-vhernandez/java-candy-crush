@@ -12,7 +12,6 @@
       <change beforePath="$PROJECT_DIR$/src/Model/BoardPanelModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/BoardPanelModel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Model/BoardPanelUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/UI/BoardPanelUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Model/CandyCrush.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/CandyCrush.java" afterDir="false" />
-
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,7 +67,7 @@
       </method>
     </configuration>
   </component>
-  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SpellCheckerSettings" BundledDictionaries="0" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" Dictionaries="0" CorrectionsLimit="5" DefaultDictionary="application-level" UseSingleDictionary="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -79,7 +78,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1631091549514</updated>
-
       <workItem from="1631091553670" duration="2689000" />
       <workItem from="1631693287319" duration="1275000" />
       <workItem from="1631091553670" duration="3326000" />
@@ -96,43 +94,12 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
     </option>
-  <component name="WindowStateProjectService">
-    <state x="96" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1631095626378">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state x="96" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1280.680@0.0.1280.680" timestamp="1631095626378" />
-    <state x="371" y="124" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1631095578910">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state x="371" y="124" key="#com.intellij.ide.util.TreeClassChooserDialog/0.0.1280.680@0.0.1280.680" timestamp="1631095578910" />
-    <state x="395" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1631094695662">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state x="395" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1280.680@0.0.1280.680" timestamp="1631094695662" />
-    <state width="1237" height="163" key="GridCell.Tab.0.bottom" timestamp="1631096955732">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state width="1237" height="163" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1631096955732" />
-    <state width="1237" height="163" key="GridCell.Tab.0.center" timestamp="1631096955732">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state width="1237" height="163" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1631096955732" />
-    <state width="1237" height="163" key="GridCell.Tab.0.left" timestamp="1631096955732">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state width="1237" height="163" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1631096955732" />
-    <state width="1237" height="163" key="GridCell.Tab.0.right" timestamp="1631096955732">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state width="1237" height="163" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1631096955732" />
-    <state x="91" y="0" key="new project wizard" timestamp="1631456944549">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state x="91" y="0" key="new project wizard/0.0.1280.680@0.0.1280.680" timestamp="1631456944549" />
   </component>
 </project>
