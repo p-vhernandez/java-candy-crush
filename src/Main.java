@@ -1,4 +1,4 @@
-import Model.CandyCrush;
+import Components.CandyCrush;
 
 public class Main {
 

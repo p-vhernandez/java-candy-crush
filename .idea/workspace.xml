@@ -2,11 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6b4cf923-17ad-46fa-bee3-8a7e44728267" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Model/BoardPanelModel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Model/BoardPanelUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/BoardGrid.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/BoardGrid.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/BoardPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/BoardPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/BoardPanelModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/BoardPanelModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/BoardPanelUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/UI/BoardPanelUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/CandyCrush.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/CandyCrush.java" afterDir="false" />
     </list>
-
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />

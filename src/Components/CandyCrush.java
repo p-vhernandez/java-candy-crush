@@ -1,4 +1,6 @@
-package Model;
+package Components;
+
+import Components.BoardGrid;
 
 import javax.swing.*;
 import java.awt.*;
