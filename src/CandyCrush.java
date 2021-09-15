@@ -26,7 +26,7 @@ public class CandyCrush extends JFrame {
 
     private void setAppIcon() {
         Image appIcon = Toolkit.getDefaultToolkit().getImage(getClass()
-                .getResource("../resources/img/eye_ball.png"));
+                .getResource("resources/img/eye_ball.png"));
         setIconImage(appIcon);
     }
 
@@ -37,6 +37,6 @@ public class CandyCrush extends JFrame {
 
     private void setUpBoardPanel() {
         this.boardPanel = new BoardPanel();
-        add(boardPanel);
+        add(boardPanel, BorderLayout.CENTER);
     }
 }

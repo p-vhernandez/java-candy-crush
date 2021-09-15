@@ -19,6 +19,6 @@ public class TopPanelUI {
 
     public Dimension getMaximumSize() { return getPreferredSize(); }
     public Dimension getMinimumSize() { return getPreferredSize(); }
-    public Dimension getPreferredSize() { return new Dimension(300,50); }
+    public Dimension getPreferredSize() { return new Dimension(300,100); }
 
 }
