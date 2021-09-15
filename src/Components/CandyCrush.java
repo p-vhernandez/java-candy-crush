@@ -13,11 +13,18 @@ public class CandyCrush extends JFrame {
     }
 
     private void setupUI() {
-        setPreferredSize(new Dimension(600, 400));
+        try {
+            Image appIcon = Toolkit.getDefaultToolkit().getImage(getClass()
+                    .getResource("../resources/img/eye_ball.png"));
+            setIconImage(appIcon);
+            setPreferredSize(new Dimension(600, 400));
 
-        BoardGrid grid = new BoardGrid(8);
-        add(grid);
+            BoardGrid grid = new BoardGrid(8);
+            add(grid);
 
-        pack();
+            pack();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
