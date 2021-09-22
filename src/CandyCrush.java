@@ -1,5 +1,7 @@
-import Components.BoardPanel;
+import Components.BoardGrid;
+import Components.BoardTile;
 import Components.TopPanel;
+import Helpers.LevelType;
 import utils.Utils;
 
 import javax.swing.*;
@@ -8,7 +10,6 @@ import java.awt.*;
 public class CandyCrush extends JFrame {
 
     private TopPanel topPanel;
-    private BoardPanel boardPanel;
 
     public CandyCrush() {
         super(Utils.getAppName());
@@ -19,6 +20,7 @@ public class CandyCrush extends JFrame {
         setAppIcon();
         setPreferredSize(new Dimension(Utils.getWindowWidth(),
                 Utils.getWindowHeight()));
+        setLayout(new BoxLayout(getContentPane(), BoxLayout.Y_AXIS));
         setDefaultCloseOperation(EXIT_ON_CLOSE);
 
         setUpTopPanel();
@@ -29,7 +31,7 @@ public class CandyCrush extends JFrame {
 
     private void setAppIcon() {
         Image appIcon = Utils.generateImage(this,
-                "resources/img/eye_ball.png");
+                "resources/img/EYEBALL.png");
         setIconImage(appIcon);
     }
 
@@ -39,7 +41,26 @@ public class CandyCrush extends JFrame {
     }
 
     private void setUpBoardPanel() {
-        this.boardPanel = new BoardPanel();
-        add(boardPanel, BorderLayout.CENTER);
+        JPanel boardPanel = new JPanel();
+        boardPanel.setLayout(new BoxLayout(boardPanel, BoxLayout.Y_AXIS));
+        setPreferredSize(new Dimension(600, 400));
+        //boardPanel.setBackground(Colors.boardPanel);
+        add(boardPanel);
+
+        //board grid
+        BoardGrid grid = new BoardGrid(LevelType.SQUARE, 8,8);
+        FlowLayout gridLayout = new FlowLayout();
+        gridLayout.setVgap(0);
+        gridLayout.setHgap(0);
+        grid.setLayout(gridLayout);
+
+        //tiles
+        boardPanel.add(grid);
+        BoardTile[][] tiles = grid.getTiles();
+        for (int i = 0; i < tiles.length; i++) {
+            for (int j = 0; j < tiles[i].length; j++) {
+                grid.add(tiles[i][j]);
+            }
+        }
     }
 }

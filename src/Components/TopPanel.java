@@ -34,6 +34,7 @@ public class TopPanel extends JPanel {
         setBackground(Color.pink);
         setPreferredSize(new Dimension(Utils.getWindowWidth(),
                 Utils.getTopBarHeight()));
+        setMaximumSize(getPreferredSize());
 
         setUpScorePanel();
         setUpMovements();
