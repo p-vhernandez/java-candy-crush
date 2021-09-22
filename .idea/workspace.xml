@@ -6,12 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="6b4cf923-17ad-46fa-bee3-8a7e44728267" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/BoardGrid.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/BoardGrid.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/BoardPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/BoardPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/BoardPanelModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/BoardPanelModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/BoardPanelUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/UI/BoardPanelUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/CandyCrush.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/CandyCrush.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/TopPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/TopPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/Utils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/Utils.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,7 +25,9 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1xqnaV27hJ8r9kd7LzORmdUoRmI" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -67,7 +65,7 @@
       </method>
     </configuration>
   </component>
-  <component name="SpellCheckerSettings" BundledDictionaries="0" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" Dictionaries="0" CorrectionsLimit="5" DefaultDictionary="application-level" UseSingleDictionary="true" />
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -83,6 +81,11 @@
       <workItem from="1631091553670" duration="3326000" />
       <workItem from="1631456888781" duration="749000" />
       <workItem from="1631691299531" duration="1483000" />
+      <workItem from="1631713577353" duration="871000" />
+      <workItem from="1631715445431" duration="842000" />
+      <workItem from="1631718732163" duration="593000" />
+      <workItem from="1632160955920" duration="103000" />
+      <workItem from="1632295979803" duration="4591000" />
     </task>
     <servers />
   </component>
@@ -94,12 +97,11 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State>
-              <option name="COLUMN_ORDER" />
-            </State>
+            <State />
           </value>
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
 </project>
