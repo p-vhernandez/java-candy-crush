@@ -8,7 +8,8 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/CandyCrush.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CandyCrush.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Components/TopPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/TopPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/UI/TopPanelUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/UI/TopPanelUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/TopPanelModel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/UI/TopPanelUI.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,7 +67,7 @@
       </method>
     </configuration>
   </component>
-  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="false" />
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -82,6 +83,11 @@
       <workItem from="1631091553670" duration="3326000" />
       <workItem from="1631456888781" duration="749000" />
       <workItem from="1631691299531" duration="1483000" />
+      <workItem from="1631713577353" duration="871000" />
+      <workItem from="1631715445431" duration="842000" />
+      <workItem from="1631718732163" duration="593000" />
+      <workItem from="1632160955920" duration="103000" />
+      <workItem from="1632295979803" duration="1756000" />
     </task>
     <servers />
   </component>

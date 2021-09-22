@@ -1,5 +1,6 @@
 import Components.BoardPanel;
 import Components.TopPanel;
+import utils.Utils;
 
 import javax.swing.*;
 import java.awt.*;
@@ -10,13 +11,15 @@ public class CandyCrush extends JFrame {
     private BoardPanel boardPanel;
 
     public CandyCrush() {
-        super("Candy Crush");
+        super(Utils.getAppName());
         setupUI();
     }
 
     private void setupUI() {
         setAppIcon();
-        setPreferredSize(new Dimension(600, 400));
+        setPreferredSize(new Dimension(Utils.getWindowWidth(),
+                Utils.getWindowHeight()));
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
 
         setUpTopPanel();
         setUpBoardPanel();
@@ -25,8 +28,8 @@ public class CandyCrush extends JFrame {
     }
 
     private void setAppIcon() {
-        Image appIcon = Toolkit.getDefaultToolkit().getImage(getClass()
-                .getResource("resources/img/eye_ball.png"));
+        Image appIcon = Utils.generateImage(this,
+                "resources/img/eye_ball.png");
         setIconImage(appIcon);
     }
 
