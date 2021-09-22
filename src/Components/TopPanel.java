@@ -50,7 +50,7 @@ public class TopPanel extends JPanel {
         lblScoreNumber.setText("0000");
 
         setCustomFont(lblScore, "../resources/font/caramel-rg.ttf", 22f, Font.BOLD);
-        setCustomFont(lblScoreNumber, "../resources/font/ceepster-rg.ttf", 28f, Font.PLAIN);
+        setCustomFont(lblScoreNumber, "../resources/font/creepster-rg.ttf", 28f, Font.PLAIN);
 
         this.scorePanel.add(lblScore);
         this.scorePanel.add(lblScoreNumber);
@@ -65,7 +65,7 @@ public class TopPanel extends JPanel {
         this.lblMovements.setPreferredSize(new Dimension(Utils.getMovementsPanelWidth(),
                 Utils.getTopBarComponentsHeight()));
 
-        setCustomFont(lblMovements, "../resources/font/ceepster-rg.ttf", 32f, Font.PLAIN);
+        setCustomFont(lblMovements, "../resources/font/creepster-rg.ttf", 32f, Font.PLAIN);
         add(lblMovements);
     }
 
@@ -79,7 +79,7 @@ public class TopPanel extends JPanel {
         lblGoalNumber.setText("6500");
 
         setCustomFont(lblGoal, "../resources/font/caramel-rg.ttf", 22f, Font.BOLD);
-        setCustomFont(lblGoalNumber, "../resources/font/ceepster-rg.ttf", 28f, Font.PLAIN);
+        setCustomFont(lblGoalNumber, "../resources/font/creepster-rg.ttf", 28f, Font.PLAIN);
 
         this.goalPanel.add(lblGoal);
         this.goalPanel.add(lblGoalNumber);
