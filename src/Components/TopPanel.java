@@ -13,6 +13,8 @@ public class TopPanel extends JPanel {
     private final BoxLayout scoreLayout;
     private final BoxLayout goalLayout;
     private final JLabel lblMovements;
+    private final JLabel lblGoalNumber;
+    private final JLabel lblScoreNumber;
 
     public TopPanel() {
         this.scorePanel = new JPanel();
@@ -22,12 +24,14 @@ public class TopPanel extends JPanel {
         this.goalLayout = new BoxLayout(goalPanel, BoxLayout.PAGE_AXIS);
 
         this.lblMovements = new JLabel();
+        this.lblGoalNumber = new JLabel();
+        this.lblScoreNumber = new JLabel();
 
         setUpUI();
     }
 
     private void setUpUI() {
-        setBackground(Color.cyan);
+        setBackground(Color.pink);
         setPreferredSize(new Dimension(Utils.getWindowWidth(),
                 Utils.getTopBarHeight()));
 
@@ -43,10 +47,13 @@ public class TopPanel extends JPanel {
                 Utils.getTopBarComponentsHeight()));
 
         JLabel lblScore = new JLabel("Score:");
-        JLabel lblNumber = new JLabel("0000");
+        lblScoreNumber.setText("0000");
+
+        setCustomFont(lblScore, "../resources/font/caramel-rg.ttf", 22f, Font.BOLD);
+        setCustomFont(lblScoreNumber, "../resources/font/ceepster-rg.ttf", 28f, Font.PLAIN);
 
         this.scorePanel.add(lblScore);
-        this.scorePanel.add(lblNumber);
+        this.scorePanel.add(lblScoreNumber);
 
         add(scorePanel);
     }
@@ -58,6 +65,7 @@ public class TopPanel extends JPanel {
         this.lblMovements.setPreferredSize(new Dimension(Utils.getMovementsPanelWidth(),
                 Utils.getTopBarComponentsHeight()));
 
+        setCustomFont(lblMovements, "../resources/font/ceepster-rg.ttf", 32f, Font.PLAIN);
         add(lblMovements);
     }
 
@@ -68,12 +76,39 @@ public class TopPanel extends JPanel {
                 Utils.getTopBarComponentsHeight()));
 
         JLabel lblGoal = new JLabel("Target:");
-        JLabel lblGoalNumber = new JLabel("6500");
+        lblGoalNumber.setText("6500");
+
+        setCustomFont(lblGoal, "../resources/font/caramel-rg.ttf", 22f, Font.BOLD);
+        setCustomFont(lblGoalNumber, "../resources/font/ceepster-rg.ttf", 28f, Font.PLAIN);
 
         this.goalPanel.add(lblGoal);
         this.goalPanel.add(lblGoalNumber);
 
         add(goalPanel);
+    }
+
+    private void setCustomFont(JLabel label, String path,
+                               float fontSize, int fontStyle) {
+        Font customFom = Utils.generateFont(this, path);
+        if (customFom != null) {
+            label.setFont(customFom.deriveFont(fontStyle, fontSize));
+        }
+    }
+
+    public int getLblGoalNumber() {
+        return Integer.parseInt(lblGoalNumber.getText());
+    }
+
+    public void setLblGoalNumber(int goalNumber) {
+        lblGoalNumber.setText(String.valueOf(goalNumber));
+    }
+
+    public int getLblScoreNumber() {
+        return Integer.parseInt(lblScoreNumber.getText());
+    }
+
+    public void setLblScoreNumber(int scoreNumber) {
+        lblScoreNumber.setText(String.valueOf(scoreNumber));
     }
 
 }
