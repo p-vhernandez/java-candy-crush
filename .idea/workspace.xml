@@ -44,7 +44,9 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1xqnaV27hJ8r9kd7LzORmdUoRmI" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -88,7 +90,7 @@
       </method>
     </configuration>
   </component>
-  <component name="SpellCheckerSettings" BundledDictionaries="0" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" Dictionaries="0" CorrectionsLimit="5" DefaultDictionary="application-level" UseSingleDictionary="true" />
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -104,8 +106,11 @@
       <workItem from="1631091553670" duration="3326000" />
       <workItem from="1631456888781" duration="749000" />
       <workItem from="1631691299531" duration="1483000" />
-      <workItem from="1632210966570" duration="4713000" />
-      <workItem from="1632233948868" duration="6070000" />
+      <workItem from="1631713577353" duration="871000" />
+      <workItem from="1631715445431" duration="842000" />
+      <workItem from="1631718732163" duration="593000" />
+      <workItem from="1632160955920" duration="103000" />
+      <workItem from="1632295979803" duration="4591000" />
     </task>
     <servers />
   </component>
@@ -117,13 +122,12 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State>
-              <option name="COLUMN_ORDER" />
-            </State>
+            <State />
           </value>
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
     <state x="96" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1631696598376">
