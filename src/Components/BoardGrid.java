@@ -21,7 +21,9 @@ public class BoardGrid extends JPanel{
         this.tilesYAxis = tilesYAxis;
         this.levelType = type;
         tiles = new BoardTile[tilesYAxis][tilesXAxis];
+
         generateTiles();
+        addListeners();
     }
 
     public int getTilesXAxis() {
@@ -56,15 +58,23 @@ public class BoardGrid extends JPanel{
         this.tiles = tiles;
     }
 
-    //Layout
+    // Layout
     public Dimension getMaximumSize() { return getPreferredSize(); }
     public Dimension getMinimumSize() { return getPreferredSize(); }
     public Dimension getPreferredSize() { return new Dimension(tileSize*tilesXAxis,tileSize*tilesYAxis); }
 
+    // TODO: refine code
     private void generateTiles() {
         BoardTile[] row;
         Random random = new Random();
-        TileType[] types = {TileType.PURPLE_LOLLI, TileType.ORANGE_CANDY, TileType.YELLOW_LOLLI, TileType.EYEBALL, TileType.PUMPKIN};
+        TileType[] types = {
+                TileType.PURPLE_LOLLI,
+                TileType.ORANGE_CANDY,
+                TileType.YELLOW_LOLLI,
+                TileType.EYEBALL,
+                TileType.PUMPKIN
+        };
+
         for (int i = 0; i < tilesXAxis; i++) {
             row = new BoardTile[tilesXAxis];
             for (int j = 0; j < tilesYAxis; j++) {
@@ -92,4 +102,5 @@ public class BoardGrid extends JPanel{
             tiles[i] = row;
         }
     }
+
 }

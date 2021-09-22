@@ -5,27 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6b4cf923-17ad-46fa-bee3-8a7e44728267" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Helpers/LevelType.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/resources/img/PUMPKIN.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/resources/img/YELLOW_LOLLI.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CandyCrush/resources/img/candy.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CandyCrush/resources/img/eye_ball.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CandyCrush/resources/img/eye_ball.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CandyCrush/resources/img/pumpkin.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CandyCrush/resources/img/purple_lollipop.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CandyCrush/resources/img/yellow_lollipop.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/CandyCrush.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CandyCrush.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Components/BoardGrid.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/BoardGrid.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/BoardPanel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/CandyCrush.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/CandyCrush.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/BoardPanelModel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/UI/BoardPanelUI.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/img/candy.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/img/eye_ball.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/img/eye_ball.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/img/pumpkin.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/img/purple_lollipop.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/img/yellow_lollipop.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Helpers/Colors.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/UI/BoardTileUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/UI/BoardTileUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/Utils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/Utils.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -128,70 +113,5 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
-  </component>
-  <component name="WindowStateProjectService">
-    <state x="96" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1631696598376">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state x="96" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1280.680@0.0.1280.680" timestamp="1631696598376" />
-    <state x="446" y="25" key="#com.intellij.ide.util.MemberChooser" timestamp="1632297344571">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state x="446" y="25" key="#com.intellij.ide.util.MemberChooser/0.0.1280.680@0.0.1280.680" timestamp="1632297344571" />
-    <state x="371" y="117" key="#com.intellij.ide.util.PackageChooserDialog" timestamp="1631698949795">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state x="371" y="117" key="#com.intellij.ide.util.PackageChooserDialog/0.0.1280.680@0.0.1280.680" timestamp="1631698949795" />
-    <state x="389" y="197" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1631696417429">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state x="389" y="197" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.1280.680@0.0.1280.680" timestamp="1631696417429" />
-    <state width="1237" height="204" key="GridCell.Tab.0.bottom" timestamp="1632300316645">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state width="1237" height="204" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1632300316645" />
-    <state width="1237" height="204" key="GridCell.Tab.0.center" timestamp="1632300316645">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state width="1237" height="204" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1632300316645" />
-    <state width="1237" height="204" key="GridCell.Tab.0.left" timestamp="1632300316645">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state width="1237" height="204" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1632300316645" />
-    <state width="1237" height="204" key="GridCell.Tab.0.right" timestamp="1632300316645">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state width="1237" height="204" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1632300316645" />
-    <state width="1237" height="204" key="GridCell.Tab.1.bottom" timestamp="1632300316647">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state width="1237" height="204" key="GridCell.Tab.1.bottom/0.0.1280.680@0.0.1280.680" timestamp="1632300316647" />
-    <state width="1237" height="204" key="GridCell.Tab.1.center" timestamp="1632300316646">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state width="1237" height="204" key="GridCell.Tab.1.center/0.0.1280.680@0.0.1280.680" timestamp="1632300316646" />
-    <state width="1237" height="204" key="GridCell.Tab.1.left" timestamp="1632300316645">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state width="1237" height="204" key="GridCell.Tab.1.left/0.0.1280.680@0.0.1280.680" timestamp="1632300316645" />
-    <state width="1237" height="204" key="GridCell.Tab.1.right" timestamp="1632300316646">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state width="1237" height="204" key="GridCell.Tab.1.right/0.0.1280.680@0.0.1280.680" timestamp="1632300316646" />
-    <state x="303" y="1" width="672" height="678" key="search.everywhere.popup" timestamp="1632213605935">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state x="303" y="1" width="672" height="678" key="search.everywhere.popup/0.0.1280.680@0.0.1280.680" timestamp="1632213605935" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Components/BoardGrid.java</url>
-          <line>83</line>
-          <option name="timeStamp" value="6" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

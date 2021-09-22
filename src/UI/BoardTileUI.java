@@ -1,8 +1,7 @@
 package UI;
 
 import Components.BoardTile;
-import Helpers.Colors;
-import Helpers.TileType;
+import utils.Utils;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
@@ -23,9 +22,9 @@ public class BoardTileUI {
         } catch (IOException e){
             e.printStackTrace();
         }
-        g.setPaint(Colors.tileFill);
+        g.setPaint(Utils.tileFill);
         g.fillRoundRect(0,0, tile.getTileSize(), tile.getTileSize(), 5,5);
-        g.setPaint(Colors.tileBorder);
+        g.setPaint(Utils.tileBorder);
         g.drawRoundRect(0,0, tile.getTileSize(), tile.getTileSize(), 5,5);
         g.drawImage(icon, iconXY, iconXY, tile.getIconSize(), tile.getIconSize(), null);
     }

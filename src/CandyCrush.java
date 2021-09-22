@@ -54,12 +54,12 @@ public class CandyCrush extends JFrame {
         gridLayout.setHgap(0);
         grid.setLayout(gridLayout);
 
-        //tiles
+        // FIXME: tiles take too long to load
         boardPanel.add(grid);
         BoardTile[][] tiles = grid.getTiles();
-        for (int i = 0; i < tiles.length; i++) {
-            for (int j = 0; j < tiles[i].length; j++) {
-                grid.add(tiles[i][j]);
+        for (BoardTile[] tile : tiles) {
+            for (BoardTile boardTile : tile) {
+                grid.add(boardTile);
             }
         }
     }

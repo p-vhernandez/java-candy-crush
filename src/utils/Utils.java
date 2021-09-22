@@ -14,6 +14,11 @@ public class Utils {
 
     private static final String APP_NAME = "Halloween Candy Crush";
 
+    public static Color boardPanel = Color.yellow;
+    public static Color tileBorder = new Color(168, 168, 168);
+    public static Color tileFill = new Color(245, 241, 230);
+
+
     public static int getWindowWidth() {
         return WINDOW_WIDTH;
     }
