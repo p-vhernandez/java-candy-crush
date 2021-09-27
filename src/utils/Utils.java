@@ -1,5 +1,6 @@
 package utils;
 
+import javax.swing.*;
 import java.awt.*;
 import java.io.InputStream;
 import java.util.Objects;
@@ -65,7 +66,13 @@ public class Utils {
             e.printStackTrace();
             return null;
         }
+    }
 
+    public static JLabel generateLoadingJLabel(Object object) {
+        ImageIcon loadingImg = new ImageIcon(object.getClass().getResource("../resources/gif/loading-ghost-small.gif"));
+        JLabel label = new JLabel();
+        label.setIcon(loadingImg);
+        return label;
     }
 
 }

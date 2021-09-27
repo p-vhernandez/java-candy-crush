@@ -1,18 +1,23 @@
 import Components.BoardGrid;
 import Components.BoardTile;
+import Components.LoadingDialog;
 import Components.TopPanel;
 import Helpers.LevelType;
 import utils.Utils;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class CandyCrush extends JFrame {
 
     private TopPanel topPanel;
+    private LoadingDialog loadingDialog;
 
     public CandyCrush() {
         super(Utils.getAppName());
+
         setupUI();
     }
 
@@ -27,6 +32,7 @@ public class CandyCrush extends JFrame {
         setUpBoardPanel();
 
         pack();
+        showLoading();
     }
 
     private void setAppIcon() {
@@ -38,6 +44,13 @@ public class CandyCrush extends JFrame {
     private void setUpTopPanel() {
         this.topPanel = new TopPanel();
         add(topPanel, BorderLayout.NORTH);
+    }
+
+    private void showLoading() {
+        loadingDialog = new LoadingDialog(this);
+        loadingDialog.openLoading();
+
+        closeLoadingDialog();
     }
 
     private void setUpBoardPanel() {
@@ -62,5 +75,11 @@ public class CandyCrush extends JFrame {
                 grid.add(boardTile);
             }
         }
+    }
+
+    private void closeLoadingDialog() {
+        Timer timer = new Timer(5000, arg0 -> loadingDialog.closeLoading());
+        timer.setRepeats(false);
+        timer.start();
     }
 }
