@@ -16,17 +16,17 @@ public class BoardTile extends JButton {
     private TileType tileType;
     private int tileSize = 30;
     private int iconSize = 25;
-    private int posX;
-    private int posY;
+    private int tileRow;
+    private int tileCol;
 
-    public BoardTile(TileType tileType, int posX, int posY) {
-        this.ui = new BoardTileUI();
-        this.ui.installUI(this);
+    public BoardTile(TileType tileType, int tileRow, int tileCol) {
         this.model = new BoardTileModel();
         this.model.addChangeListener(e -> repaint()); // repaint whenever the model updates
+        this.ui = new BoardTileUI();
+        this.ui.installUI(this);
         this.tileType = tileType;
-        this.posX = posX;
-        this.posY = posY;
+        this.tileRow = tileRow;
+        this.tileCol = tileCol;
 
         Border emptyBorder = BorderFactory.createEmptyBorder();
         this.setBorder(emptyBorder);
@@ -65,20 +65,20 @@ public class BoardTile extends JButton {
         this.iconSize = iconSize;
     }
 
-    public int getPosX() {
-        return posX;
+    public int getTileRow() {
+        return tileRow;
     }
 
-    public void setPosX(int posX) {
-        this.posX = posX;
+    public void setTileRow(int tileRow) {
+        this.tileRow = tileRow;
     }
 
-    public int getPosY() {
-        return posY;
+    public int getTileCol() {
+        return tileCol;
     }
 
-    public void setPosY(int posY) {
-        this.posY = posY;
+    public void setTileCol(int tileCol) {
+        this.tileCol = tileCol;
     }
 
     //Layout
