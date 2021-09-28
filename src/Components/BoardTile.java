@@ -15,7 +15,6 @@ public class BoardTile {
     private int tileX, tileY;
 
     public BoardTile(TileType tileType, int tileRow, int tileCol, int tileX, int tileY) {
-        this.model.addChangeListener(e -> repaint()); // repaint whenever the model updates
         this.tileType = tileType;
 
         this.tileRow = tileRow;
