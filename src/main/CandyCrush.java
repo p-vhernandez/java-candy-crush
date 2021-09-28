@@ -1,7 +1,10 @@
-import Components.BoardGrid;
-import Components.LoadingDialog;
-import Components.TopPanel;
-import Helpers.LevelType;
+package main;
+
+import components.grid.BoardGrid;
+import components.LoadingDialog;
+import components.TopPanel;
+import utils.helpers.Level;
+import utils.helpers.LevelType;
 import utils.Utils;
 
 import javax.swing.*;
@@ -30,7 +33,7 @@ public class CandyCrush extends JFrame {
 
     private void setAppIcon() {
         Image appIcon = Utils.generateImage(this,
-                "resources/img/EYEBALL.png");
+                "../resources/img/EYEBALL.png");
         setIconImage(appIcon);
     }
 
@@ -60,11 +63,15 @@ public class CandyCrush extends JFrame {
 
         add(boardPanel);
 
-        BoardGrid grid = new BoardGrid(LevelType.SQUARE, 8, 8);
+        Level selectedLevel = new Level(LevelType.SQUARE);
+        BoardGrid grid = new BoardGrid(selectedLevel);
         FlowLayout gridLayout = new FlowLayout();
         gridLayout.setVgap(0);
         gridLayout.setHgap(0);
         grid.setLayout(gridLayout);
+
+        setGoal(selectedLevel.getLevelGoal());
+        setMaxMovemets(selectedLevel.getMaxMovements());
 
         boardPanel.add(grid);
     }
@@ -81,6 +88,14 @@ public class CandyCrush extends JFrame {
 
     public void setGoal(int goal) {
         topPanel.setLblGoalNumber(goal);
+    }
+
+    public void setMaxMovemets(int maxMovemets) {
+        topPanel.setMaxMovements(maxMovemets);
+    }
+
+    public void oneMovementLess() {
+        this.topPanel.oneMovementLess();
     }
 
 }

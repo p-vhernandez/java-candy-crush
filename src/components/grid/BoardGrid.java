@@ -1,37 +1,32 @@
-package Components;
+package components.grid;
 
-import Helpers.Level;
-import Helpers.LevelType;
-import Helpers.TileType;
-import Model.BoardGridModel;
-import UI.BoardGridUI;
+import components.BoardTile;
+import main.CandyCrush;
+import utils.Utils;
+import utils.helpers.Level;
+import utils.helpers.LevelType;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.Random;
 
-public class BoardGrid extends JPanel{
+public class BoardGrid extends JPanel {
 
     private BoardGridModel model;
-    private BoardGridUI ui;
+    private final BoardGridUI ui;
 
     private Level level;
     private LevelType levelType;
 
     private int tilesXAxis, tilesYAxis;
-    private int tileSize = 30, iconSize = 35;
 
     private BoardTile[][] tiles;
     private BoardTile tileDragStart, tileDragEnd;
 
-    public BoardGrid(LevelType type, int tilesXAxis, int tilesYAxis) {
-        this.level = new Level(type);
-        this.levelType = type;
+    public BoardGrid(Level level) {
+        this.level = level;
 
-        setUpLevelInformation();
-
-        this.tilesXAxis = tilesXAxis;
-        this.tilesYAxis = tilesYAxis;
+        this.tilesXAxis = level.getNumberRows();
+        this.tilesYAxis = level.getNumColumns();
 
         this.tiles = new BoardTile[tilesYAxis][tilesXAxis];
 
@@ -40,10 +35,6 @@ public class BoardGrid extends JPanel{
 
         this.ui = new BoardGridUI(tilesXAxis, tilesYAxis, this);
         this.ui.initializeUI();
-    }
-
-    private void setUpLevelInformation() {
-        // TODO: call methods on CandyCrush.java to set the labels on the top Panel
     }
 
     public int getTilesXAxis() {
@@ -112,9 +103,20 @@ public class BoardGrid extends JPanel{
         this.tileDragEnd = tileDragEnd;
     }
 
-    public Dimension getMaximumSize() { return getPreferredSize(); }
-    public Dimension getMinimumSize() { return getPreferredSize(); }
-    public Dimension getPreferredSize() { return new Dimension(tileSize*tilesXAxis,tileSize*tilesYAxis); }
+    public Dimension getMaximumSize() {
+        return getPreferredSize();
+    }
+
+    public Dimension getMinimumSize() {
+        return getPreferredSize();
+    }
+
+    public Dimension getPreferredSize() {
+        int boardWidth = Utils.getTileSize() * tilesXAxis;
+        int boardHeight = Utils.getTileSize() * tilesYAxis;
+
+        return new Dimension(boardWidth, boardHeight);
+    }
 
     public void paintComponent(Graphics g) {
         this.ui.paint((Graphics2D) g);

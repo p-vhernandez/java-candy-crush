@@ -1,4 +1,4 @@
-package Helpers;
+package utils.helpers;
 
 import java.awt.*;
 

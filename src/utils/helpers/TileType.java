@@ -1,4 +1,4 @@
-package Helpers;
+package utils.helpers;
 
 public enum  TileType {
     YELLOW_LOLLI,

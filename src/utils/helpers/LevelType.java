@@ -1,4 +1,4 @@
-package Helpers;
+package utils.helpers;
 
 public enum LevelType {
     RECTANGLE,

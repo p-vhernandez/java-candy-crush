@@ -1,4 +1,4 @@
-package Components;
+package components;
 
 import utils.Utils;
 
@@ -109,6 +109,14 @@ public class TopPanel extends JPanel {
 
     public void setLblScoreNumber(int scoreNumber) {
         lblScoreNumber.setText(String.valueOf(scoreNumber));
+    }
+
+    public void setMaxMovements(int movements) {
+        this.lblMovements.setText(String.valueOf(movements));
+    }
+
+    public void oneMovementLess() {
+        this.lblMovements.setText(String.valueOf(Integer.parseInt(this.lblMovements.getText()) - 1));
     }
 
 }

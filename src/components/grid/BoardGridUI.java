@@ -1,9 +1,7 @@
-package UI;
+package components.grid;
 
-import Components.BoardGrid;
-import Components.BoardTile;
-import Helpers.TileType;
-import Model.BoardGridModel;
+import components.BoardTile;
+import utils.helpers.TileType;
 import utils.Utils;
 
 import javax.imageio.ImageIO;
@@ -18,18 +16,12 @@ import java.util.Random;
 
 public class BoardGridUI {
 
-    private final int tilesXAxis;
-    private final int tilesYAxis;
-
     private boolean dragInMotion = false;
 
     private final BoardGrid grid;
     private final BoardGridModel model;
 
     public BoardGridUI(int tilesXAxis, int tilesYAxis, BoardGrid grid) {
-        this.tilesXAxis = tilesXAxis;
-        this.tilesYAxis = tilesYAxis;
-
         this.grid = grid;
         this.model = this.grid.getModel();
 
@@ -66,8 +58,8 @@ public class BoardGridUI {
                 BufferedImage icon = null;
 
                 try {
-                    icon = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream(
-                            "../resources/img/" + tile.getTileType() + ".png")));
+                    icon = ImageIO.read(Objects.requireNonNull(this.getClass().getResourceAsStream(
+                            "../../resources/img/" + tile.getTileType() + ".png")));
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -123,8 +115,7 @@ public class BoardGridUI {
                 }
 
                 while (!validX) {
-                    if (type != tiles[i - 1][j].getTileType()
-                            || type != tiles[i - 2][j].getTileType()) {
+                    if (notThreeInARowDimensionX(type, i, j)) {
                         validX = true;
                     } else {
                         type = types[random.nextInt(5)];
@@ -132,8 +123,7 @@ public class BoardGridUI {
                 }
 
                 while (!validY) {
-                    if (type != row[j - 1].getTileType()
-                            || type != row[j - 2].getTileType()) {
+                    if (notThreeInARowDimensionY(type, row, j)) {
                         validY = true;
                     } else {
                         type = types[random.nextInt(5)];
@@ -149,6 +139,16 @@ public class BoardGridUI {
         }
 
         grid.setTiles(tiles);
+    }
+
+    private boolean notThreeInARowDimensionX(TileType type, int positionX, int positionY) {
+        return type != grid.getTiles()[positionX - 1][positionY].getTileType()
+                || type != grid.getTiles()[positionX - 2][positionY].getTileType();
+    }
+
+    private boolean notThreeInARowDimensionY(TileType type, BoardTile[] row, int positionY) {
+        return type != row[positionY - 1].getTileType()
+                || type != row[positionY - 2].getTileType();
     }
 
     private void generateSwipeMotion(MouseEvent e) {
@@ -173,7 +173,7 @@ public class BoardGridUI {
                 swipeTiles(startTile, endTile,
                         startTile.getTileX(), startTile.getTileY(),
                         endTile.getTileX(), endTile.getTileY(),
-                        spaceToMove, true);
+                        spaceToMove, true, true);
             }
         }
     }
@@ -215,7 +215,7 @@ public class BoardGridUI {
      */
     private void swipeTiles(BoardTile startTile, BoardTile endTile,
                             int initStartX, int initStartY, int initEndX, int initEndY,
-                            int spaceToMove, boolean pendingValidation) {
+                            int spaceToMove, boolean pendingValidation, boolean userMovement) {
 
         Timer myTimer = new Timer(0, e -> {
             BoardTile[][] tiles;
@@ -396,7 +396,7 @@ public class BoardGridUI {
             swipeTiles(endTile, startTile,
                     endTile.getTileX(), endTile.getTileY(),
                     startTile.getTileX(), startTile.getTileY(),
-                    spaceToMove, false);
+                    spaceToMove, false, false);
         }
     }
 }

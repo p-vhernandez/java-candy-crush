@@ -1,6 +1,5 @@
-package Components;
+package components;
 
-import jdk.jshell.execution.Util;
 import utils.Utils;
 
 import javax.swing.*;

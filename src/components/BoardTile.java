@@ -1,10 +1,7 @@
-package Components;
+package components;
 
 
-import javax.swing.*;
-import javax.swing.border.Border;
-
-import Helpers.TileType;
+import utils.helpers.TileType;
 import utils.Utils;
 import java.awt.*;
 
