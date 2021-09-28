@@ -1,14 +1,14 @@
 package Components;
 
+
 import javax.swing.*;
 import javax.swing.border.Border;
 
 import Helpers.TileType;
 import utils.Utils;
-
 import java.awt.*;
 
-public class BoardTile extends JButton {
+public class BoardTile {
 
     private TileType tileType;
     private int tileRow, tileCol;
@@ -23,9 +23,6 @@ public class BoardTile extends JButton {
 
         this.tileX = tileX;
         this.tileY = tileY;
-
-        Border emptyBorder = BorderFactory.createEmptyBorder();
-        this.setBorder(emptyBorder);
     }
 
     public TileType getTileType() {
@@ -58,7 +55,6 @@ public class BoardTile extends JButton {
 
     public void setTileX(int tileX) {
         this.tileX = tileX;
-        repaint();
     }
 
     public int getTileY() {
@@ -67,21 +63,14 @@ public class BoardTile extends JButton {
 
     public void setTileY(int tileY) {
         this.tileY = tileY;
-        repaint();
     }
 
     //Layout
     public Dimension getMaximumSize() {
         return getPreferredSize();
     }
-    public Dimension getMinimumSize() {
-        return getPreferredSize();
-    }
+    public Dimension getMinimumSize() { return getPreferredSize(); }
     public Dimension getPreferredSize() {
         return new Dimension(Utils.getTileSize(), Utils.getTileSize());
-    }
-
-    public void paintComponent(Graphics g) {
-        //this.ui.paint((Graphics2D) g, this);
     }
 }

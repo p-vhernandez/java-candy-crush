@@ -57,6 +57,7 @@ public class CandyCrush extends JFrame {
         JPanel boardPanel = new JPanel();
         boardPanel.setLayout(new BoxLayout(boardPanel, BoxLayout.Y_AXIS));
         setPreferredSize(new Dimension(600, 400));
+
         add(boardPanel);
 
         BoardGrid grid = new BoardGrid(LevelType.SQUARE, 8, 8);
