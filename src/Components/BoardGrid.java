@@ -66,6 +66,7 @@ public class BoardGrid extends JPanel{
 
     public void setTiles(BoardTile[][] tiles) {
         this.tiles = tiles;
+        repaint();
     }
 
     public BoardTile getTileDragStart() {

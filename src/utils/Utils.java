@@ -11,6 +11,10 @@ public class Utils {
     private static final int TOP_BAR_HEIGHT = 80;
     private static final int TOP_BAR_COMPONENTS_HEIGHT = 70;
     private static final int MOVEMENTS_PANEL_WIDTH = 100;
+    private static final int ANIM_SLIDE_VELOCITY = 1;
+    private static final int TILE_SIZE = 30;
+    private static final int ICON_SIZE = 25;
+
 
     private static final String APP_NAME = "Halloween Candy Crush";
 
@@ -37,6 +41,12 @@ public class Utils {
     public static int getRestTopPanelComponentsWidth() {
         return (WINDOW_WIDTH - 60 - MOVEMENTS_PANEL_WIDTH) / 2;
     }
+
+    public static int getAnimSlideVelocity() { return ANIM_SLIDE_VELOCITY; }
+
+    public static int getTileSize() { return TILE_SIZE; }
+
+    public static int getIconSize() { return ICON_SIZE; }
 
     public static String getAppName() {
         return APP_NAME;

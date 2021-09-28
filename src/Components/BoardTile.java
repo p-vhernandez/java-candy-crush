@@ -1,25 +1,30 @@
 package Components;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.border.Border;
 
+import Helpers.Colors;
 import Helpers.TileType;
 import Model.BoardTileModel;
 import UI.BoardTileUI;
+import utils.Utils;
 
 import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
 
 public class BoardTile extends JButton {
 
     private BoardTileModel model;
     private BoardTileUI ui;
     private TileType tileType;
-    private int tileSize = 30;
-    private int iconSize = 25;
     private int tileRow;
     private int tileCol;
+    private int tileX;
+    private int tileY;
 
-    public BoardTile(TileType tileType, int tileRow, int tileCol) {
+    public BoardTile(TileType tileType, int tileRow, int tileCol, int tileX, int tileY) {
         this.model = new BoardTileModel();
         this.model.addChangeListener(e -> repaint()); // repaint whenever the model updates
         this.ui = new BoardTileUI();
@@ -27,6 +32,8 @@ public class BoardTile extends JButton {
         this.tileType = tileType;
         this.tileRow = tileRow;
         this.tileCol = tileCol;
+        this.tileX = tileX;
+        this.tileY = tileY;
 
         Border emptyBorder = BorderFactory.createEmptyBorder();
         this.setBorder(emptyBorder);
@@ -49,22 +56,6 @@ public class BoardTile extends JButton {
         this.tileType = tileType;
     }
 
-    public int getTileSize() {
-        return tileSize;
-    }
-
-    public void setTileSize(int tileSize) {
-        this.tileSize = tileSize;
-    }
-
-    public int getIconSize() {
-        return iconSize;
-    }
-
-    public void setIconSize(int iconSize) {
-        this.iconSize = iconSize;
-    }
-
     public int getTileRow() {
         return tileRow;
     }
@@ -81,6 +72,24 @@ public class BoardTile extends JButton {
         this.tileCol = tileCol;
     }
 
+    public int getTileX() {
+        return tileX;
+    }
+
+    public void setTileX(int tileX) {
+        this.tileX = tileX;
+        repaint();
+    }
+
+    public int getTileY() {
+        return tileY;
+    }
+
+    public void setTileY(int tileY) {
+        this.tileY = tileY;
+        repaint();
+    }
+
     //Layout
     public Dimension getMaximumSize() {
         return getPreferredSize();
@@ -89,7 +98,7 @@ public class BoardTile extends JButton {
         return getPreferredSize();
     }
     public Dimension getPreferredSize() {
-        return new Dimension(tileSize, tileSize);
+        return new Dimension(Utils.getTileSize(), Utils.getTileSize());
     }
 
     public void paintComponent(Graphics g) {

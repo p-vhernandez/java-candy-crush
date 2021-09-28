@@ -3,14 +3,26 @@ package UI;
 import Components.BoardGrid;
 import Components.BoardTile;
 import Helpers.TileType;
+import utils.Utils;
 
+import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.Random;
 
 public class BoardGridUI {
 
-    public void initializeUI(BoardGrid grid) {}
+    public void initializeUI(BoardGrid grid) {
+
+    }
+
+    /* public void paint(Graphics2D g, BoardGrid grid) {
+        for (BoardTile[] tileRow : grid.getTiles()) {
+            for (BoardTile tile : tileRow) {
+                tile.ui.paint(g, tile);
+            }
+        }
+    } */
 
     //generates the tiles on the board
     public void generateTiles(int tilesXAxis, int tilesYAxis, BoardGrid grid) {
@@ -40,7 +52,7 @@ public class BoardGridUI {
                         type = types[random.nextInt(5)];
                     }
                 }
-                row[j] = new BoardTile(type, i, j);
+                row[j] = new BoardTile(type, i, j, 0, 0);
             }
             tiles[i] = row;
         }
