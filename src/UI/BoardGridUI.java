@@ -5,7 +5,6 @@ import Components.BoardTile;
 import Helpers.Colors;
 import Helpers.TileType;
 import Model.BoardGridModel;
-import Model.BoardTileModel;
 import utils.Utils;
 
 import javax.imageio.ImageIO;
@@ -60,7 +59,11 @@ public class BoardGridUI {
                     //TO DO: swipe conditions
                     if (!dragInMotion) {
                         dragInMotion = true;
-                        swipeTiles(startTile, endTile, grid, startTile.getTileX(), startTile.getTileY(), endTile.getTileX(), endTile.getTileY());
+                        int delta = 15;
+                        if (startTile.getTileCol() > endTile.getTileCol() || (startTile.getTileRow() > endTile.getTileRow())) {
+                            delta = -delta;
+                        }
+                        swipeTiles(startTile, endTile, grid, startTile.getTileX(), startTile.getTileY(), endTile.getTileX(), endTile.getTileY(), delta, true);
                     }
                 }
             }
@@ -129,16 +132,16 @@ public class BoardGridUI {
         return tiles[row][col];
     }
 
-    private void swipeTiles(BoardTile startTile, BoardTile endTile, BoardGrid grid, int initStartX, int initStartY, int initEndX, int initEndY) {
-
+    private void swipeTiles(BoardTile startTile, BoardTile endTile, BoardGrid grid, int initStartX, int initStartY, int initEndX, int initEndY, int delta, boolean toValidate) {
 
         Timer myTimer = new Timer(0, e -> {
 
             BoardTile[][] tiles;
-            if (startTile.getTileCol() < endTile.getTileCol()) {
+            //horizontal swipe
+            if (startTile.getTileCol() != endTile.getTileCol()) {
 
-                startTile.setTileX(startTile.getTileX() + 15);
-                endTile.setTileX(endTile.getTileX() - 15);
+                startTile.setTileX(startTile.getTileX() + delta);
+                endTile.setTileX(endTile.getTileX() - delta);
                 tiles = grid.getTiles();
                 tiles[startTile.getTileRow()][startTile.getTileCol()] = startTile;
                 tiles[endTile.getTileRow()][endTile.getTileCol()] = endTile;
@@ -156,13 +159,89 @@ public class BoardGridUI {
                     endTile.setTileCol(startCol);
                     grid.setTiles(tiles);
                     dragInMotion = false;
+                    if (toValidate) validateSwipe(new BoardTile[] {startTile, endTile}, tiles, startTile, endTile, grid, initStartX, initStartY, initEndX, initEndY, delta);
                 }
-            } else if (startTile.getTileCol() > endTile.getTileCol()) {
-                startTile.setTileX(startTile.getTileX() - 1);
-                endTile.setTileX(endTile.getTileX() + 1);
+            //vertical swipe
+            } else {
+                startTile.setTileY(startTile.getTileY() + delta);
+                endTile.setTileY(endTile.getTileY() - delta);
+                tiles = grid.getTiles();
+                tiles[startTile.getTileRow()][startTile.getTileCol()] = startTile;
+                tiles[endTile.getTileRow()][endTile.getTileCol()] = endTile;
+                grid.setTiles(tiles);
+
+                if (startTile.getTileY() == initEndY && endTile.getTileY() == initStartY) {
+
+                    ((Timer) e.getSource()).stop();
+                    tiles = grid.getTiles();
+                    tiles[startTile.getTileRow()][startTile.getTileCol()] = endTile;
+                    tiles[endTile.getTileRow()][endTile.getTileCol()] = startTile;
+                    int startRow = startTile.getTileRow();
+                    int endRow = endTile.getTileRow();
+                    startTile.setTileRow(endRow);
+                    endTile.setTileRow(startRow);
+                    grid.setTiles(tiles);
+                    dragInMotion = false;
+                    if(toValidate) validateSwipe(new BoardTile[] {startTile, endTile}, tiles, endTile, startTile, grid, initEndX, initEndY, initStartX, initStartY, -delta);
+                }
             }
         });
         myTimer.setInitialDelay(0);
         myTimer.start();
+    }
+
+    private void validateSwipe(BoardTile[] tilesToValidate, BoardTile[][] tiles, BoardTile startTile, BoardTile endTile, BoardGrid grid, int initStartX, int initStartY, int initEndX, int initEndY, int delta) {
+
+        boolean valid = false;
+
+        for (BoardTile tile : tilesToValidate) {
+
+            int row = tile.getTileRow();
+            int col = tile.getTileCol();
+            TileType type1;
+            TileType type2;
+            TileType type3;
+
+
+            if (row >= 0 && row + 2 < tiles.length) {
+                type1 = tile.getTileType();
+                type2 = tiles[row+1][col].getTileType();
+                type3 = tiles[row+2][col].getTileType();
+                if (type1 == type2 && type1 == type3) valid = true;
+            }
+            if (row >= 1 && row + 1 < tiles.length) {
+                type1 = tiles[row-1][col].getTileType();
+                type2 = tile.getTileType();
+                type3 = tiles[row+1][col].getTileType();
+                if (type1 == type2 && type1 == type3) valid = true;
+            }
+            if (row >= 2) {
+                type1 = tiles[row-1][col].getTileType();
+                type2 = tiles[row-2][col].getTileType();
+                type3 = tile.getTileType();
+                if (type1 == type2 && type1 == type3) valid = true;
+            }
+
+            if (col >= 0 && col + 2 < tiles[0].length) {
+                type1 = tile.getTileType();
+                type2 = tiles[row][col+1].getTileType();
+                type3 = tiles[row][col+2].getTileType();
+                if (type1 == type2 && type1 == type3) valid = true;
+            }
+            if (col >= 1 && col + 1 < tiles[0].length) {
+                type1 = tiles[row][col-1].getTileType();
+                type2 = tile.getTileType();
+                type3 = tiles[row][col+1].getTileType();
+                if (type1 == type2 && type1 == type3) valid = true;
+            }
+            if (col >= 2) {
+                type1 = tiles[row][col-1].getTileType();
+                type2 = tiles[row][col-2].getTileType();
+                type3 = tile.getTileType();
+                if (type1 == type2 && type1 == type3) valid = true;
+            }
+
+        }
+        if (!valid) swipeTiles(endTile, startTile, grid, endTile.getTileX(), endTile.getTileY(), startTile.getTileX(), startTile.getTileY(), delta, false);
     }
 }
