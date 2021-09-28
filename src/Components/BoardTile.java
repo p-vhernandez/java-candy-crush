@@ -28,7 +28,7 @@ public class BoardTile extends JButton {
         this.model = new BoardTileModel();
         this.model.addChangeListener(e -> repaint()); // repaint whenever the model updates
         this.ui = new BoardTileUI();
-        this.ui.installUI(this);
+        //this.ui.installUI(this);
         this.tileType = tileType;
         this.tileRow = tileRow;
         this.tileCol = tileCol;
@@ -102,6 +102,6 @@ public class BoardTile extends JButton {
     }
 
     public void paintComponent(Graphics g) {
-        this.ui.paint((Graphics2D) g, this);
+        //this.ui.paint((Graphics2D) g, this);
     }
 }

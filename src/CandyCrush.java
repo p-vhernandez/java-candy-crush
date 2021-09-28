@@ -57,10 +57,10 @@ public class CandyCrush extends JFrame {
         //tiles
         boardPanel.add(grid);
         BoardTile[][] tiles = grid.getTiles();
-        for (int i = 0; i < tiles.length; i++) {
+        /*for (int i = 0; i < tiles.length; i++) {
             for (int j = 0; j < tiles[i].length; j++) {
                 grid.add(tiles[i][j]);
             }
-        }
+        }*/
     }
 }

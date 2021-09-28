@@ -18,8 +18,8 @@ import javax.swing.Timer;
 
 public class BoardTileUI {
 
-    public void installUI(BoardTile tile) {
-        BoardTileModel model = tile.getModel();
+    //public void installUI(BoardTile tile) {
+        /*BoardTileModel model = tile.getModel();
         tile.addMouseListener(new MouseAdapter() {
             @Override
             public void mousePressed(MouseEvent e) {
@@ -51,23 +51,11 @@ public class BoardTileUI {
                     //swipeTiles(startTile, endTile);
                 }
             }
-        });
+        });/*
     }
 
     public void paint(Graphics2D g, BoardTile tile) {
-        int iconX = tile.getTileX() + (Utils.getTileSize() - Utils.getIconSize())/2;
-        int iconY = tile.getTileY() + (Utils.getTileSize() - Utils.getIconSize())/2;
-        BufferedImage icon = null;
-        try {
-            icon = ImageIO.read(getClass().getResourceAsStream("../resources/img/" + tile.getTileType() +".png"));
-        } catch (IOException e){
-            e.printStackTrace();
-        }
-        g.setPaint(Colors.tileFill);
-        g.fillRoundRect(tile.getTileX(), tile.getTileY(), Utils.getTileSize(), Utils.getTileSize(), 5,5);
-        g.setPaint(Colors.tileBorder);
-        g.drawRoundRect(tile.getTileX(), tile.getTileY(), Utils.getTileSize(), Utils.getTileSize(), 5,5);
-        g.drawImage(icon, iconX, iconY, Utils.getIconSize(), Utils.getIconSize(), null);
+
     }
 
     private BoardTile getTile(BoardTile[][] tiles, int x, int y) {
@@ -108,5 +96,5 @@ public class BoardTileUI {
         });
 
         myTimer.start();
-    }
+    } */
 }

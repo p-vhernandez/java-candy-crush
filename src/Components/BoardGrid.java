@@ -31,8 +31,7 @@ public class BoardGrid extends JPanel{
         tiles = new BoardTile[tilesYAxis][tilesXAxis];
         this.model = new BoardGridModel();
         this.model.addChangeListener((e -> repaint()));
-        this.ui = new BoardGridUI();
-        this.ui.generateTiles(tilesXAxis, tilesYAxis, this);
+        this.ui = new BoardGridUI(tilesXAxis, tilesYAxis, this);
         this.ui.initializeUI(this);
     }
 
@@ -85,9 +84,21 @@ public class BoardGrid extends JPanel{
         this.tileDragEnd = tileDragEnd;
     }
 
+    public BoardGridModel getModel() {
+        return model;
+    }
+
+    public void setModel(BoardGridModel model) {
+        this.model = model;
+    }
+
     //Layout
     public Dimension getMaximumSize() { return getPreferredSize(); }
     public Dimension getMinimumSize() { return getPreferredSize(); }
     public Dimension getPreferredSize() { return new Dimension(tileSize*tilesXAxis,tileSize*tilesYAxis); }
+
+    public void paintComponent(Graphics g) {
+        this.ui.paint((Graphics2D) g, this);
+    }
 
 }
