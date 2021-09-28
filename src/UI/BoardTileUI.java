@@ -2,21 +2,25 @@ package UI;
 
 import Components.BoardGrid;
 import Components.BoardTile;
-
-import utils.Utils;
+import Helpers.Colors;
+import Helpers.TileType;
 import Model.BoardTileModel;
+import utils.Utils;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import javax.swing.Timer;
 
 public class BoardTileUI {
 
-    public void installUI(BoardTile tile) {
-        BoardTileModel model = tile.getModel();
+    //public void installUI(BoardTile tile) {
+        /*BoardTileModel model = tile.getModel();
+
         tile.addMouseListener(new MouseAdapter() {
             @Override
             public void mousePressed(MouseEvent e) {
@@ -27,9 +31,9 @@ public class BoardTileUI {
 
             @Override
             public void mouseReleased(MouseEvent e) {
-                //super.mouseReleased(e);
+                super.mouseReleased(e);
                 model.setPressed(false);
-                System.out.println(((BoardTile)e.getSource()).getTileType());
+
             }
         });
 
@@ -37,34 +41,61 @@ public class BoardTileUI {
             @Override
             public void mouseDragged(MouseEvent e) {
                 super.mouseDragged(e);
-                //this should go to mouse released -- then the drag method is unnecessary
-                BoardTile tileDragStart = ((BoardGrid)tile.getParent()).getTileDragStart();
-                //if ((e.getSource())
+                BoardTile endTile = getTile(((BoardGrid)tile.getParent()).getTiles(), e.getX(), e.getY());
+                BoardTile startTile = ((BoardGrid)tile.getParent()).getTileDragStart();
+                int endCol = endTile.getTileCol();
+                int endRow = endTile.getTileRow();
+                int startCol = startTile.getTileCol();
+                int startRow = startTile.getTileRow();
+                if ((Math.abs(startCol-endCol) == 1 && startRow == endRow)|| (Math.abs(startRow-endRow) == 1) && startCol == endCol) {
+                    //TO DO: swipe conditions
+                    //swipeTiles(startTile, endTile);
+                }
             }
-        });
+        });/*
     }
 
     public void paint(Graphics2D g, BoardTile tile) {
-        int iconXY = (tile.getTileSize() - tile.getIconSize())/2;
-        BufferedImage icon = null;
-        try {
-            icon = ImageIO.read(getClass().getResourceAsStream("../resources/img/" + tile.getTileType() +".png"));
-        } catch (IOException e){
-            e.printStackTrace();
-        }
-        g.setPaint(Utils.tileFill);
-        g.fillRoundRect(0,0, tile.getTileSize(), tile.getTileSize(), 5,5);
-        g.setPaint(Utils.tileBorder);
-        g.drawRoundRect(0,0, tile.getTileSize(), tile.getTileSize(), 5,5);
-        g.drawImage(icon, iconXY, iconXY, tile.getIconSize(), tile.getIconSize(), null);
+
     }
 
     private BoardTile getTile(BoardTile[][] tiles, int x, int y) {
-        int tileSize = tiles[0][0].getTileSize();
-        int row = (int)Math.floor(x / tileSize);
-        int col = (int)Math.floor(y/tileSize);
-        System.out.println(row);
-        System.out.println(col);
+        int tileSize = Utils.getTileSize();
+        int col = (int)Math.floor(x / tileSize);
+        int row = (int)Math.floor(y/tileSize);
         return tiles[row][col];
     }
+
+    private void swipeTiles(BoardTile startTile, BoardTile endTile) {
+        Timer myTimer = new Timer(Utils.getAnimSlideVelocity(), e -> {
+
+            if (startTile.getTileCol() < endTile.getTileCol()) {
+
+                //System.out.println("start: " +startTile.getTileX());
+                //System.out.println("end: " +endTile.getTileX());
+
+                startTile.setTileX(startTile.getTileX()+1);
+                //endTile.setTileX(endTile.getTileX()-1);
+
+                if (startTile.getTileX() == Utils.getTileSize()/2 && endTile.getTileX() == -Utils.getTileSize()/2) {
+                    ((Timer)e.getSource()).stop();
+                    //System.out.println(-Utils.getTileSize());
+                    //System.out.println("end: " +endTile.getTileX());
+                    BoardTile [][] tiles = ((BoardGrid)startTile.getParent()).getTiles();
+                    startTile.setTileCol(endTile.getTileCol());
+                    endTile.setTileCol(startTile.getTileCol());
+                    startTile.setTileX(0);
+                    endTile.setTileX(0);
+                    tiles[startTile.getTileRow()][startTile.getTileCol()] = endTile;
+                    tiles[endTile.getTileRow()][endTile.getTileCol()] = startTile;
+                    ((BoardGrid)startTile.getParent()).setTiles(tiles);
+                }
+            } else if (startTile.getTileCol() > endTile.getTileCol()) {
+                startTile.setTileX(startTile.getTileX() - 1);
+                endTile.setTileX(endTile.getTileX() + 1);
+            }
+        });
+
+        myTimer.start();
+    } */
 }
