@@ -7,14 +7,9 @@ import java.awt.*;
 
 public class TopPanel extends JPanel {
 
-    private final JPanel scorePanel;
-    private final JPanel goalPanel;
-
-    private final BoxLayout scoreLayout;
-    private final BoxLayout goalLayout;
-    private final JLabel lblMovements;
-    private final JLabel lblGoalNumber;
-    private final JLabel lblScoreNumber;
+    private final JPanel scorePanel, goalPanel;
+    private final BoxLayout scoreLayout, goalLayout;
+    private final JLabel lblMovements, lblGoalNumber, lblScoreNumber;
 
     public TopPanel() {
         this.scorePanel = new JPanel();

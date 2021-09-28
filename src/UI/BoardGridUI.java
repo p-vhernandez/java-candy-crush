@@ -13,8 +13,6 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
-import java.sql.Time;
-import java.time.LocalDateTime;
 import java.util.Random;
 
 public class BoardGridUI {

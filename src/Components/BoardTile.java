@@ -1,5 +1,9 @@
 package Components;
 
+
+import javax.swing.*;
+import javax.swing.border.Border;
+
 import Helpers.TileType;
 import utils.Utils;
 import java.awt.*;
@@ -7,15 +11,16 @@ import java.awt.*;
 public class BoardTile {
 
     private TileType tileType;
-    private int tileRow;
-    private int tileCol;
-    private int tileX;
-    private int tileY;
+    private int tileRow, tileCol;
+    private int tileX, tileY;
 
     public BoardTile(TileType tileType, int tileRow, int tileCol, int tileX, int tileY) {
+        this.model.addChangeListener(e -> repaint()); // repaint whenever the model updates
         this.tileType = tileType;
+
         this.tileRow = tileRow;
         this.tileCol = tileCol;
+
         this.tileX = tileX;
         this.tileY = tileY;
     }

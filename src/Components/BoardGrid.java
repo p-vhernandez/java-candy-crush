@@ -1,5 +1,6 @@
 package Components;
 
+import Helpers.Level;
 import Helpers.LevelType;
 import Helpers.TileType;
 import Model.BoardGridModel;
@@ -13,26 +14,36 @@ public class BoardGrid extends JPanel{
 
     private BoardGridModel model;
     private BoardGridUI ui;
+
+    private Level level;
     private LevelType levelType;
-    //how many rows and cols of tiles
-    private int tilesXAxis;
-    private int tilesYAxis;
+
+    private int tilesXAxis, tilesYAxis;
+    private int tileSize = 30, iconSize = 35;
+
     private BoardTile[][] tiles;
-    private int tileSize = 30;
-    private int iconSize = 35;
-    //for grid handling
-    private BoardTile tileDragStart;
-    private BoardTile tileDragEnd;
+    private BoardTile tileDragStart, tileDragEnd;
 
     public BoardGrid(LevelType type, int tilesXAxis, int tilesYAxis) {
+        this.level = new Level(type);
+        this.levelType = type;
+
+        setUpLevelInformation();
+
         this.tilesXAxis = tilesXAxis;
         this.tilesYAxis = tilesYAxis;
-        this.levelType = type;
-        tiles = new BoardTile[tilesYAxis][tilesXAxis];
+
+        this.tiles = new BoardTile[tilesYAxis][tilesXAxis];
+
         this.model = new BoardGridModel();
         this.model.addChangeListener((e -> repaint()));
+
         this.ui = new BoardGridUI(tilesXAxis, tilesYAxis, this);
         this.ui.initializeUI(this);
+    }
+
+    private void setUpLevelInformation() {
+        // TODO: call methods on CandyCrush.java to set the labels on the top Panel
     }
 
     public int getTilesXAxis() {
@@ -57,6 +68,14 @@ public class BoardGrid extends JPanel{
 
     public void setLevelType(LevelType type) {
         this.levelType = type;
+    }
+
+    public Level getLevel() {
+        return level;
+    }
+
+    public void setLevel(Level level) {
+        this.level = level;
     }
 
     public BoardTile[][] getTiles() {

@@ -9,8 +9,8 @@ import java.util.ArrayList;
 
 public class BoardGridModel {
 
-    private ArrayList<ActionListener> actionListeners = new ArrayList<>();
-    private ArrayList<ChangeListener> changeListeners = new ArrayList<>();
+    private final ArrayList<ActionListener> actionListeners = new ArrayList<>();
+    private final ArrayList<ChangeListener> changeListeners = new ArrayList<>();
     private boolean isEnabled = true;
     private boolean isPressed;
 

@@ -1,5 +1,4 @@
 import Components.BoardGrid;
-import Components.BoardTile;
 import Components.LoadingDialog;
 import Components.TopPanel;
 import Helpers.LevelType;
@@ -7,8 +6,6 @@ import utils.Utils;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class CandyCrush extends JFrame {
 
@@ -24,11 +21,7 @@ public class CandyCrush extends JFrame {
 
     private void setupUI() {
         setAppIcon();
-        setPreferredSize(new Dimension(Utils.getWindowWidth(),
-                Utils.getWindowHeight()));
-        setLayout(new BoxLayout(getContentPane(), BoxLayout.Y_AXIS));
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
-
+        setFrameVisuals();
         setUpTopPanel();
         setUpBoardPanel();
 
@@ -41,8 +34,15 @@ public class CandyCrush extends JFrame {
         setIconImage(appIcon);
     }
 
+    private void setFrameVisuals() {
+        setPreferredSize(new Dimension(Utils.getWindowWidth(),
+                Utils.getWindowHeight()));
+        setLayout(new BoxLayout(getContentPane(), BoxLayout.Y_AXIS));
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+    }
+
     private void setUpTopPanel() {
-        this.topPanel = new TopPanel();
+        topPanel = new TopPanel();
         add(topPanel, BorderLayout.NORTH);
     }
 
@@ -57,23 +57,16 @@ public class CandyCrush extends JFrame {
         JPanel boardPanel = new JPanel();
         boardPanel.setLayout(new BoxLayout(boardPanel, BoxLayout.Y_AXIS));
         setPreferredSize(new Dimension(600, 400));
-        //boardPanel.setBackground(Utils.);
+
         add(boardPanel);
 
-        //board grid
-        BoardGrid grid = new BoardGrid(LevelType.SQUARE, 8,8);
+        BoardGrid grid = new BoardGrid(LevelType.SQUARE, 8, 8);
         FlowLayout gridLayout = new FlowLayout();
         gridLayout.setVgap(0);
         gridLayout.setHgap(0);
         grid.setLayout(gridLayout);
 
-        // FIXME: tiles take too long to load
         boardPanel.add(grid);
-<<<<<<< HEAD
-=======
-            }
-        }*/
->>>>>>> d99f39aba1b3bb613513746ff4d48781559fbc02
     }
 
     private void closeLoadingDialog() {
@@ -81,4 +74,13 @@ public class CandyCrush extends JFrame {
         timer.setRepeats(false);
         timer.start();
     }
+
+    public void addScore(int score) {
+        topPanel.setLblScoreNumber(topPanel.getLblScoreNumber() + score);
+    }
+
+    public void setGoal(int goal) {
+        topPanel.setLblGoalNumber(goal);
+    }
+
 }
