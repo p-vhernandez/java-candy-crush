@@ -9,6 +9,7 @@ import java.awt.*;
 
 public class CandyCrush extends JFrame {
 
+    private TopPanel topPanel;
     private LoadingDialog loadingDialog;
 
     public CandyCrush() {
@@ -41,7 +42,7 @@ public class CandyCrush extends JFrame {
     }
 
     private void setUpTopPanel() {
-        TopPanel topPanel = new TopPanel();
+        topPanel = new TopPanel();
         add(topPanel, BorderLayout.NORTH);
     }
 
@@ -72,4 +73,13 @@ public class CandyCrush extends JFrame {
         timer.setRepeats(false);
         timer.start();
     }
+
+    public void addScore(int score) {
+        topPanel.setLblScoreNumber(topPanel.getLblScoreNumber() + score);
+    }
+
+    public void setGoal(int goal) {
+        topPanel.setLblGoalNumber(goal);
+    }
+
 }

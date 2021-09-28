@@ -28,6 +28,8 @@ public class BoardGrid extends JPanel{
         this.level = new Level(type);
         this.levelType = type;
 
+        setUpLevelInformation();
+
         this.tilesXAxis = tilesXAxis;
         this.tilesYAxis = tilesYAxis;
 
@@ -38,6 +40,10 @@ public class BoardGrid extends JPanel{
 
         this.ui = new BoardGridUI(tilesXAxis, tilesYAxis, this);
         this.ui.initializeUI(this);
+    }
+
+    private void setUpLevelInformation() {
+        // TODO: call methods on CandyCrush.java to set the labels on the top Panel
     }
 
     public int getTilesXAxis() {

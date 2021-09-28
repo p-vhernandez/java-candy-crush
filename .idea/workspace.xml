@@ -5,10 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6b4cf923-17ad-46fa-bee3-8a7e44728267" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/src/CandyCrush.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CandyCrush.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Components/BoardGrid.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/BoardGrid.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/BoardTile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/BoardTile.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Components/TopPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/TopPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/BoardGridModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/BoardGridModel.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
