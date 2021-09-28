@@ -1,5 +1,4 @@
 import Components.BoardGrid;
-import Components.BoardTile;
 import Components.LoadingDialog;
 import Components.TopPanel;
 import Helpers.LevelType;
@@ -7,8 +6,6 @@ import utils.Utils;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class CandyCrush extends JFrame {
 
@@ -61,16 +58,13 @@ public class CandyCrush extends JFrame {
         add(boardPanel);
 
         //board grid
-        BoardGrid grid = new BoardGrid(LevelType.SQUARE, 8,8);
+        BoardGrid grid = new BoardGrid(LevelType.SQUARE, 8, 8);
         FlowLayout gridLayout = new FlowLayout();
         gridLayout.setVgap(0);
         gridLayout.setHgap(0);
         grid.setLayout(gridLayout);
 
-        // FIXME: tiles take too long to load
         boardPanel.add(grid);
-            }
-        }*/
     }
 
     private void closeLoadingDialog() {

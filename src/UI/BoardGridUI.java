@@ -2,10 +2,8 @@ package UI;
 
 import Components.BoardGrid;
 import Components.BoardTile;
-import Helpers.Colors;
 import Helpers.TileType;
 import Model.BoardGridModel;
-import Model.BoardTileModel;
 import utils.Utils;
 
 import javax.imageio.ImageIO;
@@ -15,8 +13,6 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
-import java.sql.Time;
-import java.time.LocalDateTime;
 import java.util.Random;
 
 public class BoardGridUI {
@@ -78,9 +74,9 @@ public class BoardGridUI {
                 } catch (IOException e){
                     e.printStackTrace();
                 }
-                g.setPaint(Colors.tileFill);
+                g.setPaint(Utils.tileFill);
                 g.fillRoundRect(tile.getTileX(), tile.getTileY(), Utils.getTileSize(), Utils.getTileSize(), 5,5);
-                g.setPaint(Colors.tileBorder);
+                g.setPaint(Utils.tileBorder);
                 g.drawRoundRect(tile.getTileX(), tile.getTileY(), Utils.getTileSize(), Utils.getTileSize(), 5,5);
                 g.drawImage(icon, iconX, iconY, Utils.getIconSize(), Utils.getIconSize(), null);
             }

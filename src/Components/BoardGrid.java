@@ -68,22 +68,6 @@ public class BoardGrid extends JPanel{
         repaint();
     }
 
-    public BoardTile getTileDragStart() {
-        return tileDragStart;
-    }
-
-    public void setTileDragStart(BoardTile tileDragStart) {
-        this.tileDragStart = tileDragStart;
-    }
-
-    public BoardTile getTileDragEnd() {
-        return tileDragEnd;
-    }
-
-    public void setTileDragEnd(BoardTile tileDragEnd) {
-        this.tileDragEnd = tileDragEnd;
-    }
-
     public BoardGridModel getModel() {
         return model;
     }
