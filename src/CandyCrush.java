@@ -9,7 +9,6 @@ import java.awt.*;
 
 public class CandyCrush extends JFrame {
 
-    private TopPanel topPanel;
     private LoadingDialog loadingDialog;
 
     public CandyCrush() {
@@ -21,11 +20,7 @@ public class CandyCrush extends JFrame {
 
     private void setupUI() {
         setAppIcon();
-        setPreferredSize(new Dimension(Utils.getWindowWidth(),
-                Utils.getWindowHeight()));
-        setLayout(new BoxLayout(getContentPane(), BoxLayout.Y_AXIS));
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
-
+        setFrameVisuals();
         setUpTopPanel();
         setUpBoardPanel();
 
@@ -38,8 +33,15 @@ public class CandyCrush extends JFrame {
         setIconImage(appIcon);
     }
 
+    private void setFrameVisuals() {
+        setPreferredSize(new Dimension(Utils.getWindowWidth(),
+                Utils.getWindowHeight()));
+        setLayout(new BoxLayout(getContentPane(), BoxLayout.Y_AXIS));
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+    }
+
     private void setUpTopPanel() {
-        this.topPanel = new TopPanel();
+        TopPanel topPanel = new TopPanel();
         add(topPanel, BorderLayout.NORTH);
     }
 
@@ -54,10 +56,8 @@ public class CandyCrush extends JFrame {
         JPanel boardPanel = new JPanel();
         boardPanel.setLayout(new BoxLayout(boardPanel, BoxLayout.Y_AXIS));
         setPreferredSize(new Dimension(600, 400));
-        //boardPanel.setBackground(Colors.boardPanel);
         add(boardPanel);
 
-        //board grid
         BoardGrid grid = new BoardGrid(LevelType.SQUARE, 8, 8);
         FlowLayout gridLayout = new FlowLayout();
         gridLayout.setVgap(0);
