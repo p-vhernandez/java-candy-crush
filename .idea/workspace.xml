@@ -6,11 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="6b4cf923-17ad-46fa-bee3-8a7e44728267" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CandyCrush.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CandyCrush.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/BoardGrid.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/BoardGrid.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Helpers/Colors.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/UI/BoardTileUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/UI/BoardTileUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/Utils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/Utils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Helpers/Crush.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Helpers/Crush.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,13 +47,13 @@
     <property name="settings.editor.selected.configurable" value="database.main" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\jbies\StudioProjects\CandyCrush\src\resources\img" />
-      <recent name="C:\Users\jbies\StudioProjects\CandyCrush\src" />
-    </key>
     <key name="CreateClassDialog.RecentsKey">
       <recent name="UI" />
       <recent name="Model" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\jbies\StudioProjects\CandyCrush\src\resources\img" />
+      <recent name="C:\Users\jbies\StudioProjects\CandyCrush\src" />
     </key>
   </component>
   <component name="RunManager">
@@ -96,11 +92,16 @@
       <workItem from="1631718732163" duration="593000" />
       <workItem from="1632160955920" duration="103000" />
       <workItem from="1632295979803" duration="4591000" />
+      <workItem from="1632485785948" duration="469000" />
+      <workItem from="1632487157574" duration="3356000" />
+      <workItem from="1632663377382" duration="5435000" />
+      <workItem from="1632761548636" duration="292000" />
+      <workItem from="1632837798824" duration="6554000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
+    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">

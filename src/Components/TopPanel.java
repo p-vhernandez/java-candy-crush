@@ -50,8 +50,10 @@ public class TopPanel extends JPanel {
         JLabel lblScore = new JLabel("Score:");
         lblScoreNumber.setText("0000");
 
-        setCustomFont(lblScore, "../resources/font/caramel-rg.ttf", 22f, Font.BOLD);
-        setCustomFont(lblScoreNumber, "../resources/font/creepster-rg.ttf", 28f, Font.PLAIN);
+        Utils.setCustomFont(this, lblScore,
+                "../resources/font/caramel-rg.ttf", 22f, Font.BOLD);
+        Utils.setCustomFont(this, lblScoreNumber,
+                "../resources/font/creepster-rg.ttf", 28f, Font.PLAIN);
 
         this.scorePanel.add(lblScore);
         this.scorePanel.add(lblScoreNumber);
@@ -66,7 +68,8 @@ public class TopPanel extends JPanel {
         this.lblMovements.setPreferredSize(new Dimension(Utils.getMovementsPanelWidth(),
                 Utils.getTopBarComponentsHeight()));
 
-        setCustomFont(lblMovements, "../resources/font/creepster-rg.ttf", 32f, Font.PLAIN);
+        Utils.setCustomFont(this, lblMovements,
+                "../resources/font/creepster-rg.ttf", 32f, Font.PLAIN);
         add(lblMovements);
     }
 
@@ -79,21 +82,15 @@ public class TopPanel extends JPanel {
         JLabel lblGoal = new JLabel("Target:");
         lblGoalNumber.setText("6500");
 
-        setCustomFont(lblGoal, "../resources/font/caramel-rg.ttf", 22f, Font.BOLD);
-        setCustomFont(lblGoalNumber, "../resources/font/creepster-rg.ttf", 28f, Font.PLAIN);
+        Utils.setCustomFont(this, lblGoal,
+                "../resources/font/caramel-rg.ttf", 22f, Font.BOLD);
+        Utils.setCustomFont(this, lblGoalNumber,
+                "../resources/font/creepster-rg.ttf", 28f, Font.PLAIN);
 
         this.goalPanel.add(lblGoal);
         this.goalPanel.add(lblGoalNumber);
 
         add(goalPanel);
-    }
-
-    private void setCustomFont(JLabel label, String path,
-                               float fontSize, int fontStyle) {
-        Font customFom = Utils.generateFont(this, path);
-        if (customFom != null) {
-            label.setFont(customFom.deriveFont(fontStyle, fontSize));
-        }
     }
 
     public int getLblGoalNumber() {
