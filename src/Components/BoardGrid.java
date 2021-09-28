@@ -92,7 +92,23 @@ public class BoardGrid extends JPanel{
         this.model = model;
     }
 
-    //Layout
+    // Layout
+    public BoardTile getTileDragStart() {
+        return tileDragStart;
+    }
+
+    public void setTileDragStart(BoardTile tileDragStart) {
+        this.tileDragStart = tileDragStart;
+    }
+
+    public BoardTile getTileDragEnd() {
+        return tileDragEnd;
+    }
+
+    public void setTileDragEnd(BoardTile tileDragEnd) {
+        this.tileDragEnd = tileDragEnd;
+    }
+
     public Dimension getMaximumSize() { return getPreferredSize(); }
     public Dimension getMinimumSize() { return getPreferredSize(); }
     public Dimension getPreferredSize() { return new Dimension(tileSize*tilesXAxis,tileSize*tilesYAxis); }

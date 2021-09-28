@@ -20,6 +20,7 @@ public class BoardTileUI {
 
     //public void installUI(BoardTile tile) {
         /*BoardTileModel model = tile.getModel();
+
         tile.addMouseListener(new MouseAdapter() {
             @Override
             public void mousePressed(MouseEvent e) {

@@ -1,18 +1,24 @@
 import Components.BoardGrid;
 import Components.BoardTile;
+import Components.LoadingDialog;
 import Components.TopPanel;
 import Helpers.LevelType;
 import utils.Utils;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class CandyCrush extends JFrame {
 
     private TopPanel topPanel;
+    private LoadingDialog loadingDialog;
 
     public CandyCrush() {
         super(Utils.getAppName());
+
+        showLoading();
         setupUI();
     }
 
@@ -40,6 +46,13 @@ public class CandyCrush extends JFrame {
         add(topPanel, BorderLayout.NORTH);
     }
 
+    private void showLoading() {
+        loadingDialog = new LoadingDialog();
+        loadingDialog.openLoading();
+
+        closeLoadingDialog();
+    }
+
     private void setUpBoardPanel() {
         JPanel boardPanel = new JPanel();
         boardPanel.setLayout(new BoxLayout(boardPanel, BoxLayout.Y_AXIS));
@@ -54,13 +67,15 @@ public class CandyCrush extends JFrame {
         gridLayout.setHgap(0);
         grid.setLayout(gridLayout);
 
-        //tiles
+        // FIXME: tiles take too long to load
         boardPanel.add(grid);
-        BoardTile[][] tiles = grid.getTiles();
-        /*for (int i = 0; i < tiles.length; i++) {
-            for (int j = 0; j < tiles[i].length; j++) {
-                grid.add(tiles[i][j]);
             }
         }*/
+    }
+
+    private void closeLoadingDialog() {
+        Timer timer = new Timer(10000, arg0 -> loadingDialog.closeLoading());
+        timer.setRepeats(false);
+        timer.start();
     }
 }
