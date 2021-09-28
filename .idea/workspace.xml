@@ -5,7 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6b4cf923-17ad-46fa-bee3-8a7e44728267" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/resources/src - Acceso directo.lnk" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/BoardGrid.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/BoardGrid.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/UI/BoardGridUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/UI/BoardGridUI.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -178,15 +179,6 @@
     <state x="303" y="1" width="672" height="678" key="search.everywhere.popup/0.0.1280.680@0.0.1280.680" timestamp="1632664396913" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/UI/BoardGridUI.java</url>
-          <line>244</line>
-          <option name="timeStamp" value="30" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
     <watches-manager>
       <configuration name="Application">
         <watch expression="valid" />

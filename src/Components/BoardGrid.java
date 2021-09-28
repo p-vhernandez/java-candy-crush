@@ -39,7 +39,7 @@ public class BoardGrid extends JPanel{
         this.model.addChangeListener((e -> repaint()));
 
         this.ui = new BoardGridUI(tilesXAxis, tilesYAxis, this);
-        this.ui.initializeUI(this);
+        this.ui.initializeUI();
     }
 
     private void setUpLevelInformation() {
@@ -117,7 +117,7 @@ public class BoardGrid extends JPanel{
     public Dimension getPreferredSize() { return new Dimension(tileSize*tilesXAxis,tileSize*tilesYAxis); }
 
     public void paintComponent(Graphics g) {
-        this.ui.paint((Graphics2D) g, this);
+        this.ui.paint((Graphics2D) g);
     }
 
 }
