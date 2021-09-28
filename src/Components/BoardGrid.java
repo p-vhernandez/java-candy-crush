@@ -68,6 +68,15 @@ public class BoardGrid extends JPanel{
         repaint();
     }
 
+    public BoardGridModel getModel() {
+        return model;
+    }
+
+    public void setModel(BoardGridModel model) {
+        this.model = model;
+    }
+
+    // Layout
     public BoardTile getTileDragStart() {
         return tileDragStart;
     }
@@ -84,15 +93,6 @@ public class BoardGrid extends JPanel{
         this.tileDragEnd = tileDragEnd;
     }
 
-    public BoardGridModel getModel() {
-        return model;
-    }
-
-    public void setModel(BoardGridModel model) {
-        this.model = model;
-    }
-
-    //Layout
     public Dimension getMaximumSize() { return getPreferredSize(); }
     public Dimension getMinimumSize() { return getPreferredSize(); }
     public Dimension getPreferredSize() { return new Dimension(tileSize*tilesXAxis,tileSize*tilesYAxis); }

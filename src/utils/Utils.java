@@ -1,5 +1,6 @@
 package utils;
 
+import javax.swing.*;
 import java.awt.*;
 import java.io.InputStream;
 import java.util.Objects;
@@ -16,6 +17,11 @@ public class Utils {
 
 
     private static final String APP_NAME = "Halloween Candy Crush";
+
+    public static Color boardPanel = Color.yellow;
+    public static Color tileBorder = new Color(168, 168, 168);
+    public static Color tileFill = new Color(245, 241, 230);
+    public static Color darkBackground = new Color(44, 54, 47);
 
     public static int getWindowWidth() {
         return WINDOW_WIDTH;
@@ -67,7 +73,14 @@ public class Utils {
             e.printStackTrace();
             return null;
         }
+    }
 
+    public static void setCustomFont(Object object, JLabel label, String path,
+                                     float fontSize, int fontStyle) {
+        Font customFom = Utils.generateFont(object, path);
+        if (customFom != null) {
+            label.setFont(customFom.deriveFont(fontStyle, fontSize));
+        }
     }
 
 }

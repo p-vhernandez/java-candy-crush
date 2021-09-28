@@ -2,7 +2,6 @@ package UI;
 
 import Components.BoardGrid;
 import Components.BoardTile;
-import Helpers.Colors;
 import Helpers.TileType;
 import Model.BoardGridModel;
 import utils.Utils;
@@ -81,9 +80,9 @@ public class BoardGridUI {
                 } catch (IOException e){
                     e.printStackTrace();
                 }
-                g.setPaint(Colors.tileFill);
+                g.setPaint(Utils.tileFill);
                 g.fillRoundRect(tile.getTileX(), tile.getTileY(), Utils.getTileSize(), Utils.getTileSize(), 5,5);
-                g.setPaint(Colors.tileBorder);
+                g.setPaint(Utils.tileBorder);
                 g.drawRoundRect(tile.getTileX(), tile.getTileY(), Utils.getTileSize(), Utils.getTileSize(), 5,5);
                 g.drawImage(icon, iconX, iconY, Utils.getIconSize(), Utils.getIconSize(), null);
             }
