@@ -141,16 +141,6 @@ public class BoardGridUI {
         grid.setTiles(tiles);
     }
 
-    private boolean notThreeInARowDimensionX(TileType type, int positionX, int positionY) {
-        return type != grid.getTiles()[positionX - 1][positionY].getTileType()
-                || type != grid.getTiles()[positionX - 2][positionY].getTileType();
-    }
-
-    private boolean notThreeInARowDimensionY(TileType type, BoardTile[] row, int positionY) {
-        return type != row[positionY - 1].getTileType()
-                || type != row[positionY - 2].getTileType();
-    }
-
     private void generateSwipeMotion(MouseEvent e) {
         BoardTile endTile = getTile(grid.getTiles(), e.getX(), e.getY());
         BoardTile startTile = grid.getTileDragStart();
@@ -176,29 +166,6 @@ public class BoardGridUI {
                         spaceToMove, true, true);
             }
         }
-    }
-
-    private boolean isOnePositionChangeHorizontally(int startCol, int endCol,
-                                                    int startRow, int endRow) {
-        return Math.abs(startCol - endCol) == 1 && startRow == endRow;
-    }
-
-    private boolean isOnePositionChangeVertically(int startCol, int endCol,
-                                                  int startRow, int endRow) {
-        return Math.abs(startRow - endRow) == 1 && startCol == endCol;
-    }
-
-    private boolean isBackwardsMovement(BoardTile startTile, BoardTile endTile) {
-        return startTile.getTileCol() > endTile.getTileCol()
-                || startTile.getTileRow() > endTile.getTileRow();
-    }
-
-    private BoardTile getTile(BoardTile[][] tiles, int x, int y) {
-        int tileSize = Utils.getTileSize();
-        int col = (int) Math.floor(x / tileSize);
-        int row = (int) Math.floor(y / tileSize);
-
-        return tiles[row][col];
     }
 
     /**
@@ -399,4 +366,38 @@ public class BoardGridUI {
                     spaceToMove, false, false);
         }
     }
+
+    private BoardTile getTile(BoardTile[][] tiles, int x, int y) {
+        int tileSize = Utils.getTileSize();
+        int col = (int) Math.floor(x / tileSize);
+        int row = (int) Math.floor(y / tileSize);
+
+        return tiles[row][col];
+    }
+
+    private boolean notThreeInARowDimensionX(TileType type, int positionX, int positionY) {
+        return type != grid.getTiles()[positionX - 1][positionY].getTileType()
+                || type != grid.getTiles()[positionX - 2][positionY].getTileType();
+    }
+
+    private boolean notThreeInARowDimensionY(TileType type, BoardTile[] row, int positionY) {
+        return type != row[positionY - 1].getTileType()
+                || type != row[positionY - 2].getTileType();
+    }
+
+    private boolean isOnePositionChangeHorizontally(int startCol, int endCol,
+                                                    int startRow, int endRow) {
+        return Math.abs(startCol - endCol) == 1 && startRow == endRow;
+    }
+
+    private boolean isOnePositionChangeVertically(int startCol, int endCol,
+                                                  int startRow, int endRow) {
+        return Math.abs(startRow - endRow) == 1 && startCol == endCol;
+    }
+
+    private boolean isBackwardsMovement(BoardTile startTile, BoardTile endTile) {
+        return startTile.getTileCol() > endTile.getTileCol()
+                || startTile.getTileRow() > endTile.getTileRow();
+    }
+
 }
