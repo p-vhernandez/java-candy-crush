@@ -19,7 +19,6 @@ public class Utils {
     public static Color tileBorder = new Color(168, 168, 168);
     public static Color tileFill = new Color(245, 241, 230);
 
-
     public static int getWindowWidth() {
         return WINDOW_WIDTH;
     }
@@ -68,11 +67,12 @@ public class Utils {
         }
     }
 
-    public static JLabel generateLoadingJLabel(Object object) {
-        ImageIcon loadingImg = new ImageIcon(object.getClass().getResource("../resources/gif/loading-ghost-small.gif"));
-        JLabel label = new JLabel();
-        label.setIcon(loadingImg);
-        return label;
+    public static void setCustomFont(Object object, JLabel label, String path,
+                                     float fontSize, int fontStyle) {
+        Font customFom = Utils.generateFont(object, path);
+        if (customFom != null) {
+            label.setFont(customFom.deriveFont(fontStyle, fontSize));
+        }
     }
 
 }

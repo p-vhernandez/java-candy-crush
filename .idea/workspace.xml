@@ -6,9 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="6b4cf923-17ad-46fa-bee3-8a7e44728267" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CandyCrush.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CandyCrush.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Components/LoadingDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/LoadingDialog.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Helpers/Crush.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Helpers/Crush.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/Utils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/Utils.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -98,7 +97,7 @@
       <workItem from="1632487157574" duration="3356000" />
       <workItem from="1632663377382" duration="5435000" />
       <workItem from="1632761548636" duration="292000" />
-      <workItem from="1632837798824" duration="5499000" />
+      <workItem from="1632837798824" duration="5787000" />
     </task>
     <servers />
   </component>

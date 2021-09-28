@@ -18,6 +18,7 @@ public class CandyCrush extends JFrame {
     public CandyCrush() {
         super(Utils.getAppName());
 
+        showLoading();
         setupUI();
     }
 
@@ -32,7 +33,6 @@ public class CandyCrush extends JFrame {
         setUpBoardPanel();
 
         pack();
-        showLoading();
     }
 
     private void setAppIcon() {

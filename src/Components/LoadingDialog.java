@@ -1,9 +1,9 @@
 package Components;
 
+import jdk.jshell.execution.Util;
 import utils.Utils;
 
 import javax.swing.*;
-import javax.swing.border.EmptyBorder;
 import java.awt.*;
 
 public class LoadingDialog extends JDialog {
@@ -52,7 +52,8 @@ public class LoadingDialog extends JDialog {
         animationPanel.setBackground(new Color(44, 54, 47));
 
         loadingLabel.setForeground(Color.white);
-        setCustomFont(loadingLabel, "../resources/font/creepster-rg.ttf", 22f, Font.PLAIN);
+        Utils.setCustomFont(this, loadingLabel,
+                "../resources/font/creepster-rg.ttf", 22f, Font.PLAIN);
 
         dialogPanel.setLayout(new FlowLayout(FlowLayout.LEFT));
         dialogPanel.setBackground(new Color(44, 54, 47));
@@ -102,14 +103,6 @@ public class LoadingDialog extends JDialog {
         }
 
         repaint();
-    }
-
-    private void setCustomFont(JLabel label, String path,
-                               float fontSize, int fontStyle) {
-        Font customFom = Utils.generateFont(this, path);
-        if (customFom != null) {
-            label.setFont(customFom.deriveFont(fontStyle, fontSize));
-        }
     }
 
 }
