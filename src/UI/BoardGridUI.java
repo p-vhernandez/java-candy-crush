@@ -3,6 +3,7 @@ package UI;
 import Components.BoardGrid;
 import Components.BoardTile;
 import Helpers.TileType;
+import utils.Utils;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -10,7 +11,9 @@ import java.util.Random;
 
 public class BoardGridUI {
 
-    public void initializeUI(BoardGrid grid) {}
+    public void initializeUI(BoardGrid grid) {
+        grid.setBackground(Utils.darkBackground);
+    }
 
     //generates the tiles on the board
     public void generateTiles(int tilesXAxis, int tilesYAxis, BoardGrid grid) {
