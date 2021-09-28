@@ -47,7 +47,7 @@ public class CandyCrush extends JFrame {
     }
 
     private void showLoading() {
-        loadingDialog = new LoadingDialog(this);
+        loadingDialog = new LoadingDialog();
         loadingDialog.openLoading();
 
         closeLoadingDialog();
@@ -78,7 +78,7 @@ public class CandyCrush extends JFrame {
     }
 
     private void closeLoadingDialog() {
-        Timer timer = new Timer(5000, arg0 -> loadingDialog.closeLoading());
+        Timer timer = new Timer(10000, arg0 -> loadingDialog.closeLoading());
         timer.setRepeats(false);
         timer.start();
     }
