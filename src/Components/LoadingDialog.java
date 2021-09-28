@@ -49,14 +49,14 @@ public class LoadingDialog extends JDialog {
 
         animationPanel.setSize(ANIMATION_WIDTH, ANIMATION_HEIGHT);
         animationPanel.setPreferredSize(animationPanel.getSize());
-        animationPanel.setBackground(new Color(44, 54, 47));
+        animationPanel.setBackground(Utils.darkBackground);
 
         loadingLabel.setForeground(Color.white);
         Utils.setCustomFont(this, loadingLabel,
                 "../resources/font/creepster-rg.ttf", 22f, Font.PLAIN);
 
         dialogPanel.setLayout(new FlowLayout(FlowLayout.LEFT));
-        dialogPanel.setBackground(new Color(44, 54, 47));
+        dialogPanel.setBackground(Utils.darkBackground);
         dialogPanel.add(animationPanel);
         dialogPanel.add(loadingLabel);
 
