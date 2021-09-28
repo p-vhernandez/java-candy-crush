@@ -6,20 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="6b4cf923-17ad-46fa-bee3-8a7e44728267" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CandyCrush.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/CandyCrush.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/BoardGrid.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/grid/BoardGrid.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/BoardTile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/BoardTile.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/LoadingDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/LoadingDialog.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/TopPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/TopPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Helpers/Crush.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/helpers/Crush.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Helpers/Level.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/helpers/Level.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Helpers/LevelType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/helpers/LevelType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Helpers/Scores.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Helpers/TileType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/helpers/TileType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/BoardGridModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/grid/BoardGridModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/UI/BoardGridUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/grid/BoardGridUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/Utils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/Utils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/grid/BoardGridUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/grid/BoardGridUI.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

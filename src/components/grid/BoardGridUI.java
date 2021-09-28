@@ -184,18 +184,21 @@ public class BoardGridUI {
                             int initStartX, int initStartY, int initEndX, int initEndY,
                             int spaceToMove, boolean pendingValidation, boolean userMovement) {
 
+        // TODO: change movements left - static reference problem
+        /*if (userMovement) {
+            CandyCrush.oneMovementLess();
+        }*/
+
         Timer myTimer = new Timer(0, e -> {
             BoardTile[][] tiles;
 
             // Horizontal swipe
             if (isHorizontalMove(startTile, endTile)) {
-                startTile.setTileX(startTile.getTileX() + spaceToMove);
-                endTile.setTileX(endTile.getTileX() - spaceToMove);
+                moveBothTiles(startTile, endTile, spaceToMove, true);
 
                 tiles = grid.getTiles();
                 tiles[startTile.getTileRow()][startTile.getTileCol()] = startTile;
                 tiles[endTile.getTileRow()][endTile.getTileCol()] = endTile;
-
                 grid.setTiles(tiles);
 
                 if (startTile.getTileX() == initEndX
@@ -215,24 +218,19 @@ public class BoardGridUI {
                     grid.setTiles(tiles);
                     dragInMotion = false;
 
-                    if (pendingValidation)
+                    if (pendingValidation) {
                         validateSwipe(
-                                new BoardTile[]{
-                                        startTile,
-                                        endTile
-                                },
+                                new BoardTile[]{startTile, endTile},
                                 tiles, startTile, endTile, spaceToMove);
+                    }
                 }
-
-                // Vertical swipe
             } else {
-                startTile.setTileY(startTile.getTileY() + spaceToMove);
-                endTile.setTileY(endTile.getTileY() - spaceToMove);
+                // Vertical swipe
+                moveBothTiles(startTile, endTile, spaceToMove, false);
 
                 tiles = grid.getTiles();
                 tiles[startTile.getTileRow()][startTile.getTileCol()] = startTile;
                 tiles[endTile.getTileRow()][endTile.getTileCol()] = endTile;
-
                 grid.setTiles(tiles);
 
                 if (startTile.getTileY() == initEndY
@@ -364,6 +362,8 @@ public class BoardGridUI {
                     endTile.getTileX(), endTile.getTileY(),
                     startTile.getTileX(), startTile.getTileY(),
                     spaceToMove, false, false);
+        } else {
+            // TODO: get rid of group of candies
         }
     }
 
@@ -373,6 +373,16 @@ public class BoardGridUI {
         int row = (int) Math.floor(y / tileSize);
 
         return tiles[row][col];
+    }
+
+    private void moveBothTiles(BoardTile startTile, BoardTile endTile, int spaceToMove, boolean horizontally) {
+        if (horizontally) {
+            startTile.setTileX(startTile.getTileX() + spaceToMove);
+            endTile.setTileX(endTile.getTileX() - spaceToMove);
+        } else {
+            startTile.setTileY(startTile.getTileY() + spaceToMove);
+            endTile.setTileY(endTile.getTileY() - spaceToMove);
+        }
     }
 
     private boolean notThreeInARowDimensionX(TileType type, int positionX, int positionY) {
