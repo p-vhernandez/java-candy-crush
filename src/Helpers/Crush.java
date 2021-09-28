@@ -7,6 +7,7 @@ public class Crush {
     private double x, y;
     private int radius, maxRadius;
 
+    // TODO: combine with actual play
     public Crush(double x, double y, int radius, int maxRadius) {
         this.x = x;
         this.y = y;
