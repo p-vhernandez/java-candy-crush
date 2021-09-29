@@ -1,29 +1,31 @@
 package utils.helpers;
 
-import java.awt.*;
+import components.BoardTile;
+
+import java.util.ArrayList;
 
 public class Crush {
 
-    private double x, y;
-    private int radius, maxRadius;
+    private ArrayList<BoardTile> crushedCandies;
 
-    // TODO: combine with actual play
-    public Crush(double x, double y, int radius, int maxRadius) {
-        this.x = x;
-        this.y = y;
-        this.radius = radius;
-        this.maxRadius = maxRadius;
+    public Crush() {
+
     }
 
-    public boolean update() {
-        radius++;
-        return radius >= maxRadius;
+    public Crush(ArrayList<BoardTile> crushedCandies) {
+        this.crushedCandies = crushedCandies;
     }
 
-    public void draw(Graphics2D graphics2D) {
-        graphics2D.setColor(Color.red);
-        graphics2D.drawOval((int) (x - radius), (int) (y - radius),
-                2 * radius, 2 * radius);
+    public void setCrushedCandies(ArrayList<BoardTile> crushedCandies) {
+        this.crushedCandies = crushedCandies;
+    }
+
+    public void addCrushedCandies(BoardTile crushedCandy) {
+        this.crushedCandies.add(crushedCandy);
+    }
+
+    public ArrayList<BoardTile> getCrushedCandies() {
+        return this.crushedCandies;
     }
 
 }
