@@ -285,40 +285,45 @@ public class BoardGridUI {
                                BoardTile startTile, BoardTile endTile, int spaceToMove) {
 
         boolean valid = false;
+        Crush potentialCrush = new Crush();
 
         for (BoardTile tile : tilesToValidate) {
             int row = tile.getTileRow();
             int col = tile.getTileCol();
 
-            TileType type1;
-            TileType type2;
-            TileType type3;
+            TileType type1, type2, type3;
+            BoardTile tile2, tile3;
 
             ArrayList<Crush> crushes = new ArrayList<>();
 
             // Check horizontally from position 0 to position
             // (length - 3) to find at least a group of 3 candies
             if (row >= 0 && row + 2 < grid.getTiles().length) {
+                tile2 = grid.getTiles()[row + 1][col];
+                tile3 = grid.getTiles()[row + 2][col];
+
                 type1 = tile.getTileType();
-                type2 = grid.getTiles()[row + 1][col].getTileType();
-                type3 = grid.getTiles()[row + 2][col].getTileType();
+                type2 = tile2.getTileType();
+                type3 = tile3.getTileType();
 
                 if (type1 == type2 && type1 == type3) {
                     valid = true;
-                    //crushes.add(new Crush())
+
                 }
             }
 
             // Check horizontally from position 1 to position
             // (length - 2) to find at least a group of 3 candies
             if (row >= 1 && row + 1 < grid.getTiles().length) {
-                type1 = grid.getTiles()[row - 1][col].getTileType();
+                tile2 = grid.getTiles()[row - 1][col];
+                tile3 = grid.getTiles()[row + 1][col];
+
+                type1 = tile2.getTileType();
                 type2 = tile.getTileType();
-                type3 = grid.getTiles()[row + 1][col].getTileType();
+                type3 = tile3.getTileType();
 
                 if (type1 == type2 && type1 == type3) {
                     valid = true;
-                    Crush sequence
                 }
             }
 
