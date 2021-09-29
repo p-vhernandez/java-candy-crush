@@ -3,6 +3,7 @@ package components.grid;
 import components.BoardTile;
 import main.CandyCrush;
 import utils.Utils;
+import utils.helpers.Crush;
 import utils.helpers.Level;
 import utils.helpers.LevelType;
 
@@ -126,6 +127,18 @@ public class BoardGrid extends JPanel {
 
     public void enableBoardGrid(boolean enabled) {
         this.model.setEnabled(enabled);
+    }
+
+    public void crushed(Crush potentialCrush) {
+        BoardTile[][] changedTiles = getTiles();
+        for (BoardTile tile : potentialCrush.getCrushedCandies()) {
+            int row = tile.getTileRow();
+            int col = tile.getTileCol();
+
+            changedTiles[row][col] = tile;
+        }
+
+        setTiles(changedTiles);
     }
 
 }

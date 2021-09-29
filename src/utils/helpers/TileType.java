@@ -5,5 +5,6 @@ public enum  TileType {
     PURPLE_LOLLI,
     ORANGE_CANDY,
     EYEBALL,
-    PUMPKIN
+    PUMPKIN,
+    MUMMY
 }
