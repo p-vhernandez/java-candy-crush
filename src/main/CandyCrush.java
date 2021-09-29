@@ -46,7 +46,7 @@ public class CandyCrush extends JFrame {
     }
 
     private void setUpTopPanel() {
-        topPanel = new TopPanel();
+        topPanel = new TopPanel(this);
         add(topPanel, BorderLayout.NORTH);
     }
 
@@ -78,7 +78,11 @@ public class CandyCrush extends JFrame {
     }
 
     private void closeLoadingDialog() {
-        Timer timer = new Timer(10000, arg0 -> loadingDialog.closeLoading());
+        Timer timer = new Timer(10000, arg0 -> {
+            loadingDialog.closeLoading();
+            enableBoardGrid(true);
+        });
+
         timer.setRepeats(false);
         timer.start();
     }

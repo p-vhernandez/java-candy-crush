@@ -7,6 +7,8 @@ import utils.Utils;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -33,20 +35,22 @@ public class BoardGridUI {
         grid.addMouseListener(new MouseAdapter() {
             @Override
             public void mousePressed(MouseEvent e) {
-                model.setPressed(true);
-                grid.setTileDragStart(getTile(grid.getTiles(), e.getX(), e.getY()));
+                if (grid.getModel().isEnabled()) {
+                    model.setPressed(true);
+                    grid.setTileDragStart(getTile(grid.getTiles(), e.getX(), e.getY()));
+                }
             }
 
             @Override
             public void mouseReleased(MouseEvent e) {
-                model.setPressed(false);
+                if (grid.getModel().isEnabled()) model.setPressed(false);
             }
         });
 
         grid.addMouseMotionListener(new MouseAdapter() {
             @Override
             public void mouseDragged(MouseEvent e) {
-                generateSwipeMotion(e);
+                if (grid.getModel().isEnabled()) generateSwipeMotion(e);
             }
         });
     }
@@ -198,11 +202,7 @@ public class BoardGridUI {
             // Horizontal swipe
             if (isHorizontalMove(startTile, endTile)) {
                 moveBothTiles(startTile, endTile, spaceToMove, true);
-
-                tiles = grid.getTiles();
-                tiles[startTile.getTileRow()][startTile.getTileCol()] = startTile;
-                tiles[endTile.getTileRow()][endTile.getTileCol()] = endTile;
-                grid.setTiles(tiles);
+                updateGridTiles(startTile, endTile);
 
                 if (startTile.getTileX() == initEndX
                         && endTile.getTileX() == initStartX) {
@@ -383,6 +383,13 @@ public class BoardGridUI {
             startTile.setTileY(startTile.getTileY() + spaceToMove);
             endTile.setTileY(endTile.getTileY() - spaceToMove);
         }
+    }
+
+    private void updateGridTiles(BoardTile startTile, BoardTile endTile) {
+        BoardTile[][] tiles = grid.getTiles();
+        tiles[startTile.getTileRow()][startTile.getTileCol()] = startTile;
+        tiles[endTile.getTileRow()][endTile.getTileCol()] = endTile;
+        grid.setTiles(tiles);
     }
 
     private boolean isHorizontalMove(BoardTile startTile, BoardTile endTile) {
