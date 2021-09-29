@@ -224,7 +224,7 @@ public class BoardGridUI {
                     if (pendingValidation) {
                         validateSwipe(
                                 new BoardTile[]{startTile, endTile},
-                                tiles, startTile, endTile, spaceToMove);
+                                startTile, endTile, spaceToMove);
                     }
                 }
             } else {
@@ -256,7 +256,7 @@ public class BoardGridUI {
                     if (pendingValidation) {
                         validateSwipe(
                                 new BoardTile[]{startTile, endTile},
-                                tiles, endTile, startTile, -spaceToMove);
+                                endTile, startTile, -spaceToMove);
 
                     }
                 }
@@ -273,12 +273,11 @@ public class BoardGridUI {
      * three candies of the same type.
      *
      * @param tilesToValidate - tiles that needed to be checked
-     * @param tiles           - tiles present in the board
      * @param startTile       - tile where the movement started
      * @param endTile         - tile where the movement ended
      * @param spaceToMove     - space that the tiles need to be moved each iteration
      */
-    private void validateSwipe(BoardTile[] tilesToValidate, BoardTile[][] tiles,
+    private void validateSwipe(BoardTile[] tilesToValidate,
                                BoardTile startTile, BoardTile endTile, int spaceToMove) {
 
         boolean valid = false;
@@ -291,20 +290,21 @@ public class BoardGridUI {
             TileType type2;
             TileType type3;
 
-            if (row >= 0 && row + 2 < tiles.length) {
+            //
+            if (row >= 0 && row + 2 < grid.getTiles().length) {
                 type1 = tile.getTileType();
-                type2 = tiles[row + 1][col].getTileType();
-                type3 = tiles[row + 2][col].getTileType();
+                type2 = grid.getTiles()[row + 1][col].getTileType();
+                type3 = grid.getTiles()[row + 2][col].getTileType();
 
                 if (type1 == type2 && type1 == type3) {
                     valid = true;
                 }
             }
 
-            if (row >= 1 && row + 1 < tiles.length) {
-                type1 = tiles[row - 1][col].getTileType();
+            if (row >= 1 && row + 1 < grid.getTiles().length) {
+                type1 = grid.getTiles()[row - 1][col].getTileType();
                 type2 = tile.getTileType();
-                type3 = tiles[row + 1][col].getTileType();
+                type3 = grid.getTiles()[row + 1][col].getTileType();
 
                 if (type1 == type2 && type1 == type3) {
                     valid = true;
@@ -312,8 +312,8 @@ public class BoardGridUI {
             }
 
             if (row >= 2) {
-                type1 = tiles[row - 1][col].getTileType();
-                type2 = tiles[row - 2][col].getTileType();
+                type1 = grid.getTiles()[row - 1][col].getTileType();
+                type2 = grid.getTiles()[row - 2][col].getTileType();
                 type3 = tile.getTileType();
 
                 if (type1 == type2 && type1 == type3) {
@@ -321,20 +321,20 @@ public class BoardGridUI {
                 }
             }
 
-            if (col >= 0 && col + 2 < tiles[0].length) {
+            if (col >= 0 && col + 2 < grid.getTiles()[0].length) {
                 type1 = tile.getTileType();
-                type2 = tiles[row][col + 1].getTileType();
-                type3 = tiles[row][col + 2].getTileType();
+                type2 = grid.getTiles()[row][col + 1].getTileType();
+                type3 = grid.getTiles()[row][col + 2].getTileType();
 
                 if (type1 == type2 && type1 == type3) {
                     valid = true;
                 }
             }
 
-            if (col >= 1 && col + 1 < tiles[0].length) {
-                type1 = tiles[row][col - 1].getTileType();
+            if (col >= 1 && col + 1 < grid.getTiles()[0].length) {
+                type1 = grid.getTiles()[row][col - 1].getTileType();
                 type2 = tile.getTileType();
-                type3 = tiles[row][col + 1].getTileType();
+                type3 = grid.getTiles()[row][col + 1].getTileType();
 
                 if (type1 == type2 && type1 == type3) {
                     valid = true;
@@ -342,8 +342,8 @@ public class BoardGridUI {
             }
 
             if (col >= 2) {
-                type1 = tiles[row][col - 1].getTileType();
-                type2 = tiles[row][col - 2].getTileType();
+                type1 = grid.getTiles()[row][col - 1].getTileType();
+                type2 = grid.getTiles()[row][col - 2].getTileType();
                 type3 = tile.getTileType();
 
                 if (type1 == type2 && type1 == type3) {
