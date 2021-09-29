@@ -9,7 +9,7 @@ public class Crush {
     private ArrayList<BoardTile> crushedCandies;
 
     public Crush() {
-
+        this.crushedCandies = new ArrayList<>();
     }
 
     public Crush(ArrayList<BoardTile> crushedCandies) {
@@ -21,11 +21,19 @@ public class Crush {
     }
 
     public void addCrushedCandies(BoardTile crushedCandy) {
-        this.crushedCandies.add(crushedCandy);
+        if (!crushedCandies.contains(crushedCandy)) {
+            this.crushedCandies.add(crushedCandy);
+        }
     }
 
     public ArrayList<BoardTile> getCrushedCandies() {
         return this.crushedCandies;
+    }
+
+    public void crushCandies() {
+        for (BoardTile tile : crushedCandies) {
+            tile.setTileType(TileType.MUMMY);
+        }
     }
 
 }

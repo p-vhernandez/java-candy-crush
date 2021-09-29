@@ -20,7 +20,7 @@ public class Utils {
 
     public static Color boardPanel = Color.yellow;
     public static Color tileBorder = new Color(168, 168, 168);
-    public static Color tileFill = new Color(245, 241, 230);
+    public static Color tileFill = new Color(44, 54, 47);
     public static Color darkBackground = new Color(44, 54, 47);
 
     public static int getWindowWidth() {
