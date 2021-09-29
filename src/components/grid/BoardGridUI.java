@@ -2,6 +2,7 @@ package components.grid;
 
 import components.BoardTile;
 import main.CandyCrush;
+import utils.helpers.Crush;
 import utils.helpers.TileType;
 import utils.Utils;
 
@@ -12,6 +13,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Objects;
 import java.util.Random;
 
@@ -292,6 +294,8 @@ public class BoardGridUI {
             TileType type2;
             TileType type3;
 
+            ArrayList<Crush> crushes = new ArrayList<>();
+
             // Check horizontally from position 0 to position
             // (length - 3) to find at least a group of 3 candies
             if (row >= 0 && row + 2 < grid.getTiles().length) {
@@ -301,6 +305,7 @@ public class BoardGridUI {
 
                 if (type1 == type2 && type1 == type3) {
                     valid = true;
+                    //crushes.add(new Crush())
                 }
             }
 
@@ -313,6 +318,7 @@ public class BoardGridUI {
 
                 if (type1 == type2 && type1 == type3) {
                     valid = true;
+                    Crush sequence
                 }
             }
 

@@ -3,6 +3,7 @@ package main;
 import components.grid.BoardGrid;
 import components.LoadingDialog;
 import components.TopPanel;
+import utils.helpers.Crush;
 import utils.helpers.Level;
 import utils.helpers.LevelType;
 import utils.Utils;
@@ -18,7 +19,6 @@ public class CandyCrush extends JFrame {
 
     public CandyCrush() {
         super(Utils.getAppName());
-
         showLoading();
         setupUI();
     }
@@ -109,6 +109,11 @@ public class CandyCrush extends JFrame {
 
     public void enableBoardGrid(boolean enabled) {
         grid.enableBoardGrid(enabled);
+    }
+
+    public void updateScore(int sequence) {
+        int currentScore = topPanel.getLblScoreNumber();
+        topPanel.setLblGoalNumber(currentScore + sequence * 40);
     }
 
 }
