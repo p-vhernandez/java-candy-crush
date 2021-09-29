@@ -34,6 +34,8 @@ public class BoardGridUI {
     }
 
     public void initializeUI() {
+        grid.setBackground(Utils.darkBackground);
+
         grid.addMouseListener(new MouseAdapter() {
             @Override
             public void mousePressed(MouseEvent e) {

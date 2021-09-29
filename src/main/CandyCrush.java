@@ -3,7 +3,6 @@ package main;
 import components.grid.BoardGrid;
 import components.LoadingDialog;
 import components.TopPanel;
-import utils.helpers.Crush;
 import utils.helpers.Level;
 import utils.helpers.LevelType;
 import utils.Utils;
@@ -25,6 +24,8 @@ public class CandyCrush extends JFrame {
 
     private void setupUI() {
         setAppIcon();
+        setBackground(Utils.darkBackground);
+        getContentPane().setBackground(Utils.darkBackground);
         setFrameVisuals();
         setUpTopPanel();
         setUpBoardPanel();
