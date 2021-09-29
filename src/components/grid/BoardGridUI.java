@@ -3,7 +3,6 @@ package components.grid;
 import components.BoardTile;
 import main.CandyCrush;
 import utils.helpers.Crush;
-import utils.helpers.Explosion;
 import utils.helpers.TileType;
 import utils.Utils;
 
@@ -295,6 +294,8 @@ public class BoardGridUI {
             int col = tile.getTileCol();
 
             TileType type1, type2, type3;
+
+            ArrayList<Crush> crushes = new ArrayList<>();
 
             // Check horizontally from position 0 to position
             // (length - 3) to find at least a group of 3 candies
