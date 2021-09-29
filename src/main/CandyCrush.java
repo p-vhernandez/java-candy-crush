@@ -111,9 +111,9 @@ public class CandyCrush extends JFrame {
         grid.enableBoardGrid(enabled);
     }
 
-    public void updateScore(int sequence) {
+    public static void updateScore(int sequence) {
         int currentScore = topPanel.getLblScoreNumber();
-        topPanel.setLblGoalNumber(currentScore + sequence * 40);
+        topPanel.setLblScoreNumber(currentScore + sequence * 40);
     }
 
 }

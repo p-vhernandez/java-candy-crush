@@ -409,6 +409,7 @@ public class BoardGridUI {
             CandyCrush.oneMovementLess();
             potentialCrush.crushCandies();
             grid.crushed(potentialCrush);
+            CandyCrush.updateScore(potentialCrush.getCrushedCandies().size());
         }
     }
 
