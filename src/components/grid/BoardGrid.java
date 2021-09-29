@@ -35,6 +35,8 @@ public class BoardGrid extends JPanel {
 
         this.ui = new BoardGridUI(tilesXAxis, tilesYAxis, this);
         this.ui.initializeUI();
+
+        enableBoardGrid(false);
     }
 
     public int getTilesXAxis() {
@@ -120,6 +122,10 @@ public class BoardGrid extends JPanel {
 
     public void paintComponent(Graphics g) {
         this.ui.paint((Graphics2D) g);
+    }
+
+    public void enableBoardGrid(boolean enabled) {
+        this.model.setEnabled(enabled);
     }
 
 }

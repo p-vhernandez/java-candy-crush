@@ -22,7 +22,11 @@ public class LoadingDialog extends JDialog {
     private static final int ANIMATION_WIDTH = 100;
     private static final int ANIMATION_HEIGHT = 100;
 
-    public LoadingDialog() {
+    private final JFrame parent;
+
+    public LoadingDialog(JFrame parent) {
+        super(parent, null, false);
+
         this.dialogPanel = new JPanel();
         this.animationPanel = new JPanel();
         this.loadingLabel = new JLabel("Loading");
@@ -35,12 +39,13 @@ public class LoadingDialog extends JDialog {
 
         this.timer = new Timer(500, e -> animateLoading());
 
+        this.parent = parent;
         initialize();
     }
 
     private void initialize() {
         setResizable(false);
-        setModal(false);
+        // setModal(false);
         setUndecorated(true);
         setSize(DIALOG_WIDTH, DIALOG_HEIGHT);
         setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);

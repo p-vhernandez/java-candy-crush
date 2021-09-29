@@ -17,13 +17,14 @@ public class BoardGridModel {
     public boolean isPressed() {
         return isPressed;
     }
+    
     public void setEnabled(boolean b) {
         this.isEnabled = b;
     }
+
     public void setPressed(boolean b) {
         this.isPressed = b;
     }
-
 
     public void addActionListener(ActionListener l) {
         actionListeners.add(l);

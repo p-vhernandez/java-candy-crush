@@ -1,5 +1,7 @@
 package components;
 
+import components.grid.BoardGrid;
+import main.CandyCrush;
 import utils.Utils;
 
 import javax.swing.*;
@@ -116,7 +118,17 @@ public class TopPanel extends JPanel {
     }
 
     public void oneMovementLess() {
-        this.lblMovements.setText(String.valueOf(Integer.parseInt(this.lblMovements.getText()) - 1));
+        int movementsLeft = Integer.parseInt(this.lblMovements.getText());
+        this.lblMovements.setText(String.valueOf(movementsLeft - 1));
+
+        if (movementsLeft == 0) {
+            // TODO: disable grid and show dialog to the user
+            ((CandyCrush) this.getParent()).enableBoardGrid(false);
+        }
+    }
+
+    public int getMovementsLeft() {
+        return Integer.parseInt(this.lblMovements.getText());
     }
 
 }

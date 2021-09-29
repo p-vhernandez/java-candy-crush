@@ -12,8 +12,9 @@ import java.awt.*;
 
 public class CandyCrush extends JFrame {
 
-    private TopPanel topPanel;
+    private static TopPanel topPanel;
     private LoadingDialog loadingDialog;
+    private BoardGrid grid;
 
     public CandyCrush() {
         super(Utils.getAppName());
@@ -50,7 +51,7 @@ public class CandyCrush extends JFrame {
     }
 
     private void showLoading() {
-        loadingDialog = new LoadingDialog();
+        loadingDialog = new LoadingDialog(this);
         loadingDialog.openLoading();
 
         closeLoadingDialog();
@@ -64,7 +65,7 @@ public class CandyCrush extends JFrame {
         add(boardPanel);
 
         Level selectedLevel = new Level(LevelType.SQUARE);
-        BoardGrid grid = new BoardGrid(selectedLevel);
+        grid = new BoardGrid(selectedLevel);
         FlowLayout gridLayout = new FlowLayout();
         gridLayout.setVgap(0);
         gridLayout.setHgap(0);
@@ -94,8 +95,16 @@ public class CandyCrush extends JFrame {
         topPanel.setMaxMovements(maxMovemets);
     }
 
-    public void oneMovementLess() {
-        this.topPanel.oneMovementLess();
+    public static void oneMovementLess() {
+        topPanel.oneMovementLess();
+    }
+
+    public static void getMovementsLeft() {
+        topPanel.getMovementsLeft();
+    }
+
+    public void enableBoardGrid(boolean enabled) {
+        grid.enableBoardGrid(enabled);
     }
 
 }
