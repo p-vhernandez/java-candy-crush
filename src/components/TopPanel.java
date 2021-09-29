@@ -127,7 +127,7 @@ public class TopPanel extends JPanel {
 
         movementsLeft = Integer.parseInt(this.lblMovements.getText());
         if (movementsLeft == 0) {
-            // TODO: disable grid and show dialog to the user
+            // TODO: show dialog to the user
             candyCrush.enableBoardGrid(false);
         }
     }

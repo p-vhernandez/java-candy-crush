@@ -7,8 +7,6 @@ import utils.Utils;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -43,14 +41,18 @@ public class BoardGridUI {
 
             @Override
             public void mouseReleased(MouseEvent e) {
-                if (grid.getModel().isEnabled()) model.setPressed(false);
+                if (grid.getModel().isEnabled()) {
+                    model.setPressed(false);
+                }
             }
         });
 
         grid.addMouseMotionListener(new MouseAdapter() {
             @Override
             public void mouseDragged(MouseEvent e) {
-                if (grid.getModel().isEnabled()) generateSwipeMotion(e);
+                if (grid.getModel().isEnabled()) {
+                    generateSwipeMotion(e);
+                }
             }
         });
     }
@@ -290,7 +292,8 @@ public class BoardGridUI {
             TileType type2;
             TileType type3;
 
-            //
+            // Check horizontally from position 0 to position
+            // (length - 3) to find at least a group of 3 candies
             if (row >= 0 && row + 2 < grid.getTiles().length) {
                 type1 = tile.getTileType();
                 type2 = grid.getTiles()[row + 1][col].getTileType();
@@ -301,6 +304,8 @@ public class BoardGridUI {
                 }
             }
 
+            // Check horizontally from position 1 to position
+            // (length - 2) to find at least a group of 3 candies
             if (row >= 1 && row + 1 < grid.getTiles().length) {
                 type1 = grid.getTiles()[row - 1][col].getTileType();
                 type2 = tile.getTileType();
@@ -311,6 +316,8 @@ public class BoardGridUI {
                 }
             }
 
+            // Check horizontally from position 2 until the end
+            // to find at least a group of 3 candies
             if (row >= 2) {
                 type1 = grid.getTiles()[row - 1][col].getTileType();
                 type2 = grid.getTiles()[row - 2][col].getTileType();
@@ -321,6 +328,8 @@ public class BoardGridUI {
                 }
             }
 
+            // Check vertically from position 0 to position
+            // (length - 3) to find at least a group of 3 candies
             if (col >= 0 && col + 2 < grid.getTiles()[0].length) {
                 type1 = tile.getTileType();
                 type2 = grid.getTiles()[row][col + 1].getTileType();
@@ -331,6 +340,8 @@ public class BoardGridUI {
                 }
             }
 
+            // Check vertically from position 1 to position
+            // (length - 2) to find at least a group of 3 candies
             if (col >= 1 && col + 1 < grid.getTiles()[0].length) {
                 type1 = grid.getTiles()[row][col - 1].getTileType();
                 type2 = tile.getTileType();
@@ -341,6 +352,8 @@ public class BoardGridUI {
                 }
             }
 
+            // Check vertically from position 2 until the end
+            // to find at least a group of 3 candies
             if (col >= 2) {
                 type1 = grid.getTiles()[row][col - 1].getTileType();
                 type2 = grid.getTiles()[row][col - 2].getTileType();
