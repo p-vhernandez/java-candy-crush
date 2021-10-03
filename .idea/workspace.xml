@@ -6,8 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="6b4cf923-17ad-46fa-bee3-8a7e44728267" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/grid/BoardGridUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/grid/BoardGridUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/TopPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/TopPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/grid/BoardGrid.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/grid/BoardGrid.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/CandyCrush.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/CandyCrush.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/helpers/Crush.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/helpers/Crush.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/helpers/Level.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/Level.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -80,7 +83,7 @@
       </method>
     </configuration>
   </component>
-  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="false" />
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -107,6 +110,8 @@
       <workItem from="1632761548636" duration="885000" />
       <workItem from="1632767002303" duration="5310000" />
       <workItem from="1632831323687" duration="18825000" />
+      <workItem from="1633100730801" duration="1614000" />
+      <workItem from="1633281413530" duration="1009000" />
     </task>
     <servers />
   </component>

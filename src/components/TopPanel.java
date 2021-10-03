@@ -127,13 +127,25 @@ public class TopPanel extends JPanel {
 
         movementsLeft = Integer.parseInt(this.lblMovements.getText());
         if (movementsLeft == 0) {
-            // TODO: show dialog to the user
+            showNoMovementsDialog();
             candyCrush.enableBoardGrid(false);
         }
     }
 
     public int getMovementsLeft() {
         return Integer.parseInt(this.lblMovements.getText());
+    }
+
+    private void showNoMovementsDialog() {
+        ImageIcon errorIcon = new ImageIcon(Utils.generateImage(this, "../resources/img/eyeball.png")
+                .getScaledInstance(45, 45, Image.SCALE_SMOOTH));
+        JOptionPane.showMessageDialog(
+                null,
+                "You have no movements left. Game over.",
+                "Oops!",
+                JOptionPane.INFORMATION_MESSAGE,
+                errorIcon
+        );
     }
 
 }

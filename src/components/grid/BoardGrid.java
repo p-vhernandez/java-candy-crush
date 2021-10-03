@@ -1,10 +1,9 @@
 package components.grid;
 
 import components.BoardTile;
-import main.CandyCrush;
 import utils.Utils;
 import utils.helpers.Crush;
-import utils.helpers.Level;
+import utils.Level;
 import utils.helpers.LevelType;
 
 import javax.swing.*;

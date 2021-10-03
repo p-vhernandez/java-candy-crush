@@ -7,9 +7,11 @@ import java.util.ArrayList;
 public class Crush {
 
     private ArrayList<BoardTile> crushedCandies;
+    private ArrayList<Explosion> explosions;
 
     public Crush() {
         this.crushedCandies = new ArrayList<>();
+        this.explosions = new ArrayList<>();
     }
 
     public Crush(ArrayList<BoardTile> crushedCandies) {

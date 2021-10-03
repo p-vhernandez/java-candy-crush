@@ -3,7 +3,7 @@ package main;
 import components.grid.BoardGrid;
 import components.LoadingDialog;
 import components.TopPanel;
-import utils.helpers.Level;
+import utils.Level;
 import utils.helpers.LevelType;
 import utils.Utils;
 
@@ -104,8 +104,8 @@ public class CandyCrush extends JFrame {
         topPanel.oneMovementLess();
     }
 
-    public static void getMovementsLeft() {
-        topPanel.getMovementsLeft();
+    public static int getMovementsLeft() {
+        return topPanel.getMovementsLeft();
     }
 
     public void enableBoardGrid(boolean enabled) {
