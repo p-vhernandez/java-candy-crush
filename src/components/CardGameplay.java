@@ -12,12 +12,9 @@ import java.awt.*;
 public class CardGameplay extends JPanel {
 
     private static TopPanel topPanel;
-    private LoadingDialog loadingDialog;
-    private GameOverDialog gameOverDialog;
     private BoardGrid grid;
 
     public CardGameplay(Level level) {
-        showLoading();
         setupUI();
     }
 
@@ -52,26 +49,9 @@ public class CardGameplay extends JPanel {
         boardPanel.add(grid);
     }
 
-    private void closeLoadingDialog() {
-        Timer timer = new Timer(10000, arg0 -> {
-            loadingDialog.closeLoading();
-            enableBoardGrid(true);
-        });
-
-        timer.setRepeats(false);
-        timer.start();
-    }
-
     private void setUpTopPanel() {
         topPanel = new TopPanel(this);
         add(topPanel, BorderLayout.NORTH);
-    }
-
-    private void showLoading() {
-        loadingDialog = new LoadingDialog(this);
-        loadingDialog.openLoading();
-
-        closeLoadingDialog();
     }
 
     public void addScore(int score) {

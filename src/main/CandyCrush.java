@@ -16,7 +16,9 @@ public class CandyCrush extends JFrame {
 
     private JPanel cardWelcome;
     private JPanel cardLevelChoice;
-    private JPanel cardGameplay;
+    private CardGameplay cardGameplay;
+    private LoadingDialog loadingDialog;
+    private GameOverDialog gameOverDialog;
 
     final static String GAMEPANEL = "Gameplay panel";
 
@@ -35,6 +37,8 @@ public class CandyCrush extends JFrame {
         cardGameplay = new CardGameplay(new Level(LevelType.SQUARE));
         add(cardGameplay, GAMEPANEL);
 
+        showLoading();
+
         pack();
     }
 
@@ -49,6 +53,25 @@ public class CandyCrush extends JFrame {
                 Utils.getWindowHeight()));
         setLayout(new BoxLayout(getContentPane(), BoxLayout.Y_AXIS));
         setDefaultCloseOperation(EXIT_ON_CLOSE);
+    }
+
+
+    private void showLoading() {
+        loadingDialog = new LoadingDialog(this);
+        loadingDialog.openLoading();
+
+        closeLoadingDialog();
+    }
+
+
+    private void closeLoadingDialog() {
+        Timer timer = new Timer(10000, arg0 -> {
+            loadingDialog.closeLoading();
+            cardGameplay.enableBoardGrid(true);
+        });
+
+        timer.setRepeats(false);
+        timer.start();
     }
 
 }
