@@ -4,6 +4,8 @@ import main.CandyCrush;
 import utils.Utils;
 
 import javax.swing.*;
+import javax.swing.border.EmptyBorder;
+import javax.swing.border.LineBorder;
 import java.awt.*;
 
 public class TopPanel extends JPanel {
@@ -47,13 +49,16 @@ public class TopPanel extends JPanel {
         this.scorePanel.setLayout(scoreLayout);
         this.scorePanel.setBackground(Utils.darkBackground);
         this.scorePanel.setVisible(true);
+        this.scorePanel.setBorder(new LineBorder(Utils.halloweenOrange, 3));
         this.scorePanel.setPreferredSize(new Dimension(Utils.getRestTopPanelComponentsWidth(),
                 Utils.getTopBarComponentsHeight()));
 
         JLabel lblScore = new JLabel("Score:");
         lblScore.setForeground(Color.white);
+        lblScore.setBorder(new EmptyBorder(0, 10, 0, 10));
         lblScoreNumber.setText("0000");
         lblScoreNumber.setForeground(Color.white);
+        lblScoreNumber.setBorder(new EmptyBorder(0, 10, 0, 10));
 
         Utils.setCustomFont(this, lblScore,
                 "../resources/font/caramel-rg.ttf", 22f, Font.BOLD);
@@ -71,6 +76,7 @@ public class TopPanel extends JPanel {
         this.lblMovements.setForeground(Color.white);
         this.lblMovements.setHorizontalAlignment(SwingConstants.CENTER);
         this.lblMovements.setVerticalAlignment(SwingConstants.CENTER);
+        this.lblMovements.setBorder(new LineBorder(Utils.halloweenOrange, 3));
         this.lblMovements.setPreferredSize(new Dimension(Utils.getMovementsPanelWidth(),
                 Utils.getTopBarComponentsHeight()));
 
@@ -83,13 +89,16 @@ public class TopPanel extends JPanel {
         this.goalPanel.setLayout(goalLayout);
         this.goalPanel.setVisible(true);
         this.goalPanel.setBackground(Utils.darkBackground);
+        this.goalPanel.setBorder(new LineBorder(Utils.halloweenOrange, 3));
         this.goalPanel.setPreferredSize(new Dimension(Utils.getRestTopPanelComponentsWidth(),
                 Utils.getTopBarComponentsHeight()));
 
         JLabel lblGoal = new JLabel("Target:");
         lblGoal.setForeground(Color.white);
+        lblGoal.setBorder(new EmptyBorder(0, 10, 0, 10));
         lblGoalNumber.setText("6500");
         lblGoalNumber.setForeground(Color.white);
+        lblGoalNumber.setBorder(new EmptyBorder(0, 10, 0, 10));
 
         Utils.setCustomFont(this, lblGoal,
                 "../resources/font/caramel-rg.ttf", 22f, Font.BOLD);
@@ -138,16 +147,6 @@ public class TopPanel extends JPanel {
     }
 
     private void showGameOverDialog() {
-        //ImageIcon errorIcon = new ImageIcon(Utils.generateImage(this, "../resources/img/eyeball.png")
-        //        .getScaledInstance(45, 45, Image.SCALE_SMOOTH));
-        /*JOptionPane.showMessageDialog(
-                null,
-                "You have no movements left. Game over.",
-                "Oops!",
-                JOptionPane.INFORMATION_MESSAGE,
-                errorIcon
-        );*/
-
         gameOverDialog = new GameOverDialog();
         gameOverDialog.setVisible(true);
     }
