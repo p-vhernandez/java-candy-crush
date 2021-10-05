@@ -1,6 +1,7 @@
 package components.grid;
 
 import components.BoardTile;
+import components.CardGameplay;
 import main.CandyCrush;
 import utils.helpers.Crush;
 import utils.helpers.TileType;
@@ -408,10 +409,10 @@ public class BoardGridUI {
                     spaceToMove, false);
         } else {
             // TODO: get rid of group of candies
-            CandyCrush.oneMovementLess();
+            CardGameplay.oneMovementLess();
             potentialCrush.crushCandies();
             grid.crushed(potentialCrush);
-            CandyCrush.updateScore(potentialCrush.getCrushedCandies().size());
+            CardGameplay.updateScore(potentialCrush.getCrushedCandies().size());
         }
     }
 

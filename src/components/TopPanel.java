@@ -12,11 +12,11 @@ public class TopPanel extends JPanel {
     private final BoxLayout scoreLayout, goalLayout;
     private final JLabel lblMovements, lblGoalNumber, lblScoreNumber;
 
-    private final CandyCrush candyCrush;
+    private final CardGameplay cardGameplay;
 
     private GameOverDialog gameOverDialog;
 
-    public TopPanel(CandyCrush candyCrush) {
+    public TopPanel(CardGameplay cardGameplay) {
         this.scorePanel = new JPanel();
         this.goalPanel = new JPanel();
 
@@ -27,7 +27,7 @@ public class TopPanel extends JPanel {
         this.lblGoalNumber = new JLabel();
         this.lblScoreNumber = new JLabel();
 
-        this.candyCrush = candyCrush;
+        this.cardGameplay = cardGameplay;
 
         setUpUI();
     }
@@ -129,7 +129,7 @@ public class TopPanel extends JPanel {
         movementsLeft = Integer.parseInt(this.lblMovements.getText());
         if (movementsLeft == 0) {
             showGameOverDialog();
-            candyCrush.enableBoardGrid(false);
+            cardGameplay.enableBoardGrid(false);
         }
     }
 
