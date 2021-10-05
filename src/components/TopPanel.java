@@ -1,6 +1,5 @@
 package components;
 
-import components.grid.BoardGrid;
 import main.CandyCrush;
 import utils.Utils;
 
@@ -14,6 +13,8 @@ public class TopPanel extends JPanel {
     private final JLabel lblMovements, lblGoalNumber, lblScoreNumber;
 
     private final CandyCrush candyCrush;
+
+    private GameOverDialog gameOverDialog;
 
     public TopPanel(CandyCrush candyCrush) {
         this.scorePanel = new JPanel();
@@ -127,7 +128,7 @@ public class TopPanel extends JPanel {
 
         movementsLeft = Integer.parseInt(this.lblMovements.getText());
         if (movementsLeft == 0) {
-            showNoMovementsDialog();
+            showGameOverDialog();
             candyCrush.enableBoardGrid(false);
         }
     }
@@ -136,16 +137,19 @@ public class TopPanel extends JPanel {
         return Integer.parseInt(this.lblMovements.getText());
     }
 
-    private void showNoMovementsDialog() {
-        ImageIcon errorIcon = new ImageIcon(Utils.generateImage(this, "../resources/img/eyeball.png")
-                .getScaledInstance(45, 45, Image.SCALE_SMOOTH));
-        JOptionPane.showMessageDialog(
+    private void showGameOverDialog() {
+        //ImageIcon errorIcon = new ImageIcon(Utils.generateImage(this, "../resources/img/eyeball.png")
+        //        .getScaledInstance(45, 45, Image.SCALE_SMOOTH));
+        /*JOptionPane.showMessageDialog(
                 null,
                 "You have no movements left. Game over.",
                 "Oops!",
                 JOptionPane.INFORMATION_MESSAGE,
                 errorIcon
-        );
+        );*/
+
+        gameOverDialog = new GameOverDialog();
+        gameOverDialog.setVisible(true);
     }
 
 }

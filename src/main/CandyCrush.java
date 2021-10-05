@@ -1,5 +1,6 @@
 package main;
 
+import components.GameOverDialog;
 import components.grid.BoardGrid;
 import components.LoadingDialog;
 import components.TopPanel;
@@ -14,6 +15,7 @@ public class CandyCrush extends JFrame {
 
     private static TopPanel topPanel;
     private LoadingDialog loadingDialog;
+    private GameOverDialog gameOverDialog;
     private BoardGrid grid;
 
     public CandyCrush() {
