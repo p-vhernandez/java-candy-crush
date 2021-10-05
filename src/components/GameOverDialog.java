@@ -6,6 +6,7 @@ import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 import java.awt.*;
+import java.util.Objects;
 
 public class GameOverDialog extends JDialog {
 
@@ -35,7 +36,7 @@ public class GameOverDialog extends JDialog {
         setLocationRelativeTo(null);
 
         dialogPanel.setLayout(new BoxLayout(dialogPanel, BoxLayout.Y_AXIS));
-        dialogPanel.setBorder(new LineBorder(Color.orange, 5));
+        dialogPanel.setBorder(new LineBorder(Utils.halloweenOrange, 5));
         dialogPanel.setBackground(Utils.darkBackground);
 
         setUpInfo();
@@ -58,8 +59,15 @@ public class GameOverDialog extends JDialog {
 
     private void setUpButton() {
         btnDismiss.setText("Accept defeat");
+        btnDismiss.setBackground(Utils.halloweenOrange);
+        btnDismiss.setForeground(Utils.darkBackground);
         btnDismiss.addActionListener(listener -> dispose());
         btnDismiss.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+        btnDismiss.setFont(Objects.requireNonNull(
+                Utils.generateFont(this, "../resources/font/caramel-rg.ttf"))
+                .deriveFont(Font.BOLD, 28f)
+        );
 
         dialogPanel.add(btnDismiss);
     }

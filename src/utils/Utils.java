@@ -22,6 +22,7 @@ public class Utils {
     public static Color tileBorder = new Color(168, 168, 168);
     public static Color tileFill = new Color(44, 54, 47);
     public static Color darkBackground = new Color(44, 54, 47);
+    public static Color halloweenOrange = new Color(252, 127, 3);
 
     public static int getWindowWidth() {
         return WINDOW_WIDTH;
