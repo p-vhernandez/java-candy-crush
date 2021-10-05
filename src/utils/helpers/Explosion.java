@@ -1,9 +1,6 @@
 package utils.helpers;
 
-import components.BoardTile;
-
 import java.awt.*;
-import java.util.ArrayList;
 
 public class Explosion {
 
@@ -24,6 +21,7 @@ public class Explosion {
     }
 
     public void draw(Graphics2D graphics2D) {
+        // TODO: set better color
         graphics2D.setColor(Color.red);
         graphics2D.drawOval((int) (x - radius), (int) (y - radius),
                 2 * radius, 2 * radius);

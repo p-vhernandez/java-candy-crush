@@ -3,6 +3,7 @@ package components;
 import utils.Utils;
 
 import javax.swing.*;
+import javax.swing.border.LineBorder;
 import java.awt.*;
 
 public class LoadingDialog extends JDialog {
@@ -20,7 +21,7 @@ public class LoadingDialog extends JDialog {
     private static final int DIALOG_WIDTH = 200;
     private static final int DIALOG_HEIGHT = 110;
     private static final int ANIMATION_WIDTH = 100;
-    private static final int ANIMATION_HEIGHT = 100;
+    private static final int ANIMATION_HEIGHT = 90;
 
     private final JFrame parent;
 
@@ -59,7 +60,9 @@ public class LoadingDialog extends JDialog {
         Utils.setCustomFont(this, loadingLabel,
                 "../resources/font/creepster-rg.ttf", 22f, Font.PLAIN);
 
+
         dialogPanel.setLayout(new FlowLayout(FlowLayout.LEFT));
+        dialogPanel.setBorder(new LineBorder(Utils.halloweenOrange, 5));
         dialogPanel.setBackground(Utils.darkBackground);
         dialogPanel.add(animationPanel);
         dialogPanel.add(loadingLabel);
