@@ -12,7 +12,7 @@ public class Level {
             SEVERAL_CRUSHES_BONUS;
 
     private int NUM_COLUMNS,
-            NUMBER_ROWS;
+            NUM_ROWS;
 
     private int LEVEL_GOAL;
 
@@ -31,7 +31,7 @@ public class Level {
                 SEVERAL_CRUSHES_BONUS = 0;
                 MAX_MOVEMENTS = 0;
                 NUM_COLUMNS = 0;
-                NUMBER_ROWS = 0;
+                NUM_ROWS = 0;
                 LEVEL_GOAL = 0;
 
                 break;
@@ -42,7 +42,7 @@ public class Level {
                 SEVERAL_CRUSHES_BONUS = 120;
                 MAX_MOVEMENTS = 1;
                 NUM_COLUMNS = 8;
-                NUMBER_ROWS = 8;
+                NUM_ROWS = 8;
                 LEVEL_GOAL = 3500;
 
                 break;
@@ -53,7 +53,7 @@ public class Level {
                 SEVERAL_CRUSHES_BONUS = 1;
                 MAX_MOVEMENTS = 1;
                 NUM_COLUMNS = 1;
-                NUMBER_ROWS = 1;
+                NUM_ROWS = 1;
                 LEVEL_GOAL = 1;
 
                 break;
@@ -106,11 +106,11 @@ public class Level {
     }
 
     public int getNumberRows() {
-        return NUMBER_ROWS;
+        return NUM_ROWS;
     }
 
     public void setNumberRows(int NUMBER_ROWS) {
-        this.NUMBER_ROWS = NUMBER_ROWS;
+        this.NUM_ROWS = NUMBER_ROWS;
     }
 
     public int getLevelGoal() {
