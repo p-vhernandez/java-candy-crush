@@ -25,7 +25,7 @@ public class BoardGrid extends JPanel {
     public BoardGrid(Level level) {
         this.level = level;
 
-        this.tilesXAxis = level.getNumberRows();
+        this.tilesXAxis = level.getNumRows();
         this.tilesYAxis = level.getNumColumns();
 
         this.tiles = new BoardTile[tilesYAxis][tilesXAxis];
@@ -33,7 +33,7 @@ public class BoardGrid extends JPanel {
         this.model = new BoardGridModel();
         this.model.addChangeListener((e -> repaint()));
 
-        this.ui = new BoardGridUI(tilesXAxis, tilesYAxis, this);
+        this.ui = new BoardGridUI(level, this);
         this.ui.initializeUI();
 
         enableBoardGrid(false);

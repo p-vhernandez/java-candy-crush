@@ -3,7 +3,9 @@ package components.grid;
 import components.BoardTile;
 import components.CardGameplay;
 import main.CandyCrush;
+import utils.Level;
 import utils.helpers.Crush;
+import utils.helpers.LevelType;
 import utils.helpers.TileType;
 import utils.Utils;
 
@@ -15,6 +17,7 @@ import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Objects;
 import java.util.Random;
 
@@ -27,11 +30,11 @@ public class BoardGridUI {
 
     private Crush potentialCrush;
 
-    public BoardGridUI(int tilesXAxis, int tilesYAxis, BoardGrid grid) {
+    public BoardGridUI(Level level, BoardGrid grid) {
         this.grid = grid;
         this.model = this.grid.getModel();
 
-        generateTiles(tilesXAxis, tilesYAxis);
+        generateTiles(level);
     }
 
     public void initializeUI() {
@@ -67,28 +70,31 @@ public class BoardGridUI {
     public void paint(Graphics2D g) {
         for (BoardTile[] tileRow : grid.getTiles()) {
             for (BoardTile tile : tileRow) {
-                int iconX = tile.getTileX() + (Utils.getTileSize() - Utils.getIconSize()) / 2;
-                int iconY = tile.getTileY() + (Utils.getTileSize() - Utils.getIconSize()) / 2;
-                BufferedImage icon = null;
+                if (tile != null) {
 
-                try {
-                    icon = ImageIO.read(Objects.requireNonNull(this.getClass().getResourceAsStream(
-                            "../../resources/img/" + tile.getTileType() + ".png")));
-                } catch (IOException e) {
-                    e.printStackTrace();
+                    int iconX = tile.getTileX() + (Utils.getTileSize() - Utils.getIconSize()) / 2;
+                    int iconY = tile.getTileY() + (Utils.getTileSize() - Utils.getIconSize()) / 2;
+                    BufferedImage icon = null;
+
+                    try {
+                        icon = ImageIO.read(Objects.requireNonNull(this.getClass().getResourceAsStream(
+                                "../../resources/img/" + tile.getTileType() + ".png")));
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+
+                    g.setPaint(Utils.tileFill);
+                    g.fillRoundRect(tile.getTileX(), tile.getTileY(),
+                            Utils.getTileSize(), Utils.getTileSize(),
+                            5, 5);
+
+                    g.setPaint(Utils.tileBorder);
+                    g.drawRoundRect(tile.getTileX(), tile.getTileY(),
+                            Utils.getTileSize(), Utils.getTileSize(),
+                            5, 5);
+
+                    g.drawImage(icon, iconX, iconY, Utils.getIconSize(), Utils.getIconSize(), null);
                 }
-
-                g.setPaint(Utils.tileFill);
-                g.fillRoundRect(tile.getTileX(), tile.getTileY(),
-                        Utils.getTileSize(), Utils.getTileSize(),
-                        5, 5);
-
-                g.setPaint(Utils.tileBorder);
-                g.drawRoundRect(tile.getTileX(), tile.getTileY(),
-                        Utils.getTileSize(), Utils.getTileSize(),
-                        5, 5);
-
-                g.drawImage(icon, iconX, iconY, Utils.getIconSize(), Utils.getIconSize(), null);
             }
         }
     }
@@ -96,10 +102,9 @@ public class BoardGridUI {
     /**
      * Generates the tiles on the board
      *
-     * @param tilesXAxis - integer | number of rows
-     * @param tilesYAxis - integer | number of columns
+     * @param level - Level | object with all the level data
      */
-    public void generateTiles(int tilesXAxis, int tilesYAxis) {
+    public void generateTiles(Level level) {
         BoardTile[][] tiles = grid.getTiles();
         BoardTile[] row;
         Random random = new Random();
@@ -112,41 +117,51 @@ public class BoardGridUI {
                 TileType.PUMPKIN
         };
 
-        for (int i = 0; i < tilesXAxis; i++) {
-            row = new BoardTile[tilesXAxis];
+        for (int i = 0; i < level.getNumRows(); i++) {
 
-            for (int j = 0; j < tilesYAxis; j++) {
-                TileType type = types[random.nextInt(5)];
-                boolean validX = true;
-                boolean validY = true;
+            row = new BoardTile[level.getNumColumns()];
 
-                if (i >= 2) {
-                    validX = false;
-                }
+            for (int j = 0; j < level.getNumColumns(); j++) {
 
-                if (j >= 2) {
-                    validY = false;
-                }
+                if (level.getLevelType() != LevelType.CROSS
+                        || level.getLevelType() == LevelType.CROSS && j >= 3
+                        || level.getLevelType() == LevelType.CROSS && j <= 5) {
 
-                while (!validX) {
-                    if (notThreeInARowDimensionX(type, i, j)) {
-                        validX = true;
-                    } else {
-                        type = types[random.nextInt(5)];
+
+                    TileType type = types[random.nextInt(5)];
+                    boolean validX = true;
+                    boolean validY = true;
+
+                    if (i >= 2) {
+                        validX = false;
                     }
-                }
 
-                while (!validY) {
-                    if (notThreeInARowDimensionY(type, row, j)) {
-                        validY = true;
-                    } else {
-                        type = types[random.nextInt(5)];
+                    if (j >= 2) {
+                        validY = false;
                     }
-                }
 
-                row[j] = new BoardTile(type, i, j,
-                        j * Utils.getTileSize(),
-                        i * Utils.getTileSize());
+                    while (!validX) {
+                        if (notThreeInARowDimensionX(type, i, j)) {
+                            validX = true;
+                        } else {
+                            type = types[random.nextInt(5)];
+                        }
+                    }
+
+                    while (!validY) {
+                        if (notThreeInARowDimensionY(type, row, j)) {
+                            validY = true;
+                        } else {
+                            type = types[random.nextInt(5)];
+                        }
+                    }
+
+                    row[j] = new BoardTile(type, i, j,
+                            j * Utils.getTileSize(),
+                            i * Utils.getTileSize());
+                } else {
+                    row[j] = null;
+                }
             }
 
             tiles[i] = row;

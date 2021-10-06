@@ -12,8 +12,8 @@ public class Utils {
     private static final int TOP_BAR_HEIGHT = 80;
     private static final int TOP_BAR_COMPONENTS_HEIGHT = 70;
     private static final int MOVEMENTS_PANEL_WIDTH = 100;
-    private static final int TILE_SIZE = 30;
-    private static final int ICON_SIZE = 25;
+    private static final int TILE_SIZE = 40;
+    private static final int ICON_SIZE = 35;
 
     private static final String APP_NAME = "Halloween Candy Crush";
     private static final String WELCOME_BUTTON_LABEL = "Start";

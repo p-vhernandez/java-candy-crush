@@ -51,8 +51,8 @@ public class Level {
                 STANDARD_CANDY_CRUSHED = 1;
                 SPECIAL_CANDY_CRUSHED = 1;
                 SEVERAL_CRUSHES_BONUS = 1;
-                MAX_MOVEMENTS = 1;
-                NUM_COLUMNS = 1;
+                MAX_MOVEMENTS = 9;
+                NUM_COLUMNS = 9;
                 NUM_ROWS = 1;
                 LEVEL_GOAL = 1;
 
@@ -105,11 +105,11 @@ public class Level {
         this.NUM_COLUMNS = NUM_COLUMNS;
     }
 
-    public int getNumberRows() {
+    public int getNumRows() {
         return NUM_ROWS;
     }
 
-    public void setNumberRows(int NUMBER_ROWS) {
+    public void setNumRows(int NUMBER_ROWS) {
         this.NUM_ROWS = NUMBER_ROWS;
     }
 
