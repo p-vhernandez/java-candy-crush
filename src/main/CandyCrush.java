@@ -1,10 +1,7 @@
 package main;
 
-import components.CardGameplay;
-import components.GameOverDialog;
+import components.*;
 import components.grid.BoardGrid;
-import components.LoadingDialog;
-import components.TopPanel;
 import utils.Level;
 import utils.helpers.LevelType;
 import utils.Utils;
@@ -14,12 +11,15 @@ import java.awt.*;
 
 public class CandyCrush extends JFrame {
 
-    private JPanel cardWelcome;
-    private JPanel cardLevelChoice;
+    private CardWelcome cardWelcome;
+    private CardLevelChoice cardLevelChoice;
     private CardGameplay cardGameplay;
     private LoadingDialog loadingDialog;
     private GameOverDialog gameOverDialog;
+    private JPanel cards;
+    private CardLayout cardLayout;
 
+    final static String WELCOMEPANEL = "Welcome panel";
     final static String GAMEPANEL = "Gameplay panel";
 
     public CandyCrush() {
@@ -34,10 +34,19 @@ public class CandyCrush extends JFrame {
         setFrameVisuals();
 
         //setup the cards
-        cardGameplay = new CardGameplay(new Level(LevelType.SQUARE));
-        add(cardGameplay, GAMEPANEL);
+        cardLayout = new CardLayout();
+        cards = new JPanel();
+        cards.setLayout(cardLayout);
 
-        showLoading();
+
+        cardWelcome = new CardWelcome(this);
+        cardGameplay = new CardGameplay(new Level(LevelType.SQUARE));
+
+        cards.add(cardWelcome, WELCOMEPANEL);
+        cards.add(cardGameplay, GAMEPANEL);
+        cardLayout.show(cards, WELCOMEPANEL);
+
+        add(cards);
 
         pack();
     }
@@ -56,7 +65,7 @@ public class CandyCrush extends JFrame {
     }
 
 
-    private void showLoading() {
+    public void showLoading() {
         loadingDialog = new LoadingDialog(this);
         loadingDialog.openLoading();
 
@@ -72,6 +81,10 @@ public class CandyCrush extends JFrame {
 
         timer.setRepeats(false);
         timer.start();
+    }
+
+    public void flipCard() {
+        cardLayout.next(cards);
     }
 
 }

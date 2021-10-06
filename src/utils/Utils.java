@@ -15,10 +15,9 @@ public class Utils {
     private static final int TILE_SIZE = 30;
     private static final int ICON_SIZE = 25;
 
-
     private static final String APP_NAME = "Halloween Candy Crush";
+    private static final String WELCOME_BUTTON_LABEL = "Start";
 
-    public static Color boardPanel = Color.yellow;
     public static Color tileBorder = new Color(168, 168, 168);
     public static Color tileFill = new Color(44, 54, 47);
     public static Color darkBackground = new Color(44, 54, 47);
@@ -56,6 +55,10 @@ public class Utils {
         return APP_NAME;
     }
 
+    public static String getWelcomeButtonLabel() {
+        return WELCOME_BUTTON_LABEL;
+    }
+
     public static Image generateImage(Object object, String path) {
         return Toolkit.getDefaultToolkit().getImage(object.getClass()
                 .getResource(path));
@@ -78,9 +81,9 @@ public class Utils {
 
     public static void setCustomFont(Object object, JLabel label, String path,
                                      float fontSize, int fontStyle) {
-        Font customFom = Utils.generateFont(object, path);
-        if (customFom != null) {
-            label.setFont(customFom.deriveFont(fontStyle, fontSize));
+        Font customFont = Utils.generateFont(object, path);
+        if (customFont != null) {
+            label.setFont(customFont.deriveFont(fontStyle, fontSize));
         }
     }
 
