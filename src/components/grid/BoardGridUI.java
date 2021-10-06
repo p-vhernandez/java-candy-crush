@@ -190,7 +190,7 @@ public class BoardGridUI {
                 || isOnePositionChangeVertically(startCol, endCol, startRow, endRow)) {
             if (!dragInMotion) {
                 dragInMotion = true;
-                int spaceToMove = 15;
+                int spaceToMove = Utils.getTileSize()/2;
 
                 if (isBackwardsMovement(startTile, endTile)) {
                     spaceToMove = -spaceToMove;
