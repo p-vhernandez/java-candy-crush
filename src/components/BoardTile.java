@@ -1,8 +1,8 @@
 package components;
 
-
 import utils.helpers.TileType;
 import utils.Utils;
+
 import java.awt.*;
 
 public class BoardTile {
@@ -65,7 +65,11 @@ public class BoardTile {
     public Dimension getMaximumSize() {
         return getPreferredSize();
     }
-    public Dimension getMinimumSize() { return getPreferredSize(); }
+
+    public Dimension getMinimumSize() {
+        return getPreferredSize();
+    }
+
     public Dimension getPreferredSize() {
         return new Dimension(Utils.getTileSize(), Utils.getTileSize());
     }

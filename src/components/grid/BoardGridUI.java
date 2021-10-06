@@ -2,9 +2,9 @@ package components.grid;
 
 import components.BoardTile;
 import components.CardGameplay;
-import main.CandyCrush;
 import utils.Level;
 import utils.helpers.Crush;
+import utils.helpers.Explosion;
 import utils.helpers.LevelType;
 import utils.helpers.TileType;
 import utils.Utils;
@@ -17,7 +17,6 @@ import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Objects;
 import java.util.Random;
 
@@ -97,6 +96,16 @@ public class BoardGridUI {
                 }
             }
         }
+
+        if (potentialCrush != null) {
+            for (Explosion explosion : potentialCrush.getExplosions()) {
+                explosion.draw(g);
+            }
+
+            if (potentialCrush.getExplosions().size() > 0) {
+                grid.repaint();
+            }
+        }
     }
 
     /**
@@ -118,11 +127,9 @@ public class BoardGridUI {
         };
 
         for (int i = 0; i < level.getNumRows(); i++) {
-
             row = new BoardTile[level.getNumColumns()];
 
             for (int j = 0; j < level.getNumColumns(); j++) {
-
                 if (level.getLevelType() != LevelType.CROSS
                         || level.getLevelType() == LevelType.CROSS && j >= 3
                         || level.getLevelType() == LevelType.CROSS && j <= 5) {
@@ -190,7 +197,7 @@ public class BoardGridUI {
                 || isOnePositionChangeVertically(startCol, endCol, startRow, endRow)) {
             if (!dragInMotion) {
                 dragInMotion = true;
-                int spaceToMove = Utils.getTileSize()/2;
+                int spaceToMove = Utils.getTileSize() / 2;
 
                 if (isBackwardsMovement(startTile, endTile)) {
                     spaceToMove = -spaceToMove;
@@ -312,8 +319,6 @@ public class BoardGridUI {
             int col = tile.getTileCol();
 
             TileType type1, type2, type3;
-
-            ArrayList<Crush> crushes = new ArrayList<>();
 
             // Check horizontally from position 0 to position
             // (length - 3) to find at least a group of 3 candies
