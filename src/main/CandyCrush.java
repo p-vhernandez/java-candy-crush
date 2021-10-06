@@ -1,7 +1,8 @@
 package main;
 
 import components.*;
-import components.grid.BoardGrid;
+import utils.dialogs.GameOverDialog;
+import utils.dialogs.LoadingDialog;
 import utils.Level;
 import utils.helpers.LevelType;
 import utils.Utils;

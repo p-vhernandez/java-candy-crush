@@ -1,4 +1,4 @@
-package components;
+package utils.dialogs;
 
 import utils.Utils;
 
@@ -23,15 +23,13 @@ public class LoadingDialog extends JDialog {
     private static final int ANIMATION_WIDTH = 100;
     private static final int ANIMATION_HEIGHT = 90;
 
-    private final JFrame parent;
-
     public LoadingDialog(JFrame parent) {
         super(parent, null, false);
 
         this.dialogPanel = new JPanel();
         this.animationPanel = new JPanel();
         this.loadingLabel = new JLabel("Loading");
-        this.loadingImage = Utils.generateImage(this, "../resources/img/eye-ball.png");
+        this.loadingImage = Utils.generateImage(this, "../../resources/img/eye-ball.png");
 
         xVelocity = 10;
         yVelocity = 20;
@@ -40,7 +38,6 @@ public class LoadingDialog extends JDialog {
 
         this.timer = new Timer(500, e -> animateLoading());
 
-        this.parent = parent;
         initialize();
     }
 
@@ -57,7 +54,7 @@ public class LoadingDialog extends JDialog {
 
         loadingLabel.setForeground(Color.white);
         Utils.setCustomFont(this, loadingLabel,
-                "../resources/font/creepster-rg.ttf", 22f, Font.PLAIN);
+                "../../resources/font/creepster-rg.ttf", 22f, Font.PLAIN);
 
 
         dialogPanel.setLayout(new FlowLayout(FlowLayout.LEFT));

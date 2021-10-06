@@ -1,4 +1,4 @@
-package components;
+package utils.dialogs;
 
 import utils.Utils;
 
@@ -48,8 +48,8 @@ public class GameOverDialog extends JDialog {
     private void setUpInfo() {
         lblGameOver.setText("Game over.");
         lblGameOver.setForeground(Color.white);
-        Utils.setCustomFont(this, lblGameOver, "../resources/font/deanna.ttf", 32f, Font.PLAIN);
-        lblGameOver.setIcon(new ImageIcon(Utils.generateImage(this, "../resources/img/eye-ball.png")
+        Utils.setCustomFont(this, lblGameOver, "../../resources/font/deanna.ttf", 32f, Font.PLAIN);
+        lblGameOver.setIcon(new ImageIcon(Utils.generateImage(this, "../../resources/img/eye-ball.png")
                 .getScaledInstance(45, 45, Image.SCALE_SMOOTH)));
 
         lblGameOver.setBorder(new EmptyBorder(20, 0, 20, 0));
@@ -65,7 +65,7 @@ public class GameOverDialog extends JDialog {
         btnDismiss.setAlignmentX(Component.CENTER_ALIGNMENT);
 
         btnDismiss.setFont(Objects.requireNonNull(
-                Utils.generateFont(this, "../resources/font/caramel-rg.ttf"))
+                Utils.generateFont(this, "../../resources/font/caramel-rg.ttf"))
                 .deriveFont(Font.BOLD, 28f)
         );
 

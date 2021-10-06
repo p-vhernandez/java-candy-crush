@@ -1,6 +1,6 @@
 package components;
 
-import main.CandyCrush;
+import utils.dialogs.GameOverDialog;
 import utils.Utils;
 
 import javax.swing.*;
