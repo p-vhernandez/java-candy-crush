@@ -40,10 +40,6 @@ public class CardGameplay extends JPanel {
 
         Level selectedLevel = new Level(LevelType.CROSS);
         grid = new BoardGrid(selectedLevel);
-        FlowLayout gridLayout = new FlowLayout();
-        gridLayout.setVgap(0);
-        gridLayout.setHgap(0);
-        grid.setLayout(gridLayout);
 
         setGoal(selectedLevel.getLevelGoal());
         setMaxMovements(selectedLevel.getMaxMovements());
@@ -54,6 +50,7 @@ public class CardGameplay extends JPanel {
     private void setUpTopPanel() {
         topPanel = new TopPanel(this);
         add(topPanel, BorderLayout.NORTH);
+        add(Box.createRigidArea(new Dimension(0, 40)));
     }
 
     public void addScore(int score) {

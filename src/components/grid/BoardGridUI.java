@@ -25,7 +25,7 @@ public class BoardGridUI {
 
     private final BoardGrid grid;
     private final BoardGridModel model;
-    private int tempCounter = 0;
+
     private boolean dragDone = false;
 
     private Crush potentialCrush;
@@ -63,10 +63,7 @@ public class BoardGridUI {
             public void mouseDragged(MouseEvent e) {
                 BoardTile tileDragEnd = getTile(grid.getTiles(), e.getX(), e.getY());
                 if (tileDragEnd != null) {
-                    if (grid.getModel().isEnabled()
-                            && (Math.abs(grid.getTileDragStart().getTileCol() - tileDragEnd.getTileCol()) == 1
-                            || Math.abs(grid.getTileDragStart().getTileRow() - tileDragEnd.getTileRow()) == 1)
-                            && !dragDone) {
+                    if (isDragValid(tileDragEnd)) {
                         dragDone = true;
                         grid.setTileDragEnd(tileDragEnd);
                         generateSwipeMotion(e);
@@ -77,7 +74,8 @@ public class BoardGridUI {
     }
 
     public void paint(Graphics2D g) {
-        //clears the component before redrawing
+
+        //clears the component before redrawing and repaints the background
         g.clearRect(0, 0, grid.getWidth(), grid.getHeight());
         g.setPaint(Utils.darkBackground);
         g.fillRect(0,0, grid.getWidth(), grid.getHeight());
@@ -138,8 +136,8 @@ public class BoardGridUI {
             for (int j = 0; j < level.getNumColumns(); j++) {
 
                 if (level.getLevelType() != LevelType.CROSS
-                        || level.getLevelType() == LevelType.CROSS && j >= 3 && j <= 5
-                        || level.getLevelType() == LevelType.CROSS && i >= 3 && i <= 5) {
+                        || level.getLevelType() == LevelType.CROSS && j >= 2 && j <= 6
+                        || level.getLevelType() == LevelType.CROSS && i >= 2 && i <= 5) {
 
 
                     TileType type = types[random.nextInt(5)];
@@ -519,6 +517,14 @@ public class BoardGridUI {
     private boolean isBackwardsMovement(BoardTile startTile, BoardTile endTile) {
         return startTile.getTileCol() > endTile.getTileCol()
                 || startTile.getTileRow() > endTile.getTileRow();
+    }
+
+    private boolean isDragValid(BoardTile tileDragEnd) {
+        return grid.getModel().isEnabled()
+                && (Math.abs(grid.getTileDragStart().getTileCol() - tileDragEnd.getTileCol()) == 1
+                || Math.abs(grid.getTileDragStart().getTileRow() - tileDragEnd.getTileRow()) == 1)
+                && !dragDone
+                && tileDragEnd.getTileType() != TileType.EMPTY;
     }
 
 }
