@@ -53,7 +53,7 @@ public class Level {
                 SEVERAL_CRUSHES_BONUS = 1;
                 MAX_MOVEMENTS = 9;
                 NUM_COLUMNS = 9;
-                NUM_ROWS = 1;
+                NUM_ROWS = 9;
                 LEVEL_GOAL = 1;
 
                 break;

@@ -1,12 +1,12 @@
 package components;
 
 import components.grid.BoardGrid;
-import main.CandyCrush;
 import utils.Level;
 import utils.Utils;
 import utils.helpers.LevelType;
 
 import javax.swing.*;
+import javax.swing.border.Border;
 import java.awt.*;
 
 public class CardGameplay extends JPanel {
@@ -24,6 +24,8 @@ public class CardGameplay extends JPanel {
                 Utils.getWindowHeight()));
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         setBackground(Utils.darkBackground);
+        Border blackline = BorderFactory.createLineBorder(Color.WHITE);
+        setBorder(blackline);
 
         setUpTopPanel();
         setUpBoardPanel();
@@ -36,7 +38,7 @@ public class CardGameplay extends JPanel {
 
         add(boardPanel);
 
-        Level selectedLevel = new Level(LevelType.SQUARE);
+        Level selectedLevel = new Level(LevelType.CROSS);
         grid = new BoardGrid(selectedLevel);
         FlowLayout gridLayout = new FlowLayout();
         gridLayout.setVgap(0);
