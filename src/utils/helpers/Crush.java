@@ -52,6 +52,10 @@ public class Crush {
             tile.setTileType(TileType.MUMMY);
         }
 
+        explode();
+    }
+
+    public void explode() {
         for (int i = 0; i < explosions.size(); i++) {
             boolean remove = explosions.get(i).update();
 

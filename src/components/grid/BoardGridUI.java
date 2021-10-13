@@ -98,12 +98,12 @@ public class BoardGridUI {
         }
 
         if (potentialCrush != null) {
-            for (Explosion explosion : potentialCrush.getExplosions()) {
-                explosion.draw(g);
-            }
+            for (int i = 0; i < 30; i++) {
+                for (Explosion explosion : potentialCrush.getExplosions()) {
+                    explosion.draw(g);
+                }
 
-            if (potentialCrush.getExplosions().size() > 0) {
-                grid.repaint();
+                potentialCrush.explode();
             }
         }
     }
