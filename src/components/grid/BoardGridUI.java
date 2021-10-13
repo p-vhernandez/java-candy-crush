@@ -474,6 +474,7 @@ public class BoardGridUI {
         int tileSize = Utils.getTileSize();
         int col = (int) Math.floor(x / tileSize);
         int row = (int) Math.floor(y / tileSize);
+
         try {
             return tiles[row][col];
         } catch (IndexOutOfBoundsException e) {
