@@ -4,6 +4,10 @@ import utils.Utils;
 
 import java.awt.*;
 
+/**
+ * Found and adapted from YouTube video:
+ * https://www.youtube.com/watch?v=U7y5lKgbvGE&t=433s&ab_channel=ForeignGuyMike
+ */
 public class Explosion {
 
     private final int tileOriginX, tileOriginY;
@@ -12,7 +16,8 @@ public class Explosion {
     private double x, y;
     private int radius;
 
-    // TODO: combine with actual play
+    private boolean even = false;
+
     public Explosion(int tileOriginX, int tileOriginY,
                      int radius, int maxRadius) {
         this.tileOriginX = tileOriginX;
@@ -24,13 +29,20 @@ public class Explosion {
     }
 
     public boolean update() {
-        radius++;
+        radius += 5;
         return radius >= maxRadius;
     }
 
     public void draw(Graphics2D graphics2D) {
-        // TODO: set better color
-        graphics2D.setColor(Color.red);
+        if (even) {
+            graphics2D.setColor(new Color(93, 201, 122, 180));
+            graphics2D.setStroke(new BasicStroke(4));
+        } else {
+            graphics2D.setColor(new Color(13, 184, 59));
+            graphics2D.setStroke(new BasicStroke(2));
+        }
+
+        even = !even;
         graphics2D.drawOval((int) (x - radius), (int) (y - radius),
                 2 * radius, 2 * radius);
     }
@@ -40,4 +52,15 @@ public class Explosion {
         y = tileOriginY + (Utils.getTileSize() / 2);
     }
 
+    @Override
+    public String toString() {
+        return "Explosion{" +
+                "tileOriginX=" + tileOriginX +
+                ", tileOriginY=" + tileOriginY +
+                ", maxRadius=" + maxRadius +
+                ", x=" + x +
+                ", y=" + y +
+                ", radius=" + radius +
+                '}';
+    }
 }

@@ -128,6 +128,12 @@ public class BoardGrid extends JPanel {
         this.model.setEnabled(enabled);
     }
 
+    /**
+     * Update the tiles on the board grid to show the new ones after
+     * grouping at least 3 of them.
+     *
+     * @param potentialCrush - Object that stores the crush to explode.
+     */
     public void crushed(Crush potentialCrush) {
         BoardTile[][] changedTiles = getTiles();
         for (BoardTile tile : potentialCrush.getCrushedCandies()) {

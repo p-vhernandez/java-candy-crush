@@ -9,8 +9,10 @@ public class Utils {
 
     private static final int WINDOW_WIDTH = 600;
     private static final int WINDOW_HEIGHT = 600;
-    private static final int TOP_BAR_HEIGHT = 80;
-    private static final int TOP_BAR_COMPONENTS_HEIGHT = 70;
+    private static final int BOARD_PANEL_WIDTH = 600;
+    private static final int BOARD_PANEL_HEIGHT = 400;
+    private static final int TOP_BAR_HEIGHT = 120;
+    private static final int TOP_BAR_COMPONENTS_HEIGHT = 90;
     private static final int MOVEMENTS_PANEL_WIDTH = 100;
     private static final int TILE_SIZE = 40;
     private static final int ICON_SIZE = 35;
@@ -18,7 +20,8 @@ public class Utils {
     private static final String APP_NAME = "Halloween Candy Crush";
     private static final String WELCOME_BUTTON_LABEL = "Start";
 
-    public static Color tileBorder = new Color(168, 168, 168);
+    //public static Color tileBorder = new Color(168, 168, 168);
+    public static Color tileBorder = new Color(50, 168, 82);
     public static Color tileFill = new Color(44, 54, 47);
     public static Color darkBackground = new Color(44, 54, 47);
     public static Color halloweenOrange = new Color(252, 127, 3);
@@ -47,9 +50,13 @@ public class Utils {
         return (WINDOW_WIDTH - 60 - MOVEMENTS_PANEL_WIDTH) / 2;
     }
 
-    public static int getTileSize() { return TILE_SIZE; }
+    public static int getTileSize() {
+        return TILE_SIZE;
+    }
 
-    public static int getIconSize() { return ICON_SIZE; }
+    public static int getIconSize() {
+        return ICON_SIZE;
+    }
 
     public static String getAppName() {
         return APP_NAME;
@@ -57,6 +64,14 @@ public class Utils {
 
     public static String getWelcomeButtonLabel() {
         return WELCOME_BUTTON_LABEL;
+    }
+
+    public static int getBoardPanelWidth() {
+        return BOARD_PANEL_WIDTH;
+    }
+
+    public static int getBoardPanelHeight() {
+        return BOARD_PANEL_HEIGHT;
     }
 
     public static Image generateImage(Object object, String path) {

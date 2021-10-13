@@ -75,7 +75,7 @@ public class CandyCrush extends JFrame {
 
 
     private void closeLoadingDialog() {
-        Timer timer = new Timer(1000, arg0 -> {
+        Timer timer = new Timer(10000, arg0 -> {
             loadingDialog.closeLoading();
             cardGameplay.enableBoardGrid(true);
         });
