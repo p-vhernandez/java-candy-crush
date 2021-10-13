@@ -1,7 +1,10 @@
 package utils.helpers;
 
 import components.BoardTile;
+import components.grid.BoardGrid;
 
+import javax.swing.*;
+import java.awt.*;
 import java.util.ArrayList;
 
 public class Crush {
@@ -47,23 +50,31 @@ public class Crush {
         this.explosions.add(explosion);
     }
 
-    public void crushCandies() {
+    public void crushCandies(BoardGrid grid) {
         for (BoardTile tile : crushedCandies) {
             tile.setTileType(TileType.MUMMY);
         }
 
-        explode();
+        explode(grid);
     }
 
-    public void explode() {
-        for (int i = 0; i < explosions.size(); i++) {
-            boolean remove = explosions.get(i).update();
+    public void explode(BoardGrid grid) {
+        Timer expxlosionTimer = new Timer(5, e -> {
+            for (int i = 0; i < explosions.size(); i++) {
+                boolean remove = explosions.get(i).update();
 
-            if (remove) {
-                explosions.remove(explosions.get(i));
-                i--;
+                if (remove) {
+                    explosions.remove(explosions.get(i));
+                    i--;
+                    ((Timer) e.getSource()).stop();
+                }
             }
-        }
+
+            grid.repaint();
+        });
+
+        expxlosionTimer.setRepeats(true);
+        expxlosionTimer.start();
     }
 
 }
