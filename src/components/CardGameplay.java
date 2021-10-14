@@ -6,6 +6,7 @@ import utils.Utils;
 import utils.helpers.LevelType;
 
 import javax.swing.*;
+import javax.swing.border.EmptyBorder;
 import javax.swing.border.Border;
 import java.awt.*;
 
@@ -19,7 +20,6 @@ public class CardGameplay extends JPanel {
     }
 
     private void setupUI() {
-
         setPreferredSize(new Dimension(Utils.getWindowWidth(),
                 Utils.getWindowHeight()));
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
@@ -34,7 +34,9 @@ public class CardGameplay extends JPanel {
     private void setUpBoardPanel() {
         JPanel boardPanel = new JPanel();
         boardPanel.setLayout(new BoxLayout(boardPanel, BoxLayout.Y_AXIS));
-        setPreferredSize(new Dimension(600, 400));
+        boardPanel.setBorder(new EmptyBorder(40, 0, 0, 0));
+        boardPanel.setBackground(Utils.darkBackground);
+        setPreferredSize(new Dimension(Utils.getBoardPanelWidth(), Utils.getBoardPanelHeight()));
 
         add(boardPanel);
 
@@ -50,7 +52,6 @@ public class CardGameplay extends JPanel {
     private void setUpTopPanel() {
         topPanel = new TopPanel(this);
         add(topPanel, BorderLayout.NORTH);
-        add(Box.createRigidArea(new Dimension(0, 40)));
     }
 
     public void addScore(int score) {
