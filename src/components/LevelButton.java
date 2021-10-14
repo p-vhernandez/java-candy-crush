@@ -3,21 +3,28 @@ package components;
 import utils.Utils;
 
 import javax.swing.*;
+import javax.swing.border.Border;
 import java.awt.*;
 
 public class LevelButton extends JButton {
 
     private String label;
-    private int index;
-    private boolean unlocked;
-    private int width = 100;
-    private int height = 80;
-    private int arc = 5;
 
-    public LevelButton(String label, int index, boolean unlocked) {
+    private boolean unlocked;
+
+    private int index;
+    private final int width = 80, height = 80, arc = 200;
+
+    private final Font font;
+
+    public LevelButton(Object object, String label, int index, boolean unlocked) {
         this.label = label;
         this.index = index;
         this.unlocked = unlocked;
+        this.font = Utils.generateFont(object, "../resources/font/shlop-rg.ttf");
+
+        Border emptyBorder = BorderFactory.createEmptyBorder();
+        this.setBorder(emptyBorder);
     }
 
     public String getLabel() {
@@ -60,9 +67,17 @@ public class LevelButton extends JButton {
     public void paintComponent(Graphics g1d) {
         Graphics2D g = (Graphics2D) g1d;
 
-        g.setPaint(Color.white);
-        g.fillRoundRect(0,0, width, height, arc, arc);
-        g.setPaint(Color.black);
-        g.drawString(label, (width - g.getFontMetrics().stringWidth(label)) / 2, height/2);
+        if (unlocked) {
+            g.setPaint(Utils.halloweenOrange);
+            g.fillOval(0, 0, width, height);
+            g.setPaint(Utils.darkBackground);
+        } else {
+            g.setPaint(Color.lightGray);
+            g.fillOval(0, 0, width, height);
+            g.setPaint(Color.white);
+        }
+
+        g.setFont(font.deriveFont(48f));
+        g.drawString(label, (width - g.getFontMetrics().stringWidth(label)) / 2, height - 25);
     }
 }
