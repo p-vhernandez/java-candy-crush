@@ -38,10 +38,11 @@ public class CardLevelChoice extends JPanel {
         setUpLevelLabel();
 
         for (LevelButton button : levelButtons) {
+            if (!button.isUnlocked()) {
+                button.setEnabled(false);
+            }
+
             add(button);
-            //maybe this should be in the button class
-            initializeListeners(button);
-            if (!button.isUnlocked()) button.setEnabled(false);
         }
     }
 
@@ -80,14 +81,9 @@ public class CardLevelChoice extends JPanel {
         }
     }
 
-    private void initializeListeners(LevelButton button) {
-        //TODO: level choice depending on which button is clicked
-        button.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                container.flipCard();
-                container.showLoading();
-            }
-        });
+    public void flipCard() {
+        container.flipCard();
+        container.showLoading();
     }
+
 }

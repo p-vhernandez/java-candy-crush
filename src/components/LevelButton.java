@@ -5,8 +5,12 @@ import utils.Utils;
 import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class LevelButton extends JButton {
+
+    private CardLevelChoice cardLevelChoice;
 
     private String label;
 
@@ -18,6 +22,8 @@ public class LevelButton extends JButton {
     private final Font font;
 
     public LevelButton(Object object, String label, int index, boolean unlocked) {
+        this.cardLevelChoice = (CardLevelChoice) object;
+
         this.label = label;
         this.index = index;
         this.unlocked = unlocked;
@@ -25,6 +31,21 @@ public class LevelButton extends JButton {
 
         Border emptyBorder = BorderFactory.createEmptyBorder();
         this.setBorder(emptyBorder);
+
+        setEnabled(isUnlocked());
+        initializeListeners();
+    }
+
+    private void initializeListeners() {
+        // TODO: level choice depending on which button is clicked
+        if (isUnlocked()) {
+            addMouseListener(new MouseAdapter() {
+                @Override
+                public void mouseClicked(MouseEvent e) {
+                    cardLevelChoice.flipCard();
+                }
+            });
+        }
     }
 
     public String getLabel() {
