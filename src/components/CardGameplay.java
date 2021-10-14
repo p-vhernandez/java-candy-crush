@@ -38,7 +38,7 @@ public class CardGameplay extends JPanel {
 
         add(boardPanel);
 
-        Level selectedLevel = new Level(LevelType.CROSS);
+        Level selectedLevel = new Level(LevelType.SQUARE);
         grid = new BoardGrid(selectedLevel);
 
         setGoal(selectedLevel.getLevelGoal());

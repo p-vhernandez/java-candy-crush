@@ -16,6 +16,7 @@ import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Objects;
 import java.util.Random;
 
@@ -23,8 +24,12 @@ public class BoardGridUI {
 
     private boolean dragInMotion = false;
 
-    private final BoardGrid grid;
-    private final BoardGridModel model;
+    private BoardGrid grid;
+    private BoardGridModel model;
+
+    private final HashMap<TileType, BufferedImage> icons = new HashMap<TileType, BufferedImage>();
+    private final TileType[] types = new TileType[] {TileType.EYEBALL, TileType.PUMPKIN, TileType.ORANGE_CANDY,
+                                                    TileType.ROUND_LOLLI, TileType.SWIRL_LOLLI, TileType.MUMMY};
 
     private boolean dragDone = false;
 
@@ -33,6 +38,17 @@ public class BoardGridUI {
     public BoardGridUI(Level level, BoardGrid grid) {
         this.grid = grid;
         this.model = this.grid.getModel();
+
+        for (int i = 0; i < types.length; i++) {
+            BufferedImage icon;
+            try {
+                icon = ImageIO.read(Objects.requireNonNull(this.getClass().getResourceAsStream(
+                        "../../resources/img/" + types[i] + ".png")));
+                icons.put(types[i], icon);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
 
         generateTiles(level);
     }
@@ -83,32 +99,31 @@ public class BoardGridUI {
         for (BoardTile[] tileRow : grid.getTiles()) {
             for (BoardTile tile : tileRow) {
                 if (tile.getTileType() != TileType.EMPTY) {
-
-                    int iconX = tile.getTileX() + (Utils.getTileSize() - Utils.getIconSize()) / 2;
-                    int iconY = tile.getTileY() + (Utils.getTileSize() - Utils.getIconSize()) / 2;
-                    BufferedImage icon = null;
-
-                    try {
-                        icon = ImageIO.read(Objects.requireNonNull(this.getClass().getResourceAsStream(
-                                "../../resources/img/" + tile.getTileType() + ".png")));
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-
-                    g.setPaint(Utils.tileFill);
-                    g.fillRoundRect(tile.getTileX(), tile.getTileY(),
-                            Utils.getTileSize(), Utils.getTileSize(),
-                            5, 5);
-
-                    g.setPaint(Utils.tileBorder);
-                    g.drawRoundRect(tile.getTileX(), tile.getTileY(),
-                            Utils.getTileSize(), Utils.getTileSize(),
-                            5, 5);
-
-                    g.drawImage(icon, iconX, iconY, Utils.getIconSize(), Utils.getIconSize(), null);
+                    paintTile(tile, g);
                 }
             }
         }
+
+    }
+
+    private void paintTile(BoardTile tile, Graphics2D g) {
+
+
+        int iconX = tile.getTileX() + (Utils.getTileSize() - Utils.getIconSize()) / 2;
+        int iconY = tile.getTileY() + (Utils.getTileSize() - Utils.getIconSize()) / 2;
+        BufferedImage icon = null;
+
+        g.setPaint(Utils.tileFill);
+        g.fillRoundRect(tile.getTileX(), tile.getTileY(),
+                Utils.getTileSize(), Utils.getTileSize(),
+                5, 5);
+
+        g.setPaint(Utils.tileBorder);
+        g.drawRoundRect(tile.getTileX(), tile.getTileY(),
+                Utils.getTileSize(), Utils.getTileSize(),
+                5, 5);
+
+        g.drawImage(icons.get(tile.getTileType()), iconX, iconY, Utils.getIconSize(), Utils.getIconSize(), null);
     }
 
     /**
@@ -122,9 +137,9 @@ public class BoardGridUI {
         Random random = new Random();
 
         TileType[] types = {
-                TileType.PURPLE_LOLLI,
+                TileType.ROUND_LOLLI,
                 TileType.ORANGE_CANDY,
-                TileType.YELLOW_LOLLI,
+                TileType.SWIRL_LOLLI,
                 TileType.EYEBALL,
                 TileType.PUMPKIN
         };
@@ -204,7 +219,7 @@ public class BoardGridUI {
                 || isOnePositionChangeVertically(startCol, endCol, startRow, endRow)) {
             if (!dragInMotion) {
                 dragInMotion = true;
-                int spaceToMove = Utils.getTileSize() / 2;
+                int spaceToMove = Utils.getTileSize() / 4;
 
                 if (isBackwardsMovement(startTile, endTile)) {
                     spaceToMove = -spaceToMove;
@@ -240,28 +255,18 @@ public class BoardGridUI {
             // Horizontal swipe
             if (isHorizontalMove(startTile, endTile)) {
                 moveBothTiles(startTile, endTile, spaceToMove, true);
-                updateGridTiles(startTile, endTile);
+                //updateGridTiles(startTile, endTile);
 
                 if (startTile.getTileX() == initEndX
                         && endTile.getTileX() == initStartX) {
                     ((Timer) e.getSource()).stop();
 
-                    tiles = grid.getTiles();
-                    tiles[startTile.getTileRow()][startTile.getTileCol()] = endTile;
-                    tiles[endTile.getTileRow()][endTile.getTileCol()] = startTile;
-
-                    int startCol = startTile.getTileCol();
-                    int endCol = endTile.getTileCol();
-
-                    startTile.setTileCol(endCol);
-                    endTile.setTileCol(startCol);
-
-                    grid.setTiles(tiles);
+                    updateGridTiles(startTile, endTile);
                     dragInMotion = false;
 
                     if (pendingValidation) {
                         validateSwipe(
-                                new BoardTile[]{startTile, endTile},
+                               new BoardTile[]{startTile, endTile},
                                 startTile, endTile, spaceToMove);
                     }
                 }
@@ -278,17 +283,7 @@ public class BoardGridUI {
                         && endTile.getTileY() == initStartY) {
                     ((Timer) e.getSource()).stop();
 
-                    tiles = grid.getTiles();
-                    tiles[startTile.getTileRow()][startTile.getTileCol()] = endTile;
-                    tiles[endTile.getTileRow()][endTile.getTileCol()] = startTile;
-
-                    int startRow = startTile.getTileRow();
-                    int endRow = endTile.getTileRow();
-
-                    startTile.setTileRow(endRow);
-                    endTile.setTileRow(startRow);
-
-                    grid.setTiles(tiles);
+                    updateGridTiles(startTile, endTile);
                     dragInMotion = false;
 
                     if (pendingValidation) {
@@ -326,8 +321,6 @@ public class BoardGridUI {
             int col = tile.getTileCol();
 
             TileType type1, type2, type3;
-
-            ArrayList<Crush> crushes = new ArrayList<>();
 
             // Check horizontally from position 0 to position
             // (length - 3) to find at least a group of 3 candies
@@ -470,12 +463,20 @@ public class BoardGridUI {
             startTile.setTileY(startTile.getTileY() + spaceToMove);
             endTile.setTileY(endTile.getTileY() - spaceToMove);
         }
+        grid.repaint();
     }
 
     private void updateGridTiles(BoardTile startTile, BoardTile endTile) {
         BoardTile[][] tiles = grid.getTiles();
+
+        int startRow = startTile.getTileRow();
+        int endRow = endTile.getTileRow();
+        startTile.setTileRow(endRow);
+        endTile.setTileRow(startRow);
+
         tiles[startTile.getTileRow()][startTile.getTileCol()] = startTile;
         tiles[endTile.getTileRow()][endTile.getTileCol()] = endTile;
+
         grid.setTiles(tiles);
     }
 

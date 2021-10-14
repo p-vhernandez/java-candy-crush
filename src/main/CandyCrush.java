@@ -21,6 +21,7 @@ public class CandyCrush extends JFrame {
     private CardLayout cardLayout;
 
     final static String WELCOMEPANEL = "Welcome panel";
+    final static String LEVELPANEL = "Level panel";
     final static String GAMEPANEL = "Gameplay panel";
 
     public CandyCrush() {
@@ -41,9 +42,11 @@ public class CandyCrush extends JFrame {
 
 
         cardWelcome = new CardWelcome(this);
+        cardLevelChoice = new CardLevelChoice(this);
         cardGameplay = new CardGameplay(new Level(LevelType.SQUARE));
 
         cards.add(cardWelcome, WELCOMEPANEL);
+        cards.add(cardLevelChoice, LEVELPANEL);
         cards.add(cardGameplay, GAMEPANEL);
         cardLayout.show(cards, WELCOMEPANEL);
 

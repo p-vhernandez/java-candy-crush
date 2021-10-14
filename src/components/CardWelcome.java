@@ -21,6 +21,8 @@ public class CardWelcome extends JPanel {
     }
 
     private void initializeUI() {
+
+        setPreferredSize(new Dimension(Utils.getWindowWidth(), Utils.getWindowHeight()));
         setBackground(Utils.darkBackground);
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 
@@ -45,7 +47,6 @@ public class CardWelcome extends JPanel {
             @Override
             public void mouseClicked(MouseEvent e) {
                 container.flipCard();
-                container.showLoading();
             }
         });
     }
