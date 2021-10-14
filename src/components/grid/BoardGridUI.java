@@ -295,11 +295,6 @@ public class BoardGridUI {
                 // Vertical swipe
                 moveBothTiles(startTile, endTile, spaceToMove, false);
 
-                tiles = grid.getTiles();
-                tiles[startTile.getTileRow()][startTile.getTileCol()] = startTile;
-                tiles[endTile.getTileRow()][endTile.getTileCol()] = endTile;
-                grid.setTiles(tiles);
-
                 if (startTile.getTileY() == initEndY
                         && endTile.getTileY() == initStartY) {
                     ((Timer) e.getSource()).stop();
@@ -495,6 +490,11 @@ public class BoardGridUI {
         int endRow = endTile.getTileRow();
         startTile.setTileRow(endRow);
         endTile.setTileRow(startRow);
+
+        int startCol = startTile.getTileCol();
+        int endCol = endTile.getTileCol();
+        startTile.setTileCol(endCol);
+        endTile.setTileCol(startCol);
 
         tiles[startTile.getTileRow()][startTile.getTileCol()] = startTile;
         tiles[endTile.getTileRow()][endTile.getTileCol()] = endTile;
