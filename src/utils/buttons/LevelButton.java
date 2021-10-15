@@ -28,7 +28,7 @@ public class LevelButton extends JButton {
         this.label = label;
         this.index = index;
         this.unlocked = unlocked;
-        this.font = Utils.generateFont(object, "../resources/font/shlop-rg.ttf");
+        this.font = Utils.generateFont(object, "../../resources/font/shlop-rg.ttf");
 
         Border emptyBorder = BorderFactory.createEmptyBorder();
         this.setBorder(emptyBorder);

@@ -14,17 +14,21 @@ import java.awt.*;
 
 public class CandyCrush extends JFrame {
 
+    private LoadingDialog loadingDialog;
+    private GameOverDialog gameOverDialog;
+
+    private JPanel cards;
+
+    private CardLayout cardLayout;
     private CardWelcome cardWelcome;
     private CardLevelChoice cardLevelChoice;
     private CardGameplay cardGameplay;
-    private LoadingDialog loadingDialog;
-    private GameOverDialog gameOverDialog;
-    private JPanel cards;
-    private CardLayout cardLayout;
 
     final static String WELCOMEPANEL = "Welcome panel";
     final static String LEVELPANEL = "Level panel";
     final static String GAMEPANEL = "Gameplay panel";
+
+    private String playerUsername;
 
     public CandyCrush() {
         super(Utils.getAppName());
@@ -37,7 +41,7 @@ public class CandyCrush extends JFrame {
         getContentPane().setBackground(Utils.darkBackground);
         setFrameVisuals();
 
-        //setup the cards
+        // Set up the cards
         cardLayout = new CardLayout();
         cards = new JPanel();
         cards.setLayout(cardLayout);
@@ -70,6 +74,13 @@ public class CandyCrush extends JFrame {
         setDefaultCloseOperation(EXIT_ON_CLOSE);
     }
 
+    public String getPlayerUsername() {
+        return this.playerUsername;
+    }
+
+    public void setPlayerUsername(String playerUsername) {
+        this.playerUsername = playerUsername;
+    }
 
     public void showLoading() {
         loadingDialog = new LoadingDialog(this);
@@ -77,7 +88,6 @@ public class CandyCrush extends JFrame {
 
         closeLoadingDialog();
     }
-
 
     private void closeLoadingDialog() {
         Timer timer = new Timer(100, arg0 -> {
@@ -89,7 +99,11 @@ public class CandyCrush extends JFrame {
         timer.start();
     }
 
-    public void flipCard() {
+    public void flipCard(boolean toLevelChoice) {
+        if (toLevelChoice) {
+            cardLevelChoice.reloadContent();
+        }
+
         cardLayout.next(cards);
     }
 

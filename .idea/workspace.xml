@@ -6,14 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="6b4cf923-17ad-46fa-bee3-8a7e44728267" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/CardGameplay.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/cards/CardGameplay.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/CardLevelChoice.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/cards/CardLevelChoice.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/CardWelcome.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/cards/CardWelcome.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/LevelButton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/buttons/LevelButton.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/TopPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/TopPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/grid/BoardGridUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/grid/BoardGridUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/cards/CardLevelChoice.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/cards/CardLevelChoice.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/cards/CardWelcome.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/cards/CardWelcome.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/CandyCrush.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/CandyCrush.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/progress.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/user/progress.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/user/progress.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/user/progress.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/Utils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/Utils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/buttons/LevelButton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/buttons/LevelButton.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,6 +43,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs_package_manager_path" value="npm" />
   </component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
@@ -52,6 +51,7 @@
       <recent name="Model" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\pvher\IdeaProjects\java-candy-crush\src\resources\user" />
       <recent name="C:\Users\jbies\StudioProjects\CandyCrush\src\resources\img" />
       <recent name="C:\Users\jbies\StudioProjects\CandyCrush\src" />
     </key>
@@ -86,5 +86,12 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <watches-manager>
+      <configuration name="Application">
+        <watch expression="parser" />
+      </configuration>
+    </watches-manager>
   </component>
 </project>

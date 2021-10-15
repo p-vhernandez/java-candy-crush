@@ -20,7 +20,6 @@ public class Utils {
     private static final String APP_NAME = "Halloween Candy Crush";
     private static final String WELCOME_BUTTON_LABEL = "Start";
 
-    //public static Color tileBorder = new Color(168, 168, 168);
     public static Color tileBorder = new Color(50, 168, 82);
     public static Color tileFill = new Color(44, 54, 47);
     public static Color darkBackground = new Color(44, 54, 47);
@@ -94,8 +93,7 @@ public class Utils {
         }
     }
 
-    public static void setCustomFont(Object object, JLabel label, String path,
-                                     float fontSize, int fontStyle) {
+    public static void setCustomFont(Object object, JLabel label, String path, float fontSize, int fontStyle) {
         Font customFont = Utils.generateFont(object, path);
         if (customFont != null) {
             label.setFont(customFont.deriveFont(fontStyle, fontSize));

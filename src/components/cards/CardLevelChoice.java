@@ -1,5 +1,6 @@
 package components.cards;
 
+import org.json.simple.JSONArray;
 import utils.buttons.LevelButton;
 import main.CandyCrush;
 
@@ -19,7 +20,6 @@ public class CardLevelChoice extends JPanel {
 
     private final CandyCrush container;
     private final ArrayList<LevelButton> levelButtons;
-    private final int horizontalMargin = 50;
 
     public CardLevelChoice(CandyCrush container) {
         this.container = container;
@@ -35,7 +35,21 @@ public class CardLevelChoice extends JPanel {
         setLayout(new FlowLayout());
 
         setUpLevelLabel();
+        setUpButtons();
+    }
 
+    private void setUpLevelLabel() {
+        JLabel label = new JLabel("Choose your level");
+        int horizontalMargin = 50;
+        label.setPreferredSize(new Dimension(Utils.getWindowWidth() - horizontalMargin * 2, 100));
+        Utils.setCustomFont(this, label,
+                "../../resources/font/creepster-rg.ttf", 56f, Font.PLAIN);
+        label.setForeground(Color.white);
+
+        add(label);
+    }
+
+    private void setUpButtons() {
         for (LevelButton button : levelButtons) {
             if (!button.isUnlocked()) {
                 button.setEnabled(false);
@@ -45,43 +59,56 @@ public class CardLevelChoice extends JPanel {
         }
     }
 
-    private void setUpLevelLabel() {
-        JLabel label = new JLabel("Choose your level");
-        label.setPreferredSize(new Dimension(Utils.getWindowWidth() - horizontalMargin * 2, 100));
-        Utils.setCustomFont(this, label,
-                "../resources/font/creepster-rg.ttf", 56f, Font.PLAIN);
-        label.setForeground(Color.white);
-
-        add(label);
-    }
-
     private void readJSON() {
         JSONParser parser = new JSONParser();
+        boolean playerFound = false;
 
         try {
-            Object obj = parser.parse(new FileReader("src/resources/user/progress.json"));
-            JSONObject jsonObject = (JSONObject) obj;
+            JSONObject jsonObject = (JSONObject) parser.parse(new FileReader("src/resources/user/progress.json"));
+            JSONArray players = (JSONArray) jsonObject.get("players");
 
-            for (int i = 1; i <= jsonObject.size(); i++) {
-                String name = "level" + i;
-                JSONObject jsonLevel = (JSONObject) jsonObject.get(name);
+            for (Object o : players) {
+                JSONObject player = (JSONObject) o;
+                String username = (String) player.get("username");
 
-                LevelButton button = new LevelButton(
-                        this,
-                        String.valueOf(Integer.parseInt((String) jsonLevel.get("index")) + 1),
-                        Integer.parseInt((String) jsonLevel.get("index")),
-                        (boolean) jsonLevel.get("unlocked")
-                );
+                if (username.equals(container.getPlayerUsername())) {
+                    JSONObject progress = (JSONObject) player.get("progress");
 
-                levelButtons.add(button);
+                    for (int j = 1; j <= progress.size(); j++) {
+                        String name = "level" + j;
+                        JSONObject jsonLevel = (JSONObject) progress.get(name);
+
+                        LevelButton button = new LevelButton(
+                                this,
+                                String.valueOf(Integer.parseInt((String) jsonLevel.get("index")) + 1),
+                                Integer.parseInt((String) jsonLevel.get("index")),
+                                (boolean) jsonLevel.get("unlocked")
+                        );
+
+                        levelButtons.add(button);
+                    }
+
+                    playerFound = true;
+                    break;
+                }
+            }
+
+            if (!playerFound) {
+                // TODO: create new player
+                System.out.println("new player!!!");
             }
         } catch (ParseException | IOException e) {
             e.printStackTrace();
         }
     }
 
+    public void reloadContent() {
+        readJSON();
+        setUpButtons();
+    }
+
     public void flipCard() {
-        container.flipCard();
+        container.flipCard(false);
         container.showLoading();
     }
 
