@@ -13,6 +13,7 @@ import utils.Utils;
 
 import java.awt.*;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -25,7 +26,6 @@ public class CardLevelChoice extends JPanel {
         this.container = container;
         this.levelButtons = new ArrayList<>();
 
-        readJSON();
         initializeUI();
     }
 
@@ -72,16 +72,15 @@ public class CardLevelChoice extends JPanel {
                 String username = (String) player.get("username");
 
                 if (username.equals(container.getPlayerUsername())) {
-                    JSONObject progress = (JSONObject) player.get("progress");
+                    JSONArray progress = (JSONArray) player.get("progress");
 
-                    for (int j = 1; j <= progress.size(); j++) {
-                        String name = "level" + j;
-                        JSONObject jsonLevel = (JSONObject) progress.get(name);
+                    for (Object level : progress) {
+                        JSONObject jsonLevel = (JSONObject) level;
 
                         LevelButton button = new LevelButton(
                                 this,
-                                String.valueOf(Integer.parseInt((String) jsonLevel.get("index")) + 1),
-                                Integer.parseInt((String) jsonLevel.get("index")),
+                                (int) (long) jsonLevel.get("level"),
+                                (int) (long) jsonLevel.get("index"),
                                 (boolean) jsonLevel.get("unlocked")
                         );
 
@@ -95,10 +94,55 @@ public class CardLevelChoice extends JPanel {
 
             if (!playerFound) {
                 // TODO: create new player
-                System.out.println("new player!!!");
+                generateNewPlayer(jsonObject);
+                reloadContent();
             }
         } catch (ParseException | IOException e) {
             e.printStackTrace();
+        }
+    }
+
+    private void generateNewPlayer(JSONObject jsonObject) {
+        try {
+            JSONObject newPlayer = new JSONObject();
+            JSONArray progress = new JSONArray();
+
+            for (int i = 0; i < Utils.getTotalLevels(); i++) {
+                JSONObject level = new JSONObject();
+
+                level.put("level", i + 1);
+                level.put("index", i);
+
+                if (i == 0) {
+                    level.put("unlocked", true);
+                } else {
+                    level.put("unlocked", false);
+                }
+
+                progress.add(level);
+            }
+
+            newPlayer.put("username", container.getPlayerUsername());
+            newPlayer.put("global-score", 0);
+            newPlayer.put("progress", progress);
+
+            ((JSONArray) jsonObject.get("players")).add(newPlayer);
+            addPlayerToJSON(jsonObject);
+        } catch (Exception e) {
+            e.printStackTrace();
+            // TODO: show error message
+        }
+    }
+
+    private void addPlayerToJSON(JSONObject jsonObject) {
+        try {
+            FileWriter file = new FileWriter("src/resources/user/progress.json");
+            System.out.println(jsonObject);
+            file.write(jsonObject.toJSONString());
+            file.flush();
+        } catch (Exception e) {
+            e.printStackTrace();
+            // TODO: show error message
         }
     }
 

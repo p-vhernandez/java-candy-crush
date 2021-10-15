@@ -15,19 +15,21 @@ public class Utils {
     private static final int TOP_BAR_COMPONENTS_HEIGHT = 90;
     private static final int MOVEMENTS_PANEL_WIDTH = 100;
     private static final int TILE_SIZE = 40;
-    private static final int ICON_SIZE = 35;
-
-    private static final String APP_NAME = "Halloween Candy Crush";
-    private static final String WELCOME_BUTTON_LABEL = "Start";
-
-    public static Color tileBorder = new Color(50, 168, 82);
-    public static Color tileFill = new Color(44, 54, 47);
-    public static Color darkBackground = new Color(44, 54, 47);
-    public static Color halloweenOrange = new Color(252, 127, 3);
+    private static final int TOTAL_LEVELS = 15;
 
     public static int getWindowWidth() {
         return WINDOW_WIDTH;
     }
+
+    private static final int ICON_SIZE = 35;
+    private static final String APP_NAME = "Halloween Candy Crush";
+
+    private static final String WELCOME_BUTTON_LABEL = "Start";
+    public static Color tileBorder = new Color(50, 168, 82);
+    public static Color tileFill = new Color(44, 54, 47);
+    public static Color darkBackground = new Color(44, 54, 47);
+
+    public static Color halloweenOrange = new Color(252, 127, 3);
 
     public static int getWindowHeight() {
         return WINDOW_HEIGHT;
@@ -71,6 +73,10 @@ public class Utils {
 
     public static int getBoardPanelHeight() {
         return BOARD_PANEL_HEIGHT;
+    }
+
+    public static int getTotalLevels() {
+        return TOTAL_LEVELS;
     }
 
     public static Image generateImage(Object object, String path) {

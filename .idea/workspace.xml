@@ -7,8 +7,6 @@
     <list default="true" id="6b4cf923-17ad-46fa-bee3-8a7e44728267" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/cards/CardLevelChoice.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/cards/CardLevelChoice.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/cards/CardWelcome.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/cards/CardWelcome.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/CandyCrush.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/CandyCrush.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/resources/user/progress.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/user/progress.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/utils/Utils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/Utils.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/utils/buttons/LevelButton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/buttons/LevelButton.java" afterDir="false" />

@@ -22,10 +22,10 @@ public class LevelButton extends JButton {
 
     private final Font font;
 
-    public LevelButton(Object object, String label, int index, boolean unlocked) {
+    public LevelButton(Object object, int level, int index, boolean unlocked) {
         this.cardLevelChoice = (CardLevelChoice) object;
 
-        this.label = label;
+        this.label = String.valueOf(level);
         this.index = index;
         this.unlocked = unlocked;
         this.font = Utils.generateFont(object, "../../resources/font/shlop-rg.ttf");
