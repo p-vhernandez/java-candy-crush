@@ -43,6 +43,7 @@ public class LevelButton extends JButton {
             addMouseListener(new MouseAdapter() {
                 @Override
                 public void mouseClicked(MouseEvent e) {
+                    cardLevelChoice.selectLevel(index);
                     cardLevelChoice.flipCard();
                 }
             });

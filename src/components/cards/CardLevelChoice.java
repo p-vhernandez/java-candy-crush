@@ -1,6 +1,7 @@
 package components.cards;
 
 import org.json.simple.JSONArray;
+import utils.Level;
 import utils.buttons.LevelButton;
 import main.CandyCrush;
 
@@ -144,6 +145,11 @@ public class CardLevelChoice extends JPanel {
             e.printStackTrace();
             // TODO: show error message
         }
+    }
+
+    public void selectLevel(int index) {
+        Level level = new Level(index + 1);
+        container.setSelectedLevel(level);
     }
 
     public void reloadContent() {

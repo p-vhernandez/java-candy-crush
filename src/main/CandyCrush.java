@@ -6,7 +6,6 @@ import components.cards.CardWelcome;
 import utils.dialogs.GameOverDialog;
 import utils.dialogs.LoadingDialog;
 import utils.Level;
-import utils.helpers.LevelType;
 import utils.Utils;
 
 import javax.swing.*;
@@ -29,6 +28,7 @@ public class CandyCrush extends JFrame {
     final static String GAMEPANEL = "Gameplay panel";
 
     private String playerUsername;
+    private Level selectedLevel;
 
     public CandyCrush() {
         super(Utils.getAppName());
@@ -49,7 +49,7 @@ public class CandyCrush extends JFrame {
 
         cardWelcome = new CardWelcome(this);
         cardLevelChoice = new CardLevelChoice(this);
-        cardGameplay = new CardGameplay(new Level(LevelType.SQUARE));
+        cardGameplay = new CardGameplay();
 
         cards.add(cardWelcome, WELCOMEPANEL);
         cards.add(cardLevelChoice, LEVELPANEL);
@@ -82,6 +82,14 @@ public class CandyCrush extends JFrame {
         this.playerUsername = playerUsername;
     }
 
+    public Level getSelectedLevel() {
+        return this.selectedLevel;
+    }
+
+    public void setSelectedLevel(Level level) {
+        this.selectedLevel = level;
+    }
+
     public void showLoading() {
         loadingDialog = new LoadingDialog(this);
         loadingDialog.openLoading();
@@ -102,6 +110,8 @@ public class CandyCrush extends JFrame {
     public void flipCard(boolean toLevelChoice) {
         if (toLevelChoice) {
             cardLevelChoice.reloadContent();
+        } else {
+            cardGameplay.loadGame(getSelectedLevel());
         }
 
         cardLayout.next(cards);

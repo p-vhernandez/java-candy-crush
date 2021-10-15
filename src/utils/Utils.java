@@ -8,7 +8,7 @@ import java.util.Objects;
 public class Utils {
 
     private static final int WINDOW_WIDTH = 600;
-    private static final int WINDOW_HEIGHT = 600;
+    private static final int WINDOW_HEIGHT = 800;
     private static final int BOARD_PANEL_WIDTH = 600;
     private static final int BOARD_PANEL_HEIGHT = 400;
     private static final int TOP_BAR_HEIGHT = 120;
