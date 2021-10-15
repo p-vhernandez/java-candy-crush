@@ -1,7 +1,7 @@
 package components.grid;
 
 import components.BoardTile;
-import components.CardGameplay;
+import components.cards.CardGameplay;
 import utils.Level;
 import utils.helpers.Crush;
 import utils.helpers.Explosion;

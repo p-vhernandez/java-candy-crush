@@ -1,5 +1,6 @@
-package components;
+package components.cards;
 
+import components.TopPanel;
 import components.grid.BoardGrid;
 import utils.Level;
 import utils.Utils;

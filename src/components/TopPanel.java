@@ -1,5 +1,6 @@
 package components;
 
+import components.cards.CardGameplay;
 import utils.dialogs.GameOverDialog;
 import utils.Utils;
 

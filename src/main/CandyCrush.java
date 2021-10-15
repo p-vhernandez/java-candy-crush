@@ -1,6 +1,8 @@
 package main;
 
-import components.*;
+import components.cards.CardGameplay;
+import components.cards.CardLevelChoice;
+import components.cards.CardWelcome;
 import utils.dialogs.GameOverDialog;
 import utils.dialogs.LoadingDialog;
 import utils.Level;

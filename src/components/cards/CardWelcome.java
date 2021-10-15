@@ -1,4 +1,4 @@
-package components;
+package components.cards;
 
 import main.CandyCrush;
 import utils.Utils;

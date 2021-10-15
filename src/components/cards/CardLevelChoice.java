@@ -1,5 +1,6 @@
-package components;
+package components.cards;
 
+import utils.buttons.LevelButton;
 import main.CandyCrush;
 
 import javax.swing.*;
@@ -10,8 +11,6 @@ import org.json.simple.parser.ParseException;
 import utils.Utils;
 
 import java.awt.*;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -60,7 +59,7 @@ public class CardLevelChoice extends JPanel {
         JSONParser parser = new JSONParser();
 
         try {
-            Object obj = parser.parse(new FileReader("src/resources/progress.json"));
+            Object obj = parser.parse(new FileReader("src/resources/user/progress.json"));
             JSONObject jsonObject = (JSONObject) obj;
 
             for (int i = 1; i <= jsonObject.size(); i++) {

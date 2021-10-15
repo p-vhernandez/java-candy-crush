@@ -1,5 +1,6 @@
-package components;
+package utils.buttons;
 
+import components.cards.CardLevelChoice;
 import utils.Utils;
 
 import javax.swing.*;
@@ -10,7 +11,7 @@ import java.awt.event.MouseEvent;
 
 public class LevelButton extends JButton {
 
-    private CardLevelChoice cardLevelChoice;
+    private final CardLevelChoice cardLevelChoice;
 
     private String label;
 
