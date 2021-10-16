@@ -2,6 +2,7 @@ package utils.helpers;
 
 import components.BoardTile;
 import components.grid.BoardGrid;
+import components.grid.BoardGridUI;
 
 import javax.swing.*;
 import java.awt.*;
@@ -59,22 +60,25 @@ public class Crush {
     }
 
     public void explode(BoardGrid grid) {
-        Timer expxlosionTimer = new Timer(5, e -> {
+        Timer explosionTimer = new Timer(5, e -> {
             for (int i = 0; i < explosions.size(); i++) {
                 boolean remove = explosions.get(i).update();
 
                 if (remove) {
                     explosions.remove(explosions.get(i));
-                    i--;
-                    ((Timer) e.getSource()).stop();
+                    if (explosions.size() == 0) {
+                        grid.removeCandies(crushedCandies);
+                        i = explosions.size();
+                        ((Timer) e.getSource()).stop();
+                    }
                 }
             }
 
             grid.repaint();
         });
 
-        expxlosionTimer.setRepeats(true);
-        expxlosionTimer.start();
+        explosionTimer.setRepeats(true);
+        explosionTimer.start();
     }
 
 }

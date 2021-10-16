@@ -5,11 +5,16 @@ import utils.Utils;
 import utils.helpers.Crush;
 import utils.Level;
 import utils.helpers.LevelType;
+import utils.helpers.TileType;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Random;
 
 public class BoardGrid extends JPanel {
 
@@ -21,7 +26,7 @@ public class BoardGrid extends JPanel {
 
     private int tilesXAxis, tilesYAxis;
 
-    private BoardTile[][] tiles;
+    private ArrayList<ArrayList<BoardTile>> tiles = new ArrayList<>();
     private BoardTile tileDragStart, tileDragEnd;
 
     public BoardGrid(Level level) {
@@ -29,8 +34,6 @@ public class BoardGrid extends JPanel {
 
         this.tilesXAxis = level.getNumRows();
         this.tilesYAxis = level.getNumColumns();
-
-        this.tiles = new BoardTile[tilesYAxis][tilesXAxis];
 
         this.model = new BoardGridModel();
         this.model.addChangeListener((e -> repaint()));
@@ -108,11 +111,11 @@ public class BoardGrid extends JPanel {
         this.level = level;
     }
 
-    public BoardTile[][] getTiles() {
+    public ArrayList<ArrayList<BoardTile>> getTiles() {
         return tiles;
     }
 
-    public void setTiles(BoardTile[][] tiles) {
+    public void setTiles(ArrayList<ArrayList<BoardTile>> tiles) {
         this.tiles = tiles;
         repaint();
     }
@@ -172,15 +175,127 @@ public class BoardGrid extends JPanel {
      * @param potentialCrush - Object that stores the crush to explode.
      */
     public void crushed(Crush potentialCrush) {
-        BoardTile[][] changedTiles = getTiles();
+        ArrayList<ArrayList<BoardTile>> changedTiles = getTiles();
         for (BoardTile tile : potentialCrush.getCrushedCandies()) {
             int row = tile.getTileRow();
             int col = tile.getTileCol();
+            ArrayList<BoardTile> changedRow = tiles.get(row);
+            changedRow.set(col, tile);
 
-            changedTiles[row][col] = tile;
+            changedTiles.set(row, changedRow);
         }
 
         setTiles(changedTiles);
+    }
+
+    public void removeCandies(ArrayList<BoardTile> crushedCandies) {
+        for (BoardTile tile : crushedCandies) {
+            tiles.get(tile.getTileRow()).get(tile.getTileCol()).setTileType(TileType.CRUSHED);
+        }
+        dropCandies();
+        repaint();
+    }
+
+    public void dropCandies() {
+
+        int[] crushedInCol = new int[tiles.size()];
+        int[] minCrushRow = new int[tiles.size()];
+        boolean[] colUpdating = new boolean[tiles.size()];
+        ArrayList<Integer> tileInitValY = new ArrayList<>();
+        ArrayList<ArrayList<BoardTile>> oldTiles = tiles;
+
+        for (int i = 0; i < tiles.size(); i++) {
+            for (int j = 0; j < tiles.get(i).size(); j++) {
+                if (tiles.get(i).get(j).getTileType() == TileType.CRUSHED) {
+                    crushedInCol[j]++;
+                    if (minCrushRow[j] == 0 && !colUpdating[j]) {
+                        minCrushRow[j] = i;
+                    }
+                    if (!colUpdating[j]) colUpdating[j] = true;
+                }
+            }
+        }
+
+        for (int i = 0; i < crushedInCol.length; i++) {
+            if (crushedInCol[i] == 0 || minCrushRow[i] == 0) {
+                tileInitValY.add(0);
+            } else {
+                tileInitValY.add(tiles.get(minCrushRow[i]-1).get(i).getTileY());
+            }
+        }
+
+        ArrayList<ArrayList<BoardTile>> newTiles = generateNewTiles(crushedInCol, minCrushRow);
+        updateRowsCols(crushedInCol, minCrushRow, newTiles);
+
+        Timer dropTimer = new Timer(0, e -> {
+            boolean updating = false;
+            for (int i = 0; i < crushedInCol.length; i++) {
+                int spaceToMove = crushedInCol[i] * Utils.getTileSize();
+                if (minCrushRow[i] > 0) {
+                    for (int j = minCrushRow[i]+crushedInCol[i]-1; j >= 0; j--) {
+                        if (colUpdating[i]) {
+                            BoardTile tileToMove = tiles.get(j).get(i);
+                            tileToMove.setTileY(tileToMove.getTileY()+Utils.getTileSize()/10);
+                        }
+                    }
+                    if (tiles.get(minCrushRow[i]+crushedInCol[i]-1).get(i).getTileY() - tileInitValY.get(i) == spaceToMove) {
+                        colUpdating[i] = false;
+                    }
+                }
+            }
+            repaint();
+            for (boolean colUpdate : colUpdating) {
+                if (colUpdate) updating = true;
+            }
+            if (!updating) {
+                ((Timer) e.getSource()).stop();
+            }
+        });
+        dropTimer.setRepeats(true);
+        dropTimer.setInitialDelay(0);
+        dropTimer.start();
+
+    }
+
+    private void updateRowsCols(int[] crushedInCol, int[] minCrushRow, ArrayList<ArrayList<BoardTile>> newTiles) {
+        for (int i = 0; i < crushedInCol.length; i++) {
+            if (minCrushRow[i] > 0) {
+                for (int j = minCrushRow[i]-1; j >= 0; j--) {
+                    BoardTile tileToUpdate = tiles.get(j).get(i);
+                    tileToUpdate.setTileRow(j+crushedInCol[i]);
+                    tiles.get(j+crushedInCol[i]).set(i, tileToUpdate);
+                }
+            }
+        }
+
+        for (ArrayList<BoardTile> col : newTiles) {
+            for (BoardTile tile : col) {
+                tiles.get(tile.getTileRow()).set(tile.getTileCol(), tile);
+            }
+        }
+    }
+
+    public ArrayList<ArrayList<BoardTile>> generateNewTiles(int[] crushedInCol, int[] minCrushRow) {
+        ArrayList<ArrayList<BoardTile>> newTiles = new ArrayList<>();
+        Random random = new Random();
+        TileType[] types = {
+                TileType.ROUND_LOLLI,
+                TileType.ORANGE_CANDY,
+                TileType.SWIRL_LOLLI,
+                TileType.EYEBALL,
+                TileType.PUMPKIN
+        };
+
+        for (int i = 0; i < crushedInCol.length; i++) {
+            newTiles.add(new ArrayList<>());
+            for (int j = 1; j <= crushedInCol[i]; j++) {
+                TileType type = types[random.nextInt(5)];
+                newTiles.get(i).add(new BoardTile(type, j-1, i,
+                        i*Utils.getTileSize(), -(crushedInCol[i]-j+1)*Utils.getTileSize()));
+                System.out.println(type);
+            }
+        }
+        return newTiles;
     }
 
 }
