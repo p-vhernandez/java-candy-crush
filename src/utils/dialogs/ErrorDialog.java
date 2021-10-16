@@ -8,21 +8,21 @@ import javax.swing.border.LineBorder;
 import java.awt.*;
 import java.util.Objects;
 
-public class GameOverDialog extends JDialog {
+public class ErrorDialog extends JDialog {
 
     private final JPanel dialogPanel;
 
-    private final JLabel lblGameOver;
+    private final JLabel lblError;
     private final JButton btnDismiss;
 
     private static final int DIALOG_WIDTH = 300;
     private static final int DIALOG_HEIGHT = 150;
 
-    public GameOverDialog() {
+    public ErrorDialog(String infoLabel) {
         this.dialogPanel = new JPanel();
 
-        lblGameOver = Utils.generateDialogInfo(this, "Game over. ");
-        btnDismiss = Utils.generateDialogDismissButton(this, "Accept defeat");
+        this.lblError = Utils.generateDialogInfo(this, infoLabel);
+        this.btnDismiss = Utils.generateDialogDismissButton(this, "Ok");
 
         initialize();
     }
@@ -32,7 +32,7 @@ public class GameOverDialog extends JDialog {
         Utils.adaptDialogPanel(dialogPanel);
         setUpListeners();
 
-        dialogPanel.add(lblGameOver);
+        dialogPanel.add(lblError);
         dialogPanel.add(btnDismiss);
 
         add(dialogPanel);
@@ -40,10 +40,6 @@ public class GameOverDialog extends JDialog {
 
     private void setUpListeners() {
         btnDismiss.addActionListener(listener -> dispose());
-    }
-
-    public void paint(Graphics graphics) {
-        super.paint(graphics);
     }
 
 }

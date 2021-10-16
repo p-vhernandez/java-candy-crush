@@ -6,7 +6,13 @@
   <component name="ChangeListManager">
     <list default="true" id="6b4cf923-17ad-46fa-bee3-8a7e44728267" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/grid/BoardGridUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/grid/BoardGridUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/cards/CardGameplay.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/cards/CardGameplay.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/cards/CardLevelChoice.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/cards/CardLevelChoice.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/cards/CardWelcome.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/cards/CardWelcome.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/grid/BoardGrid.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/grid/BoardGrid.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/CandyCrush.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/CandyCrush.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/Utils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/Utils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/dialogs/GameOverDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/dialogs/GameOverDialog.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,6 +49,8 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
   </component>
@@ -121,65 +129,6 @@
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
-  </component>
-  <component name="WindowStateProjectService">
-    <state x="446" y="25" key="#com.intellij.ide.util.MemberChooser" timestamp="1634241867468">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state x="446" y="25" key="#com.intellij.ide.util.MemberChooser/0.0.1280.680@0.0.1280.680" timestamp="1634241867468" />
-    <state x="395" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1634151591234">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state x="395" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1280.680@0.0.1280.680" timestamp="1634151591234" />
-    <state x="442" y="95" key="FileChooserDialogImpl" timestamp="1634152590339">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state x="442" y="95" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1634152590339" />
-    <state width="1237" height="57" key="GridCell.Tab.0.bottom" timestamp="1634409256194">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state width="1237" height="57" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1634409256194" />
-    <state width="1237" height="57" key="GridCell.Tab.0.center" timestamp="1634409256194">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state width="1237" height="57" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1634409256194" />
-    <state width="1237" height="57" key="GridCell.Tab.0.left" timestamp="1634409256194">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state width="1237" height="57" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1634409256194" />
-    <state width="1237" height="57" key="GridCell.Tab.0.right" timestamp="1634409256194">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state width="1237" height="57" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1634409256194" />
-    <state width="1237" height="57" key="GridCell.Tab.1.bottom" timestamp="1634409256194">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state width="1237" height="57" key="GridCell.Tab.1.bottom/0.0.1280.680@0.0.1280.680" timestamp="1634409256194" />
-    <state width="1237" height="57" key="GridCell.Tab.1.center" timestamp="1634409256194">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state width="1237" height="57" key="GridCell.Tab.1.center/0.0.1280.680@0.0.1280.680" timestamp="1634409256194" />
-    <state width="1237" height="57" key="GridCell.Tab.1.left" timestamp="1634409256194">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state width="1237" height="57" key="GridCell.Tab.1.left/0.0.1280.680@0.0.1280.680" timestamp="1634409256194" />
-    <state width="1237" height="57" key="GridCell.Tab.1.right" timestamp="1634409256194">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state width="1237" height="57" key="GridCell.Tab.1.right/0.0.1280.680@0.0.1280.680" timestamp="1634409256194" />
-    <state x="142" y="0" key="SettingsEditor" timestamp="1634152596888">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state x="142" y="0" key="SettingsEditor/0.0.1280.680@0.0.1280.680" timestamp="1634152596888" />
-    <state x="371" y="121" key="extract.method.dialog" timestamp="1633708878518">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state x="371" y="121" key="extract.method.dialog/0.0.1280.680@0.0.1280.680" timestamp="1633708878518" />
-    <state x="303" y="1" width="672" height="678" key="search.everywhere.popup" timestamp="1634237712997">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state x="303" y="1" width="672" height="678" key="search.everywhere.popup/0.0.1280.680@0.0.1280.680" timestamp="1634237712997" />
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="XDebuggerManager">

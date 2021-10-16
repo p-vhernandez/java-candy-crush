@@ -128,7 +128,6 @@ public class BoardGrid extends JPanel {
         this.model = model;
     }
 
-    // Layout
     public BoardTile getTileDragStart() {
         return tileDragStart;
     }
@@ -192,12 +191,12 @@ public class BoardGrid extends JPanel {
         for (BoardTile tile : crushedCandies) {
             tiles.get(tile.getTileRow()).get(tile.getTileCol()).setTileType(TileType.CRUSHED);
         }
+
         dropCandies();
         repaint();
     }
 
     public void dropCandies() {
-
         int[] crushedInCol = new int[tiles.size()];
         int[] minCrushRow = new int[tiles.size()];
         boolean[] colUpdating = new boolean[tiles.size()];
@@ -220,7 +219,7 @@ public class BoardGrid extends JPanel {
             if (crushedInCol[i] == 0 || minCrushRow[i] == 0) {
                 tileInitValY.add(0);
             } else {
-                tileInitValY.add(tiles.get(minCrushRow[i]-1).get(i).getTileY());
+                tileInitValY.add(tiles.get(minCrushRow[i] - 1).get(i).getTileY());
             }
         }
 
@@ -229,41 +228,47 @@ public class BoardGrid extends JPanel {
 
         Timer dropTimer = new Timer(0, e -> {
             boolean updating = false;
+
             for (int i = 0; i < crushedInCol.length; i++) {
                 int spaceToMove = crushedInCol[i] * Utils.getTileSize();
+
                 if (minCrushRow[i] > 0) {
-                    for (int j = minCrushRow[i]+crushedInCol[i]-1; j >= 0; j--) {
+                    for (int j = minCrushRow[i] + crushedInCol[i] - 1; j >= 0; j--) {
                         if (colUpdating[i]) {
                             BoardTile tileToMove = tiles.get(j).get(i);
-                            tileToMove.setTileY(tileToMove.getTileY()+Utils.getTileSize()/10);
+                            tileToMove.setTileY(tileToMove.getTileY() + Utils.getTileSize() / 10);
                         }
                     }
-                    if (tiles.get(minCrushRow[i]+crushedInCol[i]-1).get(i).getTileY() - tileInitValY.get(i) == spaceToMove) {
+
+                    if (tiles.get(minCrushRow[i] + crushedInCol[i] - 1).get(i).getTileY() - tileInitValY.get(i) == spaceToMove) {
                         colUpdating[i] = false;
                     }
                 }
             }
+
             repaint();
+
             for (boolean colUpdate : colUpdating) {
                 if (colUpdate) updating = true;
             }
+
             if (!updating) {
                 ((Timer) e.getSource()).stop();
             }
         });
+
         dropTimer.setRepeats(true);
         dropTimer.setInitialDelay(0);
         dropTimer.start();
-
     }
 
     private void updateRowsCols(int[] crushedInCol, int[] minCrushRow, ArrayList<ArrayList<BoardTile>> newTiles) {
         for (int i = 0; i < crushedInCol.length; i++) {
             if (minCrushRow[i] > 0) {
-                for (int j = minCrushRow[i]-1; j >= 0; j--) {
+                for (int j = minCrushRow[i] - 1; j >= 0; j--) {
                     BoardTile tileToUpdate = tiles.get(j).get(i);
-                    tileToUpdate.setTileRow(j+crushedInCol[i]);
-                    tiles.get(j+crushedInCol[i]).set(i, tileToUpdate);
+                    tileToUpdate.setTileRow(j + crushedInCol[i]);
+                    tiles.get(j + crushedInCol[i]).set(i, tileToUpdate);
                 }
             }
         }
@@ -290,8 +295,8 @@ public class BoardGrid extends JPanel {
             newTiles.add(new ArrayList<>());
             for (int j = 1; j <= crushedInCol[i]; j++) {
                 TileType type = types[random.nextInt(5)];
-                newTiles.get(i).add(new BoardTile(type, j-1, i,
-                        i*Utils.getTileSize(), -(crushedInCol[i]-j+1)*Utils.getTileSize()));
+                newTiles.get(i).add(new BoardTile(type, j - 1, i,
+                        i * Utils.getTileSize(), -(crushedInCol[i] - j + 1) * Utils.getTileSize()));
                 System.out.println(type);
             }
         }

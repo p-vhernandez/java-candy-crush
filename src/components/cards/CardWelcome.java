@@ -2,6 +2,7 @@ package components.cards;
 
 import main.CandyCrush;
 import utils.Utils;
+import utils.helpers.CardType;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -81,16 +82,8 @@ public class CardWelcome extends JPanel {
     }
 
     private void setUpStartButton() {
-        startButton = new JButton(Utils.getWelcomeButtonLabel());
-        startButton.setBackground(Utils.halloweenOrange);
-        startButton.setForeground(Utils.darkBackground);
-        startButton.setFocusPainted(false);
-        startButton.setAlignmentX(Component.CENTER_ALIGNMENT);
-
-        startButton.setFont(Objects.requireNonNull(Utils.generateFont(
-                        this, "../../resources/font/caramel-rg.ttf")
-                ).deriveFont(Font.BOLD, 42f)
-        );
+        startButton = Utils.generateDefaultAppButton(this,
+                Utils.getWelcomeButtonLabel());
 
         initializeListeners();
         add(startButton, BorderLayout.SOUTH);
@@ -102,7 +95,7 @@ public class CardWelcome extends JPanel {
             public void mouseClicked(MouseEvent e) {
                 String username = textFieldUsername.getText();
                 container.setPlayerUsername(username);
-                container.flipCard(true);
+                container.flipCard(CardType.WELCOME, CardType.LEVELS);
             }
         });
     }

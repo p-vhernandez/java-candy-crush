@@ -1,6 +1,8 @@
 package utils;
 
 import javax.swing.*;
+import javax.swing.border.EmptyBorder;
+import javax.swing.border.LineBorder;
 import java.awt.*;
 import java.io.InputStream;
 import java.util.Objects;
@@ -104,6 +106,67 @@ public class Utils {
         if (customFont != null) {
             label.setFont(customFont.deriveFont(fontStyle, fontSize));
         }
+    }
+
+    public static JButton generateDefaultAppButton(Object object, String buttonText) {
+        JButton button = new JButton(buttonText);
+        button.setBackground(Utils.halloweenOrange);
+        button.setForeground(Utils.darkBackground);
+        button.setFocusPainted(false);
+        button.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+        button.setFont(Objects.requireNonNull(Utils.generateFont(
+                        object, "../../resources/font/caramel-rg.ttf")
+                ).deriveFont(Font.BOLD, 42f)
+        );
+
+        return button;
+    }
+
+    public static void adaptDialogSetup(JDialog dialog, int width, int height) {
+        dialog.setResizable(false);
+        dialog.setModal(false);
+        dialog.setUndecorated(true);
+        dialog.setSize(width, height);
+        dialog.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
+        dialog.setLocationRelativeTo(null);
+    }
+
+    public static void adaptDialogPanel(JPanel dialogPanel) {
+        dialogPanel.setLayout(new BoxLayout(dialogPanel, BoxLayout.Y_AXIS));
+        dialogPanel.setBorder(new LineBorder(Utils.halloweenOrange, 5));
+        dialogPanel.setBackground(Utils.darkBackground);
+    }
+
+    public static JLabel generateDialogInfo(Object object, String infoLabel) {
+        JLabel dialogLabel = new JLabel();
+
+        dialogLabel.setText(infoLabel);
+        dialogLabel.setForeground(Color.white);
+        Utils.setCustomFont(object, dialogLabel, "../../resources/font/deanna.ttf", 32f, Font.PLAIN);
+        dialogLabel.setIcon(new ImageIcon(Utils.generateImage(object, "../../resources/img/eye-ball.png")
+                .getScaledInstance(45, 45, Image.SCALE_SMOOTH)));
+
+        dialogLabel.setBorder(new EmptyBorder(20, 0, 20, 0));
+        dialogLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+        return dialogLabel;
+    }
+
+    public static JButton generateDialogDismissButton(Object object, String buttonLabel) {
+        JButton dialogButton = new JButton();
+
+        dialogButton.setText(buttonLabel);
+        dialogButton.setBackground(Utils.halloweenOrange);
+        dialogButton.setForeground(Utils.darkBackground);
+        dialogButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+        dialogButton.setFont(Objects.requireNonNull(
+                        Utils.generateFont(object, "../../resources/font/caramel-rg.ttf"))
+                .deriveFont(Font.BOLD, 28f)
+        );
+
+        return dialogButton;
     }
 
 }

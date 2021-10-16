@@ -11,6 +11,8 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 import utils.Utils;
+import utils.dialogs.ErrorDialog;
+import utils.helpers.CardType;
 
 import java.awt.*;
 import java.io.FileReader;
@@ -23,6 +25,8 @@ public class CardLevelChoice extends JPanel {
     private final CandyCrush container;
     private final ArrayList<LevelButton> levelButtons;
 
+    private ErrorDialog errorDialog;
+
     public CardLevelChoice(CandyCrush container) {
         this.container = container;
         this.levelButtons = new ArrayList<>();
@@ -34,9 +38,6 @@ public class CardLevelChoice extends JPanel {
         setPreferredSize(new Dimension(Utils.getWindowWidth(), Utils.getWindowHeight()));
         setBackground(Utils.darkBackground);
         setLayout(new FlowLayout());
-
-        setUpLevelLabel();
-        setUpButtons();
     }
 
     private void setUpLevelLabel() {
@@ -95,12 +96,12 @@ public class CardLevelChoice extends JPanel {
             }
 
             if (!playerFound) {
-                // TODO: create new player
                 generateNewPlayer(jsonObject);
                 reloadContent();
             }
         } catch (ParseException | IOException e) {
             e.printStackTrace();
+            showError("Could not read the player data. ");
         }
     }
 
@@ -132,7 +133,7 @@ public class CardLevelChoice extends JPanel {
             addPlayerToJSON(jsonObject);
         } catch (Exception e) {
             e.printStackTrace();
-            // TODO: show error message
+            showError("Could not create new user. ");
         }
     }
 
@@ -144,8 +145,13 @@ public class CardLevelChoice extends JPanel {
             file.flush();
         } catch (Exception e) {
             e.printStackTrace();
-            // TODO: show error message
+            showError("Could not create new user. ");
         }
+    }
+
+    private void showError(String infoLabel) {
+        errorDialog = new ErrorDialog(infoLabel);
+        errorDialog.setVisible(true);
     }
 
     public void selectLevel(int index) {
@@ -154,12 +160,16 @@ public class CardLevelChoice extends JPanel {
     }
 
     public void reloadContent() {
+        removeAll();
+
+        // TODO: clear buttons to re-create them
+        setUpLevelLabel();
         readJSON();
         setUpButtons();
     }
 
     public void flipCard() {
-        container.flipCard(false);
+        container.flipCard(CardType.LEVELS, CardType.GAME_PLAY);
         container.showLoading();
     }
 
