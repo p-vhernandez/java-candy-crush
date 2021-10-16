@@ -1,5 +1,6 @@
-package components;
+package components.cards;
 
+import components.TopPanel;
 import components.grid.BoardGrid;
 import utils.Level;
 import utils.Utils;
@@ -15,7 +16,9 @@ public class CardGameplay extends JPanel {
     private static TopPanel topPanel;
     private BoardGrid grid;
 
-    public CardGameplay(Level level) {
+    private Level level;
+
+    public CardGameplay() {
         setupUI();
     }
 
@@ -28,6 +31,11 @@ public class CardGameplay extends JPanel {
         setBorder(blackline);
 
         setUpTopPanel();
+    }
+
+    public void loadGame(Level level) {
+        this.level = level;
+
         setUpBoardPanel();
     }
 
@@ -39,12 +47,10 @@ public class CardGameplay extends JPanel {
         setPreferredSize(new Dimension(Utils.getBoardPanelWidth(), Utils.getBoardPanelHeight()));
 
         add(boardPanel);
+        grid = new BoardGrid(level);
 
-        Level selectedLevel = new Level(LevelType.SQUARE);
-        grid = new BoardGrid(selectedLevel);
-
-        setGoal(selectedLevel.getLevelGoal());
-        setMaxMovements(selectedLevel.getMaxMovements());
+        setGoal(level.getLevelGoal());
+        setMaxMovements(level.getMaxMovements());
 
         boardPanel.add(grid);
     }

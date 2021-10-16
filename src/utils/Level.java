@@ -4,7 +4,7 @@ import utils.helpers.LevelType;
 
 public class Level {
 
-    private final LevelType levelType;
+    private final int difficulty;
 
     private int MAX_MOVEMENTS;
     private int STANDARD_CANDY_CRUSHED,
@@ -16,53 +16,190 @@ public class Level {
 
     private int LEVEL_GOAL;
 
-    public Level(LevelType type) {
-        this.levelType = type;
+    private LevelType LEVEL_TYPE;
+
+    public Level(int difficulty) {
+        this.difficulty = difficulty;
 
         setUpLevelCharacteristics();
     }
 
     // TODO: set up all level's characteristics
     private void setUpLevelCharacteristics() {
-        switch (levelType) {
-            case RECTANGLE: {
+        switch (difficulty) {
+            case 1: {
+                LEVEL_TYPE = LevelType.SQUARE;
                 STANDARD_CANDY_CRUSHED = 0;
                 SPECIAL_CANDY_CRUSHED = 0;
                 SEVERAL_CRUSHES_BONUS = 0;
-                MAX_MOVEMENTS = 0;
-                NUM_COLUMNS = 0;
-                NUM_ROWS = 0;
-                LEVEL_GOAL = 0;
+                MAX_MOVEMENTS = 3;
+                NUM_COLUMNS = 4;
+                NUM_ROWS = 4;
+                LEVEL_GOAL = 230;
 
                 break;
             }
-            case SQUARE: {
-                STANDARD_CANDY_CRUSHED = 40;
-                SPECIAL_CANDY_CRUSHED = 80;
-                SEVERAL_CRUSHES_BONUS = 120;
-                MAX_MOVEMENTS = 26;
+            case 2: {
+                LEVEL_TYPE = LevelType.RECTANGLE;
+                STANDARD_CANDY_CRUSHED = 0;
+                SPECIAL_CANDY_CRUSHED = 0;
+                SEVERAL_CRUSHES_BONUS = 0;
+                MAX_MOVEMENTS = 3;
+                NUM_COLUMNS = 4;
+                NUM_ROWS = 4;
+                LEVEL_GOAL = 470;
+
+                break;
+            }
+            case 3: {
+                LEVEL_TYPE = LevelType.CROSS;
+                STANDARD_CANDY_CRUSHED = 0;
+                SPECIAL_CANDY_CRUSHED = 0;
+                SEVERAL_CRUSHES_BONUS = 0;
+                MAX_MOVEMENTS = 3;
+                NUM_COLUMNS = 4;
+                NUM_ROWS = 4;
+                LEVEL_GOAL = 470;
+
+                break;
+            }
+            case 4:
+                LEVEL_TYPE = LevelType.SQUARE;
+                STANDARD_CANDY_CRUSHED = 0;
+                SPECIAL_CANDY_CRUSHED = 0;
+                SEVERAL_CRUSHES_BONUS = 0;
+                MAX_MOVEMENTS = 5;
+                NUM_COLUMNS = 6;
+                NUM_ROWS = 6;
+                LEVEL_GOAL = 810;
+
+                break;
+            case 5:
+                LEVEL_TYPE = LevelType.RECTANGLE;
+                STANDARD_CANDY_CRUSHED = 0;
+                SPECIAL_CANDY_CRUSHED = 0;
+                SEVERAL_CRUSHES_BONUS = 0;
+                MAX_MOVEMENTS = 5;
+                NUM_COLUMNS = 6;
+                NUM_ROWS = 6;
+                LEVEL_GOAL = 810;
+
+                break;
+            case 6:
+                LEVEL_TYPE = LevelType.CROSS;
+                STANDARD_CANDY_CRUSHED = 0;
+                SPECIAL_CANDY_CRUSHED = 0;
+                SEVERAL_CRUSHES_BONUS = 0;
+                MAX_MOVEMENTS = 5;
+                NUM_COLUMNS = 6;
+                NUM_ROWS = 6;
+                LEVEL_GOAL = 810;
+
+                break;
+            case 7:
+                LEVEL_TYPE = LevelType.SQUARE;
+                STANDARD_CANDY_CRUSHED = 0;
+                SPECIAL_CANDY_CRUSHED = 0;
+                SEVERAL_CRUSHES_BONUS = 0;
+                MAX_MOVEMENTS = 5;
                 NUM_COLUMNS = 8;
                 NUM_ROWS = 8;
-                LEVEL_GOAL = 3500;
+                LEVEL_GOAL = 1210;
 
                 break;
-            }
-            case CROSS: {
-                STANDARD_CANDY_CRUSHED = 1;
-                SPECIAL_CANDY_CRUSHED = 1;
-                SEVERAL_CRUSHES_BONUS = 1;
-                MAX_MOVEMENTS = 9;
-                NUM_COLUMNS = 5;
-                NUM_ROWS = 5;
-                LEVEL_GOAL = 1;
+            case 8:
+                LEVEL_TYPE = LevelType.RECTANGLE;
+                STANDARD_CANDY_CRUSHED = 0;
+                SPECIAL_CANDY_CRUSHED = 0;
+                SEVERAL_CRUSHES_BONUS = 0;
+                MAX_MOVEMENTS = 5;
+                NUM_COLUMNS = 8;
+                NUM_ROWS = 8;
+                LEVEL_GOAL = 1210;
 
                 break;
-            }
+            case 9:
+                LEVEL_TYPE = LevelType.CROSS;
+                STANDARD_CANDY_CRUSHED = 0;
+                SPECIAL_CANDY_CRUSHED = 0;
+                SEVERAL_CRUSHES_BONUS = 0;
+                MAX_MOVEMENTS = 5;
+                NUM_COLUMNS = 8;
+                NUM_ROWS = 8;
+                LEVEL_GOAL = 1210;
+
+                break;
+            case 10:
+                LEVEL_TYPE = LevelType.SQUARE;
+                STANDARD_CANDY_CRUSHED = 0;
+                SPECIAL_CANDY_CRUSHED = 0;
+                SEVERAL_CRUSHES_BONUS = 0;
+                MAX_MOVEMENTS = 5;
+                NUM_COLUMNS = 10;
+                NUM_ROWS = 10;
+                LEVEL_GOAL = 1430;
+
+                break;
+            case 11:
+                LEVEL_TYPE = LevelType.RECTANGLE;
+                STANDARD_CANDY_CRUSHED = 0;
+                SPECIAL_CANDY_CRUSHED = 0;
+                SEVERAL_CRUSHES_BONUS = 0;
+                MAX_MOVEMENTS = 5;
+                NUM_COLUMNS = 10;
+                NUM_ROWS = 10;
+                LEVEL_GOAL = 1430;
+
+                break;
+            case 12:
+                LEVEL_TYPE = LevelType.CROSS;
+                STANDARD_CANDY_CRUSHED = 0;
+                SPECIAL_CANDY_CRUSHED = 0;
+                SEVERAL_CRUSHES_BONUS = 0;
+                MAX_MOVEMENTS = 5;
+                NUM_COLUMNS = 10;
+                NUM_ROWS = 10;
+                LEVEL_GOAL = 1430;
+
+                break;
+            case 13:
+                LEVEL_TYPE = LevelType.SQUARE;
+                STANDARD_CANDY_CRUSHED = 0;
+                SPECIAL_CANDY_CRUSHED = 0;
+                SEVERAL_CRUSHES_BONUS = 0;
+                MAX_MOVEMENTS = 5;
+                NUM_COLUMNS = 12;
+                NUM_ROWS = 12;
+                LEVEL_GOAL = 1825;
+
+                break;
+            case 14:
+                LEVEL_TYPE = LevelType.RECTANGLE;
+                STANDARD_CANDY_CRUSHED = 0;
+                SPECIAL_CANDY_CRUSHED = 0;
+                SEVERAL_CRUSHES_BONUS = 0;
+                MAX_MOVEMENTS = 5;
+                NUM_COLUMNS = 12;
+                NUM_ROWS = 12;
+                LEVEL_GOAL = 1825;
+
+                break;
+            case 15:
+                LEVEL_TYPE = LevelType.CROSS;
+                STANDARD_CANDY_CRUSHED = 0;
+                SPECIAL_CANDY_CRUSHED = 0;
+                SEVERAL_CRUSHES_BONUS = 0;
+                MAX_MOVEMENTS = 5;
+                NUM_COLUMNS = 12;
+                NUM_ROWS = 12;
+                LEVEL_GOAL = 1825;
+
+                break;
         }
     }
 
     public LevelType getLevelType() {
-        return levelType;
+        return LEVEL_TYPE;
     }
 
     public int getMaxMovements() {

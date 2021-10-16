@@ -9,6 +9,8 @@ import utils.helpers.TileType;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -40,6 +42,41 @@ public class BoardGrid extends JPanel {
         this.ui.initializeUI();
 
         enableBoardGrid(false);
+        setUpListeners();
+    }
+
+    private void setUpListeners() {
+        addMouseListener(new MouseAdapter() {
+            @Override
+            public void mousePressed(MouseEvent e) {
+                if (model.isEnabled()) {
+                    setTileDragStart(ui.getTile(getTiles(), e.getX(), e.getY()));
+                    model.setPressed(true);
+                }
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+                if (model.isEnabled()) {
+                    model.setPressed(false);
+                    ui.setDragOne(false);
+                }
+            }
+        });
+
+        addMouseMotionListener(new MouseAdapter() {
+            @Override
+            public void mouseDragged(MouseEvent e) {
+                BoardTile tileDragEnd = ui.getTile(getTiles(), e.getX(), e.getY());
+                if (tileDragEnd != null) {
+                    if (ui.isDragValid(tileDragEnd)) {
+                        ui.setDragOne(true);
+                        setTileDragEnd(tileDragEnd);
+                        ui.generateSwipeMotion(e);
+                    }
+                }
+            }
+        });
     }
 
     public int getTilesXAxis() {

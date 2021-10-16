@@ -1,10 +1,11 @@
 package main;
 
-import components.*;
+import components.cards.CardGameplay;
+import components.cards.CardLevelChoice;
+import components.cards.CardWelcome;
 import utils.dialogs.GameOverDialog;
 import utils.dialogs.LoadingDialog;
 import utils.Level;
-import utils.helpers.LevelType;
 import utils.Utils;
 
 import javax.swing.*;
@@ -12,17 +13,22 @@ import java.awt.*;
 
 public class CandyCrush extends JFrame {
 
+    private LoadingDialog loadingDialog;
+    private GameOverDialog gameOverDialog;
+
+    private JPanel cards;
+
+    private CardLayout cardLayout;
     private CardWelcome cardWelcome;
     private CardLevelChoice cardLevelChoice;
     private CardGameplay cardGameplay;
-    private LoadingDialog loadingDialog;
-    private GameOverDialog gameOverDialog;
-    private JPanel cards;
-    private CardLayout cardLayout;
 
     final static String WELCOMEPANEL = "Welcome panel";
     final static String LEVELPANEL = "Level panel";
     final static String GAMEPANEL = "Gameplay panel";
+
+    private String playerUsername;
+    private Level selectedLevel;
 
     public CandyCrush() {
         super(Utils.getAppName());
@@ -35,7 +41,7 @@ public class CandyCrush extends JFrame {
         getContentPane().setBackground(Utils.darkBackground);
         setFrameVisuals();
 
-        //setup the cards
+        // Set up the cards
         cardLayout = new CardLayout();
         cards = new JPanel();
         cards.setLayout(cardLayout);
@@ -43,7 +49,7 @@ public class CandyCrush extends JFrame {
 
         cardWelcome = new CardWelcome(this);
         cardLevelChoice = new CardLevelChoice(this);
-        cardGameplay = new CardGameplay(new Level(LevelType.SQUARE));
+        cardGameplay = new CardGameplay();
 
         cards.add(cardWelcome, WELCOMEPANEL);
         cards.add(cardLevelChoice, LEVELPANEL);
@@ -68,6 +74,21 @@ public class CandyCrush extends JFrame {
         setDefaultCloseOperation(EXIT_ON_CLOSE);
     }
 
+    public String getPlayerUsername() {
+        return this.playerUsername;
+    }
+
+    public void setPlayerUsername(String playerUsername) {
+        this.playerUsername = playerUsername;
+    }
+
+    public Level getSelectedLevel() {
+        return this.selectedLevel;
+    }
+
+    public void setSelectedLevel(Level level) {
+        this.selectedLevel = level;
+    }
 
     public void showLoading() {
         loadingDialog = new LoadingDialog(this);
@@ -75,7 +96,6 @@ public class CandyCrush extends JFrame {
 
         closeLoadingDialog();
     }
-
 
     private void closeLoadingDialog() {
         Timer timer = new Timer(100, arg0 -> {
@@ -87,7 +107,13 @@ public class CandyCrush extends JFrame {
         timer.start();
     }
 
-    public void flipCard() {
+    public void flipCard(boolean toLevelChoice) {
+        if (toLevelChoice) {
+            cardLevelChoice.reloadContent();
+        } else {
+            cardGameplay.loadGame(getSelectedLevel());
+        }
+
         cardLayout.next(cards);
     }
 

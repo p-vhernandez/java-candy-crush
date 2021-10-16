@@ -1,5 +1,6 @@
-package components;
+package utils.buttons;
 
+import components.cards.CardLevelChoice;
 import utils.Utils;
 
 import javax.swing.*;
@@ -10,7 +11,7 @@ import java.awt.event.MouseEvent;
 
 public class LevelButton extends JButton {
 
-    private CardLevelChoice cardLevelChoice;
+    private final CardLevelChoice cardLevelChoice;
 
     private String label;
 
@@ -21,13 +22,13 @@ public class LevelButton extends JButton {
 
     private final Font font;
 
-    public LevelButton(Object object, String label, int index, boolean unlocked) {
+    public LevelButton(Object object, int level, int index, boolean unlocked) {
         this.cardLevelChoice = (CardLevelChoice) object;
 
-        this.label = label;
+        this.label = String.valueOf(level);
         this.index = index;
         this.unlocked = unlocked;
-        this.font = Utils.generateFont(object, "../resources/font/shlop-rg.ttf");
+        this.font = Utils.generateFont(object, "../../resources/font/shlop-rg.ttf");
 
         Border emptyBorder = BorderFactory.createEmptyBorder();
         this.setBorder(emptyBorder);
@@ -42,6 +43,7 @@ public class LevelButton extends JButton {
             addMouseListener(new MouseAdapter() {
                 @Override
                 public void mouseClicked(MouseEvent e) {
+                    cardLevelChoice.selectLevel(index);
                     cardLevelChoice.flipCard();
                 }
             });
