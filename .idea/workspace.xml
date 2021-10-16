@@ -6,8 +6,13 @@
   <component name="ChangeListManager">
     <list default="true" id="6b4cf923-17ad-46fa-bee3-8a7e44728267" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/TopPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/TopPanel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/cards/CardGameplay.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/cards/CardGameplay.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/cards/CardLevelChoice.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/cards/CardLevelChoice.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/cards/CardWelcome.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/cards/CardWelcome.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/grid/BoardGridModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/grid/BoardGridModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/dialogs/ErrorDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/dialogs/ErrorDialog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/dialogs/GameOverDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/dialogs/GameOverDialog.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

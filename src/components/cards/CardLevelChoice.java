@@ -2,6 +2,7 @@ package components.cards;
 
 import org.json.simple.JSONArray;
 import utils.Level;
+import utils.Player;
 import utils.buttons.LevelButton;
 import main.CandyCrush;
 
@@ -11,10 +12,8 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 import utils.Utils;
-import utils.dialogs.ErrorDialog;
 import utils.helpers.CardType;
 
-import java.awt.*;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -23,42 +22,29 @@ import java.util.ArrayList;
 public class CardLevelChoice extends JPanel {
 
     private final CandyCrush container;
-    private final ArrayList<LevelButton> levelButtons;
 
-    private ErrorDialog errorDialog;
+    private final CardLevelChoiceModel model;
+    private final CardLevelChoiceUI view;
 
     public CardLevelChoice(CandyCrush container) {
         this.container = container;
-        this.levelButtons = new ArrayList<>();
 
-        initializeUI();
+        this.model = new CardLevelChoiceModel();
+        this.view = new CardLevelChoiceUI(this);
+
+        initialize();
     }
 
-    private void initializeUI() {
-        setPreferredSize(new Dimension(Utils.getWindowWidth(), Utils.getWindowHeight()));
-        setBackground(Utils.darkBackground);
-        setLayout(new FlowLayout());
+    private void initialize() {
+        view.initializeUI();
     }
 
-    private void setUpLevelLabel() {
-        JLabel label = new JLabel("Choose your level");
-        int horizontalMargin = 50;
-        label.setPreferredSize(new Dimension(Utils.getWindowWidth() - horizontalMargin * 2, 100));
-        Utils.setCustomFont(this, label,
-                "../../resources/font/creepster-rg.ttf", 56f, Font.PLAIN);
-        label.setForeground(Color.white);
-
-        add(label);
+    protected ArrayList<LevelButton> getLevelButtons() {
+        return this.model.getLevelButtons();
     }
 
-    private void setUpButtons() {
-        for (LevelButton button : levelButtons) {
-            if (!button.isUnlocked()) {
-                button.setEnabled(false);
-            }
-
-            add(button);
-        }
+    protected void resetLevelButtons() {
+        this.model.resetLevelButtons();
     }
 
     private void readJSON() {
@@ -70,25 +56,11 @@ public class CardLevelChoice extends JPanel {
             JSONArray players = (JSONArray) jsonObject.get("players");
 
             for (Object o : players) {
-                JSONObject player = (JSONObject) o;
-                String username = (String) player.get("username");
+                Player player = new Player((JSONObject) o);
 
-                if (username.equals(container.getPlayerUsername())) {
-                    JSONArray progress = (JSONArray) player.get("progress");
-
-                    for (Object level : progress) {
-                        JSONObject jsonLevel = (JSONObject) level;
-
-                        LevelButton button = new LevelButton(
-                                this,
-                                (int) (long) jsonLevel.get("level"),
-                                (int) (long) jsonLevel.get("index"),
-                                //(boolean) jsonLevel.get("unlocked")
-                                true
-                        );
-
-                        levelButtons.add(button);
-                    }
+                if (player.getUsername().equals(container.getPlayerUsername())) {
+                    this.model.setPlayer(player);
+                    createLevelButtons();
 
                     playerFound = true;
                     break;
@@ -102,6 +74,22 @@ public class CardLevelChoice extends JPanel {
         } catch (ParseException | IOException e) {
             e.printStackTrace();
             showError("Could not read the player data. ");
+        }
+    }
+
+    protected void createLevelButtons() {
+        for (Object level : this.model.getPlayer().getProgress()) {
+            JSONObject jsonLevel = (JSONObject) level;
+
+            LevelButton button = new LevelButton(
+                    this,
+                    (int) (long) jsonLevel.get("level"),
+                    (int) (long) jsonLevel.get("index"),
+                    //(boolean) jsonLevel.get("unlocked")
+                    true
+            );
+
+            model.addLevelButton(button);
         }
     }
 
@@ -140,7 +128,6 @@ public class CardLevelChoice extends JPanel {
     private void addPlayerToJSON(JSONObject jsonObject) {
         try {
             FileWriter file = new FileWriter("src/resources/user/progress.json");
-            System.out.println(jsonObject);
             file.write(jsonObject.toJSONString());
             file.flush();
         } catch (Exception e) {
@@ -150,8 +137,7 @@ public class CardLevelChoice extends JPanel {
     }
 
     private void showError(String infoLabel) {
-        errorDialog = new ErrorDialog(infoLabel);
-        errorDialog.setVisible(true);
+        view.showError(infoLabel);
     }
 
     public void selectLevel(int index) {
@@ -162,10 +148,9 @@ public class CardLevelChoice extends JPanel {
     public void reloadContent() {
         removeAll();
 
-        // TODO: clear buttons to re-create them
-        setUpLevelLabel();
+        view.setUpLevelLabel();
         readJSON();
-        setUpButtons();
+        view.setUpButtons();
     }
 
     public void flipCard() {

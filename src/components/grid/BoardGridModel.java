@@ -29,6 +29,7 @@ public class BoardGridModel {
     public void addActionListener(ActionListener l) {
         actionListeners.add(l);
     }
+
     public void removeActionListener(ActionListener l) {
         actionListeners.remove(l);
     }
@@ -36,6 +37,7 @@ public class BoardGridModel {
     public void addChangeListener(ChangeListener l) {
         changeListeners.add(l);
     }
+
     public void removeChangeListener(ChangeListener l) {
         changeListeners.remove(l);
     }
