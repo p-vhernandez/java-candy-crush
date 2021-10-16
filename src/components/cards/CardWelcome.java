@@ -2,6 +2,7 @@ package components.cards;
 
 import main.CandyCrush;
 import utils.Utils;
+import utils.dialogs.ErrorDialog;
 import utils.helpers.CardType;
 
 import javax.swing.*;
@@ -94,8 +95,14 @@ public class CardWelcome extends JPanel {
             @Override
             public void mouseClicked(MouseEvent e) {
                 String username = textFieldUsername.getText();
-                container.setPlayerUsername(username);
-                container.flipCard(CardType.WELCOME, CardType.LEVELS);
+
+                if (username.equals("")) {
+                    ErrorDialog errorDialog = new ErrorDialog("You must enter your username. ");
+                    errorDialog.setVisible(true);
+                } else {
+                    container.setPlayerUsername(username);
+                    container.flipCard(CardType.WELCOME, CardType.LEVELS);
+                }
             }
         });
     }

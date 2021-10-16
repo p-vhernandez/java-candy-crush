@@ -78,6 +78,7 @@ public class CardGameplay extends JPanel {
         bottomPanel.setMaximumSize(bottomPanel.getMaximumSize());
 
         btnBack = Utils.generateDefaultAppButton(this, "Back to levels");
+        btnBack.setPreferredSize(new Dimension(Utils.getWindowWidth() / 2, 50));
 
         initializeListeners();
         bottomPanel.add(btnBack);

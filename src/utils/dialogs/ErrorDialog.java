@@ -15,7 +15,7 @@ public class ErrorDialog extends JDialog {
     private final JLabel lblError;
     private final JButton btnDismiss;
 
-    private static final int DIALOG_WIDTH = 300;
+    private static final int DIALOG_WIDTH = 450;
     private static final int DIALOG_HEIGHT = 150;
 
     public ErrorDialog(String infoLabel) {
