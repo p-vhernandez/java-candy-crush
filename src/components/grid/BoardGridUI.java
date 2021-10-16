@@ -51,7 +51,7 @@ public class BoardGridUI {
         grid.setBackground(Utils.darkBackground);
 
         generateTileIcons();
-        generateTiles();
+        generateTiles(level);
     }
 
     public void paint(Graphics2D g) {
@@ -443,7 +443,7 @@ public class BoardGridUI {
         this.dragDone = drag;
     }
   
-    private BoardTile getTile(ArrayList<ArrayList<BoardTile>> tiles, int x, int y) {
+    public BoardTile getTile(ArrayList<ArrayList<BoardTile>> tiles, int x, int y) {
         int tileSize = Utils.getTileSize();
         int col = (int) Math.floor(x / tileSize);
         int row = (int) Math.floor(y / tileSize);

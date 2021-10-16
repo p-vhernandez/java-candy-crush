@@ -82,7 +82,8 @@ public class CardLevelChoice extends JPanel {
                                 this,
                                 (int) (long) jsonLevel.get("level"),
                                 (int) (long) jsonLevel.get("index"),
-                                (boolean) jsonLevel.get("unlocked")
+                                //(boolean) jsonLevel.get("unlocked")
+                                true
                         );
 
                         levelButtons.add(button);

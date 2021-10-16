@@ -6,19 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="6b4cf923-17ad-46fa-bee3-8a7e44728267" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/cards/CardGameplay.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/cards/CardGameplay.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/cards/CardLevelChoice.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/cards/CardLevelChoice.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/grid/BoardGrid.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/grid/BoardGrid.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/grid/BoardGridUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/grid/BoardGridUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/CandyCrush.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/CandyCrush.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/Level.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/Level.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/buttons/LevelButton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/buttons/LevelButton.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/grid/BoardGrid.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/grid/BoardGrid.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/grid/BoardGridUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/grid/BoardGridUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/helpers/Crush.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/helpers/Crush.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/helpers/TileType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/helpers/TileType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/CardLevelChoice.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CardLevelChoice.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/LevelButton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/LevelButton.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,6 +35,10 @@
   <component name="ProjectId" id="1xqnaV27hJ8r9kd7LzORmdUoRmI" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="1" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
@@ -124,13 +116,12 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State>
-              <option name="COLUMN_ORDER" />
-            </State>
+            <State />
           </value>
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
     <state x="446" y="25" key="#com.intellij.ide.util.MemberChooser" timestamp="1634241867468">
@@ -192,29 +183,9 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/components/cards/CardGameplay.java</url>
-          <line>49</line>
-          <option name="timeStamp" value="10" />
-          <url>file://$PROJECT_DIR$/src/components/grid/BoardGrid.java</url>
-          <line>252</line>
-          <option name="timeStamp" value="34" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/components/grid/BoardGrid.java</url>
-          <line>197</line>
-          <option name="timeStamp" value="35" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
     <watches-manager>
       <configuration name="Application">
         <watch expression="parser" />
-      </configuration>
-    </watches-manager>
-        <watch expression="((BoardGrid)this).tiles" custom="components.grid.BoardGrid" />
       </configuration>
     </watches-manager>
   </component>
