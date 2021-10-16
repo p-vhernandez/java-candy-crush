@@ -6,9 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="6b4cf923-17ad-46fa-bee3-8a7e44728267" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/grid/BoardGrid.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/grid/BoardGrid.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/grid/BoardGridUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/grid/BoardGridUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/CandyCrush.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/CandyCrush.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/Level.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/Level.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/helpers/Crush.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/helpers/Crush.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/helpers/TileType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/helpers/TileType.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -122,6 +123,7 @@
       <workItem from="1634149875111" duration="6587000" />
       <workItem from="1634158477213" duration="1155000" />
       <workItem from="1634235924987" duration="882000" />
+      <workItem from="1634240881656" duration="27882000" />
     </task>
     <servers />
   </component>
@@ -142,10 +144,10 @@
     </option>
   </component>
   <component name="WindowStateProjectService">
-    <state x="446" y="25" key="#com.intellij.ide.util.MemberChooser" timestamp="1634153039609">
+    <state x="446" y="25" key="#com.intellij.ide.util.MemberChooser" timestamp="1634241867468">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="446" y="25" key="#com.intellij.ide.util.MemberChooser/0.0.1280.680@0.0.1280.680" timestamp="1634153039609" />
+    <state x="446" y="25" key="#com.intellij.ide.util.MemberChooser/0.0.1280.680@0.0.1280.680" timestamp="1634241867468" />
     <state x="395" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1634151591234">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
@@ -154,38 +156,38 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="442" y="95" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1634152590339" />
-    <state width="1237" height="159" key="GridCell.Tab.0.bottom" timestamp="1634237878718">
+    <state width="1237" height="57" key="GridCell.Tab.0.bottom" timestamp="1634409256194">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="159" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1634237878718" />
-    <state width="1237" height="159" key="GridCell.Tab.0.center" timestamp="1634237878718">
+    <state width="1237" height="57" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1634409256194" />
+    <state width="1237" height="57" key="GridCell.Tab.0.center" timestamp="1634409256194">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="159" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1634237878718" />
-    <state width="1237" height="159" key="GridCell.Tab.0.left" timestamp="1634237878718">
+    <state width="1237" height="57" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1634409256194" />
+    <state width="1237" height="57" key="GridCell.Tab.0.left" timestamp="1634409256194">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="159" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1634237878718" />
-    <state width="1237" height="159" key="GridCell.Tab.0.right" timestamp="1634237878718">
+    <state width="1237" height="57" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1634409256194" />
+    <state width="1237" height="57" key="GridCell.Tab.0.right" timestamp="1634409256194">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="159" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1634237878718" />
-    <state width="1237" height="204" key="GridCell.Tab.1.bottom" timestamp="1634237768444">
+    <state width="1237" height="57" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1634409256194" />
+    <state width="1237" height="57" key="GridCell.Tab.1.bottom" timestamp="1634409256194">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="204" key="GridCell.Tab.1.bottom/0.0.1280.680@0.0.1280.680" timestamp="1634237768444" />
-    <state width="1237" height="204" key="GridCell.Tab.1.center" timestamp="1634237768444">
+    <state width="1237" height="57" key="GridCell.Tab.1.bottom/0.0.1280.680@0.0.1280.680" timestamp="1634409256194" />
+    <state width="1237" height="57" key="GridCell.Tab.1.center" timestamp="1634409256194">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="204" key="GridCell.Tab.1.center/0.0.1280.680@0.0.1280.680" timestamp="1634237768444" />
-    <state width="1237" height="204" key="GridCell.Tab.1.left" timestamp="1634237768444">
+    <state width="1237" height="57" key="GridCell.Tab.1.center/0.0.1280.680@0.0.1280.680" timestamp="1634409256194" />
+    <state width="1237" height="57" key="GridCell.Tab.1.left" timestamp="1634409256194">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="204" key="GridCell.Tab.1.left/0.0.1280.680@0.0.1280.680" timestamp="1634237768444" />
-    <state width="1237" height="204" key="GridCell.Tab.1.right" timestamp="1634237768444">
+    <state width="1237" height="57" key="GridCell.Tab.1.left/0.0.1280.680@0.0.1280.680" timestamp="1634409256194" />
+    <state width="1237" height="57" key="GridCell.Tab.1.right" timestamp="1634409256194">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="204" key="GridCell.Tab.1.right/0.0.1280.680@0.0.1280.680" timestamp="1634237768444" />
+    <state width="1237" height="57" key="GridCell.Tab.1.right/0.0.1280.680@0.0.1280.680" timestamp="1634409256194" />
     <state x="142" y="0" key="SettingsEditor" timestamp="1634152596888">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
@@ -203,26 +205,24 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/components/grid/BoardGridUI.java</url>
-          <line>267</line>
-          <option name="timeStamp" value="1" />
+          <url>file://$PROJECT_DIR$/src/components/grid/BoardGrid.java</url>
+          <line>252</line>
+          <option name="timeStamp" value="34" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/components/grid/BoardGridUI.java</url>
-          <line>331</line>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/components/grid/BoardGridUI.java</url>
-          <line>284</line>
-          <option name="timeStamp" value="3" />
+          <url>file://$PROJECT_DIR$/src/components/grid/BoardGrid.java</url>
+          <line>197</line>
+          <option name="timeStamp" value="35" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
     <watches-manager>
       <configuration name="Application">
-        <watch expression="parser" />
+        <watch expression="((BoardGrid)this).tiles" custom="components.grid.BoardGrid" />
       </configuration>
     </watches-manager>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/CandyCrush$Main.ic" NAME="Main Coverage Results" MODIFIED="1634240794191" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>

@@ -119,9 +119,9 @@ public class BoardGridUI {
      * @param g - Graphics2D
      */
     private void repaintBoard(Graphics2D g) {
-        for (BoardTile[] tileRow : grid.getTiles()) {
+        for (ArrayList<BoardTile> tileRow : grid.getTiles()) {
             for (BoardTile tile : tileRow) {
-                if (tile.getTileType() != TileType.EMPTY) {
+                if (tile.getTileType() != TileType.EMPTY && tile.getTileType() != TileType.CRUSHED) {
                     paintTile(tile, g);
                 }
             }
@@ -155,8 +155,8 @@ public class BoardGridUI {
      * @param level - Level | object with all the level data
      */
     public void generateTiles(Level level) {
-        BoardTile[][] tiles = grid.getTiles();
-        BoardTile[] row;
+        ArrayList<ArrayList<BoardTile>> tiles = grid.getTiles();
+        ArrayList<BoardTile> row;
         Random random = new Random();
 
         TileType[] types = {
@@ -168,7 +168,8 @@ public class BoardGridUI {
         };
 
         for (int i = 0; i < level.getNumRows(); i++) {
-            row = new BoardTile[level.getNumColumns()];
+
+            row = new ArrayList<>();
 
             for (int j = 0; j < level.getNumColumns(); j++) {
                 if (level.getLevelType() != LevelType.CROSS
@@ -204,17 +205,17 @@ public class BoardGridUI {
                         }
                     }
 
-                    row[j] = new BoardTile(type, i, j,
+                    row.add(new BoardTile(type, i, j,
                             j * Utils.getTileSize(),
-                            i * Utils.getTileSize());
+                            i * Utils.getTileSize()));
                 } else {
-                    row[j] = new BoardTile(TileType.EMPTY, i, j,
+                    row.add(new BoardTile(TileType.EMPTY, i, j,
                             j * Utils.getTileSize(),
-                            i * Utils.getTileSize());
+                            i * Utils.getTileSize()));
                 }
             }
 
-            tiles[i] = row;
+            tiles.add(row);
         }
 
         grid.setTiles(tiles);
@@ -271,7 +272,6 @@ public class BoardGridUI {
                             int spaceToMove, boolean pendingValidation) {
 
         Timer myTimer = new Timer(0, e -> {
-            BoardTile[][] tiles;
 
             // Horizontal swipe
             if (isHorizontalMove(startTile, endTile)) {
@@ -340,36 +340,36 @@ public class BoardGridUI {
 
             // Check horizontally from position 0 to position
             // (length - 3) to find at least a group of 3 candies
-            if (row >= 0 && row + 2 < grid.getTiles().length) {
+            if (row >= 0 && row + 2 < grid.getTiles().size()) {
 
                 type1 = tile.getTileType();
-                type2 = grid.getTiles()[row + 1][col].getTileType();
-                type3 = grid.getTiles()[row + 2][col].getTileType();
+                type2 = grid.getTiles().get(row + 1).get(col).getTileType();
+                type3 = grid.getTiles().get(row + 2).get(col).getTileType();
 
                 if (type1 == type2 && type1 == type3) {
                     valid = true;
 
+                    potentialCrush.addCrushedCandies((grid.getTiles().get(row + 2).get(col)));
+                    potentialCrush.addCrushedCandies((grid.getTiles().get(row + 1).get(col)));
                     potentialCrush.addCrushedCandies(tile);
-                    potentialCrush.addCrushedCandies((grid.getTiles()[row + 1][col]));
-                    potentialCrush.addCrushedCandies((grid.getTiles()[row + 2][col]));
                 }
 
             }
 
             // Check horizontally from position 1 to position
             // (length - 2) to find at least a group of 3 candies
-            if (row >= 1 && row + 1 < grid.getTiles().length) {
+            if (row >= 1 && row + 1 < grid.getTiles().size()) {
 
-                type1 = grid.getTiles()[row - 1][col].getTileType();
+                type1 = grid.getTiles().get(row - 1).get(col).getTileType();
                 type2 = tile.getTileType();
-                type3 = grid.getTiles()[row + 1][col].getTileType();
+                type3 = grid.getTiles().get(row + 1).get(col).getTileType();
 
                 if (type1 == type2 && type1 == type3) {
                     valid = true;
 
-                    potentialCrush.addCrushedCandies(grid.getTiles()[row - 1][col]);
+                    potentialCrush.addCrushedCandies(grid.getTiles().get(row + 1).get(col));
                     potentialCrush.addCrushedCandies(tile);
-                    potentialCrush.addCrushedCandies(grid.getTiles()[row + 1][col]);
+                    potentialCrush.addCrushedCandies(grid.getTiles().get(row - 1).get(col));
                 }
             }
 
@@ -377,50 +377,50 @@ public class BoardGridUI {
             // to find at least a group of 3 candies
             if (row >= 2) {
 
-                type1 = grid.getTiles()[row - 1][col].getTileType();
-                type2 = grid.getTiles()[row - 2][col].getTileType();
                 type3 = tile.getTileType();
+                type1 = grid.getTiles().get(row - 1).get(col).getTileType();
+                type2 = grid.getTiles().get(row - 2).get(col).getTileType();
 
                 if (type1 == type2 && type1 == type3) {
                     valid = true;
 
-                    potentialCrush.addCrushedCandies(grid.getTiles()[row - 1][col]);
-                    potentialCrush.addCrushedCandies(grid.getTiles()[row - 2][col]);
                     potentialCrush.addCrushedCandies(tile);
+                    potentialCrush.addCrushedCandies(grid.getTiles().get(row - 1).get(col));
+                    potentialCrush.addCrushedCandies(grid.getTiles().get(row - 2).get(col));
                 }
             }
 
             // Check vertically from position 0 to position
             // (length - 3) to find at least a group of 3 candies
-            if (col >= 0 && col + 2 < grid.getTiles()[0].length) {
+            if (col >= 0 && col + 2 < grid.getTiles().get(0).size()) {
 
                 type1 = tile.getTileType();
-                type2 = grid.getTiles()[row][col + 1].getTileType();
-                type3 = grid.getTiles()[row][col + 2].getTileType();
+                type2 = grid.getTiles().get(row).get(col + 1).getTileType();
+                type3 = grid.getTiles().get(row).get(col + 2).getTileType();
 
                 if (type1 == type2 && type1 == type3) {
                     valid = true;
 
+                    potentialCrush.addCrushedCandies(grid.getTiles().get(row).get(col + 2));
+                    potentialCrush.addCrushedCandies(grid.getTiles().get(row).get(col + 1));
                     potentialCrush.addCrushedCandies(tile);
-                    potentialCrush.addCrushedCandies(grid.getTiles()[row][col + 1]);
-                    potentialCrush.addCrushedCandies(grid.getTiles()[row][col + 2]);
                 }
             }
 
             // Check vertically from position 1 to position
             // (length - 2) to find at least a group of 3 candies
-            if (col >= 1 && col + 1 < grid.getTiles()[0].length) {
+            if (col >= 1 && col + 1 < grid.getTiles().get(0).size()) {
 
-                type1 = grid.getTiles()[row][col - 1].getTileType();
+                type1 = grid.getTiles().get(row).get(col - 1).getTileType();
                 type2 = tile.getTileType();
-                type3 = grid.getTiles()[row][col + 1].getTileType();
+                type3 = grid.getTiles().get(row).get(col + 1).getTileType();
 
                 if (type1 == type2 && type1 == type3) {
                     valid = true;
 
-                    potentialCrush.addCrushedCandies(grid.getTiles()[row][col - 1]);
+                    potentialCrush.addCrushedCandies(grid.getTiles().get(row).get(col + 1));
                     potentialCrush.addCrushedCandies(tile);
-                    potentialCrush.addCrushedCandies(grid.getTiles()[row][col + 1]);
+                    potentialCrush.addCrushedCandies(grid.getTiles().get(row).get(col - 1));
                 }
             }
 
@@ -428,16 +428,16 @@ public class BoardGridUI {
             // to find at least a group of 3 candies
             if (col >= 2) {
 
-                type1 = grid.getTiles()[row][col - 1].getTileType();
-                type2 = grid.getTiles()[row][col - 2].getTileType();
                 type3 = tile.getTileType();
+                type1 = grid.getTiles().get(row).get(col - 1).getTileType();
+                type2 = grid.getTiles().get(row).get(col - 2).getTileType();
 
                 if (type1 == type2 && type1 == type3) {
                     valid = true;
 
-                    potentialCrush.addCrushedCandies(grid.getTiles()[row][col - 1]);
-                    potentialCrush.addCrushedCandies(grid.getTiles()[row][col - 2]);
                     potentialCrush.addCrushedCandies(tile);
+                    potentialCrush.addCrushedCandies(grid.getTiles().get(row).get(col - 1));
+                    potentialCrush.addCrushedCandies(grid.getTiles().get(row).get(col - 2));
                 }
             }
         }
@@ -452,21 +452,20 @@ public class BoardGridUI {
                     startTile.getTileX(), startTile.getTileY(),
                     spaceToMove, false);
         } else {
-            // TODO: get rid of group of candies
             CardGameplay.oneMovementLess();
             potentialCrush.crushCandies(grid);
-            grid.crushed(potentialCrush);
+            //grid.crushed(potentialCrush);
             CardGameplay.updateScore(potentialCrush.getCrushedCandies().size());
         }
     }
 
-    private BoardTile getTile(BoardTile[][] tiles, int x, int y) {
+    private BoardTile getTile(ArrayList<ArrayList<BoardTile>> tiles, int x, int y) {
         int tileSize = Utils.getTileSize();
         int col = (int) Math.floor(x / tileSize);
         int row = (int) Math.floor(y / tileSize);
 
         try {
-            return tiles[row][col];
+            return tiles.get(row).get(col);
         } catch (IndexOutOfBoundsException e) {
             return null;
         }
@@ -484,7 +483,7 @@ public class BoardGridUI {
     }
 
     private void updateGridTiles(BoardTile startTile, BoardTile endTile) {
-        BoardTile[][] tiles = grid.getTiles();
+        ArrayList<ArrayList<BoardTile>> tiles = grid.getTiles();
 
         int startRow = startTile.getTileRow();
         int endRow = endTile.getTileRow();
@@ -496,16 +495,10 @@ public class BoardGridUI {
         startTile.setTileCol(endCol);
         endTile.setTileCol(startCol);
 
-        tiles[startTile.getTileRow()][startTile.getTileCol()] = startTile;
-        tiles[endTile.getTileRow()][endTile.getTileCol()] = endTile;
+        tiles.get(startTile.getTileRow()).set(startTile.getTileCol(), startTile);
+        tiles.get(endTile.getTileRow()).set(endTile.getTileCol(), endTile);
 
         grid.setTiles(tiles);
-    }
-
-    private void addTilesToCrush(ArrayList<BoardTile> tiles) {
-        for (BoardTile tile : tiles) {
-            potentialCrush.addCrushedCandies(tile);
-        }
     }
 
     private boolean isHorizontalMove(BoardTile startTile, BoardTile endTile) {
@@ -513,18 +506,18 @@ public class BoardGridUI {
     }
 
     private boolean notThreeInARowDimensionX(TileType type, int positionX, int positionY) {
-        if (grid.getTiles()[positionX - 1][positionY].getTileType() == TileType.EMPTY
-                || grid.getTiles()[positionX - 2][positionY].getTileType() == TileType.EMPTY)
+        if (grid.getTiles().get(positionX - 1).get(positionY).getTileType() == TileType.EMPTY
+                || grid.getTiles().get(positionX - 2).get(positionY).getTileType() == TileType.EMPTY)
             return true;
-        return type != grid.getTiles()[positionX - 1][positionY].getTileType()
-                || type != grid.getTiles()[positionX - 2][positionY].getTileType();
+        return type != grid.getTiles().get(positionX - 1).get(positionY).getTileType()
+                || type != grid.getTiles().get(positionX - 2).get(positionY).getTileType();
     }
 
-    private boolean notThreeInARowDimensionY(TileType type, BoardTile[] row, int positionY) {
-        if (row[positionY - 1].getTileType() == TileType.EMPTY
-                || row[positionY - 2].getTileType() == TileType.EMPTY) return true;
-        return type != row[positionY - 1].getTileType()
-                || type != row[positionY - 2].getTileType();
+    private boolean notThreeInARowDimensionY(TileType type, ArrayList<BoardTile> row, int positionY) {
+        if (row.get(positionY - 1).getTileType() == TileType.EMPTY
+                || row.get(positionY - 2).getTileType() == TileType.EMPTY) return true;
+        return type != row.get(positionY - 1).getTileType()
+                || type != row.get(positionY - 2).getTileType();
     }
 
     private boolean isOnePositionChangeHorizontally(int startCol, int endCol,

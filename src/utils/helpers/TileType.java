@@ -7,5 +7,6 @@ public enum  TileType {
     EYEBALL,
     PUMPKIN,
     MUMMY,
-    EMPTY
+    EMPTY,
+    CRUSHED
 }
