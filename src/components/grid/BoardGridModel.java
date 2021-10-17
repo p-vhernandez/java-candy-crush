@@ -16,6 +16,8 @@ public class BoardGridModel {
 
     private Level level;
 
+    private int tilesXAxis, tilesYAxis;
+
     public boolean isEnabled() {
         return isEnabled;
     }
@@ -56,4 +58,19 @@ public class BoardGridModel {
         this.level = level;
     }
 
+    public int getTilesXAxis() {
+        return tilesXAxis;
+    }
+
+    public void setTilesXAxis(int tilesXAxis) {
+        this.tilesXAxis = tilesXAxis;
+    }
+
+    public int getTilesYAxis() {
+        return tilesYAxis;
+    }
+
+    public void setTilesYAxis(int tilesYAxis) {
+        this.tilesYAxis = tilesYAxis;
+    }
 }

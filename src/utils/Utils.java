@@ -18,14 +18,14 @@ import java.util.Objects;
 public class Utils {
 
     private static final int WINDOW_WIDTH = 600;
-    private static final int WINDOW_HEIGHT = 800;
+    private static final int WINDOW_HEIGHT = 700;
     private static final int BOARD_PANEL_WIDTH = 600;
     private static final int BOARD_PANEL_HEIGHT = 400;
     private static final int TOP_BAR_HEIGHT = 120;
     private static final int TOP_BAR_COMPONENTS_HEIGHT = 90;
     private static final int MOVEMENTS_PANEL_WIDTH = 100;
     private static final int TILE_SIZE = 40;
-    private static final int TOTAL_LEVELS = 15;
+    private static final int TOTAL_LEVELS = 8;
 
     private static final int ICON_SIZE = 35;
 

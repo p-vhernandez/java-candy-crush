@@ -13,7 +13,7 @@ public class TopPanelUI {
 
     private final JPanel scorePanel, goalPanel;
     private final BoxLayout scoreLayout, goalLayout;
-    private final JLabel lblMovements, lblGoalNumber, lblScoreNumber;
+    private final JLabel lblMovements, lblScoreGoal, lblCurrentScore;
 
     public TopPanelUI(TopPanel controller) {
         this.controller = controller;
@@ -25,8 +25,8 @@ public class TopPanelUI {
         this.goalLayout = new BoxLayout(goalPanel, BoxLayout.PAGE_AXIS);
 
         this.lblMovements = new JLabel();
-        this.lblGoalNumber = new JLabel();
-        this.lblScoreNumber = new JLabel();
+        this.lblScoreGoal = new JLabel();
+        this.lblCurrentScore = new JLabel();
     }
 
     protected void initializeUI() {
@@ -51,17 +51,17 @@ public class TopPanelUI {
         JLabel lblScore = new JLabel("Score:");
         lblScore.setForeground(Color.white);
         lblScore.setBorder(new EmptyBorder(0, 10, 0, 10));
-        lblScoreNumber.setText("0000");
-        lblScoreNumber.setForeground(Color.white);
-        lblScoreNumber.setBorder(new EmptyBorder(0, 10, 0, 10));
+        lblCurrentScore.setText("0000");
+        lblCurrentScore.setForeground(Color.white);
+        lblCurrentScore.setBorder(new EmptyBorder(0, 10, 0, 10));
 
         Utils.setCustomFont(this, lblScore,
                 "../../resources/font/caramel-rg.ttf", 28f, Font.BOLD);
-        Utils.setCustomFont(this, lblScoreNumber,
+        Utils.setCustomFont(this, lblCurrentScore,
                 "../../resources/font/creepster-rg.ttf", 32f, Font.PLAIN);
 
         this.scorePanel.add(lblScore);
-        this.scorePanel.add(lblScoreNumber);
+        this.scorePanel.add(lblCurrentScore);
 
         controller.add(scorePanel);
     }
@@ -91,27 +91,27 @@ public class TopPanelUI {
         JLabel lblGoal = new JLabel("Target:");
         lblGoal.setForeground(Color.white);
         lblGoal.setBorder(new EmptyBorder(0, 10, 0, 10));
-        lblGoalNumber.setText("6500");
-        lblGoalNumber.setForeground(Color.white);
-        lblGoalNumber.setBorder(new EmptyBorder(0, 10, 0, 10));
+        lblScoreGoal.setText("6500");
+        lblScoreGoal.setForeground(Color.white);
+        lblScoreGoal.setBorder(new EmptyBorder(0, 10, 0, 10));
 
         Utils.setCustomFont(this, lblGoal,
                 "../../resources/font/caramel-rg.ttf", 28f, Font.BOLD);
-        Utils.setCustomFont(this, lblGoalNumber,
+        Utils.setCustomFont(this, lblScoreGoal,
                 "../../resources/font/creepster-rg.ttf", 32f, Font.PLAIN);
 
         this.goalPanel.add(lblGoal);
-        this.goalPanel.add(lblGoalNumber);
+        this.goalPanel.add(lblScoreGoal);
 
         controller.add(goalPanel);
     }
 
     protected void updateScoreGoal(int scoreGoal) {
-        this.lblGoalNumber.setText(String.valueOf(scoreGoal));
+        this.lblScoreGoal.setText(String.valueOf(scoreGoal));
     }
 
     protected void updateCurrentScore(int currentScore) {
-        this.lblScoreNumber.setText(String.valueOf(currentScore));
+        this.lblCurrentScore.setText(String.valueOf(currentScore));
     }
 
     protected void updateMaxMovements(int movements) {

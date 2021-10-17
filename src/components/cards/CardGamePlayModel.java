@@ -36,4 +36,12 @@ public class CardGamePlayModel {
         this.grid.setEnabled(enabled);
     }
 
+    protected void goToNextLevel() {
+        Level nextLevel = new Level(level.getDifficulty() + 5);
+        grid = null;
+        grid = new BoardGrid(nextLevel);
+        //grid.setLevel(nextLevel);
+        //grid.switchLevels();
+    }
+
 }
