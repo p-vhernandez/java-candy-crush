@@ -23,6 +23,7 @@ public class BoardGrid extends JPanel {
 
     private ArrayList<ArrayList<BoardTile>> tiles = new ArrayList<>();
     private BoardTile tileDragStart, tileDragEnd;
+    private ArrayList<ArrayList<BoardTile>> crushedCandiesByCol = new ArrayList<>();
 
     public BoardGrid(Level level) {
         this.level = level;
@@ -91,6 +92,10 @@ public class BoardGrid extends JPanel {
         repaint();
     }
 
+    public BoardGridModel getModel() {
+        return model;
+    }
+
     public void setEnabled(boolean enabled) {
         this.model.setEnabled(enabled);
     }
@@ -139,8 +144,12 @@ public class BoardGrid extends JPanel {
     }
 
     public void removeCandies(ArrayList<BoardTile> crushedCandies) {
+        for (int i = 0; i < level.getNumColumns(); i++) {
+            crushedCandiesByCol.add(new ArrayList<>());
+        }
         for (BoardTile tile : crushedCandies) {
             tiles.get(tile.getTileRow()).get(tile.getTileCol()).setTileType(TileType.CRUSHED);
+            crushedCandiesByCol.get(tile.getTileCol()).add(tile);
         }
 
         dropCandies();
@@ -148,11 +157,12 @@ public class BoardGrid extends JPanel {
     }
 
     public void dropCandies() {
-        int[] crushedInCol = new int[tiles.size()];
-        int[] minCrushRow = new int[tiles.size()];
-        boolean[] colUpdating = new boolean[tiles.size()];
+        this.model.setEnabled(false);
+        int[] crushedInCol = new int[level.getNumColumns()];
+        int[] minCrushRow = new int[level.getNumColumns()];
+        int[] crushesInCol = new int[level.getNumColumns()];
+        boolean[] colUpdating = new boolean[level.getNumColumns()];
         ArrayList<Integer> tileInitValY = new ArrayList<>();
-        ArrayList<ArrayList<BoardTile>> oldTiles = tiles;
 
         for (int i = 0; i < tiles.size(); i++) {
             for (int j = 0; j < tiles.get(i).size(); j++) {
@@ -194,10 +204,12 @@ public class BoardGrid extends JPanel {
                         colUpdating[i] = false;
                     }
                 } else {
-                    for (BoardTile tile : newTiles.get(i)) {
-                        tile.setTileY(tile.getTileY() + Utils.getTileSize() / 10);
-                        if (colUpdating[i] && newTiles.get(i).get(0).getTileY() == 0) {
-                            colUpdating[i] = false;
+                    if (colUpdating[i]) {
+                        for (BoardTile tile : newTiles.get(i)) {
+                            tile.setTileY(tile.getTileY() + Utils.getTileSize() / 10);
+                            if (colUpdating[i] && newTiles.get(i).get(0).getTileY() == 0) {
+                                colUpdating[i] = false;
+                            }
                         }
                     }
                 }
@@ -211,6 +223,7 @@ public class BoardGrid extends JPanel {
 
             if (!updating) {
                 ((Timer) e.getSource()).stop();
+                this.ui.checkBoard();
             }
         });
 
@@ -254,7 +267,6 @@ public class BoardGrid extends JPanel {
                 TileType type = types[random.nextInt(5)];
                 newTiles.get(i).add(new BoardTile(type, j - 1, i,
                         i * Utils.getTileSize(), -(crushedInCol[i] - j + 1) * Utils.getTileSize()));
-                System.out.println(type);
             }
         }
         return newTiles;

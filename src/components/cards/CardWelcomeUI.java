@@ -97,7 +97,6 @@ public class CardWelcomeUI {
         textFieldUsername.addKeyListener(new KeyAdapter() {
             @Override
             public void keyPressed(KeyEvent e) {
-                System.out.println(e.getKeyCode());
                 if (e.getKeyCode() == KeyEvent.VK_ENTER) {
                     String username = textFieldUsername.getText();
                     if (username.equals("")) {

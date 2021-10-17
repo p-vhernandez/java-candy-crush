@@ -432,8 +432,7 @@ public class BoardGridUI {
                     spaceToMove, false);
         } else {
             CardGameplay.oneMovementLess();
-            potentialCrush.crushCandies(grid);
-            //grid.crushed(potentialCrush);
+            potentialCrush.explode(grid);
             CardGameplay.updateScore(potentialCrush.getCrushedCandies().size());
         }
     }
@@ -524,6 +523,31 @@ public class BoardGridUI {
                 || Math.abs(grid.getTileDragStart().getTileRow() - tileDragEnd.getTileRow()) == 1)
                 && !dragDone
                 && tileDragEnd.getTileType() != TileType.EMPTY;
+    }
+
+    public void checkBoard() {
+        Crush potentialCrush = new Crush();
+        for (int i = 0; i < grid.getTiles().size(); i++) {
+            for (int j = 0; j < grid.getTiles().get(i).size(); j++) {
+                BoardTile tile = grid.getTiles().get(i).get(j);
+                if (i >= 2 && !notThreeInARowDimensionX(tile.getTileType(), i, j)) {
+                    potentialCrush.addCrushedCandies(tile);
+                    potentialCrush.addCrushedCandies(grid.getTiles().get(i-1).get(j));
+                    potentialCrush.addCrushedCandies(grid.getTiles().get(i-2).get(j));
+                }
+                if (j >= 2 && !notThreeInARowDimensionY(tile.getTileType(), grid.getTiles().get(i), j)) {
+                    potentialCrush.addCrushedCandies(tile);
+                    potentialCrush.addCrushedCandies(grid.getTiles().get(i).get(j-1));
+                    potentialCrush.addCrushedCandies(grid.getTiles().get(i).get(j-2));
+                }
+            }
+        }
+        if (potentialCrush.getCrushedCandies().size() > 0) {
+            potentialCrush.explode(grid);
+            CardGameplay.updateScore(potentialCrush.getCrushedCandies().size());
+        } else {
+            grid.getModel().setEnabled(true);
+        }
     }
 
 }

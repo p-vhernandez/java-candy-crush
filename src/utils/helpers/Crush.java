@@ -49,14 +49,6 @@ public class Crush {
         this.explosions.add(explosion);
     }
 
-    public void crushCandies(BoardGrid grid) {
-        for (BoardTile tile : crushedCandies) {
-            tile.setTileType(TileType.MUMMY);
-        }
-
-        explode(grid);
-    }
-
     public void explode(BoardGrid grid) {
         Timer explosionTimer = new Timer(5, e -> {
             for (int i = 0; i < explosions.size(); i++) {
