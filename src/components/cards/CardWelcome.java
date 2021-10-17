@@ -15,63 +15,20 @@ import java.util.Objects;
 public class CardWelcome extends JPanel {
 
     private final CandyCrush container;
-
-    private JTextField textFieldUsername;
-    private JButton startButton;
+    private final CardWelcomeUI view;
 
     public CardWelcome(CandyCrush container) {
         this.container = container;
-        initializeUI();
+        this.view = new CardWelcomeUI(this);
+
+        initialize();
     }
 
-    private void initializeUI() {
-        setPreferredSize(new Dimension(Utils.getWindowWidth(), Utils.getWindowHeight()));
-        setBackground(Utils.darkBackground);
-        setLayout(new BorderLayout());
-
-        setUpWelcomeText();
-        setUpTextField();
-        setUpStartButton();
+    private void initialize() {
+        view.initializeUI();
     }
 
-    private void setUpWelcomeText() {
-        JPanel infoPanel = new JPanel();
-        infoPanel.setLayout(new BoxLayout(infoPanel, BoxLayout.Y_AXIS));
-        infoPanel.setBackground(Utils.darkBackground);
-        infoPanel.setBorder(new EmptyBorder(80, 0, 0, 0));
-
-        infoPanel.add(generateNewInfoLine("Welcome to"));
-        infoPanel.add(generateNewInfoLine(Utils.getAppName()));
-
-        add(infoPanel, BorderLayout.NORTH);
-    }
-
-    private void setUpTextField() {
-        JPanel textFieldPanel = new JPanel();
-        textFieldPanel.setBackground(Utils.darkBackground);
-        textFieldPanel.setLayout(new BoxLayout(textFieldPanel, BoxLayout.Y_AXIS));
-        textFieldPanel.setBorder(new EmptyBorder(40, 20, 40, 20));
-
-        JLabel textFieldLabel = new JLabel();
-        textFieldLabel.setAlignmentX(CENTER_ALIGNMENT);
-        textFieldLabel.setAlignmentY(CENTER_ALIGNMENT);
-        textFieldLabel.setText("Enter your username: ");
-        Utils.setCustomFont(this, textFieldLabel, "../../resources/font/caramel-rg.ttf", 48f, Font.PLAIN);
-        textFieldLabel.setForeground(Utils.tileBorder);
-
-        textFieldUsername = new JTextField();
-        textFieldUsername.setAlignmentX(CENTER_ALIGNMENT);
-        textFieldUsername.setAlignmentY(CENTER_ALIGNMENT);
-        textFieldUsername.setPreferredSize(new Dimension(500, 50));
-        textFieldUsername.setMaximumSize(textFieldUsername.getPreferredSize());
-
-        textFieldPanel.add(textFieldLabel);
-        textFieldPanel.add(textFieldUsername);
-
-        add(textFieldPanel, BorderLayout.CENTER);
-    }
-
-    private JLabel generateNewInfoLine(String textToShow) {
+    protected JLabel generateNewInfoLine(String textToShow) {
         JLabel newLine = new JLabel(textToShow);
         newLine.setForeground(Color.white);
         newLine.setAlignmentX(CENTER_ALIGNMENT);
@@ -82,29 +39,9 @@ public class CardWelcome extends JPanel {
         return newLine;
     }
 
-    private void setUpStartButton() {
-        startButton = Utils.generateDefaultAppButton(this,
-                Utils.getWelcomeButtonLabel());
-
-        initializeListeners();
-        add(startButton, BorderLayout.SOUTH);
-    }
-
-    private void initializeListeners() {
-        startButton.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                String username = textFieldUsername.getText();
-
-                if (username.equals("")) {
-                    ErrorDialog errorDialog = new ErrorDialog("You must enter your username. ");
-                    errorDialog.setVisible(true);
-                } else {
-                    container.setPlayerUsername(username);
-                    container.flipCard(CardType.WELCOME, CardType.LEVELS);
-                }
-            }
-        });
+    protected void startPlaying(String player) {
+        container.setPlayerUsername(player);
+        container.flipCard(CardType.WELCOME, CardType.LEVELS);
     }
 
 }

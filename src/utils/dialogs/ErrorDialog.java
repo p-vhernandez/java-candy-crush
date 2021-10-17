@@ -3,10 +3,6 @@ package utils.dialogs;
 import utils.Utils;
 
 import javax.swing.*;
-import javax.swing.border.EmptyBorder;
-import javax.swing.border.LineBorder;
-import java.awt.*;
-import java.util.Objects;
 
 public class ErrorDialog extends JDialog {
 

@@ -17,8 +17,6 @@ public class TopPanel extends JPanel {
 
     private final CardGameplay cardGameplay;
 
-    private GameOverDialog gameOverDialog;
-
     public TopPanel(CardGameplay cardGameplay) {
         this.scorePanel = new JPanel();
         this.goalPanel = new JPanel();
@@ -148,7 +146,7 @@ public class TopPanel extends JPanel {
     }
 
     private void showGameOverDialog() {
-        gameOverDialog = new GameOverDialog();
+        GameOverDialog gameOverDialog = new GameOverDialog();
         gameOverDialog.setVisible(true);
     }
 
