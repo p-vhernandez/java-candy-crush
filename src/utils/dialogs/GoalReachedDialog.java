@@ -36,14 +36,15 @@ public class GoalReachedDialog extends JDialog {
 
         setUpListeners();
 
-        JPanel buttonsPanel = new JPanel();
-        buttonsPanel.setBackground(Utils.darkBackground);
-        buttonsPanel.setLayout(new FlowLayout());
-        buttonsPanel.add(btnBack);
-        buttonsPanel.add(btnContinue);
+        //JPanel buttonsPanel = new JPanel();
+        //buttonsPanel.setBackground(Utils.darkBackground);
+        //buttonsPanel.setLayout(new FlowLayout());
+        //buttonsPanel.add(btnBack);
+        //buttonsPanel.add(btnContinue);
 
         dialogPanel.add(lblGameOver);
-        dialogPanel.add(buttonsPanel);
+        dialogPanel.add(btnBack);
+        //dialogPanel.add(buttonsPanel);
 
         add(dialogPanel);
     }

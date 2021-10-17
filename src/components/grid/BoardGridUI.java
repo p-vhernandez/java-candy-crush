@@ -63,6 +63,11 @@ public class BoardGridUI {
         }
     }
 
+    protected void switchLevels() {
+        Level level = this.controller.getLevel();
+        generateTiles(level);
+    }
+
     /**
      * Store the tile icons beforehand to
      * reduce execution time.
@@ -438,7 +443,7 @@ public class BoardGridUI {
     public void setDragOne(boolean drag) {
         this.dragDone = drag;
     }
-  
+
     public BoardTile getTile(ArrayList<ArrayList<BoardTile>> tiles, int x, int y) {
         int tileSize = Utils.getTileSize();
         int col = (int) Math.floor(x / tileSize);
@@ -459,6 +464,7 @@ public class BoardGridUI {
             startTile.setTileY(startTile.getTileY() + spaceToMove);
             endTile.setTileY(endTile.getTileY() - spaceToMove);
         }
+
         controller.repaint();
     }
 
@@ -486,11 +492,17 @@ public class BoardGridUI {
     }
 
     private boolean notThreeInARowDimensionX(TileType type, int positionX, int positionY) {
-        if (controller.getTiles().get(positionX - 1).get(positionY).getTileType() == TileType.EMPTY
-                || controller.getTiles().get(positionX - 2).get(positionY).getTileType() == TileType.EMPTY)
-            return true;
-        return type != controller.getTiles().get(positionX - 1).get(positionY).getTileType()
-                || type != controller.getTiles().get(positionX - 2).get(positionY).getTileType();
+        try {
+            if (controller.getTiles().get(positionX - 1).get(positionY).getTileType() == TileType.EMPTY
+                    || controller.getTiles().get(positionX - 2).get(positionY).getTileType() == TileType.EMPTY)
+                return true;
+            return type != controller.getTiles().get(positionX - 1).get(positionY).getTileType()
+                    || type != controller.getTiles().get(positionX - 2).get(positionY).getTileType();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return false;
     }
 
     private boolean notThreeInARowDimensionY(TileType type, ArrayList<BoardTile> row, int positionY) {
@@ -530,13 +542,13 @@ public class BoardGridUI {
                 BoardTile tile = controller.getTiles().get(i).get(j);
                 if (i >= 2 && !notThreeInARowDimensionX(tile.getTileType(), i, j)) {
                     potentialCrush.addCrushedCandies(tile);
-                    potentialCrush.addCrushedCandies(controller.getTiles().get(i-1).get(j));
-                    potentialCrush.addCrushedCandies(controller.getTiles().get(i-2).get(j));
+                    potentialCrush.addCrushedCandies(controller.getTiles().get(i - 1).get(j));
+                    potentialCrush.addCrushedCandies(controller.getTiles().get(i - 2).get(j));
                 }
                 if (j >= 2 && !notThreeInARowDimensionY(tile.getTileType(), controller.getTiles().get(i), j)) {
                     potentialCrush.addCrushedCandies(tile);
-                    potentialCrush.addCrushedCandies(controller.getTiles().get(i).get(j-1));
-                    potentialCrush.addCrushedCandies(controller.getTiles().get(i).get(j-2));
+                    potentialCrush.addCrushedCandies(controller.getTiles().get(i).get(j - 1));
+                    potentialCrush.addCrushedCandies(controller.getTiles().get(i).get(j - 2));
                 }
             }
         }

@@ -1,6 +1,7 @@
 package components.topPanel;
 
 import components.cards.CardGameplay;
+import utils.Level;
 import utils.dialogs.GameOverDialog;
 import utils.dialogs.GoalReachedDialog;
 
@@ -12,6 +13,8 @@ public class TopPanel extends JPanel {
     private final TopPanelUI view;
 
     private final CardGameplay container;
+
+    private boolean endOfGame = false;
 
     public TopPanel(CardGameplay cardGameplay) {
         this.model = new TopPanelModel();
@@ -39,10 +42,13 @@ public class TopPanel extends JPanel {
         return this.model.getCurrentScore();
     }
 
-    public void setLblScoreNumber(int currentScore) {
+    public void setCurrentScore(int currentScore) {
         this.model.setCurrentScore(currentScore);
         this.view.updateCurrentScore(currentScore);
-        checkIfGoalIsMet(currentScore);
+
+        if (!endOfGame) {
+            checkIfGoalIsMet(currentScore);
+        }
     }
 
     public void setMaxMovements(int movements) {
@@ -54,7 +60,7 @@ public class TopPanel extends JPanel {
         this.model.oneMovementLess();
         this.view.updateMaxMovements(this.model.getAvailableMovements());
 
-        if (this.model.getAvailableMovements() == 0) {
+        if (this.model.getAvailableMovements() == 0 && !endOfGame) {
             showGameOverDialog();
             container.enableBoardGrid(false);
         }
@@ -67,6 +73,7 @@ public class TopPanel extends JPanel {
 
     private void checkIfGoalIsMet(int currentScore) {
         if (currentScore >= getScoreGoal()) {
+            endOfGame = true;
             container.updatePlayerProgress(currentScore);
             showGoalReachedDialog();
         }
@@ -75,6 +82,13 @@ public class TopPanel extends JPanel {
     private void showGoalReachedDialog() {
         GoalReachedDialog goalReachedDialog = new GoalReachedDialog(container);
         goalReachedDialog.setVisible(true);
+    }
+
+    public void reloadLevelInfo(Level level) {
+        endOfGame = false;
+        setCurrentScore(0);
+        setScoreGoal(level.getLevelGoal());
+        setMaxMovements(level.getMaxMovements());
     }
 
 }

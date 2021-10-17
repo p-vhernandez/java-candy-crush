@@ -14,28 +14,42 @@ import java.util.Random;
 
 public class BoardGrid extends JPanel {
 
-    private final BoardGridModel model;
-    private final BoardGridUI ui;
-
-    private int tilesXAxis, tilesYAxis;
+    private BoardGridModel model;
+    private BoardGridUI view;
 
     private ArrayList<ArrayList<BoardTile>> tiles = new ArrayList<>();
     private BoardTile tileDragStart, tileDragEnd;
     private ArrayList<ArrayList<BoardTile>> crushedCandiesByCol = new ArrayList<>();
 
     public BoardGrid(Level level) {
+        this.model = null;
         this.model = new BoardGridModel();
         this.model.setLevel(level);
         this.model.addChangeListener((e -> repaint()));
 
-        this.tilesXAxis = level.getNumRows();
-        this.tilesYAxis = level.getNumColumns();
+        this.view = null;
+        this.view = new BoardGridUI(this);
+        this.view.initializeUI();
 
-        this.ui = new BoardGridUI(this);
-        this.ui.initializeUI();
+        initialize();
+    }
 
+    private void initialize() {
+        updateAxis();
         enableBoardGrid(false);
         setUpListeners();
+    }
+
+    private void updateAxis() {
+        this.model.setTilesXAxis(this.model.getLevel().getNumRows());
+        this.model.setTilesYAxis(this.model.getLevel().getNumColumns());
+    }
+
+    public void switchLevels() {
+        updateAxis();
+
+        this.view.switchLevels();
+        this.model.setEnabled(true);
     }
 
     private void setUpListeners() {
@@ -43,7 +57,7 @@ public class BoardGrid extends JPanel {
             @Override
             public void mousePressed(MouseEvent e) {
                 if (model.isEnabled()) {
-                    setTileDragStart(ui.getTile(getTiles(), e.getX(), e.getY()));
+                    setTileDragStart(view.getTile(getTiles(), e.getX(), e.getY()));
                     model.setPressed(true);
                 }
             }
@@ -52,7 +66,7 @@ public class BoardGrid extends JPanel {
             public void mouseReleased(MouseEvent e) {
                 if (model.isEnabled()) {
                     model.setPressed(false);
-                    ui.setDragOne(false);
+                    view.setDragOne(false);
                 }
             }
         });
@@ -60,12 +74,12 @@ public class BoardGrid extends JPanel {
         addMouseMotionListener(new MouseAdapter() {
             @Override
             public void mouseDragged(MouseEvent e) {
-                BoardTile tileDragEnd = ui.getTile(getTiles(), e.getX(), e.getY());
+                BoardTile tileDragEnd = view.getTile(getTiles(), e.getX(), e.getY());
                 if (tileDragEnd != null) {
-                    if (ui.isDragValid(tileDragEnd)) {
-                        ui.setDragOne(true);
+                    if (view.isDragValid(tileDragEnd)) {
+                        view.setDragOne(true);
                         setTileDragEnd(tileDragEnd);
-                        ui.generateSwipeMotion(e);
+                        view.generateSwipeMotion(e);
                     }
                 }
             }
@@ -126,14 +140,14 @@ public class BoardGrid extends JPanel {
     }
 
     public Dimension getPreferredSize() {
-        int boardWidth = Utils.getTileSize() * tilesXAxis;
-        int boardHeight = Utils.getTileSize() * tilesYAxis;
+        int boardWidth = Utils.getTileSize() * this.model.getTilesXAxis();
+        int boardHeight = Utils.getTileSize() * this.model.getTilesYAxis();
 
         return new Dimension(boardWidth, boardHeight);
     }
 
     public void paintComponent(Graphics g) {
-        this.ui.paint((Graphics2D) g);
+        this.view.paint((Graphics2D) g);
     }
 
     public void enableBoardGrid(boolean enabled) {
@@ -224,7 +238,7 @@ public class BoardGrid extends JPanel {
 
             if (!updating) {
                 ((Timer) e.getSource()).stop();
-                this.ui.checkBoard();
+                this.view.checkBoard();
             }
         });
 
@@ -270,6 +284,7 @@ public class BoardGrid extends JPanel {
                         i * Utils.getTileSize(), -(crushedInCol[i] - j + 1) * Utils.getTileSize()));
             }
         }
+
         return newTiles;
     }
 

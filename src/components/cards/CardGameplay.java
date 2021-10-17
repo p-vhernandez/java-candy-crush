@@ -60,7 +60,8 @@ public class CardGameplay extends JPanel {
     }
 
     public void goToNextLevel() {
-        // TODO
+        this.model.goToNextLevel();
+        topPanel.reloadLevelInfo(this.model.getLevel());
     }
 
     public void updatePlayerProgress(int currentScore) {
@@ -138,6 +139,6 @@ public class CardGameplay extends JPanel {
 
     public static void updateScore(int sequence) {
         int currentScore = topPanel.getCurrentScore();
-        topPanel.setLblScoreNumber(currentScore + sequence * 40);
+        topPanel.setCurrentScore(currentScore + sequence * 40);
     }
 }
