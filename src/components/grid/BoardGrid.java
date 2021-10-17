@@ -163,6 +163,9 @@ public class BoardGrid extends JPanel {
         int[] crushesInCol = new int[level.getNumColumns()];
         boolean[] colUpdating = new boolean[level.getNumColumns()];
         ArrayList<Integer> tileInitValY = new ArrayList<>();
+        ArrayList<ArrayList<BoardTile>> tilesToUpdateByCol = new ArrayList<>();
+
+        //for ()
 
         for (int i = 0; i < tiles.size(); i++) {
             for (int j = 0; j < tiles.get(i).size(); j++) {
