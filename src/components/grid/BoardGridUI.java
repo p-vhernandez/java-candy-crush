@@ -256,7 +256,6 @@ public class BoardGridUI {
             // Horizontal swipe
             if (isHorizontalMove(startTile, endTile)) {
                 moveBothTiles(startTile, endTile, spaceToMove, true);
-                //updateGridTiles(startTile, endTile);
 
                 if (startTile.getTileX() == initEndX
                         && endTile.getTileX() == initStartX) {

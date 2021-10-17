@@ -2,9 +2,7 @@ package components.grid;
 
 import components.BoardTile;
 import utils.Utils;
-import utils.helpers.Crush;
 import utils.Level;
-import utils.helpers.LevelType;
 import utils.helpers.TileType;
 
 import javax.swing.*;
@@ -12,8 +10,6 @@ import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
 import java.util.Random;
 
 public class BoardGrid extends JPanel {
@@ -22,7 +18,6 @@ public class BoardGrid extends JPanel {
     private final BoardGridUI ui;
 
     private Level level;
-    private LevelType levelType;
 
     private int tilesXAxis, tilesYAxis;
 
@@ -77,30 +72,6 @@ public class BoardGrid extends JPanel {
                 }
             }
         });
-    }
-
-    public int getTilesXAxis() {
-        return tilesXAxis;
-    }
-
-    public void setTilesXAxis(int tilesXAxis) {
-        this.tilesXAxis = tilesXAxis;
-    }
-
-    public int getTilesYAxis() {
-        return tilesYAxis;
-    }
-
-    public void setTilesYAxis(int tilesYAxis) {
-        this.tilesYAxis = tilesYAxis;
-    }
-
-    public LevelType getLevelType() {
-        return this.levelType;
-    }
-
-    public void setLevelType(LevelType type) {
-        this.levelType = type;
     }
 
     public Level getLevel() {

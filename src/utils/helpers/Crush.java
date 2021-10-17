@@ -2,10 +2,8 @@ package utils.helpers;
 
 import components.BoardTile;
 import components.grid.BoardGrid;
-import components.grid.BoardGridUI;
 
 import javax.swing.*;
-import java.awt.*;
 import java.util.ArrayList;
 
 public class Crush {
