@@ -32,7 +32,7 @@ public class CardGamePlayUI {
     protected void setUpBoardPanel() {
         JPanel boardPanel = new JPanel();
         boardPanel.setLayout(new BoxLayout(boardPanel, BoxLayout.Y_AXIS));
-        boardPanel.setBorder(new EmptyBorder(40, 0, 0, 0));
+        boardPanel.setBorder(new EmptyBorder(20, 0, 0, 0));
         boardPanel.setBackground(Utils.darkBackground);
         boardPanel.setPreferredSize(new Dimension(Utils.getBoardPanelWidth(), Utils.getBoardPanelHeight()));
         boardPanel.setMinimumSize(boardPanel.getPreferredSize());
@@ -51,9 +51,7 @@ public class CardGamePlayUI {
         bottomPanel.setLayout(new FlowLayout());
         bottomPanel.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
         bottomPanel.setBackground(Utils.darkBackground);
-        bottomPanel.setBorder(new EmptyBorder(40, 0, 40, 0));
-        bottomPanel.setPreferredSize(new Dimension(Utils.getWindowWidth(), 60));
-        bottomPanel.setMaximumSize(bottomPanel.getMaximumSize());
+        bottomPanel.setMaximumSize(new Dimension(Utils.getWindowWidth(), 60));
 
         btnBack = Utils.generateDefaultAppButton(this, "Back to levels");
         btnBack.setPreferredSize(new Dimension((Utils.getWindowWidth() / 2) - 30, 50));
@@ -66,6 +64,8 @@ public class CardGamePlayUI {
         bottomPanel.add(btnBack);
         bottomPanel.add(btnRestart);
         controller.add(bottomPanel, BorderLayout.SOUTH);
+        //controller.add(btnBack, BorderLayout.SOUTH);
+        //controller.add(btnRestart, BorderLayout.SOUTH);
     }
 
     private void initializeListeners() {
