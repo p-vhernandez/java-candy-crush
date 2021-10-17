@@ -1,7 +1,5 @@
-package components;
+package components.topPanel;
 
-import components.cards.CardGameplay;
-import utils.dialogs.GameOverDialog;
 import utils.Utils;
 
 import javax.swing.*;
@@ -9,15 +7,17 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 import java.awt.*;
 
-public class TopPanel extends JPanel {
+public class TopPanelUI {
+
+    private final TopPanel controller;
 
     private final JPanel scorePanel, goalPanel;
     private final BoxLayout scoreLayout, goalLayout;
     private final JLabel lblMovements, lblGoalNumber, lblScoreNumber;
 
-    private final CardGameplay cardGameplay;
+    public TopPanelUI(TopPanel controller) {
+        this.controller = controller;
 
-    public TopPanel(CardGameplay cardGameplay) {
         this.scorePanel = new JPanel();
         this.goalPanel = new JPanel();
 
@@ -27,17 +27,13 @@ public class TopPanel extends JPanel {
         this.lblMovements = new JLabel();
         this.lblGoalNumber = new JLabel();
         this.lblScoreNumber = new JLabel();
-
-        this.cardGameplay = cardGameplay;
-
-        setUpUI();
     }
 
-    private void setUpUI() {
-        setBackground(Utils.darkBackground);
-        setPreferredSize(new Dimension(Utils.getWindowWidth(),
+    protected void initializeUI() {
+        controller.setBackground(Utils.darkBackground);
+        controller.setPreferredSize(new Dimension(Utils.getWindowWidth(),
                 Utils.getTopBarHeight()));
-        setMaximumSize(getPreferredSize());
+        controller.setMaximumSize(controller.getPreferredSize());
 
         setUpScorePanel();
         setUpMovements();
@@ -60,14 +56,14 @@ public class TopPanel extends JPanel {
         lblScoreNumber.setBorder(new EmptyBorder(0, 10, 0, 10));
 
         Utils.setCustomFont(this, lblScore,
-                "../resources/font/caramel-rg.ttf", 28f, Font.BOLD);
+                "../../resources/font/caramel-rg.ttf", 28f, Font.BOLD);
         Utils.setCustomFont(this, lblScoreNumber,
-                "../resources/font/creepster-rg.ttf", 32f, Font.PLAIN);
+                "../../resources/font/creepster-rg.ttf", 32f, Font.PLAIN);
 
         this.scorePanel.add(lblScore);
         this.scorePanel.add(lblScoreNumber);
 
-        add(scorePanel);
+        controller.add(scorePanel);
     }
 
     private void setUpMovements() {
@@ -80,8 +76,8 @@ public class TopPanel extends JPanel {
                 Utils.getTopBarComponentsHeight()));
 
         Utils.setCustomFont(this, lblMovements,
-                "../resources/font/creepster-rg.ttf", 40f, Font.PLAIN);
-        add(lblMovements);
+                "../../resources/font/creepster-rg.ttf", 40f, Font.PLAIN);
+        controller.add(lblMovements);
     }
 
     private void setUpGoalLayout() {
@@ -100,54 +96,26 @@ public class TopPanel extends JPanel {
         lblGoalNumber.setBorder(new EmptyBorder(0, 10, 0, 10));
 
         Utils.setCustomFont(this, lblGoal,
-                "../resources/font/caramel-rg.ttf", 28f, Font.BOLD);
+                "../../resources/font/caramel-rg.ttf", 28f, Font.BOLD);
         Utils.setCustomFont(this, lblGoalNumber,
-                "../resources/font/creepster-rg.ttf", 32f, Font.PLAIN);
+                "../../resources/font/creepster-rg.ttf", 32f, Font.PLAIN);
 
         this.goalPanel.add(lblGoal);
         this.goalPanel.add(lblGoalNumber);
 
-        add(goalPanel);
+        controller.add(goalPanel);
     }
 
-    public int getLblGoalNumber() {
-        return Integer.parseInt(lblGoalNumber.getText());
+    protected void updateScoreGoal(int scoreGoal) {
+        this.lblGoalNumber.setText(String.valueOf(scoreGoal));
     }
 
-    public void setLblGoalNumber(int goalNumber) {
-        lblGoalNumber.setText(String.valueOf(goalNumber));
+    protected void updateCurrentScore(int currentScore) {
+        this.lblScoreNumber.setText(String.valueOf(currentScore));
     }
 
-    public int getLblScoreNumber() {
-        return Integer.parseInt(lblScoreNumber.getText());
-    }
-
-    public void setLblScoreNumber(int scoreNumber) {
-        lblScoreNumber.setText(String.valueOf(scoreNumber));
-    }
-
-    public void setMaxMovements(int movements) {
+    protected void updateMaxMovements(int movements) {
         this.lblMovements.setText(String.valueOf(movements));
-    }
-
-    public void oneMovementLess() {
-        int movementsLeft = Integer.parseInt(this.lblMovements.getText());
-        this.lblMovements.setText(String.valueOf(movementsLeft - 1));
-
-        movementsLeft = Integer.parseInt(this.lblMovements.getText());
-        if (movementsLeft == 0) {
-            showGameOverDialog();
-            cardGameplay.enableBoardGrid(false);
-        }
-    }
-
-    public int getMovementsLeft() {
-        return Integer.parseInt(this.lblMovements.getText());
-    }
-
-    private void showGameOverDialog() {
-        GameOverDialog gameOverDialog = new GameOverDialog();
-        gameOverDialog.setVisible(true);
     }
 
 }

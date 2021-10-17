@@ -14,10 +14,8 @@ import java.util.Random;
 
 public class BoardGrid extends JPanel {
 
-    private BoardGridModel model;
+    private final BoardGridModel model;
     private final BoardGridUI ui;
-
-    private Level level;
 
     private int tilesXAxis, tilesYAxis;
 
@@ -26,15 +24,14 @@ public class BoardGrid extends JPanel {
     private ArrayList<ArrayList<BoardTile>> crushedCandiesByCol = new ArrayList<>();
 
     public BoardGrid(Level level) {
-        this.level = level;
+        this.model = new BoardGridModel();
+        this.model.setLevel(level);
+        this.model.addChangeListener((e -> repaint()));
 
         this.tilesXAxis = level.getNumRows();
         this.tilesYAxis = level.getNumColumns();
 
-        this.model = new BoardGridModel();
-        this.model.addChangeListener((e -> repaint()));
-
-        this.ui = new BoardGridUI(level, this);
+        this.ui = new BoardGridUI(this);
         this.ui.initializeUI();
 
         enableBoardGrid(false);
@@ -76,11 +73,11 @@ public class BoardGrid extends JPanel {
     }
 
     public Level getLevel() {
-        return level;
+        return this.model.getLevel();
     }
 
     public void setLevel(Level level) {
-        this.level = level;
+        this.model.setLevel(level);
     }
 
     public ArrayList<ArrayList<BoardTile>> getTiles() {
@@ -144,9 +141,10 @@ public class BoardGrid extends JPanel {
     }
 
     public void removeCandies(ArrayList<BoardTile> crushedCandies) {
-        for (int i = 0; i < level.getNumColumns(); i++) {
+        for (int i = 0; i < this.model.getLevel().getNumColumns(); i++) {
             crushedCandiesByCol.add(new ArrayList<>());
         }
+
         for (BoardTile tile : crushedCandies) {
             tiles.get(tile.getTileRow()).get(tile.getTileCol()).setTileType(TileType.CRUSHED);
             crushedCandiesByCol.get(tile.getTileCol()).add(tile);
@@ -158,10 +156,10 @@ public class BoardGrid extends JPanel {
 
     public void dropCandies() {
         this.model.setEnabled(false);
-        int[] crushedInCol = new int[level.getNumColumns()];
-        int[] minCrushRow = new int[level.getNumColumns()];
-        int[] crushesInCol = new int[level.getNumColumns()];
-        boolean[] colUpdating = new boolean[level.getNumColumns()];
+        int[] crushedInCol = new int[this.model.getLevel().getNumColumns()];
+        int[] minCrushRow = new int[this.model.getLevel().getNumColumns()];
+        int[] crushesInCol = new int[this.model.getLevel().getNumColumns()];
+        boolean[] colUpdating = new boolean[this.model.getLevel().getNumColumns()];
         ArrayList<Integer> tileInitValY = new ArrayList<>();
         ArrayList<ArrayList<BoardTile>> tilesToUpdateByCol = new ArrayList<>();
 
