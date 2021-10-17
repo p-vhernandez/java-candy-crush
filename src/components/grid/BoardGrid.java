@@ -104,11 +104,11 @@ public class BoardGrid extends JPanel {
     }
 
     public Level getLevel() {
-        return level;
+        return this.model.getLevel();
     }
 
     public void setLevel(Level level) {
-        this.level = level;
+        this.model.setLevel(level);
     }
 
     public ArrayList<ArrayList<BoardTile>> getTiles() {
@@ -297,7 +297,6 @@ public class BoardGrid extends JPanel {
                 TileType type = types[random.nextInt(5)];
                 newTiles.get(i).add(new BoardTile(type, j - 1, i,
                         i * Utils.getTileSize(), -(crushedInCol[i] - j + 1) * Utils.getTileSize()));
-                System.out.println(type);
             }
         }
         return newTiles;

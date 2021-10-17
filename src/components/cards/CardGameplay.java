@@ -1,6 +1,6 @@
 package components.cards;
 
-import components.TopPanel;
+import components.topPanel.TopPanel;
 import components.grid.BoardGrid;
 import main.CandyCrush;
 import utils.Level;
@@ -50,8 +50,8 @@ public class CardGameplay extends JPanel {
         // TODO
     }
 
-    protected void flipCard(CardType origin, CardType destination) {
-        container.flipCard(origin, destination);
+    protected void flipCard(CardType destination) {
+        container.flipCard(CardType.GAME_PLAY, destination);
     }
 
     protected void createNewGrid() {
@@ -59,7 +59,7 @@ public class CardGameplay extends JPanel {
     }
 
     protected void setGoal(int goal) {
-        topPanel.setLblGoalNumber(goal);
+        topPanel.setScoreGoal(goal);
     }
 
     protected void setMaxMovements(int maxMovements) {
@@ -78,16 +78,12 @@ public class CardGameplay extends JPanel {
         topPanel.oneMovementLess();
     }
 
-    public static int getMovementsLeft() {
-        return topPanel.getMovementsLeft();
-    }
-
     public void enableBoardGrid(boolean enabled) {
         this.model.enableGrid(enabled);
     }
 
     public static void updateScore(int sequence) {
-        int currentScore = topPanel.getLblScoreNumber();
+        int currentScore = topPanel.getCurrentScore();
         topPanel.setLblScoreNumber(currentScore + sequence * 40);
     }
 }

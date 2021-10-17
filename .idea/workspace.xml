@@ -6,8 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="6b4cf923-17ad-46fa-bee3-8a7e44728267" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/TopPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/topPanel/TopPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/cards/CardGamePlayUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/cards/CardGamePlayUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/cards/CardGameplay.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/cards/CardGameplay.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/grid/BoardGrid.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/grid/BoardGrid.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/grid/BoardGridUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/grid/BoardGridUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/grid/BoardGridModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/grid/BoardGridModel.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -108,7 +111,7 @@
       <workItem from="1634158477213" duration="1155000" />
       <workItem from="1634235924987" duration="882000" />
       <workItem from="1634240881656" duration="27882000" />
-      <workItem from="1634470549587" duration="325000" />
+      <workItem from="1634470549587" duration="2624000" />
     </task>
     <servers />
   </component>
@@ -128,15 +131,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/CandyCrush.java</url>
-          <line>103</line>
-          <option name="timeStamp" value="37" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
     <watches-manager>
       <configuration name="Application">
         <watch expression="parser" />
