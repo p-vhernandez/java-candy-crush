@@ -3,11 +3,16 @@ package components.cards;
 import components.topPanel.TopPanel;
 import components.grid.BoardGrid;
 import main.CandyCrush;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 import utils.Level;
+import utils.Player;
+import utils.Utils;
 import utils.helpers.CardType;
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.FileWriter;
 
 public class CardGameplay extends JPanel {
 
@@ -50,8 +55,57 @@ public class CardGameplay extends JPanel {
         // TODO
     }
 
-    protected void flipCard(CardType destination) {
+    public void flipCard(CardType destination) {
         container.flipCard(CardType.GAME_PLAY, destination);
+    }
+
+    public void goToNextLevel() {
+        // TODO
+    }
+
+    public void updatePlayerProgress(int currentScore) {
+        Utils.player.updateProgress(currentScore, getLevel());
+        replaceInfoInJSONFile();
+    }
+
+    private void replaceInfoInJSONFile() {
+        JSONObject jsonObject = Utils.getPlayersJSONObject();
+        int userToReplace = -1;
+
+        if (jsonObject != null) {
+            JSONArray players = (JSONArray) jsonObject.get("players");
+
+            for (int i = 0; i < players.size(); i++) {
+                Player player = new Player((JSONObject) players.get(i));
+
+                if (player.getUsername().equals(Utils.player.getUsername())) {
+                    userToReplace = i;
+                    break;
+                }
+            }
+
+            if (userToReplace != -1) {
+                players.remove(userToReplace);
+
+                players.add(Utils.player.toJSON());
+                jsonObject.replace("players", players);
+
+                writeInJSON(jsonObject);
+            }
+        } else {
+            Utils.showError("Progress could not be saved.");
+        }
+    }
+
+    private void writeInJSON(JSONObject jsonObject) {
+        try {
+            FileWriter file = new FileWriter("src/resources/user/progress.json");
+            file.write(jsonObject.toJSONString());
+            file.flush();
+        } catch (Exception e) {
+            e.printStackTrace();
+            Utils.showError("Progress could not be saved.");
+        }
     }
 
     protected void createNewGrid() {

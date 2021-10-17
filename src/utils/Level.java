@@ -198,6 +198,10 @@ public class Level {
         }
     }
 
+    public int getDifficulty() {
+        return difficulty;
+    }
+
     public LevelType getLevelType() {
         return LEVEL_TYPE;
     }

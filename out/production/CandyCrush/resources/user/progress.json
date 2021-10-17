@@ -1,7 +1,7 @@
 {
   "players": [
     {
-      "global-score": 0,
+      "global-score": 480,
       "progress": [
         {
           "level": 1,
@@ -11,7 +11,7 @@
         {
           "level": 2,
           "index": 1,
-          "unlocked": false
+          "unlocked": true
         },
         {
           "level": 3,

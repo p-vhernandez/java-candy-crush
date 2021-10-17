@@ -48,18 +48,17 @@ public class CardLevelChoice extends JPanel {
     }
 
     private void readJSON() {
-        JSONParser parser = new JSONParser();
+        JSONObject jsonObject = Utils.getPlayersJSONObject();
         boolean playerFound = false;
 
-        try {
-            JSONObject jsonObject = (JSONObject) parser.parse(new FileReader("src/resources/user/progress.json"));
+        if (jsonObject != null) {
             JSONArray players = (JSONArray) jsonObject.get("players");
 
             for (Object o : players) {
                 Player player = new Player((JSONObject) o);
 
                 if (player.getUsername().equals(container.getPlayerUsername())) {
-                    this.model.setPlayer(player);
+                    Utils.player = player;
                     createLevelButtons();
 
                     playerFound = true;
@@ -71,25 +70,25 @@ public class CardLevelChoice extends JPanel {
                 generateNewPlayer(jsonObject);
                 reloadContent();
             }
-        } catch (ParseException | IOException e) {
-            e.printStackTrace();
-            showError("Could not read the player data. ");
+        } else {
+            Utils.showError("Players file couldn't be read.");
         }
     }
 
     protected void createLevelButtons() {
-        for (Object level : this.model.getPlayer().getProgress()) {
-            JSONObject jsonLevel = (JSONObject) level;
+        if (Utils.player != null) {
+            for (Object level : Utils.player.getProgress()) {
+                JSONObject jsonLevel = (JSONObject) level;
 
-            LevelButton button = new LevelButton(
-                    this,
-                    (int) (long) jsonLevel.get("level"),
-                    (int) (long) jsonLevel.get("index"),
-                    //(boolean) jsonLevel.get("unlocked")
-                    true
-            );
+                LevelButton button = new LevelButton(
+                        this,
+                        (int) (long) jsonLevel.get("level"),
+                        (int) (long) jsonLevel.get("index"),
+                        (boolean) jsonLevel.get("unlocked")
+                );
 
-            model.addLevelButton(button);
+                model.addLevelButton(button);
+            }
         }
     }
 
@@ -137,7 +136,7 @@ public class CardLevelChoice extends JPanel {
     }
 
     private void showError(String infoLabel) {
-        view.showError(infoLabel);
+        Utils.showError(infoLabel);
     }
 
     public void selectLevel(int index) {

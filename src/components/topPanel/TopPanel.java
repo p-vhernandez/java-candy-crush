@@ -2,6 +2,7 @@ package components.topPanel;
 
 import components.cards.CardGameplay;
 import utils.dialogs.GameOverDialog;
+import utils.dialogs.GoalReachedDialog;
 
 import javax.swing.*;
 
@@ -66,8 +67,14 @@ public class TopPanel extends JPanel {
 
     private void checkIfGoalIsMet(int currentScore) {
         if (currentScore >= getScoreGoal()) {
-            System.out.println("LEVEL GOAL REACHED!!!");
+            container.updatePlayerProgress(currentScore);
+            showGoalReachedDialog();
         }
+    }
+
+    private void showGoalReachedDialog() {
+        GoalReachedDialog goalReachedDialog = new GoalReachedDialog(container);
+        goalReachedDialog.setVisible(true);
     }
 
 }

@@ -45,9 +45,4 @@ public class CardLevelChoiceUI {
         }
     }
 
-    protected void showError(String infoLabel) {
-        ErrorDialog errorDialog = new ErrorDialog(infoLabel);
-        errorDialog.setVisible(true);
-    }
-
 }
