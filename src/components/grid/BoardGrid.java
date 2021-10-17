@@ -18,10 +18,9 @@ import java.util.Random;
 
 public class BoardGrid extends JPanel {
 
-    private BoardGridModel model;
+    private final BoardGridModel model;
     private final BoardGridUI ui;
 
-    private Level level;
     private LevelType levelType;
 
     private int tilesXAxis, tilesYAxis;
@@ -30,7 +29,6 @@ public class BoardGrid extends JPanel {
     private BoardTile tileDragStart, tileDragEnd;
 
     public BoardGrid(Level level) {
-        this.level = level;
 
         this.tilesXAxis = level.getNumRows();
         this.tilesYAxis = level.getNumColumns();
