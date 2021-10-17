@@ -2,9 +2,7 @@ package components.grid;
 
 import components.BoardTile;
 import utils.Utils;
-import utils.helpers.Crush;
 import utils.Level;
-import utils.helpers.LevelType;
 import utils.helpers.TileType;
 
 import javax.swing.*;
@@ -12,8 +10,6 @@ import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
 import java.util.Random;
 
 public class BoardGrid extends JPanel {
@@ -21,12 +17,13 @@ public class BoardGrid extends JPanel {
     private final BoardGridModel model;
     private final BoardGridUI ui;
 
-    private LevelType levelType;
+    private Level level;
 
     private int tilesXAxis, tilesYAxis;
 
     private ArrayList<ArrayList<BoardTile>> tiles = new ArrayList<>();
     private BoardTile tileDragStart, tileDragEnd;
+    private ArrayList<ArrayList<BoardTile>> crushedCandiesByCol = new ArrayList<>();
 
     public BoardGrid(Level level) {
 
@@ -77,30 +74,6 @@ public class BoardGrid extends JPanel {
         });
     }
 
-    public int getTilesXAxis() {
-        return tilesXAxis;
-    }
-
-    public void setTilesXAxis(int tilesXAxis) {
-        this.tilesXAxis = tilesXAxis;
-    }
-
-    public int getTilesYAxis() {
-        return tilesYAxis;
-    }
-
-    public void setTilesYAxis(int tilesYAxis) {
-        this.tilesYAxis = tilesYAxis;
-    }
-
-    public LevelType getLevelType() {
-        return this.levelType;
-    }
-
-    public void setLevelType(LevelType type) {
-        this.levelType = type;
-    }
-
     public Level getLevel() {
         return this.model.getLevel();
     }
@@ -116,6 +89,10 @@ public class BoardGrid extends JPanel {
     public void setTiles(ArrayList<ArrayList<BoardTile>> tiles) {
         this.tiles = tiles;
         repaint();
+    }
+
+    public BoardGridModel getModel() {
+        return model;
     }
 
     public void setEnabled(boolean enabled) {
@@ -165,29 +142,13 @@ public class BoardGrid extends JPanel {
         this.model.setEnabled(enabled);
     }
 
-    /**
-     * Update the tiles on the board grid to show the new ones after
-     * grouping at least 3 of them.
-     *
-     * @param potentialCrush - Object that stores the crush to explode.
-     */
-    public void crushed(Crush potentialCrush) {
-        ArrayList<ArrayList<BoardTile>> changedTiles = getTiles();
-        for (BoardTile tile : potentialCrush.getCrushedCandies()) {
-            int row = tile.getTileRow();
-            int col = tile.getTileCol();
-            ArrayList<BoardTile> changedRow = tiles.get(row);
-            changedRow.set(col, tile);
-
-            changedTiles.set(row, changedRow);
-        }
-
-        setTiles(changedTiles);
-    }
-
     public void removeCandies(ArrayList<BoardTile> crushedCandies) {
+        for (int i = 0; i < level.getNumColumns(); i++) {
+            crushedCandiesByCol.add(new ArrayList<>());
+        }
         for (BoardTile tile : crushedCandies) {
             tiles.get(tile.getTileRow()).get(tile.getTileCol()).setTileType(TileType.CRUSHED);
+            crushedCandiesByCol.get(tile.getTileCol()).add(tile);
         }
 
         dropCandies();
@@ -195,11 +156,12 @@ public class BoardGrid extends JPanel {
     }
 
     public void dropCandies() {
-        int[] crushedInCol = new int[tiles.size()];
-        int[] minCrushRow = new int[tiles.size()];
-        boolean[] colUpdating = new boolean[tiles.size()];
+        this.model.setEnabled(false);
+        int[] crushedInCol = new int[level.getNumColumns()];
+        int[] minCrushRow = new int[level.getNumColumns()];
+        int[] crushesInCol = new int[level.getNumColumns()];
+        boolean[] colUpdating = new boolean[level.getNumColumns()];
         ArrayList<Integer> tileInitValY = new ArrayList<>();
-        ArrayList<ArrayList<BoardTile>> oldTiles = tiles;
 
         for (int i = 0; i < tiles.size(); i++) {
             for (int j = 0; j < tiles.get(i).size(); j++) {
@@ -237,9 +199,17 @@ public class BoardGrid extends JPanel {
                             tileToMove.setTileY(tileToMove.getTileY() + Utils.getTileSize() / 10);
                         }
                     }
-
-                    if (tiles.get(minCrushRow[i] + crushedInCol[i] - 1).get(i).getTileY() - tileInitValY.get(i) == spaceToMove) {
+                    if (colUpdating[i] && tiles.get(minCrushRow[i] + crushedInCol[i] - 1).get(i).getTileY() - tileInitValY.get(i) == spaceToMove) {
                         colUpdating[i] = false;
+                    }
+                } else {
+                    if (colUpdating[i]) {
+                        for (BoardTile tile : newTiles.get(i)) {
+                            tile.setTileY(tile.getTileY() + Utils.getTileSize() / 10);
+                            if (colUpdating[i] && newTiles.get(i).get(0).getTileY() == 0) {
+                                colUpdating[i] = false;
+                            }
+                        }
                     }
                 }
             }
@@ -252,6 +222,7 @@ public class BoardGrid extends JPanel {
 
             if (!updating) {
                 ((Timer) e.getSource()).stop();
+                this.ui.checkBoard();
             }
         });
 

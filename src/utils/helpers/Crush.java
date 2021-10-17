@@ -2,10 +2,8 @@ package utils.helpers;
 
 import components.BoardTile;
 import components.grid.BoardGrid;
-import components.grid.BoardGridUI;
 
 import javax.swing.*;
-import java.awt.*;
 import java.util.ArrayList;
 
 public class Crush {
@@ -49,14 +47,6 @@ public class Crush {
 
     public void addExplosion(Explosion explosion) {
         this.explosions.add(explosion);
-    }
-
-    public void crushCandies(BoardGrid grid) {
-        for (BoardTile tile : crushedCandies) {
-            tile.setTileType(TileType.MUMMY);
-        }
-
-        explode(grid);
     }
 
     public void explode(BoardGrid grid) {

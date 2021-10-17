@@ -6,6 +6,8 @@ import utils.dialogs.ErrorDialog;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
@@ -62,6 +64,7 @@ public class CardWelcomeUI {
         textFieldUsername.setAlignmentY(CENTER_ALIGNMENT);
         textFieldUsername.setPreferredSize(new Dimension(500, 50));
         textFieldUsername.setMaximumSize(textFieldUsername.getPreferredSize());
+        textFieldUsername.setFocusable(true);
 
         textFieldPanel.add(textFieldLabel);
         textFieldPanel.add(textFieldUsername);
@@ -88,6 +91,20 @@ public class CardWelcomeUI {
                     errorDialog.setVisible(true);
                 } else {
                     controller.startPlaying(username);
+                }
+            }
+        });
+        textFieldUsername.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                    String username = textFieldUsername.getText();
+                    if (username.equals("")) {
+                        ErrorDialog errorDialog = new ErrorDialog("You must enter your username. ");
+                        errorDialog.setVisible(true);
+                    } else {
+                        controller.startPlaying(username);
+                    }
                 }
             }
         });

@@ -79,7 +79,7 @@ public class Level {
                 STANDARD_CANDY_CRUSHED = 0;
                 SPECIAL_CANDY_CRUSHED = 0;
                 SEVERAL_CRUSHES_BONUS = 0;
-                MAX_MOVEMENTS = 5;
+                MAX_MOVEMENTS = 25;
                 NUM_COLUMNS = 6;
                 NUM_ROWS = 6;
                 LEVEL_GOAL = 810;
@@ -167,7 +167,7 @@ public class Level {
                 STANDARD_CANDY_CRUSHED = 0;
                 SPECIAL_CANDY_CRUSHED = 0;
                 SEVERAL_CRUSHES_BONUS = 0;
-                MAX_MOVEMENTS = 5;
+                MAX_MOVEMENTS = 25;
                 NUM_COLUMNS = 12;
                 NUM_ROWS = 12;
                 LEVEL_GOAL = 1825;
