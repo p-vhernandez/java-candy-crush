@@ -120,14 +120,14 @@ public class BoardGrid extends JPanel {
         repaint();
     }
 
-    public BoardGridModel getModel() {
-        return model;
+    public void setEnabled(boolean enabled) {
+        this.model.setEnabled(enabled);
     }
 
-    public void setModel(BoardGridModel model) {
-        this.model = model;
+    public boolean isEnabled() {
+        return this.model.isEnabled();
     }
-
+    
     public BoardTile getTileDragStart() {
         return tileDragStart;
     }

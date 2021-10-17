@@ -520,7 +520,7 @@ public class BoardGridUI {
     }
 
     public boolean isDragValid(BoardTile tileDragEnd) {
-        return grid.getModel().isEnabled()
+        return grid.isEnabled()
                 && (Math.abs(grid.getTileDragStart().getTileCol() - tileDragEnd.getTileCol()) == 1
                 || Math.abs(grid.getTileDragStart().getTileRow() - tileDragEnd.getTileRow()) == 1)
                 && !dragDone
