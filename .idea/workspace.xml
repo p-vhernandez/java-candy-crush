@@ -5,6 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6b4cf923-17ad-46fa-bee3-8a7e44728267" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/src/components/grid/BoardGrid.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/grid/BoardGrid.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/cards/CardWelcomeUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/cards/CardWelcomeUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/grid/BoardGrid.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/grid/BoardGrid.java" afterDir="false" />
@@ -111,7 +112,7 @@
       <workItem from="1634158477213" duration="1155000" />
       <workItem from="1634235924987" duration="882000" />
       <workItem from="1634240881656" duration="27882000" />
-      <workItem from="1634470549587" duration="325000" />
+      <workItem from="1634470549587" duration="9437000" />
     </task>
     <servers />
   </component>

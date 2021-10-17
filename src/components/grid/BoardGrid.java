@@ -14,7 +14,7 @@ import java.util.Random;
 
 public class BoardGrid extends JPanel {
 
-    private BoardGridModel model;
+    private final BoardGridModel model;
     private final BoardGridUI ui;
 
     private Level level;
@@ -26,7 +26,6 @@ public class BoardGrid extends JPanel {
     private ArrayList<ArrayList<BoardTile>> crushedCandiesByCol = new ArrayList<>();
 
     public BoardGrid(Level level) {
-        this.level = level;
 
         this.tilesXAxis = level.getNumRows();
         this.tilesYAxis = level.getNumColumns();
@@ -76,11 +75,11 @@ public class BoardGrid extends JPanel {
     }
 
     public Level getLevel() {
-        return level;
+        return this.model.getLevel();
     }
 
     public void setLevel(Level level) {
-        this.level = level;
+        this.model.setLevel(level);
     }
 
     public ArrayList<ArrayList<BoardTile>> getTiles() {

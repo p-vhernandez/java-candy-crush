@@ -69,7 +69,7 @@ public class CardGamePlayUI {
     }
 
     private void initializeListeners() {
-        btnBack.addActionListener(listener -> controller.flipCard(CardType.GAME_PLAY, CardType.LEVELS));
+        btnBack.addActionListener(listener -> controller.flipCard(CardType.LEVELS));
         btnRestart.addActionListener(listener -> controller.restartLevel());
     }
 
