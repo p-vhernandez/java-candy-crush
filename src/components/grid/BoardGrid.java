@@ -167,26 +167,6 @@ public class BoardGrid extends JPanel {
         this.model.setEnabled(enabled);
     }
 
-    /**
-     * Update the tiles on the board grid to show the new ones after
-     * grouping at least 3 of them.
-     *
-     * @param potentialCrush - Object that stores the crush to explode.
-     */
-    public void crushed(Crush potentialCrush) {
-        ArrayList<ArrayList<BoardTile>> changedTiles = getTiles();
-        for (BoardTile tile : potentialCrush.getCrushedCandies()) {
-            int row = tile.getTileRow();
-            int col = tile.getTileCol();
-            ArrayList<BoardTile> changedRow = tiles.get(row);
-            changedRow.set(col, tile);
-
-            changedTiles.set(row, changedRow);
-        }
-
-        setTiles(changedTiles);
-    }
-
     public void removeCandies(ArrayList<BoardTile> crushedCandies) {
         for (BoardTile tile : crushedCandies) {
             tiles.get(tile.getTileRow()).get(tile.getTileCol()).setTileType(TileType.CRUSHED);
@@ -239,9 +219,15 @@ public class BoardGrid extends JPanel {
                             tileToMove.setTileY(tileToMove.getTileY() + Utils.getTileSize() / 10);
                         }
                     }
-
-                    if (tiles.get(minCrushRow[i] + crushedInCol[i] - 1).get(i).getTileY() - tileInitValY.get(i) == spaceToMove) {
+                    if (colUpdating[i] && tiles.get(minCrushRow[i] + crushedInCol[i] - 1).get(i).getTileY() - tileInitValY.get(i) == spaceToMove) {
                         colUpdating[i] = false;
+                    }
+                } else {
+                    for (BoardTile tile : newTiles.get(i)) {
+                        tile.setTileY(tile.getTileY() + Utils.getTileSize() / 10);
+                        if (colUpdating[i] && newTiles.get(i).get(0).getTileY() == 0) {
+                            colUpdating[i] = false;
+                        }
                     }
                 }
             }
