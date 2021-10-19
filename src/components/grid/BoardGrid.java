@@ -259,7 +259,7 @@ public class BoardGrid extends JPanel {
                 TileType.PUMPKIN
         };
 
-        for (int i = 0; i < crushedInCol.length; i++) {
+        for (int i = 0; i < getLevel().getNumColumns(); i++) {
             newTiles.add(new ArrayList<>());
             for (int j = 1; j <= crushedInCol[i]; j++) {
                 TileType type = types[random.nextInt(5)];
@@ -272,6 +272,15 @@ public class BoardGrid extends JPanel {
         }
 
         return newTiles;
+    }
+
+    private void generateSpecialCandies(int[] crushedInCol, ArrayList<ArrayList<BoardTile>> tilesToUpdate, ArrayList<BoardTile> crushedCandies) {
+        if (crushedCandies.size() > 3) {
+            int crushedInRow = 0;
+            for (int i = 0; i < getLevel().getNumRows(); i++) {
+                //for (BoardTile crushedCandy : crushedCandies)
+            }
+        }
     }
 
 }

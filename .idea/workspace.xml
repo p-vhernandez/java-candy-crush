@@ -5,11 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6b4cf923-17ad-46fa-bee3-8a7e44728267" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/resources/img/POISON.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CandyCrush/resources/user/progress.json" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CandyCrush/resources/user/progress.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/img/poison.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/user/progress.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/user/progress.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/grid/BoardGrid.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/grid/BoardGrid.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/img/POISON.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/img/POISON_GREEN.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/helpers/TileType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/helpers/TileType.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -116,7 +115,7 @@
       <workItem from="1634580829573" duration="644000" />
       <workItem from="1634643223792" duration="241000" />
       <workItem from="1634470549587" duration="19952000" />
-      <workItem from="1634643736649" duration="1036000" />
+      <workItem from="1634643736649" duration="2790000" />
     </task>
     <servers />
   </component>
