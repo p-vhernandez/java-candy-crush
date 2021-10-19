@@ -2,6 +2,7 @@ package components.grid;
 
 import components.BoardTile;
 import components.cards.CardGameplay;
+import org.jetbrains.annotations.NotNull;
 import utils.Level;
 import utils.helpers.Crush;
 import utils.helpers.Explosion;
@@ -23,6 +24,7 @@ import java.util.Random;
 public class BoardGridUI {
 
     private boolean dragInMotion = false;
+    private boolean fireworkExplosion = false;
 
     private final BoardGrid controller;
 
@@ -491,7 +493,7 @@ public class BoardGridUI {
                                         BoardTile endTile, int spaceToMove) {
         if (!isSpecialCandy(specialCandy[1])) {
             TileType toExplode = specialCandy[1].getTileType();
-            potentialCrush.addCrushedCandy(specialCandy[1]);
+            potentialCrush.addCrushedCandy(specialCandy[0]);
 
             for (int i = 0; i < controller.getTiles().size(); i++) {
                 ArrayList<BoardTile> candyRow = controller.getTiles().get(i);
@@ -657,5 +659,180 @@ public class BoardGridUI {
         }
     }
 
+    public void removeCandies(ArrayList<BoardTile> crushedCandies) {
+
+        fireworkExplosion = false;
+        controller.setCrushedCandies(crushedCandies);
+
+        for (BoardTile tile : crushedCandies) {
+            controller.getTiles().get(tile.getTileRow()).get(tile.getTileCol()).setTileType(TileType.CRUSHED);
+            if (controller.getTiles().get(tile.getTileRow()).get(tile.getTileCol()).getTileType() == TileType.FIREWORK) fireworkExplosion = true;
+        }
+
+        dropCandies();
+        controller.repaint();
+    }
+
+    public void dropCandies() {
+        controller.setEnabled(false);
+        int[] crushedInCol = new int[controller.getLevel().getNumColumns()];
+        boolean[] colUpdating = new boolean[controller.getLevel().getNumColumns()];
+        ArrayList<ArrayList<BoardTile>> tilesToUpdateByCol = new ArrayList<>();
+
+        for (int i = 0; i < controller.getLevel().getNumColumns(); i++) {
+            tilesToUpdateByCol.add(new ArrayList<>());
+        }
+
+        for (BoardTile candy : controller.getCrushedCandies()) {
+            for (int i = candy.getTileRow() - 1; i >= 0; i--) {
+                BoardTile tile = controller.getTiles().get(i).get(candy.getTileCol());
+                if (tile.getTileType() != TileType.CRUSHED && !tilesToUpdateByCol.get(candy.getTileCol()).contains(tile)) {
+                    tilesToUpdateByCol.get(candy.getTileCol()).add(tile);
+
+                }
+            }
+        }
+
+        for (ArrayList<BoardTile> boardTiles : controller.getTiles()) {
+            for (int j = 0; j < boardTiles.size(); j++) {
+                if (boardTiles.get(j).getTileType() == TileType.CRUSHED) {
+                    crushedInCol[j]++;
+                    if (!colUpdating[j]) colUpdating[j] = true;
+                }
+            }
+        }
+
+        ArrayList<ArrayList<BoardTile>> newTiles = generateNewTiles(crushedInCol, tilesToUpdateByCol);
+        updateRowsCols(newTiles, tilesToUpdateByCol, controller.getCrushedCandies());
+
+        Timer dropTimer = new Timer(0, e -> {
+            boolean updating = false;
+
+            for (ArrayList<BoardTile> column : tilesToUpdateByCol) {
+                for (BoardTile tile : column) {
+                    if (tile.getTileRow() * Utils.getTileSize() > tile.getTileY()) {
+                        tile.setTileY(tile.getTileY() + Utils.getTileSize() / 10);
+                    }
+                    if (colUpdating[tile.getTileCol()] && controller.getTiles().get(0).get(tile.getTileCol()).getTileY() == 0) {
+                        colUpdating[tile.getTileCol()] = false;
+                    }
+                }
+            }
+
+            controller.repaint();
+
+            for (boolean colUpdate : colUpdating) {
+                if (colUpdate) {
+                    updating = true;
+                    break;
+                }
+            }
+
+            if (!updating) {
+                ((Timer) e.getSource()).stop();
+                checkBoard();
+            }
+        });
+
+        dropTimer.setRepeats(true);
+        dropTimer.setInitialDelay(0);
+        dropTimer.start();
+    }
+
+    private void updateRowsCols(ArrayList<ArrayList<BoardTile>> newTiles, @NotNull ArrayList<ArrayList<BoardTile>> tilesToUpdateByCol, ArrayList<BoardTile> crushedCandies) {
+        for (int i = 0; i < tilesToUpdateByCol.size(); i++) {
+            for (int j = 0; j < tilesToUpdateByCol.get(i).size(); j++) {
+                BoardTile tileToUpdate = tilesToUpdateByCol.get(i).get(j);
+                if (tileToUpdate.getTileY() >= 0) {
+                    int rowShift = 0;
+                    for (BoardTile crushedCandy : crushedCandies) {
+                        if (crushedCandy.getTileCol() == i && crushedCandy.getTileRow() > tileToUpdate.getTileRow()) {
+                            rowShift++;
+                        }
+                    }
+                    tileToUpdate.setTileRow(tileToUpdate.getTileRow()+rowShift);
+                    try {
+                        controller.getTiles().get(tileToUpdate.getTileRow()).set(i, tileToUpdate);
+                    } catch (IndexOutOfBoundsException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }
+        for (ArrayList<BoardTile> col : newTiles) {
+            for (BoardTile tile : col) {
+                controller.getTiles().get(tile.getTileRow()).set(tile.getTileCol(), tile);
+            }
+        }
+        generateSpecialCandies(crushedCandies);
+    }
+
+    public ArrayList<ArrayList<BoardTile>> generateNewTiles(int[] crushedInCol, ArrayList<ArrayList<BoardTile>> tilesToUpdate) {
+        ArrayList<ArrayList<BoardTile>> newTiles = new ArrayList<>();
+        Random random = new Random();
+        TileType[] types = {
+                TileType.ROUND_LOLLI,
+                TileType.ORANGE_CANDY,
+                TileType.SWIRL_LOLLI,
+                TileType.EYEBALL,
+                TileType.PUMPKIN
+        };
+
+        for (int i = 0; i < controller.getLevel().getNumColumns(); i++) {
+            newTiles.add(new ArrayList<>());
+            for (int j = 1; j <= crushedInCol[i]; j++) {
+                TileType type = types[random.nextInt(5)];
+                BoardTile newTile = new BoardTile(type, j - 1, i,
+                        i * Utils.getTileSize(), -(crushedInCol[i] - j + 1) * Utils.getTileSize());
+                newTiles.get(i).add(newTile);
+                tilesToUpdate.get(i).add(newTile);
+
+            }
+        }
+
+        return newTiles;
+    }
+
+    private void generateSpecialCandies(ArrayList<BoardTile> crushedCandies) {
+        if (crushedCandies.size() > 3) {
+
+            int crushedInRow;
+            int replaceRow = -1;
+            int replaceCol = -1;
+            for (int i = 0; i < controller.getLevel().getNumRows(); i++) {
+                crushedInRow = 0;
+                for (BoardTile crushedCandy : crushedCandies) {
+                    if (crushedCandy.getTileRow() == i) {
+                        crushedInRow++;
+                        replaceRow = crushedCandy.getTileRow();
+                        replaceCol = crushedCandy.getTileCol();
+                    }
+                }
+                if (crushedInRow == 4) {
+                    controller.getTiles().get(replaceRow).get(replaceCol).setTileType(TileType.POISON_GREEN);
+                }
+                if (crushedInRow >= 5 && !fireworkExplosion) {
+                    controller.getTiles().get(replaceRow).get(replaceCol).setTileType(TileType.FIREWORK);
+                }
+            }
+
+            for (int i = 0; i < controller.getLevel().getNumColumns(); i++) {
+                int crushedInCol = 0;
+                for (BoardTile crushedCandy : crushedCandies) {
+                    if (crushedCandy.getTileCol() == i) {
+                        crushedInCol++;
+                        replaceRow = crushedCandy.getTileRow();
+                        replaceCol = crushedCandy.getTileCol();
+                    }
+                }
+                if (crushedInCol == 4) {
+                    controller.getTiles().get(replaceRow).get(replaceCol).setTileType(TileType.POISON_RED);
+                }
+                if (crushedInCol >= 5 && !fireworkExplosion) {
+                    controller.getTiles().get(replaceRow).get(replaceCol).setTileType(TileType.FIREWORK);
+                }
+            }
+        }
+    }
 }
 

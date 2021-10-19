@@ -111,10 +111,10 @@ public class Level {
                 STANDARD_CANDY_CRUSHED = 0;
                 SPECIAL_CANDY_CRUSHED = 0;
                 SEVERAL_CRUSHES_BONUS = 0;
-                MAX_MOVEMENTS = 10;
+                MAX_MOVEMENTS = 50;
                 NUM_COLUMNS = 14;
                 NUM_ROWS = 11;
-                LEVEL_GOAL = 2125;
+                LEVEL_GOAL = 212500000;
 
                 break;
         }
