@@ -21,7 +21,7 @@ public class BoardGrid extends JPanel {
 
     private ArrayList<ArrayList<BoardTile>> tiles = new ArrayList<>();
     private BoardTile tileDragStart, tileDragEnd;
-    ArrayList<BoardTile> crushedCandies;
+    private ArrayList<BoardTile> crushedCandies;
 
     public BoardGrid(Level level, CardGameplay container) {
         this.container = container;
