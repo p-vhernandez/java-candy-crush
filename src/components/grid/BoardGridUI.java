@@ -593,8 +593,10 @@ public class BoardGridUI {
     private boolean notThreeInARowDimensionX(TileType type, int positionX, int positionY) {
         try {
             if (controller.getTiles().get(positionX - 1).get(positionY).getTileType() == TileType.EMPTY
-                    || controller.getTiles().get(positionX - 2).get(positionY).getTileType() == TileType.EMPTY)
+                    || controller.getTiles().get(positionX - 2).get(positionY).getTileType() == TileType.EMPTY) {
                 return true;
+            }
+
             return type != controller.getTiles().get(positionX - 1).get(positionY).getTileType()
                     || type != controller.getTiles().get(positionX - 2).get(positionY).getTileType();
         } catch (Exception e) {
@@ -606,7 +608,10 @@ public class BoardGridUI {
 
     private boolean notThreeInARowDimensionY(TileType type, ArrayList<BoardTile> row, int positionY) {
         if (row.get(positionY - 1).getTileType() == TileType.EMPTY
-                || row.get(positionY - 2).getTileType() == TileType.EMPTY) return true;
+                || row.get(positionY - 2).getTileType() == TileType.EMPTY) {
+            return true;
+        }
+
         return type != row.get(positionY - 1).getTileType()
                 || type != row.get(positionY - 2).getTileType();
     }
@@ -636,14 +641,17 @@ public class BoardGridUI {
 
     public void checkBoard() {
         Crush potentialCrush = new Crush();
+
         for (int i = 0; i < controller.getTiles().size(); i++) {
             for (int j = 0; j < controller.getTiles().get(i).size(); j++) {
                 BoardTile tile = controller.getTiles().get(i).get(j);
+
                 if (i >= 2 && !notThreeInARowDimensionX(tile.getTileType(), i, j)) {
                     potentialCrush.addCrushedCandy(tile);
                     potentialCrush.addCrushedCandy(controller.getTiles().get(i - 1).get(j));
                     potentialCrush.addCrushedCandy(controller.getTiles().get(i - 2).get(j));
                 }
+
                 if (j >= 2 && !notThreeInARowDimensionY(tile.getTileType(), controller.getTiles().get(i), j)) {
                     potentialCrush.addCrushedCandy(tile);
                     potentialCrush.addCrushedCandy(controller.getTiles().get(i).get(j - 1));
@@ -651,11 +659,13 @@ public class BoardGridUI {
                 }
             }
         }
+
         if (potentialCrush.getCrushedCandies().size() > 0) {
             potentialCrush.explode(controller);
             CardGameplay.updateScore(potentialCrush.getCrushedCandies().size());
         } else {
             controller.getModel().setEnabled(true);
+            controller.checkEndOfGame();
         }
     }
 

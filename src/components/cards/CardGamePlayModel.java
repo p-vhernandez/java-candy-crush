@@ -28,20 +28,16 @@ public class CardGamePlayModel {
         this.grid = grid;
     }
 
-    protected void createNewGrid() {
-        this.grid = new BoardGrid(level);
+    protected void createNewGrid(BoardGrid newGrid) {
+        this.grid = newGrid;
     }
 
     protected void enableGrid(boolean enabled) {
         this.grid.setEnabled(enabled);
     }
 
-    protected void goToNextLevel() {
-        Level nextLevel = new Level(level.getDifficulty() + 5);
-        grid = null;
-        grid = new BoardGrid(nextLevel);
-        //grid.setLevel(nextLevel);
-        //grid.switchLevels();
+    protected void goToNextLevel(BoardGrid newGrid) {
+        grid = newGrid;
     }
 
 }

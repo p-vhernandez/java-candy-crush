@@ -45,10 +45,6 @@ public class TopPanel extends JPanel {
     public void setCurrentScore(int currentScore) {
         this.model.setCurrentScore(currentScore);
         this.view.updateCurrentScore(currentScore);
-
-        if (!endOfGame) {
-            checkIfGoalIsMet(currentScore);
-        }
     }
 
     public void setMaxMovements(int movements) {
@@ -59,29 +55,33 @@ public class TopPanel extends JPanel {
     public void oneMovementLess() {
         this.model.oneMovementLess();
         this.view.updateMaxMovements(this.model.getAvailableMovements());
+    }
 
-        if (this.model.getAvailableMovements() == 0 && !endOfGame) {
-            showGameOverDialog();
-            container.enableBoardGrid(false);
+    public boolean checkPlayerWin() {
+        if (!endOfGame) {
+            return checkIfGoalIsMet(getCurrentScore());
+        } else {
+            return false;
         }
     }
 
-    private void showGameOverDialog() {
-        GameOverDialog gameOverDialog = new GameOverDialog();
-        gameOverDialog.setVisible(true);
+    public boolean checkPlayerLose() {
+        if (this.model.getAvailableMovements() == 0 && !endOfGame) {
+            container.enableBoardGrid(false);
+            return true;
+        } else {
+            return false;
+        }
     }
 
-    private void checkIfGoalIsMet(int currentScore) {
+    private boolean checkIfGoalIsMet(int currentScore) {
         if (currentScore >= getScoreGoal()) {
             endOfGame = true;
             container.updatePlayerProgress(currentScore);
-            showGoalReachedDialog();
+            return true;
+        } else {
+            return false;
         }
-    }
-
-    private void showGoalReachedDialog() {
-        GoalReachedDialog goalReachedDialog = new GoalReachedDialog(container);
-        goalReachedDialog.setVisible(true);
     }
 
     public void reloadLevelInfo(Level level) {

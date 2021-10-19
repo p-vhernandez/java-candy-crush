@@ -8,6 +8,8 @@ import org.json.simple.JSONObject;
 import utils.Level;
 import utils.Player;
 import utils.Utils;
+import utils.dialogs.GameOverDialog;
+import utils.dialogs.GoalReachedDialog;
 import utils.helpers.CardType;
 
 import javax.swing.*;
@@ -60,7 +62,7 @@ public class CardGameplay extends JPanel {
     }
 
     public void goToNextLevel() {
-        this.model.goToNextLevel();
+        this.model.goToNextLevel(new BoardGrid(new Level(this.model.getLevel().getDifficulty() + 5), this));
         topPanel.reloadLevelInfo(this.model.getLevel());
     }
 
@@ -110,7 +112,7 @@ public class CardGameplay extends JPanel {
     }
 
     protected void createNewGrid() {
-        this.model.createNewGrid();
+        this.model.createNewGrid(new BoardGrid(this.model.getLevel(), this));
     }
 
     protected void setGoal(int goal) {
@@ -141,4 +143,23 @@ public class CardGameplay extends JPanel {
         int currentScore = topPanel.getCurrentScore();
         topPanel.setCurrentScore(currentScore + sequence * 40);
     }
+
+    public void checkEndOfGame() {
+        if (topPanel.checkPlayerWin()) {
+            showGoalReachedDialog();
+        } else if (topPanel.checkPlayerLose()) {
+            showGameOverDialog();
+        }
+    }
+
+    private void showGoalReachedDialog() {
+        GoalReachedDialog goalReachedDialog = new GoalReachedDialog(this);
+        goalReachedDialog.setVisible(true);
+    }
+
+    private void showGameOverDialog() {
+        GameOverDialog gameOverDialog = new GameOverDialog();
+        gameOverDialog.setVisible(true);
+    }
+
 }

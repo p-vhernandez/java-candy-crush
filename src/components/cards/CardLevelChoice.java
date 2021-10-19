@@ -76,6 +76,8 @@ public class CardLevelChoice extends JPanel {
     }
 
     protected void createLevelButtons() {
+        this.model.resetLevelButtons();
+
         if (Utils.player != null) {
             for (Object level : Utils.player.getProgress()) {
                 JSONObject jsonLevel = (JSONObject) level;

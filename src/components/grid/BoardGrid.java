@@ -1,7 +1,7 @@
 package components.grid;
 
 import components.BoardTile;
-import org.jetbrains.annotations.NotNull;
+import components.cards.CardGameplay;
 import utils.Utils;
 import utils.Level;
 import utils.helpers.TileType;
@@ -15,20 +15,21 @@ import java.util.Random;
 
 public class BoardGrid extends JPanel {
 
-    private BoardGridModel model;
-    private BoardGridUI view;
+    private final CardGameplay container;
+    private final BoardGridModel model;
+    private final BoardGridUI view;
 
     private ArrayList<ArrayList<BoardTile>> tiles = new ArrayList<>();
     private BoardTile tileDragStart, tileDragEnd;
     private ArrayList<BoardTile> crushedCandies;
 
-    public BoardGrid(Level level) {
-        this.model = null;
+    public BoardGrid(Level level, CardGameplay container) {
+        this.container = container;
+
         this.model = new BoardGridModel();
         this.model.setLevel(level);
         this.model.addChangeListener((e -> repaint()));
 
-        this.view = null;
         this.view = new BoardGridUI(this);
         this.view.initializeUI();
 
@@ -160,4 +161,9 @@ public class BoardGrid extends JPanel {
     public void removeCandies(ArrayList<BoardTile> crushedCandies) {
         this.view.removeCandies(crushedCandies);
     }
+
+    protected void checkEndOfGame() {
+        container.checkEndOfGame();
+    }
+
 }

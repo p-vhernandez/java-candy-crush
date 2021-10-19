@@ -48,6 +48,10 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="Downloaded.Files.Path.Enabled" value="false" />
+    <property name="Repository.Attach.Annotations" value="false" />
+    <property name="Repository.Attach.JavaDocs" value="false" />
+    <property name="Repository.Attach.Sources" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/src/utils/dialogs/GoalReachedDialog.java" />
@@ -77,6 +81,7 @@
       </method>
     </configuration>
   </component>
+  <component name="SpellCheckerSettings" BundledDictionaries="0" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" Dictionaries="0" CorrectionsLimit="5" DefaultDictionary="application-level" UseSingleDictionary="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -86,13 +91,61 @@
       <created>1634657772476</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1634657772476</updated>
+      <updated>1631091549514</updated>
       <workItem from="1634657773758" duration="6733000" />
+      <workItem from="1631091553670" duration="2689000" />
+      <workItem from="1631693287319" duration="1275000" />
+      <workItem from="1631091553670" duration="3326000" />
+      <workItem from="1631456888781" duration="749000" />
+      <workItem from="1631691299531" duration="1483000" />
+      <workItem from="1631713577353" duration="871000" />
+      <workItem from="1631715445431" duration="842000" />
+      <workItem from="1631718732163" duration="593000" />
+      <workItem from="1632160955920" duration="103000" />
+      <workItem from="1632295979803" duration="4591000" />
+      <workItem from="1632485785948" duration="469000" />
+      <workItem from="1632487157574" duration="3356000" />
+      <workItem from="1632663377382" duration="5435000" />
+      <workItem from="1632761548636" duration="885000" />
+      <workItem from="1632767002303" duration="5310000" />
+      <workItem from="1632831323687" duration="18825000" />
+      <workItem from="1633100730801" duration="1614000" />
+      <workItem from="1633281413530" duration="1475000" />
+      <workItem from="1633436190070" duration="1462000" />
+      <workItem from="1633438505000" duration="11391000" />
+      <workItem from="1633500014473" duration="8332000" />
+      <workItem from="1633707750788" duration="5875000" />
+      <workItem from="1634111133385" duration="8782000" />
+      <workItem from="1634126719976" duration="764000" />
+      <workItem from="1634149875111" duration="6587000" />
+      <workItem from="1634158477213" duration="1155000" />
+      <workItem from="1634235924987" duration="882000" />
+      <workItem from="1634240881656" duration="27882000" />
+      <workItem from="1634470549587" duration="19323000" />
+      <workItem from="1634580829573" duration="644000" />
+      <workItem from="1634643223792" duration="241000" />
+      <workItem from="1634470549587" duration="19952000" />
+      <workItem from="1634643736649" duration="1036000" />
+      <workItem from="1634646988829" duration="1436000" />
+      <workItem from="1634655901683" duration="1679000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="WindowStateProjectService">
     <state x="96" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1634657844838">
@@ -145,8 +198,8 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/components/grid/BoardGridUI.java</url>
-          <line>492</line>
-          <option name="timeStamp" value="16" />
+          <line>199</line>
+          <option name="timeStamp" value="57" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
