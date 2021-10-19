@@ -13,7 +13,6 @@ public class BoardTile {
 
     public BoardTile(TileType tileType, int tileRow, int tileCol, int tileX, int tileY) {
         this.tileType = tileType;
-
         this.tileRow = tileRow;
         this.tileCol = tileCol;
 
