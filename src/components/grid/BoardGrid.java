@@ -1,6 +1,7 @@
 package components.grid;
 
 import components.BoardTile;
+import components.cards.CardGameplay;
 import utils.Utils;
 import utils.Level;
 import utils.helpers.TileType;
@@ -14,6 +15,7 @@ import java.util.Random;
 
 public class BoardGrid extends JPanel {
 
+    private CardGameplay container;
     private BoardGridModel model;
     private BoardGridUI view;
 
@@ -21,13 +23,13 @@ public class BoardGrid extends JPanel {
     private BoardTile tileDragStart, tileDragEnd;
     ArrayList<BoardTile> crushedCandies;
 
-    public BoardGrid(Level level) {
-        this.model = null;
+    public BoardGrid(Level level, CardGameplay container) {
+        this.container = container;
+
         this.model = new BoardGridModel();
         this.model.setLevel(level);
         this.model.addChangeListener((e -> repaint()));
 
-        this.view = null;
         this.view = new BoardGridUI(this);
         this.view.initializeUI();
 
@@ -226,18 +228,25 @@ public class BoardGrid extends JPanel {
         dropTimer.start();
     }
 
-    private void updateRowsCols(ArrayList<ArrayList<BoardTile>> newTiles, ArrayList<ArrayList<BoardTile>> tilesToUpdateByCol, ArrayList<BoardTile> crushedCandies) {
+    private void updateRowsCols(ArrayList<ArrayList<BoardTile>> newTiles,
+                                ArrayList<ArrayList<BoardTile>> tilesToUpdateByCol,
+                                ArrayList<BoardTile> crushedCandies) {
+
         for (int i = 0; i < tilesToUpdateByCol.size(); i++) {
             for (int j = 0; j < tilesToUpdateByCol.get(i).size(); j++) {
                 BoardTile tileToUpdate = tilesToUpdateByCol.get(i).get(j);
+
                 if (tileToUpdate.getTileY() >= 0) {
                     int rowShift = 0;
+
                     for (BoardTile crushedCandy : crushedCandies) {
                         if (crushedCandy.getTileCol() == i && crushedCandy.getTileRow() > j) {
                             rowShift++;
                         }
                     }
-                    tileToUpdate.setTileRow(tileToUpdate.getTileRow()+rowShift);
+
+                    tileToUpdate.setTileRow(tileToUpdate.getTileRow() + rowShift);
+
                     try {
                         tiles.get(tileToUpdate.getTileRow()).set(i, tileToUpdate);
                     } catch (IndexOutOfBoundsException e) {
@@ -246,17 +255,22 @@ public class BoardGrid extends JPanel {
                 }
             }
         }
+
         for (ArrayList<BoardTile> col : newTiles) {
             for (BoardTile tile : col) {
                 tiles.get(tile.getTileRow()).set(tile.getTileCol(), tile);
             }
         }
+
         generateSpecialCandies(crushedCandies);
     }
 
-    public ArrayList<ArrayList<BoardTile>> generateNewTiles(int[] crushedInCol, ArrayList<ArrayList<BoardTile>> tilesToUpdate) {
+    public ArrayList<ArrayList<BoardTile>> generateNewTiles(int[] crushedInCol,
+                                                            ArrayList<ArrayList<BoardTile>> tilesToUpdate) {
+
         ArrayList<ArrayList<BoardTile>> newTiles = new ArrayList<>();
         Random random = new Random();
+
         TileType[] types = {
                 TileType.ROUND_LOLLI,
                 TileType.ORANGE_CANDY,
@@ -267,10 +281,16 @@ public class BoardGrid extends JPanel {
 
         for (int i = 0; i < getLevel().getNumColumns(); i++) {
             newTiles.add(new ArrayList<>());
+
             for (int j = 1; j <= crushedInCol[i]; j++) {
                 TileType type = types[random.nextInt(5)];
-                BoardTile newTile = new BoardTile(type, j - 1, i,
-                        i * Utils.getTileSize(), -(crushedInCol[i] - j + 1) * Utils.getTileSize());
+                BoardTile newTile = new BoardTile(
+                        type,
+                        j - 1,
+                        i,
+                        i * Utils.getTileSize(),
+                        -(crushedInCol[i] - j + 1) * Utils.getTileSize());
+
                 newTiles.get(i).add(newTile);
                 tilesToUpdate.get(i).add(newTile);
 
@@ -282,21 +302,24 @@ public class BoardGrid extends JPanel {
 
     private void generateSpecialCandies(ArrayList<BoardTile> crushedCandies) {
         if (crushedCandies.size() > 3) {
-
             for (int i = 0; i < getLevel().getNumRows(); i++) {
                 int[] data = crushedInRow(i);
+
                 if (data[0] >= 3) {
                     for (int j = data[3]; j < data[0] + data[3] - 1; j++) {
                         int crushedInMinCol;
                         crushedInMinCol = crushedInCol(j)[0];
+
                         if (crushedInMinCol >= 3) {
                             tiles.get(data[1]).get(j).setTileType(TileType.MUMMY);
                         }
                     }
                 }
+
                 if (data[0] == 4) {
                     tiles.get(data[1]).get(data[2]).setTileType(TileType.POISON_GREEN);
                 }
+
                 if (data[0] >= 5) {
                     tiles.get(data[1]).get(data[2]).setTileType(TileType.FIREWORK);
                 }
@@ -319,14 +342,19 @@ public class BoardGrid extends JPanel {
         int replaceRow = -1;
         int replaceCol = -1;
         int minCol = 1000;
+
         for (BoardTile crushedCandy : crushedCandies) {
             if (crushedCandy.getTileRow() == row) {
                 crushedInRow++;
                 replaceRow = crushedCandy.getTileRow();
                 replaceCol = crushedCandy.getTileCol();
-                if (crushedCandy.getTileCol() < minCol) minCol = crushedCandy.getTileCol();
+
+                if (crushedCandy.getTileCol() < minCol) {
+                    minCol = crushedCandy.getTileCol();
+                }
             }
         }
+
         return new int[]{crushedInRow, replaceRow, replaceCol, minCol};
     }
 
@@ -341,9 +369,18 @@ public class BoardGrid extends JPanel {
                 crushedInCol++;
                 replaceRow = crushedCandy.getTileRow();
                 replaceCol = crushedCandy.getTileCol();
-                if (crushedCandy.getTileRow() < minRow) minRow = crushedCandy.getTileRow();
+
+                if (crushedCandy.getTileRow() < minRow) {
+                    minRow = crushedCandy.getTileRow();
+                }
             }
         }
+
         return new int[]{crushedInCol, replaceRow, replaceCol, minRow};
     }
+
+    protected void checkEndOfGame() {
+        container.checkEndOfGame();
+    }
+
 }

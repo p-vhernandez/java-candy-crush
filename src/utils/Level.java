@@ -25,6 +25,7 @@ public class Level {
     }
 
     // TODO: set up all level's characteristics
+    // TODO: Higher up the level goals
     private void setUpLevelCharacteristics() {
         switch (difficulty) {
             case 1: {
