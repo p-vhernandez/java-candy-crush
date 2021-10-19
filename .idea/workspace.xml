@@ -7,6 +7,13 @@
     <list default="true" id="6b4cf923-17ad-46fa-bee3-8a7e44728267" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/src/components/grid/BoardGridUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/grid/BoardGridUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/utils/helpers/Crush.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/helpers/Crush.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CandyCrush/resources/user/progress.json" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CandyCrush/resources/user/progress.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/grid/BoardGrid.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/grid/BoardGrid.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/grid/BoardGridUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/grid/BoardGridUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/user/progress.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/user/progress.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/Utils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/Utils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/dialogs/LoadingDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/dialogs/LoadingDialog.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,7 +69,7 @@
     </key>
   </component>
   <component name="RunManager">
-    <configuration name="candy" type="Application" factoryName="Application">
+    <configuration name="candycrush" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="main.Main" />
       <module name="CandyCrush" />
       <method v="2">
@@ -114,6 +121,7 @@
       <workItem from="1634643223792" duration="241000" />
       <workItem from="1634470549587" duration="19952000" />
       <workItem from="1634643736649" duration="1036000" />
+      <workItem from="1634646988829" duration="1436000" />
     </task>
     <servers />
   </component>
@@ -133,22 +141,22 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state width="1237" height="57" key="GridCell.Tab.0.bottom" timestamp="1634644490009">
+    <state width="1237" height="175" key="GridCell.Tab.0.bottom" timestamp="1634648427851">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="57" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1634644490009" />
-    <state width="1237" height="57" key="GridCell.Tab.0.center" timestamp="1634644490009">
+    <state width="1237" height="175" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1634648427851" />
+    <state width="1237" height="175" key="GridCell.Tab.0.center" timestamp="1634648427851">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="57" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1634644490009" />
-    <state width="1237" height="57" key="GridCell.Tab.0.left" timestamp="1634644490009">
+    <state width="1237" height="175" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1634648427851" />
+    <state width="1237" height="175" key="GridCell.Tab.0.left" timestamp="1634648427851">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="57" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1634644490009" />
-    <state width="1237" height="57" key="GridCell.Tab.0.right" timestamp="1634644490009">
+    <state width="1237" height="175" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1634648427851" />
+    <state width="1237" height="175" key="GridCell.Tab.0.right" timestamp="1634648427851">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="57" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1634644490009" />
+    <state width="1237" height="175" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1634648427851" />
     <state width="595" height="226" key="GridCell.Tab.1.bottom" timestamp="1634496040577">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
@@ -165,6 +173,10 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state width="595" height="226" key="GridCell.Tab.1.right/0.0.1280.680@0.0.1280.680" timestamp="1634496040577" />
+    <state x="303" y="1" width="672" height="678" key="search.everywhere.popup" timestamp="1634647459457">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="303" y="1" width="672" height="678" key="search.everywhere.popup/0.0.1280.680@0.0.1280.680" timestamp="1634647459457" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -175,6 +187,15 @@
           <option name="timeStamp" value="54" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
+          <line>502</line>
+          <option name="timeStamp" value="54" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/components/grid/BoardGridUI.java</url>
+          <line>204</line>
+          <option name="timeStamp" value="57" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/components/grid/BoardGrid.java</url>
           <line>31</line>
           <option name="timeStamp" value="61" />
@@ -183,6 +204,11 @@
           <url>file://$PROJECT_DIR$/src/components/grid/BoardGrid.java</url>
           <line>102</line>
           <option name="timeStamp" value="62" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/components/grid/BoardGridUI.java</url>
+          <line>108</line>
+          <option name="timeStamp" value="65" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
