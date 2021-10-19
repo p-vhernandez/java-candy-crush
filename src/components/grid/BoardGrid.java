@@ -283,39 +283,76 @@ public class BoardGrid extends JPanel {
     private void generateSpecialCandies(ArrayList<BoardTile> crushedCandies) {
         if (crushedCandies.size() > 3) {
 
-            //green poison
-            int crushedInRow = 0;
-            int replaceRow = -1;
-            int replaceCol = -1;
+            //green poison or firework
+            ArrayList<BoardTile> crushedRow = new ArrayList<>();
+
             for (int i = 0; i < getLevel().getNumRows(); i++) {
-                crushedInRow = 0;
-                for (BoardTile crushedCandy : crushedCandies) {
-                    if (crushedCandy.getTileRow() == i) {
-                        crushedInRow++;
-                        replaceRow = crushedCandy.getTileRow();
-                        replaceCol = crushedCandy.getTileCol();
-                    }
+                int[] data = crushedInRow(i);
+                if (data[0] >= 3) {
+                    /*try {
+                        for (int j = data[3]; j < data[0] + data[3] - 1; j++) {
+                            int crushedInMinCol = 0;
+                            crushedInMinCol = crushedInCol(j)[0];
+                            if (crushedInMinCol >= 3) {
+                                tiles.get(data[1]).get(data[2]).setTileType(TileType.POISON_GREEN);
+                            }
+                        }
+                    } catch (IndexOutOfBoundsException e) {
+                        System.out.println("hhhhhhh");
+                        e.printStackTrace();
+                    }*/
+
                 }
-                if (crushedInRow >= 4) {
-                    tiles.get(replaceRow).get(replaceCol).setTileType(TileType.POISON_GREEN);
+                if (data[0] == 4) {
+                    tiles.get(data[1]).get(data[2]).setTileType(TileType.POISON_GREEN);
+                }
+                if (data[0] >= 5) {
+                    tiles.get(data[1]).get(data[2]).setTileType(TileType.FIREWORK);
                 }
             }
 
-            //red poison
+            //red poison or firework
             for (int i = 0; i < getLevel().getNumColumns(); i++) {
-                int crushedInCol = 0;
-                for (BoardTile crushedCandy : crushedCandies) {
-                    if (crushedCandy.getTileCol() == i) {
-                        crushedInCol++;
-                        replaceRow = crushedCandy.getTileRow();
-                        replaceCol = crushedCandy.getTileCol();
-                    }
-                }
-                if (crushedInCol >= 4) {
-                    tiles.get(replaceRow).get(replaceCol).setTileType(TileType.POISON_RED);
+                int[] data = crushedInCol(i);
+                if (data[0] == 4) {
+                    tiles.get(data[1]).get(data[2]).setTileType(TileType.POISON_RED);
+                } else if (data[0] >= 5) {
+                    tiles.get(data[1]).get(data[2]).setTileType(TileType.FIREWORK);
                 }
             }
         }
     }
 
+    private int[] crushedInRow(int row) {
+        int crushedInRow = 0;
+        int replaceRow = -1;
+        int replaceCol = -1;
+        int minCol = 1000;
+        for (BoardTile crushedCandy : crushedCandies) {
+            if (crushedCandy.getTileRow() == row) {
+                crushedInRow++;
+                replaceRow = crushedCandy.getTileRow();
+                replaceCol = crushedCandy.getTileCol();
+                if (crushedCandy.getTileRow() < minCol) minCol = crushedCandy.getTileRow();
+            }
+        }
+        return new int[]{crushedInRow, replaceRow, replaceCol};
+    }
+
+    private int[] crushedInCol(int col) {
+        int crushedInCol = 0;
+        int replaceRow = -1;
+        int replaceCol = -1;
+        int minRow = 1000;
+
+        for (BoardTile crushedCandy : crushedCandies) {
+            if (crushedCandy.getTileCol() == col) {
+                crushedInCol++;
+                replaceRow = crushedCandy.getTileRow();
+                replaceCol = crushedCandy.getTileCol();
+                if (crushedCandy.getTileRow() < minRow) minRow = crushedCandy.getTileRow();
+            }
+        }
+        return new int[]{crushedInCol, replaceRow, replaceCol, minRow};
+    }
 }

@@ -36,7 +36,8 @@ public class BoardGridUI {
             TileType.SWIRL_LOLLI,
             TileType.MUMMY,
             TileType.POISON_GREEN,
-            TileType.POISON_RED
+            TileType.POISON_RED,
+            TileType.FIREWORK
     };
 
     private boolean dragDone = false;
