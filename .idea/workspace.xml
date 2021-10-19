@@ -5,11 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6b4cf923-17ad-46fa-bee3-8a7e44728267" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/resources/img/POISON.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/CandyCrush/resources/user/progress.json" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CandyCrush/resources/user/progress.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/grid/BoardGrid.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/grid/BoardGrid.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/img/poison.svg" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/resources/user/progress.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/user/progress.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/Utils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/Utils.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,14 +54,14 @@
     <property name="two.files.diff.last.used.file" value="$PROJECT_DIR$/src/utils/dialogs/GoalReachedDialog.java" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\jbies\StudioProjects\CandyCrush\src\resources\img" />
+      <recent name="C:\Users\pvher\IdeaProjects\java-candy-crush\src\resources\user" />
+      <recent name="C:\Users\jbies\StudioProjects\CandyCrush\src" />
+    </key>
     <key name="CreateClassDialog.RecentsKey">
       <recent name="UI" />
       <recent name="Model" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\pvher\IdeaProjects\java-candy-crush\src\resources\user" />
-      <recent name="C:\Users\jbies\StudioProjects\CandyCrush\src\resources\img" />
-      <recent name="C:\Users\jbies\StudioProjects\CandyCrush\src" />
     </key>
   </component>
   <component name="RunManager">
@@ -116,6 +116,7 @@
       <workItem from="1634580829573" duration="644000" />
       <workItem from="1634643223792" duration="241000" />
       <workItem from="1634470549587" duration="19952000" />
+      <workItem from="1634643736649" duration="1036000" />
     </task>
     <servers />
   </component>
@@ -136,22 +137,22 @@
     </option>
   </component>
   <component name="WindowStateProjectService">
-    <state width="1237" height="57" key="GridCell.Tab.0.bottom" timestamp="1634496040577">
+    <state width="1237" height="57" key="GridCell.Tab.0.bottom" timestamp="1634644490009">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="57" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1634496040577" />
-    <state width="1237" height="57" key="GridCell.Tab.0.center" timestamp="1634496040577">
+    <state width="1237" height="57" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1634644490009" />
+    <state width="1237" height="57" key="GridCell.Tab.0.center" timestamp="1634644490009">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="57" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1634496040577" />
-    <state width="1237" height="57" key="GridCell.Tab.0.left" timestamp="1634496040577">
+    <state width="1237" height="57" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1634644490009" />
+    <state width="1237" height="57" key="GridCell.Tab.0.left" timestamp="1634644490009">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="57" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1634496040577" />
-    <state width="1237" height="57" key="GridCell.Tab.0.right" timestamp="1634496040577">
+    <state width="1237" height="57" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1634644490009" />
+    <state width="1237" height="57" key="GridCell.Tab.0.right" timestamp="1634644490009">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="57" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1634496040577" />
+    <state width="1237" height="57" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1634644490009" />
     <state width="595" height="226" key="GridCell.Tab.1.bottom" timestamp="1634496040577">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
