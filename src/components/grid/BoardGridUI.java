@@ -315,7 +315,10 @@ public class BoardGridUI {
     }
 
     private boolean isSpecialCandy(BoardTile tile) {
-        return (tile.getTileType() == TileType.POISON_GREEN || tile.getTileType() == TileType.POISON_RED);
+        return tile.getTileType() == TileType.POISON_GREEN
+                || tile.getTileType() == TileType.POISON_RED
+                || tile.getTileType() == TileType.FIREWORK
+                || tile.getTileType() == TileType.MUMMY;
     }
 
     private boolean checkIfFireworksSpecialCandyInvolved(BoardTile specialCandy) {
@@ -346,7 +349,6 @@ public class BoardGridUI {
         if (specialCandy != null) {
             isFirework = checkIfFireworksSpecialCandyInvolved(specialCandy[0]);
         }
-
 
         if (!isFirework) {
             for (BoardTile tile : tilesToValidate) {
@@ -473,7 +475,7 @@ public class BoardGridUI {
                 manageExplosion();
             }
         } else {
-            explodeSameTypeCandies(specialCandy);
+            explodeSameTypeCandies(specialCandy, startTile, endTile, spaceToMove);
             manageExplosion();
         }
 
@@ -485,19 +487,26 @@ public class BoardGridUI {
         CardGameplay.updateScore(potentialCrush.getCrushedCandies().size());
     }
 
-    private void explodeSameTypeCandies(BoardTile[] specialCandy) {
-        TileType toExplode = specialCandy[1].getTileType();
+    private void explodeSameTypeCandies(BoardTile[] specialCandy, BoardTile startTile,
+                                        BoardTile endTile, int spaceToMove) {
+        if (!isSpecialCandy(specialCandy[1])) {
+            TileType toExplode = specialCandy[1].getTileType();
+            potentialCrush.addCrushedCandy(specialCandy[1]);
 
-        for (int i = 0; i < controller.getTiles().size(); i++) {
-            ArrayList<BoardTile> candyRow = controller.getTiles().get(i);
+            for (int i = 0; i < controller.getTiles().size(); i++) {
+                ArrayList<BoardTile> candyRow = controller.getTiles().get(i);
 
-            for (int j = 0; j < candyRow.size(); j++) {
-                BoardTile potentialExplosion = candyRow.get(j);
-
-                if (potentialExplosion.getTileType() == toExplode) {
-                    potentialCrush.addCrushedCandy(potentialExplosion);
+                for (BoardTile potentialExplosion : candyRow) {
+                    if (potentialExplosion.getTileType() == toExplode) {
+                        potentialCrush.addCrushedCandy(potentialExplosion);
+                    }
                 }
             }
+        } else {
+            swipeTiles(endTile, startTile,
+                    endTile.getTileX(), endTile.getTileY(),
+                    startTile.getTileX(), startTile.getTileY(),
+                    spaceToMove, false);
         }
     }
 
@@ -516,6 +525,14 @@ public class BoardGridUI {
             for (int i = 0; i < controller.getTiles().size(); i++) {
                 ArrayList<BoardTile> row = controller.getTiles().get(i);
                 potentialCrush.addCrushedCandy(row.get(columnToExplode));
+            }
+        }
+
+        if (special.getTileType() == TileType.MUMMY) {
+            for (int i = special.getTileRow() - 1; i <= special.getTileRow() + 1; i++) {
+                for (int j = special.getTileCol() - 1; j <= special.getTileCol() + 1; j++) {
+                    potentialCrush.addCrushedCandy(controller.getTiles().get(i).get(j));
+                }
             }
         }
     }

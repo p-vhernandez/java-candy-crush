@@ -172,7 +172,7 @@ public class BoardGrid extends JPanel {
         }
 
         for (BoardTile candy : crushedCandies) {
-            for (int i = candy.getTileRow()-1; i >= 0; i--) {
+            for (int i = candy.getTileRow() - 1; i >= 0; i--) {
                 BoardTile tile = tiles.get(i).get(candy.getTileCol());
                 if (tile.getTileType() != TileType.CRUSHED && !tilesToUpdateByCol.get(candy.getTileCol()).contains(tile)) {
                     tilesToUpdateByCol.get(candy.getTileCol()).add(tile);
