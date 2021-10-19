@@ -114,7 +114,7 @@ public class BoardGrid extends JPanel {
     public boolean isEnabled() {
         return this.model.isEnabled();
     }
-    
+
     public BoardTile getTileDragStart() {
         return tileDragStart;
     }
@@ -286,19 +286,13 @@ public class BoardGrid extends JPanel {
             for (int i = 0; i < getLevel().getNumRows(); i++) {
                 int[] data = crushedInRow(i);
                 if (data[0] >= 3) {
-                    try {
-                        for (int j = data[3]; j < data[0] + data[3] - 1; j++) {
-                            int crushedInMinCol = 0;
-                            crushedInMinCol = crushedInCol(j)[0];
-                            if (crushedInMinCol >= 3) {
-                                tiles.get(data[1]).get(data[2]).setTileType(TileType.MUMMY);
-                            }
+                    for (int j = data[3]; j < data[0] + data[3] - 1; j++) {
+                        int crushedInMinCol = 0;
+                        crushedInMinCol = crushedInCol(j)[0];
+                        if (crushedInMinCol >= 3) {
+                            tiles.get(data[1]).get(j).setTileType(TileType.MUMMY);
                         }
-                    } catch (IndexOutOfBoundsException e) {
-                        System.out.println("hhhhhhh");
-                        e.printStackTrace();
                     }
-
                 }
                 if (data[0] == 4) {
                     tiles.get(data[1]).get(data[2]).setTileType(TileType.POISON_GREEN);
@@ -330,7 +324,7 @@ public class BoardGrid extends JPanel {
                 crushedInRow++;
                 replaceRow = crushedCandy.getTileRow();
                 replaceCol = crushedCandy.getTileCol();
-                if (crushedCandy.getTileRow() < minCol) minCol = crushedCandy.getTileRow();
+                if (crushedCandy.getTileCol() < minCol) minCol = crushedCandy.getTileCol();
             }
         }
         return new int[]{crushedInRow, replaceRow, replaceCol, minCol};
