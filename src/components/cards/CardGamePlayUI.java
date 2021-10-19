@@ -54,7 +54,7 @@ public class CardGamePlayUI {
         bottomPanel.setMaximumSize(new Dimension(Utils.getWindowWidth(), 60));
 
         btnBack = Utils.generateDefaultAppButton(this, "Back to levels");
-        btnBack.setPreferredSize(new Dimension((Utils.getWindowWidth() / 2) - 30, 50));
+        btnBack.setPreferredSize(new Dimension(Utils.getWindowWidth() - 30, 50));
 
         btnRestart = Utils.generateDefaultAppButton(this, "Restart level");
         btnRestart.setPreferredSize(new Dimension((Utils.getWindowWidth() / 2 - 30), 50));
@@ -62,7 +62,7 @@ public class CardGamePlayUI {
         initializeListeners();
 
         bottomPanel.add(btnBack);
-        bottomPanel.add(btnRestart);
+        //bottomPanel.add(btnRestart);
         controller.add(bottomPanel, BorderLayout.SOUTH);
     }
 
