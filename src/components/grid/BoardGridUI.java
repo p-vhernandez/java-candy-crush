@@ -418,6 +418,7 @@ public class BoardGridUI {
                     type2 = controller.getTiles().get(row).get(col + 1).getTileType();
                     type3 = controller.getTiles().get(row).get(col + 2).getTileType();
 
+
                     if (type1 == type2 && type1 == type3) {
                         valid = true;
 
@@ -480,6 +481,7 @@ public class BoardGridUI {
             explodeSameTypeCandies(specialCandy);
             manageExplosion();
         }
+
     }
 
     private void manageExplosion() {
@@ -644,3 +646,4 @@ public class BoardGridUI {
     }
 
 }
+
