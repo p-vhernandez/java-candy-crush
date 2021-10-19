@@ -7,7 +7,7 @@ public enum  TileType {
     EYEBALL,
     PUMPKIN,
     MUMMY,
-    FIREWORKS,
+    FIREWORK,
     POISON_GREEN,
     POISON_RED,
     EMPTY,
