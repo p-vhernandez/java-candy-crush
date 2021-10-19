@@ -299,8 +299,35 @@ public class BoardGridUI {
         myTimer.start();
     }
 
+    /**
+     * Returns an array to save both the special candy and the normal one.
+     * The special candy is always returned inside the first position of the array.
+     *
+     * @param tilesToValidate - BoardTiles that have been swiped.
+     * @return - BoardTile array. Null if there are no special ones.
+     */
+    private BoardTile[] checkIfSpecialCandyInvolved(BoardTile[] tilesToValidate) {
+        if (isSpecialCandy(tilesToValidate[0])) {
+            return new BoardTile[]{tilesToValidate[0], tilesToValidate[1]};
+        }
+
+        if (isSpecialCandy(tilesToValidate[1])) {
+            return new BoardTile[]{tilesToValidate[1], tilesToValidate[0]};
+        }
+
+        return null;
+    }
+
     private boolean isSpecialCandy(BoardTile tile) {
         return (tile.getTileType() == TileType.POISON_GREEN || tile.getTileType() == TileType.POISON_RED);
+    }
+
+    private boolean checkIfFireworksSpecialCandyInvolved(BoardTile specialCandy) {
+        if (specialCandy != null) {
+            return specialCandy.getTileType() == TileType.FIREWORKS;
+        } else {
+            return false;
+        }
     }
 
     /**
@@ -316,155 +343,177 @@ public class BoardGridUI {
     private void validateSwipe(BoardTile[] tilesToValidate,
                                BoardTile startTile, BoardTile endTile, int spaceToMove) {
 
-        boolean valid = false;
+        BoardTile[] specialCandy = checkIfSpecialCandyInvolved(tilesToValidate);
+        boolean valid = false, isFirework = false;
         potentialCrush = new Crush();
-        BoardTile specialCandy = null;
 
-        if (isSpecialCandy(tilesToValidate[0])) {
-            specialCandy = tilesToValidate[0];
-        } else if (isSpecialCandy(tilesToValidate[1])) {
-            specialCandy = tilesToValidate[1];
+        if (specialCandy != null) {
+            isFirework = checkIfFireworksSpecialCandyInvolved(specialCandy[0]);
         }
 
-        for (BoardTile tile : tilesToValidate) {
-            int row = tile.getTileRow();
-            int col = tile.getTileCol();
 
-            TileType type1, type2, type3;
+        if (!isFirework) {
+            for (BoardTile tile : tilesToValidate) {
+                int row = tile.getTileRow();
+                int col = tile.getTileCol();
 
-            // Check horizontally from position 0 to position
-            // (length - 3) to find at least a group of 3 candies
-            if (row >= 0 && row + 2 < controller.getTiles().size()) {
+                TileType type1, type2, type3;
 
-                type1 = tile.getTileType();
-                type2 = controller.getTiles().get(row + 1).get(col).getTileType();
-                type3 = controller.getTiles().get(row + 2).get(col).getTileType();
+                // Check horizontally from position 0 to position
+                // (length - 3) to find at least a group of 3 candies
+                if (row >= 0 && row + 2 < controller.getTiles().size()) {
 
-                if (type1 == type2 && type1 == type3) {
-                    valid = true;
+                    type1 = tile.getTileType();
+                    type2 = controller.getTiles().get(row + 1).get(col).getTileType();
+                    type3 = controller.getTiles().get(row + 2).get(col).getTileType();
 
-                    potentialCrush.addCrushedCandy((controller.getTiles().get(row + 2).get(col)));
-                    potentialCrush.addCrushedCandy((controller.getTiles().get(row + 1).get(col)));
-                    potentialCrush.addCrushedCandy(tile);
+                    if (type1 == type2 && type1 == type3) {
+                        valid = true;
+
+                        potentialCrush.addCrushedCandy((controller.getTiles().get(row + 2).get(col)));
+                        potentialCrush.addCrushedCandy((controller.getTiles().get(row + 1).get(col)));
+                        potentialCrush.addCrushedCandy(tile);
+                    }
+
                 }
 
-            }
+                // Check horizontally from position 1 to position
+                // (length - 2) to find at least a group of 3 candies
+                if (row >= 1 && row + 1 < controller.getTiles().size()) {
 
-            // Check horizontally from position 1 to position
-            // (length - 2) to find at least a group of 3 candies
-            if (row >= 1 && row + 1 < controller.getTiles().size()) {
+                    type1 = controller.getTiles().get(row - 1).get(col).getTileType();
+                    type2 = tile.getTileType();
+                    type3 = controller.getTiles().get(row + 1).get(col).getTileType();
 
-                type1 = controller.getTiles().get(row - 1).get(col).getTileType();
-                type2 = tile.getTileType();
-                type3 = controller.getTiles().get(row + 1).get(col).getTileType();
+                    if (type1 == type2 && type1 == type3) {
+                        valid = true;
 
-                if (type1 == type2 && type1 == type3) {
-                    valid = true;
+                        potentialCrush.addCrushedCandy(controller.getTiles().get(row + 1).get(col));
+                        potentialCrush.addCrushedCandy(tile);
+                        potentialCrush.addCrushedCandy(controller.getTiles().get(row - 1).get(col));
+                    }
+                }
 
-                    potentialCrush.addCrushedCandy(controller.getTiles().get(row + 1).get(col));
-                    potentialCrush.addCrushedCandy(tile);
-                    potentialCrush.addCrushedCandy(controller.getTiles().get(row - 1).get(col));
+                // Check horizontally from position 2 until the end
+                // to find at least a group of 3 candies
+                if (row >= 2) {
+                    type3 = tile.getTileType();
+                    type1 = controller.getTiles().get(row - 1).get(col).getTileType();
+                    type2 = controller.getTiles().get(row - 2).get(col).getTileType();
+
+                    if (type1 == type2 && type1 == type3) {
+                        valid = true;
+
+                        potentialCrush.addCrushedCandy(tile);
+                        potentialCrush.addCrushedCandy(controller.getTiles().get(row - 1).get(col));
+                        potentialCrush.addCrushedCandy(controller.getTiles().get(row - 2).get(col));
+                    }
+                }
+
+                // Check vertically from position 0 to position
+                // (length - 3) to find at least a group of 3 candies
+                if (col >= 0 && col + 2 < controller.getTiles().get(0).size()) {
+                    type1 = tile.getTileType();
+                    type2 = controller.getTiles().get(row).get(col + 1).getTileType();
+                    type3 = controller.getTiles().get(row).get(col + 2).getTileType();
+
+                    if (type1 == type2 && type1 == type3) {
+                        valid = true;
+
+                        potentialCrush.addCrushedCandy(controller.getTiles().get(row).get(col + 2));
+                        potentialCrush.addCrushedCandy(controller.getTiles().get(row).get(col + 1));
+                        potentialCrush.addCrushedCandy(tile);
+                    }
+                }
+
+                // Check vertically from position 1 to position
+                // (length - 2) to find at least a group of 3 candies
+                if (col >= 1 && col + 1 < controller.getTiles().get(0).size()) {
+                    type1 = controller.getTiles().get(row).get(col - 1).getTileType();
+                    type2 = tile.getTileType();
+                    type3 = controller.getTiles().get(row).get(col + 1).getTileType();
+
+                    if (type1 == type2 && type1 == type3) {
+                        valid = true;
+
+                        potentialCrush.addCrushedCandy(controller.getTiles().get(row).get(col + 1));
+                        potentialCrush.addCrushedCandy(tile);
+                        potentialCrush.addCrushedCandy(controller.getTiles().get(row).get(col - 1));
+                    }
+                }
+
+                // Check vertically from position 2 until the end
+                // to find at least a group of 3 candies
+                if (col >= 2) {
+                    type3 = tile.getTileType();
+                    type1 = controller.getTiles().get(row).get(col - 1).getTileType();
+                    type2 = controller.getTiles().get(row).get(col - 2).getTileType();
+
+                    if (type1 == type2 && type1 == type3) {
+                        valid = true;
+
+                        potentialCrush.addCrushedCandy(tile);
+                        potentialCrush.addCrushedCandy(controller.getTiles().get(row).get(col - 1));
+                        potentialCrush.addCrushedCandy(controller.getTiles().get(row).get(col - 2));
+                    }
                 }
             }
 
-            // Check horizontally from position 2 until the end
-            // to find at least a group of 3 candies
-            if (row >= 2) {
-
-                type3 = tile.getTileType();
-                type1 = controller.getTiles().get(row - 1).get(col).getTileType();
-                type2 = controller.getTiles().get(row - 2).get(col).getTileType();
-
-                if (type1 == type2 && type1 == type3) {
-                    valid = true;
-
-                    potentialCrush.addCrushedCandy(tile);
-                    potentialCrush.addCrushedCandy(controller.getTiles().get(row - 1).get(col));
-                    potentialCrush.addCrushedCandy(controller.getTiles().get(row - 2).get(col));
+            /*
+             *  If the movement is not valid,
+             *  swipe back the tiles to the original place
+             */
+            if (!valid) {
+                swipeTiles(endTile, startTile,
+                        endTile.getTileX(), endTile.getTileY(),
+                        startTile.getTileX(), startTile.getTileY(),
+                        spaceToMove, false);
+            } else {
+                if (specialCandy != null) {
+                    addExtraTilesToExplode(specialCandy);
                 }
+
+                manageExplosion();
             }
-
-            // Check vertically from position 0 to position
-            // (length - 3) to find at least a group of 3 candies
-            if (col >= 0 && col + 2 < controller.getTiles().get(0).size()) {
-
-                type1 = tile.getTileType();
-                type2 = controller.getTiles().get(row).get(col + 1).getTileType();
-                type3 = controller.getTiles().get(row).get(col + 2).getTileType();
-
-                if (type1 == type2 && type1 == type3) {
-                    valid = true;
-
-                    potentialCrush.addCrushedCandy(controller.getTiles().get(row).get(col + 2));
-                    potentialCrush.addCrushedCandy(controller.getTiles().get(row).get(col + 1));
-                    potentialCrush.addCrushedCandy(tile);
-                }
-            }
-
-            // Check vertically from position 1 to position
-            // (length - 2) to find at least a group of 3 candies
-            if (col >= 1 && col + 1 < controller.getTiles().get(0).size()) {
-
-                type1 = controller.getTiles().get(row).get(col - 1).getTileType();
-                type2 = tile.getTileType();
-                type3 = controller.getTiles().get(row).get(col + 1).getTileType();
-
-                if (type1 == type2 && type1 == type3) {
-                    valid = true;
-
-                    potentialCrush.addCrushedCandy(controller.getTiles().get(row).get(col + 1));
-                    potentialCrush.addCrushedCandy(tile);
-                    potentialCrush.addCrushedCandy(controller.getTiles().get(row).get(col - 1));
-                }
-            }
-
-            // Check vertically from position 2 until the end
-            // to find at least a group of 3 candies
-            if (col >= 2) {
-
-                type3 = tile.getTileType();
-                type1 = controller.getTiles().get(row).get(col - 1).getTileType();
-                type2 = controller.getTiles().get(row).get(col - 2).getTileType();
-
-                if (type1 == type2 && type1 == type3) {
-                    valid = true;
-
-                    potentialCrush.addCrushedCandy(tile);
-                    potentialCrush.addCrushedCandy(controller.getTiles().get(row).get(col - 1));
-                    potentialCrush.addCrushedCandy(controller.getTiles().get(row).get(col - 2));
-                }
-            }
-        }
-
-        /*
-         *  If the movement is not valid,
-         *  swipe back the tiles to the original place
-         */
-        if (!valid) {
-            swipeTiles(endTile, startTile,
-                    endTile.getTileX(), endTile.getTileY(),
-                    startTile.getTileX(), startTile.getTileY(),
-                    spaceToMove, false);
         } else {
-            if (specialCandy != null) {
-                addExtraTilesToExplode(specialCandy);
-            }
-
-            CardGameplay.oneMovementLess();
-            potentialCrush.explode(controller);
-            CardGameplay.updateScore(potentialCrush.getCrushedCandies().size());
+            explodeSameTypeCandies(specialCandy);
+            manageExplosion();
         }
     }
 
-    private void addExtraTilesToExplode(BoardTile specialCandy) {
-        if (specialCandy.getTileType() == TileType.POISON_GREEN) {
-            int rowToExplode = specialCandy.getTileRow();
+    private void manageExplosion() {
+        CardGameplay.oneMovementLess();
+        potentialCrush.explode(controller);
+        CardGameplay.updateScore(potentialCrush.getCrushedCandies().size());
+    }
+
+    private void explodeSameTypeCandies(BoardTile[] specialCandy) {
+        TileType toExplode = specialCandy[1].getTileType();
+
+        for (int i = 0; i < controller.getTiles().size(); i++) {
+            ArrayList<BoardTile> candyRow = controller.getTiles().get(i);
+
+            for (int j = 0; j < candyRow.size(); j++) {
+                BoardTile potentialExplosion = candyRow.get(j);
+
+                if (potentialExplosion.getTileType() == toExplode) {
+                    potentialCrush.addCrushedCandy(potentialExplosion);
+                }
+            }
+        }
+    }
+
+    private void addExtraTilesToExplode(BoardTile[] specialCandy) {
+        BoardTile special = specialCandy[0];
+
+        if (special.getTileType() == TileType.POISON_GREEN) {
+            int rowToExplode = special.getTileRow();
             ArrayList<BoardTile> extraTilesToExplode = controller.getTiles().get(rowToExplode);
             potentialCrush.addCrushedCandies(extraTilesToExplode);
         }
 
-        if (specialCandy.getTileType() == TileType.POISON_RED) {
-            int columnToExplode = specialCandy.getTileCol();
+        if (special.getTileType() == TileType.POISON_RED) {
+            int columnToExplode = special.getTileCol();
 
             for (int i = 0; i < controller.getTiles().size(); i++) {
                 ArrayList<BoardTile> row = controller.getTiles().get(i);
