@@ -10,7 +10,6 @@
       <change beforePath="$PROJECT_DIR$/src/components/grid/BoardGrid.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/grid/BoardGrid.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/grid/BoardGridUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/grid/BoardGridUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/resources/user/progress.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/user/progress.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/helpers/TileType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/helpers/TileType.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,6 +39,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
+    <property name="settings.editor.selected.configurable" value="preferences.fileTypes" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -52,7 +52,7 @@
       <recent name="Model" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.candy">
     <configuration name="Main" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="main.Main" />
       <module name="CandyCrush" />
@@ -66,6 +66,17 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="candy" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="main.Main" />
+      <module name="CandyCrush" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Application.Main" />
+      <item itemvalue="Application.candy" />
+    </list>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -79,7 +90,7 @@
       <updated>1634651662425</updated>
       <workItem from="1634651672860" duration="63000" />
       <workItem from="1634651751538" duration="223000" />
-      <workItem from="1634651993992" duration="241000" />
+      <workItem from="1634651993992" duration="1115000" />
     </task>
     <servers />
   </component>
@@ -87,30 +98,38 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="96" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1634652235627">
+    <state x="96" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1634652844622">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="96" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1280.680@0.0.1280.680" timestamp="1634652235627" />
-    <state x="371" y="124" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1634652219178">
+    <state x="96" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1280.680@0.0.1280.680" timestamp="1634652844622" />
+    <state x="371" y="124" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1634652830830">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="371" y="124" key="#com.intellij.ide.util.TreeClassChooserDialog/0.0.1280.680@0.0.1280.680" timestamp="1634652219178" />
-    <state width="1237" height="175" key="GridCell.Tab.0.bottom" timestamp="1634652248683">
+    <state x="371" y="124" key="#com.intellij.ide.util.TreeClassChooserDialog/0.0.1280.680@0.0.1280.680" timestamp="1634652830830" />
+    <state x="376" y="102" key="EnvironmentVariablesDialog" timestamp="1634652842622">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="175" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1634652248683" />
-    <state width="1237" height="175" key="GridCell.Tab.0.center" timestamp="1634652248683">
+    <state x="376" y="102" key="EnvironmentVariablesDialog/0.0.1280.680@0.0.1280.680" timestamp="1634652842622" />
+    <state width="1237" height="175" key="GridCell.Tab.0.bottom" timestamp="1634652854570">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="175" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1634652248683" />
-    <state width="1237" height="175" key="GridCell.Tab.0.left" timestamp="1634652248683">
+    <state width="1237" height="175" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1634652854570" />
+    <state width="1237" height="175" key="GridCell.Tab.0.center" timestamp="1634652854570">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="175" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1634652248683" />
-    <state width="1237" height="175" key="GridCell.Tab.0.right" timestamp="1634652248683">
+    <state width="1237" height="175" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1634652854570" />
+    <state width="1237" height="175" key="GridCell.Tab.0.left" timestamp="1634652854570">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="175" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1634652248683" />
+    <state width="1237" height="175" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1634652854570" />
+    <state width="1237" height="175" key="GridCell.Tab.0.right" timestamp="1634652854570">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="175" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1634652854570" />
+    <state x="142" y="0" key="SettingsEditor" timestamp="1634652508592">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="142" y="0" key="SettingsEditor/0.0.1280.680@0.0.1280.680" timestamp="1634652508592" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

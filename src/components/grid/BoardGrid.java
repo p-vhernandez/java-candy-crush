@@ -283,24 +283,21 @@ public class BoardGrid extends JPanel {
     private void generateSpecialCandies(ArrayList<BoardTile> crushedCandies) {
         if (crushedCandies.size() > 3) {
 
-            //green poison or firework
-            ArrayList<BoardTile> crushedRow = new ArrayList<>();
-
             for (int i = 0; i < getLevel().getNumRows(); i++) {
                 int[] data = crushedInRow(i);
                 if (data[0] >= 3) {
-                    /*try {
+                    try {
                         for (int j = data[3]; j < data[0] + data[3] - 1; j++) {
                             int crushedInMinCol = 0;
                             crushedInMinCol = crushedInCol(j)[0];
                             if (crushedInMinCol >= 3) {
-                                tiles.get(data[1]).get(data[2]).setTileType(TileType.POISON_GREEN);
+                                tiles.get(data[1]).get(data[2]).setTileType(TileType.MUMMY);
                             }
                         }
                     } catch (IndexOutOfBoundsException e) {
                         System.out.println("hhhhhhh");
                         e.printStackTrace();
-                    }*/
+                    }
 
                 }
                 if (data[0] == 4) {
@@ -336,7 +333,7 @@ public class BoardGrid extends JPanel {
                 if (crushedCandy.getTileRow() < minCol) minCol = crushedCandy.getTileRow();
             }
         }
-        return new int[]{crushedInRow, replaceRow, replaceCol};
+        return new int[]{crushedInRow, replaceRow, replaceCol, minCol};
     }
 
     private int[] crushedInCol(int col) {

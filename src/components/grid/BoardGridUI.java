@@ -325,7 +325,7 @@ public class BoardGridUI {
 
     private boolean checkIfFireworksSpecialCandyInvolved(BoardTile specialCandy) {
         if (specialCandy != null) {
-            return specialCandy.getTileType() == TileType.FIREWORKS;
+            return specialCandy.getTileType() == TileType.FIREWORK;
         } else {
             return false;
         }
