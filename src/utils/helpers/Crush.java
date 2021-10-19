@@ -24,7 +24,7 @@ public class Crush {
         this.crushedCandies = crushedCandies;
     }
 
-    public void addCrushedCandies(BoardTile crushedCandy) {
+    public void addCrushedCandy(BoardTile crushedCandy) {
         if (!crushedCandies.contains(crushedCandy)) {
             this.crushedCandies.add(crushedCandy);
             addExplosion(
@@ -34,6 +34,12 @@ public class Crush {
                             crushedCandy.getPreferredSize().width / 8,
                             30)
             );
+        }
+    }
+
+    public void addCrushedCandies(ArrayList<BoardTile> crushedCandies) {
+        for (BoardTile tile : crushedCandies) {
+            addCrushedCandy(tile);
         }
     }
 

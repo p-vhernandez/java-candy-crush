@@ -298,6 +298,10 @@ public class BoardGridUI {
         myTimer.start();
     }
 
+    private boolean isSpecialCandy(BoardTile tile) {
+        return (tile.getTileType() == TileType.POISON_GREEN || tile.getTileType() == TileType.POISON_RED);
+    }
+
     /**
      * Check if the movement is valid.
      * The movement is valid when it creates a group of - at least -
@@ -313,6 +317,13 @@ public class BoardGridUI {
 
         boolean valid = false;
         potentialCrush = new Crush();
+        BoardTile specialCandy = null;
+
+        if (isSpecialCandy(tilesToValidate[0])) {
+            specialCandy = tilesToValidate[0];
+        } else if (isSpecialCandy(tilesToValidate[1])) {
+            specialCandy = tilesToValidate[1];
+        }
 
         for (BoardTile tile : tilesToValidate) {
             int row = tile.getTileRow();
@@ -331,9 +342,9 @@ public class BoardGridUI {
                 if (type1 == type2 && type1 == type3) {
                     valid = true;
 
-                    potentialCrush.addCrushedCandies((controller.getTiles().get(row + 2).get(col)));
-                    potentialCrush.addCrushedCandies((controller.getTiles().get(row + 1).get(col)));
-                    potentialCrush.addCrushedCandies(tile);
+                    potentialCrush.addCrushedCandy((controller.getTiles().get(row + 2).get(col)));
+                    potentialCrush.addCrushedCandy((controller.getTiles().get(row + 1).get(col)));
+                    potentialCrush.addCrushedCandy(tile);
                 }
 
             }
@@ -349,9 +360,9 @@ public class BoardGridUI {
                 if (type1 == type2 && type1 == type3) {
                     valid = true;
 
-                    potentialCrush.addCrushedCandies(controller.getTiles().get(row + 1).get(col));
-                    potentialCrush.addCrushedCandies(tile);
-                    potentialCrush.addCrushedCandies(controller.getTiles().get(row - 1).get(col));
+                    potentialCrush.addCrushedCandy(controller.getTiles().get(row + 1).get(col));
+                    potentialCrush.addCrushedCandy(tile);
+                    potentialCrush.addCrushedCandy(controller.getTiles().get(row - 1).get(col));
                 }
             }
 
@@ -366,9 +377,9 @@ public class BoardGridUI {
                 if (type1 == type2 && type1 == type3) {
                     valid = true;
 
-                    potentialCrush.addCrushedCandies(tile);
-                    potentialCrush.addCrushedCandies(controller.getTiles().get(row - 1).get(col));
-                    potentialCrush.addCrushedCandies(controller.getTiles().get(row - 2).get(col));
+                    potentialCrush.addCrushedCandy(tile);
+                    potentialCrush.addCrushedCandy(controller.getTiles().get(row - 1).get(col));
+                    potentialCrush.addCrushedCandy(controller.getTiles().get(row - 2).get(col));
                 }
             }
 
@@ -383,9 +394,9 @@ public class BoardGridUI {
                 if (type1 == type2 && type1 == type3) {
                     valid = true;
 
-                    potentialCrush.addCrushedCandies(controller.getTiles().get(row).get(col + 2));
-                    potentialCrush.addCrushedCandies(controller.getTiles().get(row).get(col + 1));
-                    potentialCrush.addCrushedCandies(tile);
+                    potentialCrush.addCrushedCandy(controller.getTiles().get(row).get(col + 2));
+                    potentialCrush.addCrushedCandy(controller.getTiles().get(row).get(col + 1));
+                    potentialCrush.addCrushedCandy(tile);
                 }
             }
 
@@ -400,9 +411,9 @@ public class BoardGridUI {
                 if (type1 == type2 && type1 == type3) {
                     valid = true;
 
-                    potentialCrush.addCrushedCandies(controller.getTiles().get(row).get(col + 1));
-                    potentialCrush.addCrushedCandies(tile);
-                    potentialCrush.addCrushedCandies(controller.getTiles().get(row).get(col - 1));
+                    potentialCrush.addCrushedCandy(controller.getTiles().get(row).get(col + 1));
+                    potentialCrush.addCrushedCandy(tile);
+                    potentialCrush.addCrushedCandy(controller.getTiles().get(row).get(col - 1));
                 }
             }
 
@@ -417,9 +428,9 @@ public class BoardGridUI {
                 if (type1 == type2 && type1 == type3) {
                     valid = true;
 
-                    potentialCrush.addCrushedCandies(tile);
-                    potentialCrush.addCrushedCandies(controller.getTiles().get(row).get(col - 1));
-                    potentialCrush.addCrushedCandies(controller.getTiles().get(row).get(col - 2));
+                    potentialCrush.addCrushedCandy(tile);
+                    potentialCrush.addCrushedCandy(controller.getTiles().get(row).get(col - 1));
+                    potentialCrush.addCrushedCandy(controller.getTiles().get(row).get(col - 2));
                 }
             }
         }
@@ -434,6 +445,26 @@ public class BoardGridUI {
                     startTile.getTileX(), startTile.getTileY(),
                     spaceToMove, false);
         } else {
+            if (specialCandy != null) {
+                if (specialCandy.getTileType() == TileType.POISON_GREEN) {
+                    int rowToExplode = specialCandy.getTileRow();
+                    ArrayList<BoardTile> extraTilesToExplode = controller.getTiles().get(rowToExplode);
+                    potentialCrush.addCrushedCandies(extraTilesToExplode);
+                }
+
+                if (specialCandy.getTileType() == TileType.POISON_RED) {
+                    int columnToExplode = specialCandy.getTileCol();
+
+                    for (int i = 0; i < controller.getTiles().size(); i++) {
+                        ArrayList<BoardTile> row = controller.getTiles().get(i);
+                        potentialCrush.addCrushedCandy(row.get(columnToExplode));
+                    }
+
+                    ArrayList<BoardTile> extraTilesToExplode = controller.getTiles().get(columnToExplode);
+                    potentialCrush.addCrushedCandies(extraTilesToExplode);
+                }
+            }
+
             CardGameplay.oneMovementLess();
             potentialCrush.explode(controller);
             CardGameplay.updateScore(potentialCrush.getCrushedCandies().size());
@@ -541,14 +572,14 @@ public class BoardGridUI {
             for (int j = 0; j < controller.getTiles().get(i).size(); j++) {
                 BoardTile tile = controller.getTiles().get(i).get(j);
                 if (i >= 2 && !notThreeInARowDimensionX(tile.getTileType(), i, j)) {
-                    potentialCrush.addCrushedCandies(tile);
-                    potentialCrush.addCrushedCandies(controller.getTiles().get(i - 1).get(j));
-                    potentialCrush.addCrushedCandies(controller.getTiles().get(i - 2).get(j));
+                    potentialCrush.addCrushedCandy(tile);
+                    potentialCrush.addCrushedCandy(controller.getTiles().get(i - 1).get(j));
+                    potentialCrush.addCrushedCandy(controller.getTiles().get(i - 2).get(j));
                 }
                 if (j >= 2 && !notThreeInARowDimensionY(tile.getTileType(), controller.getTiles().get(i), j)) {
-                    potentialCrush.addCrushedCandies(tile);
-                    potentialCrush.addCrushedCandies(controller.getTiles().get(i).get(j - 1));
-                    potentialCrush.addCrushedCandies(controller.getTiles().get(i).get(j - 2));
+                    potentialCrush.addCrushedCandy(tile);
+                    potentialCrush.addCrushedCandy(controller.getTiles().get(i).get(j - 1));
+                    potentialCrush.addCrushedCandy(controller.getTiles().get(i).get(j - 2));
                 }
             }
         }
