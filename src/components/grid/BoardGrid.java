@@ -15,9 +15,9 @@ import java.util.Random;
 
 public class BoardGrid extends JPanel {
 
-    private CardGameplay container;
-    private BoardGridModel model;
-    private BoardGridUI view;
+    private final CardGameplay container;
+    private final BoardGridModel model;
+    private final BoardGridUI view;
 
     private ArrayList<ArrayList<BoardTile>> tiles = new ArrayList<>();
     private BoardTile tileDragStart, tileDragEnd;
