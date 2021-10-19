@@ -1,6 +1,5 @@
 package utils;
 
-import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
@@ -20,7 +19,7 @@ public class Utils {
     private static final int WINDOW_WIDTH = 600;
     private static final int WINDOW_HEIGHT = 700;
     private static final int BOARD_PANEL_WIDTH = 600;
-    private static final int BOARD_PANEL_HEIGHT = 400;
+    private static final int BOARD_PANEL_HEIGHT = 520;
     private static final int TOP_BAR_HEIGHT = 120;
     private static final int TOP_BAR_COMPONENTS_HEIGHT = 90;
     private static final int MOVEMENTS_PANEL_WIDTH = 100;
