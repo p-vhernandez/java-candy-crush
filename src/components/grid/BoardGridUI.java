@@ -34,7 +34,9 @@ public class BoardGridUI {
             TileType.ORANGE_CANDY,
             TileType.ROUND_LOLLI,
             TileType.SWIRL_LOLLI,
-            TileType.MUMMY
+            TileType.MUMMY,
+            TileType.POISON_GREEN,
+            TileType.POISON_RED
     };
 
     private boolean dragDone = false;
@@ -117,7 +119,6 @@ public class BoardGridUI {
     private void paintTile(BoardTile tile, Graphics2D g) {
         int iconX = tile.getTileX() + (Utils.getTileSize() - Utils.getIconSize()) / 2;
         int iconY = tile.getTileY() + (Utils.getTileSize() - Utils.getIconSize()) / 2;
-        BufferedImage icon = null;
 
         g.setPaint(Utils.tileFill);
         g.fillRoundRect(tile.getTileX(), tile.getTileY(),

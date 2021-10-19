@@ -29,7 +29,7 @@ public class LoadingDialog extends JDialog {
         this.dialogPanel = new JPanel();
         this.animationPanel = new JPanel();
         this.loadingLabel = new JLabel("Loading");
-        this.loadingImage = Utils.generateImage(this, "../../resources/img/eye-ball.png");
+        this.loadingImage = Utils.generateImage(this, "../../resources/img/EYEBALL.png");
 
         xVelocity = 10;
         yVelocity = 20;

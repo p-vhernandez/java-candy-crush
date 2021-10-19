@@ -158,7 +158,7 @@ public class Utils {
         dialogLabel.setText(infoLabel);
         dialogLabel.setForeground(Color.white);
         Utils.setCustomFont(object, dialogLabel, "../../resources/font/deanna.ttf", 32f, Font.PLAIN);
-        dialogLabel.setIcon(new ImageIcon(Utils.generateImage(object, "../../resources/img/eye-ball.png")
+        dialogLabel.setIcon(new ImageIcon(Utils.generateImage(object, "../../resources/img/EYEBALL.png")
                 .getScaledInstance(45, 45, Image.SCALE_SMOOTH)));
 
         dialogLabel.setBorder(new EmptyBorder(20, 0, 20, 0));

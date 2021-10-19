@@ -242,10 +242,16 @@ public class BoardGrid extends JPanel {
                         }
                     }
                     tileToUpdate.setTileRow(tileToUpdate.getTileRow()+rowShift);
+                    tiles.get(tileToUpdate.getTileRow()).set(i, tileToUpdate);
                 }
-                tiles.get(tileToUpdate.getTileRow()).set(i, tileToUpdate);
             }
         }
+        for (ArrayList<BoardTile> col : newTiles) {
+            for (BoardTile tile : col) {
+                tiles.get(tile.getTileRow()).set(tile.getTileCol(), tile);
+            }
+        }
+        generateSpecialCandies(crushedCandies);
     }
 
     public ArrayList<ArrayList<BoardTile>> generateNewTiles(int[] crushedInCol, ArrayList<ArrayList<BoardTile>> tilesToUpdate) {
@@ -274,11 +280,40 @@ public class BoardGrid extends JPanel {
         return newTiles;
     }
 
-    private void generateSpecialCandies(int[] crushedInCol, ArrayList<ArrayList<BoardTile>> tilesToUpdate, ArrayList<BoardTile> crushedCandies) {
+    private void generateSpecialCandies(ArrayList<BoardTile> crushedCandies) {
         if (crushedCandies.size() > 3) {
+
+            //green poison
             int crushedInRow = 0;
+            int replaceRow = -1;
+            int replaceCol = -1;
             for (int i = 0; i < getLevel().getNumRows(); i++) {
-                //for (BoardTile crushedCandy : crushedCandies)
+                crushedInRow = 0;
+                for (BoardTile crushedCandy : crushedCandies) {
+                    if (crushedCandy.getTileRow() == i) {
+                        crushedInRow++;
+                        replaceRow = crushedCandy.getTileRow();
+                        replaceCol = crushedCandy.getTileCol();
+                    }
+                }
+                if (crushedInRow >= 4) {
+                    tiles.get(replaceRow).get(replaceCol).setTileType(TileType.POISON_GREEN);
+                }
+            }
+
+            //red poison
+            for (int i = 0; i < getLevel().getNumColumns(); i++) {
+                int crushedInCol = 0;
+                for (BoardTile crushedCandy : crushedCandies) {
+                    if (crushedCandy.getTileCol() == i) {
+                        crushedInCol++;
+                        replaceRow = crushedCandy.getTileRow();
+                        replaceCol = crushedCandy.getTileCol();
+                    }
+                }
+                if (crushedInCol >= 4) {
+                    tiles.get(replaceRow).get(replaceCol).setTileType(TileType.POISON_RED);
+                }
             }
         }
     }
