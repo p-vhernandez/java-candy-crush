@@ -66,11 +66,6 @@ public class BoardGridUI {
         }
     }
 
-    protected void switchLevels() {
-        Level level = this.controller.getLevel();
-        generateTiles(level);
-    }
-
     /**
      * Store the tile icons beforehand to
      * reduce execution time.

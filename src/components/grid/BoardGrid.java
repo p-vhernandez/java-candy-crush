@@ -1,6 +1,7 @@
 package components.grid;
 
 import components.BoardTile;
+import org.jetbrains.annotations.NotNull;
 import utils.Utils;
 import utils.Level;
 import utils.helpers.TileType;
@@ -43,13 +44,6 @@ public class BoardGrid extends JPanel {
     private void updateAxis() {
         this.model.setTilesXAxis(this.model.getLevel().getNumRows());
         this.model.setTilesYAxis(this.model.getLevel().getNumColumns());
-    }
-
-    public void switchLevels() {
-        updateAxis();
-
-        this.view.switchLevels();
-        this.model.setEnabled(true);
     }
 
     private void setUpListeners() {
@@ -140,8 +134,8 @@ public class BoardGrid extends JPanel {
     }
 
     public Dimension getPreferredSize() {
-        int boardWidth = Utils.getTileSize() * this.model.getTilesXAxis();
-        int boardHeight = Utils.getTileSize() * this.model.getTilesYAxis();
+        int boardWidth = Utils.getTileSize() * this.model.getTilesYAxis();
+        int boardHeight = Utils.getTileSize() * this.model.getTilesXAxis();
 
         return new Dimension(boardWidth, boardHeight);
     }
@@ -187,9 +181,9 @@ public class BoardGrid extends JPanel {
             }
         }
 
-        for (int i = 0; i < tiles.size(); i++) {
-            for (int j = 0; j < tiles.get(i).size(); j++) {
-                if (tiles.get(i).get(j).getTileType() == TileType.CRUSHED) {
+        for (ArrayList<BoardTile> boardTiles : tiles) {
+            for (int j = 0; j < boardTiles.size(); j++) {
+                if (boardTiles.get(j).getTileType() == TileType.CRUSHED) {
                     crushedInCol[j]++;
                     if (!colUpdating[j]) colUpdating[j] = true;
                 }
@@ -216,7 +210,10 @@ public class BoardGrid extends JPanel {
             repaint();
 
             for (boolean colUpdate : colUpdating) {
-                if (colUpdate) updating = true;
+                if (colUpdate) {
+                    updating = true;
+                    break;
+                }
             }
 
             if (!updating) {
@@ -230,7 +227,7 @@ public class BoardGrid extends JPanel {
         dropTimer.start();
     }
 
-    private void updateRowsCols(ArrayList<ArrayList<BoardTile>> newTiles, ArrayList<ArrayList<BoardTile>> tilesToUpdateByCol, ArrayList<BoardTile> crushedCandies) {
+    private void updateRowsCols(ArrayList<ArrayList<BoardTile>> newTiles, @NotNull ArrayList<ArrayList<BoardTile>> tilesToUpdateByCol, ArrayList<BoardTile> crushedCandies) {
         for (int i = 0; i < tilesToUpdateByCol.size(); i++) {
             for (int j = 0; j < tilesToUpdateByCol.get(i).size(); j++) {
                 BoardTile tileToUpdate = tilesToUpdateByCol.get(i).get(j);
@@ -242,7 +239,11 @@ public class BoardGrid extends JPanel {
                         }
                     }
                     tileToUpdate.setTileRow(tileToUpdate.getTileRow()+rowShift);
-                    tiles.get(tileToUpdate.getTileRow()).set(i, tileToUpdate);
+                    try {
+                        tiles.get(tileToUpdate.getTileRow()).set(i, tileToUpdate);
+                    } catch (IndexOutOfBoundsException e) {
+                        e.printStackTrace();
+                    }
                 }
             }
         }
@@ -280,14 +281,14 @@ public class BoardGrid extends JPanel {
         return newTiles;
     }
 
-    private void generateSpecialCandies(ArrayList<BoardTile> crushedCandies) {
+    private void generateSpecialCandies(@NotNull ArrayList<BoardTile> crushedCandies) {
         if (crushedCandies.size() > 3) {
 
             for (int i = 0; i < getLevel().getNumRows(); i++) {
                 int[] data = crushedInRow(i);
                 if (data[0] >= 3) {
                     for (int j = data[3]; j < data[0] + data[3] - 1; j++) {
-                        int crushedInMinCol = 0;
+                        int crushedInMinCol;
                         crushedInMinCol = crushedInCol(j)[0];
                         if (crushedInMinCol >= 3) {
                             tiles.get(data[1]).get(j).setTileType(TileType.MUMMY);
