@@ -4,6 +4,7 @@ import utils.Utils;
 import utils.buttons.LevelButton;
 
 import javax.swing.*;
+import javax.swing.border.EmptyBorder;
 import java.awt.*;
 
 public class CardLevelChoiceUI {
@@ -18,6 +19,7 @@ public class CardLevelChoiceUI {
         controller.setPreferredSize(new Dimension(Utils.getWindowWidth(), Utils.getWindowHeight()));
         controller.setBackground(Utils.darkBackground);
         controller.setLayout(new FlowLayout());
+        controller.setBorder(new EmptyBorder(0, 80, 0, 80));
     }
 
     protected void setUpLevelLabel() {
@@ -33,6 +35,7 @@ public class CardLevelChoiceUI {
 
     protected void setUpButtons() {
         for (LevelButton button : controller.getLevelButtons()) {
+
             if (!button.isUnlocked()) {
                 button.setEnabled(false);
             }

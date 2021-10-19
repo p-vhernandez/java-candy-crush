@@ -2,7 +2,6 @@ package components.grid;
 
 import components.BoardTile;
 import components.cards.CardGameplay;
-import org.jetbrains.annotations.NotNull;
 import utils.Level;
 import utils.helpers.Crush;
 import utils.helpers.Explosion;
@@ -749,7 +748,7 @@ public class BoardGridUI {
         dropTimer.start();
     }
 
-    private void updateRowsCols(ArrayList<ArrayList<BoardTile>> newTiles, @NotNull ArrayList<ArrayList<BoardTile>> tilesToUpdateByCol, ArrayList<BoardTile> crushedCandies) {
+    private void updateRowsCols(ArrayList<ArrayList<BoardTile>> newTiles, ArrayList<ArrayList<BoardTile>> tilesToUpdateByCol, ArrayList<BoardTile> crushedCandies) {
         for (int i = 0; i < tilesToUpdateByCol.size(); i++) {
             for (int j = 0; j < tilesToUpdateByCol.get(i).size(); j++) {
                 BoardTile tileToUpdate = tilesToUpdateByCol.get(i).get(j);
