@@ -447,25 +447,29 @@ public class BoardGridUI {
                     spaceToMove, false);
         } else {
             if (specialCandy != null) {
-                if (specialCandy.getTileType() == TileType.POISON_GREEN) {
-                    int rowToExplode = specialCandy.getTileRow();
-                    ArrayList<BoardTile> extraTilesToExplode = controller.getTiles().get(rowToExplode);
-                    potentialCrush.addCrushedCandies(extraTilesToExplode);
-                }
-
-                if (specialCandy.getTileType() == TileType.POISON_RED) {
-                    int columnToExplode = specialCandy.getTileCol();
-
-                    for (int i = 0; i < controller.getTiles().size(); i++) {
-                        ArrayList<BoardTile> row = controller.getTiles().get(i);
-                        potentialCrush.addCrushedCandy(row.get(columnToExplode));
-                    }
-                }
+                addExtraTilesToExplode(specialCandy);
             }
 
             CardGameplay.oneMovementLess();
             potentialCrush.explode(controller);
             CardGameplay.updateScore(potentialCrush.getCrushedCandies().size());
+        }
+    }
+
+    private void addExtraTilesToExplode(BoardTile specialCandy) {
+        if (specialCandy.getTileType() == TileType.POISON_GREEN) {
+            int rowToExplode = specialCandy.getTileRow();
+            ArrayList<BoardTile> extraTilesToExplode = controller.getTiles().get(rowToExplode);
+            potentialCrush.addCrushedCandies(extraTilesToExplode);
+        }
+
+        if (specialCandy.getTileType() == TileType.POISON_RED) {
+            int columnToExplode = specialCandy.getTileCol();
+
+            for (int i = 0; i < controller.getTiles().size(); i++) {
+                ArrayList<BoardTile> row = controller.getTiles().get(i);
+                potentialCrush.addCrushedCandy(row.get(columnToExplode));
+            }
         }
     }
 
