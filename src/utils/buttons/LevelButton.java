@@ -5,6 +5,7 @@ import utils.Utils;
 
 import javax.swing.*;
 import javax.swing.border.Border;
+import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -18,7 +19,7 @@ public class LevelButton extends JButton {
     private boolean unlocked;
 
     private int index;
-    private final int width = 80, height = 80, arc = 200;
+    private final int width = 80, height = 80;
 
     private final Font font;
 
@@ -38,7 +39,6 @@ public class LevelButton extends JButton {
     }
 
     private void initializeListeners() {
-        // TODO: level choice depending on which button is clicked
         if (isUnlocked()) {
             addMouseListener(new MouseAdapter() {
                 @Override
@@ -89,6 +89,8 @@ public class LevelButton extends JButton {
     @Override
     public void paintComponent(Graphics g1d) {
         Graphics2D g = (Graphics2D) g1d;
+        g.setPaint(Utils.darkBackground);
+        g.fillRect(0, 0, width, height);
 
         if (unlocked) {
             g.setPaint(Utils.halloweenOrange);
