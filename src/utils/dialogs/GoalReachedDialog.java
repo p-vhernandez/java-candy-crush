@@ -1,11 +1,11 @@
 package utils.dialogs;
 
 import components.cards.CardGameplay;
+import utils.Level;
 import utils.Utils;
 import utils.helpers.CardType;
 
 import javax.swing.*;
-import java.awt.*;
 
 public class GoalReachedDialog extends JDialog {
 
@@ -16,14 +16,23 @@ public class GoalReachedDialog extends JDialog {
     private final JLabel lblGameOver;
     private final JButton btnContinue, btnBack;
 
+    private final Level playedLevel;
+
     private static final int DIALOG_WIDTH = 450;
     private static final int DIALOG_HEIGHT = 150;
 
-    public GoalReachedDialog(CardGameplay container) {
+    public GoalReachedDialog(CardGameplay container, Level playedLevel) {
         this.container = container;
+        this.playedLevel = playedLevel;
 
         this.dialogPanel = new JPanel();
-        this.lblGameOver = Utils.generateDialogInfo(this, "Victory! ");
+
+        if (playedLevel.getDifficulty() == Utils.getTotalLevels()) {
+            this.lblGameOver = Utils.generateDialogInfo(this, "You finished the game! ");
+        } else {
+            this.lblGameOver = Utils.generateDialogInfo(this, "Victory! ");
+        }
+
         this.btnContinue = Utils.generateDialogDismissButton(this, "Go to next level");
         this.btnBack = Utils.generateDialogDismissButton(this, "Back to levels");
 
