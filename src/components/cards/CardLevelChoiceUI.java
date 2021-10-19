@@ -2,7 +2,6 @@ package components.cards;
 
 import utils.Utils;
 import utils.buttons.LevelButton;
-import utils.dialogs.ErrorDialog;
 
 import javax.swing.*;
 import java.awt.*;
@@ -33,9 +32,6 @@ public class CardLevelChoiceUI {
     }
 
     protected void setUpButtons() {
-        controller.resetLevelButtons();
-        controller.createLevelButtons();
-
         for (LevelButton button : controller.getLevelButtons()) {
             if (!button.isUnlocked()) {
                 button.setEnabled(false);

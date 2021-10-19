@@ -64,8 +64,6 @@ public class CardGamePlayUI {
         bottomPanel.add(btnBack);
         bottomPanel.add(btnRestart);
         controller.add(bottomPanel, BorderLayout.SOUTH);
-        //controller.add(btnBack, BorderLayout.SOUTH);
-        //controller.add(btnRestart, BorderLayout.SOUTH);
     }
 
     private void initializeListeners() {

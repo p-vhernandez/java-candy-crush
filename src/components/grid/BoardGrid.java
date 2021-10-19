@@ -1,7 +1,6 @@
 package components.grid;
 
 import components.BoardTile;
-import org.jetbrains.annotations.NotNull;
 import utils.Utils;
 import utils.Level;
 import utils.helpers.TileType;
@@ -227,7 +226,7 @@ public class BoardGrid extends JPanel {
         dropTimer.start();
     }
 
-    private void updateRowsCols(ArrayList<ArrayList<BoardTile>> newTiles, @NotNull ArrayList<ArrayList<BoardTile>> tilesToUpdateByCol, ArrayList<BoardTile> crushedCandies) {
+    private void updateRowsCols(ArrayList<ArrayList<BoardTile>> newTiles, ArrayList<ArrayList<BoardTile>> tilesToUpdateByCol, ArrayList<BoardTile> crushedCandies) {
         for (int i = 0; i < tilesToUpdateByCol.size(); i++) {
             for (int j = 0; j < tilesToUpdateByCol.get(i).size(); j++) {
                 BoardTile tileToUpdate = tilesToUpdateByCol.get(i).get(j);
@@ -281,7 +280,7 @@ public class BoardGrid extends JPanel {
         return newTiles;
     }
 
-    private void generateSpecialCandies(@NotNull ArrayList<BoardTile> crushedCandies) {
+    private void generateSpecialCandies(ArrayList<BoardTile> crushedCandies) {
         if (crushedCandies.size() > 3) {
 
             for (int i = 0; i < getLevel().getNumRows(); i++) {
