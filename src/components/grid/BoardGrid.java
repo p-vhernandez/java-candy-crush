@@ -146,6 +146,7 @@ public class BoardGrid extends JPanel {
         return new Dimension(boardWidth, boardHeight);
     }
 
+    @Override
     public void paintComponent(Graphics g) {
         this.view.paint((Graphics2D) g);
     }
@@ -241,14 +242,8 @@ public class BoardGrid extends JPanel {
                         }
                     }
                     tileToUpdate.setTileRow(tileToUpdate.getTileRow()+rowShift);
-                    tiles.get(tileToUpdate.getTileRow()).set(i, tileToUpdate);
                 }
-            }
-        }
-
-        for (ArrayList<BoardTile> col : newTiles) {
-            for (BoardTile tile : col) {
-                tiles.get(tile.getTileRow()).set(tile.getTileCol(), tile);
+                tiles.get(tileToUpdate.getTileRow()).set(i, tileToUpdate);
             }
         }
     }

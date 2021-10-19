@@ -7,9 +7,8 @@
     <list default="true" id="6b4cf923-17ad-46fa-bee3-8a7e44728267" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/CandyCrush/resources/user/progress.json" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CandyCrush/resources/user/progress.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/cards/CardGamePlayUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/cards/CardGamePlayUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/Level.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/Level.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/Utils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/Utils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/grid/BoardGrid.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/grid/BoardGrid.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/user/progress.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/user/progress.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,7 +72,7 @@
       </method>
     </configuration>
   </component>
-  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="false" />
+  <component name="SpellCheckerSettings" BundledDictionaries="0" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" Dictionaries="0" CorrectionsLimit="5" DefaultDictionary="application-level" UseSingleDictionary="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -113,23 +112,60 @@
       <workItem from="1634235924987" duration="882000" />
       <workItem from="1634240881656" duration="27882000" />
       <workItem from="1634470549587" duration="19323000" />
+      <workItem from="1634580829573" duration="644000" />
+      <workItem from="1634643223792" duration="241000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="3" />
+    <option name="version" value="1" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state width="1237" height="57" key="GridCell.Tab.0.bottom" timestamp="1634496040577">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="57" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1634496040577" />
+    <state width="1237" height="57" key="GridCell.Tab.0.center" timestamp="1634496040577">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="57" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1634496040577" />
+    <state width="1237" height="57" key="GridCell.Tab.0.left" timestamp="1634496040577">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="57" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1634496040577" />
+    <state width="1237" height="57" key="GridCell.Tab.0.right" timestamp="1634496040577">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="57" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1634496040577" />
+    <state width="595" height="226" key="GridCell.Tab.1.bottom" timestamp="1634496040577">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="595" height="226" key="GridCell.Tab.1.bottom/0.0.1280.680@0.0.1280.680" timestamp="1634496040577" />
+    <state width="595" height="226" key="GridCell.Tab.1.center" timestamp="1634496040577">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="595" height="226" key="GridCell.Tab.1.center/0.0.1280.680@0.0.1280.680" timestamp="1634496040577" />
+    <state width="595" height="226" key="GridCell.Tab.1.left" timestamp="1634496040577">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="595" height="226" key="GridCell.Tab.1.left/0.0.1280.680@0.0.1280.680" timestamp="1634496040577" />
+    <state width="595" height="226" key="GridCell.Tab.1.right" timestamp="1634496040577">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="595" height="226" key="GridCell.Tab.1.right/0.0.1280.680@0.0.1280.680" timestamp="1634496040577" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
