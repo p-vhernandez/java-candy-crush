@@ -9,6 +9,13 @@
       <change beforePath="$PROJECT_DIR$/out/production/CandyCrush/resources/user/progress.json" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CandyCrush/resources/user/progress.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/grid/BoardGridUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/grid/BoardGridUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/resources/user/progress.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/user/progress.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/BoardTile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/BoardTile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/cards/CardGameplay.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/cards/CardGameplay.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/grid/BoardGrid.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/grid/BoardGrid.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/grid/BoardGridUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/grid/BoardGridUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/user/progress.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/user/progress.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/buttons/LevelButton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/buttons/LevelButton.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/dialogs/GoalReachedDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/dialogs/GoalReachedDialog.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -212,6 +219,8 @@
           <url>file://$PROJECT_DIR$/src/components/grid/BoardGridUI.java</url>
           <line>900</line>
           <option name="timeStamp" value="66" />
+          <line>102</line>
+          <option name="timeStamp" value="78" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

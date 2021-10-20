@@ -11,6 +11,8 @@ public class BoardTile {
     private int tileRow, tileCol;
     private int tileX, tileY;
 
+    private boolean selected;
+
     public BoardTile(TileType tileType, int tileRow, int tileCol, int tileX, int tileY) {
         this.tileType = tileType;
         this.tileRow = tileRow;
@@ -18,6 +20,8 @@ public class BoardTile {
 
         this.tileX = tileX;
         this.tileY = tileY;
+
+        this.selected = false;
     }
 
     public TileType getTileType() {
@@ -58,6 +62,14 @@ public class BoardTile {
 
     public void setTileY(int tileY) {
         this.tileY = tileY;
+    }
+
+    public boolean isSelected() {
+        return selected;
+    }
+
+    public void setSelected(boolean selected) {
+        this.selected = selected;
     }
 
     //Layout

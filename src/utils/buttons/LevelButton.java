@@ -5,7 +5,6 @@ import utils.Utils;
 
 import javax.swing.*;
 import javax.swing.border.Border;
-import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -16,9 +15,9 @@ public class LevelButton extends JButton {
 
     private String label;
 
-    private boolean unlocked;
+    private final boolean unlocked;
 
-    private int index;
+    private final int index;
     private final int width = 80, height = 80;
 
     private final Font font;
@@ -50,28 +49,16 @@ public class LevelButton extends JButton {
         }
     }
 
-    public String getLabel() {
+    public String getText() {
         return label;
     }
 
-    public void setLabel(String label) {
+    public void setText(String label) {
         this.label = label;
-    }
-
-    public int getIndex() {
-        return index;
-    }
-
-    public void setIndex(int index) {
-        this.index = index;
     }
 
     public boolean isUnlocked() {
         return unlocked;
-    }
-
-    public void setUnlocked(boolean unlocked) {
-        this.unlocked = unlocked;
     }
 
     public Dimension getMaximumSize() {

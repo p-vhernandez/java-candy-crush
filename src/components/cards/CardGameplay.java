@@ -153,7 +153,7 @@ public class CardGameplay extends JPanel {
     }
 
     private void showGoalReachedDialog() {
-        GoalReachedDialog goalReachedDialog = new GoalReachedDialog(this);
+        GoalReachedDialog goalReachedDialog = new GoalReachedDialog(this, this.model.getLevel());
         goalReachedDialog.setVisible(true);
     }
 

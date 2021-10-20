@@ -13,6 +13,7 @@ import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.Timer;
 import java.awt.*;
+import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
@@ -26,6 +27,8 @@ public class BoardGridUI {
     private final BoardGrid controller;
 
     private final HashMap<TileType, BufferedImage> icons = new HashMap<>();
+
+    private boolean paintOnlyTileBorder = false;
 
     private final TileType[] types = new TileType[]{
             TileType.EYEBALL,
@@ -51,18 +54,61 @@ public class BoardGridUI {
 
     public void initializeUI() {
         controller.setBackground(Utils.darkBackground);
+        setUpListeners();
 
         generateTileIcons();
         generateTiles(this.controller.getLevel());
     }
 
-    public void paint(Graphics2D g) {
-        clearBoard(g);
-        repaintBoard(g);
+    private void setUpListeners() {
+        controller.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mousePressed(MouseEvent e) {
+                if (controller.isEnabled()) {
+                    controller.setTileDragStart(getTile(controller.getTiles(), e.getX(), e.getY()));
+                    controller.getTileDragStart().setSelected(true);
+                    controller.setPressed(true);
+                }
+            }
 
-        if (potentialCrush != null) {
-            for (Explosion explosion : potentialCrush.getExplosions()) {
-                explosion.draw(g);
+            @Override
+            public void mouseReleased(MouseEvent e) {
+                if (controller.isEnabled()) {
+                    controller.getTileDragStart().setSelected(false);
+                    controller.setPressed(false);
+                    setDragOne(false);
+                }
+            }
+        });
+
+        controller.addMouseMotionListener(new MouseAdapter() {
+            @Override
+            public void mouseDragged(MouseEvent e) {
+                BoardTile tileDragEnd = getTile(controller.getTiles(), e.getX(), e.getY());
+
+                if (tileDragEnd != null) {
+                    if (isDragValid(tileDragEnd)) {
+                        controller.getTileDragStart().setSelected(false);
+                        setDragOne(true);
+                        controller.setTileDragEnd(tileDragEnd);
+                        generateSwipeMotion(e);
+                    }
+                }
+            }
+        });
+    }
+
+    public void paint(Graphics2D g) {
+        if (paintOnlyTileBorder) {
+            paintTile(controller.getTileDragStart(), g);
+        } else {
+            clearBoard(g);
+            repaintBoard(g);
+
+            if (potentialCrush != null) {
+                for (Explosion explosion : potentialCrush.getExplosions()) {
+                    explosion.draw(g);
+                }
             }
         }
     }

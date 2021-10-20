@@ -39,46 +39,11 @@ public class BoardGrid extends JPanel {
     private void initialize() {
         updateAxis();
         enableBoardGrid(false);
-        setUpListeners();
     }
 
     private void updateAxis() {
         this.model.setTilesXAxis(this.model.getLevel().getNumRows());
         this.model.setTilesYAxis(this.model.getLevel().getNumColumns());
-    }
-
-    private void setUpListeners() {
-        addMouseListener(new MouseAdapter() {
-            @Override
-            public void mousePressed(MouseEvent e) {
-                if (model.isEnabled()) {
-                    setTileDragStart(view.getTile(getTiles(), e.getX(), e.getY()));
-                    model.setPressed(true);
-                }
-            }
-
-            @Override
-            public void mouseReleased(MouseEvent e) {
-                if (model.isEnabled()) {
-                    model.setPressed(false);
-                    view.setDragOne(false);
-                }
-            }
-        });
-
-        addMouseMotionListener(new MouseAdapter() {
-            @Override
-            public void mouseDragged(MouseEvent e) {
-                BoardTile tileDragEnd = view.getTile(getTiles(), e.getX(), e.getY());
-                if (tileDragEnd != null) {
-                    if (view.isDragValid(tileDragEnd)) {
-                        view.setDragOne(true);
-                        setTileDragEnd(tileDragEnd);
-                        view.generateSwipeMotion(e);
-                    }
-                }
-            }
-        });
     }
 
     public Level getLevel() {
@@ -108,6 +73,10 @@ public class BoardGrid extends JPanel {
 
     public boolean isEnabled() {
         return this.model.isEnabled();
+    }
+
+    public void setPressed(boolean pressed) {
+        this.model.setPressed(pressed);
     }
 
     public BoardTile getTileDragStart() {
