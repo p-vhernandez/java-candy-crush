@@ -7,8 +7,8 @@
     <list default="true" id="6b4cf923-17ad-46fa-bee3-8a7e44728267" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/CandyCrush/resources/user/progress.json" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CandyCrush/resources/user/progress.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/cards/CardLevelChoiceUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/cards/CardLevelChoiceUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/buttons/LevelButton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/buttons/LevelButton.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/grid/BoardGridUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/grid/BoardGridUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/user/progress.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/user/progress.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,7 +76,7 @@
       </method>
     </configuration>
   </component>
-  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="false" />
+  <component name="SpellCheckerSettings" BundledDictionaries="0" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" Dictionaries="0" CorrectionsLimit="5" DefaultDictionary="application-level" UseSingleDictionary="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -124,6 +124,7 @@
       <workItem from="1634646988829" duration="1436000" />
       <workItem from="1634655901683" duration="1679000" />
       <workItem from="1634681261854" duration="485000" />
+      <workItem from="1634681995088" duration="6793000" />
     </task>
     <servers />
   </component>
@@ -135,7 +136,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
@@ -154,49 +157,61 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="371" y="124" key="#com.intellij.ide.util.TreeClassChooserDialog/0.0.1280.680@0.0.1280.680" timestamp="1634657844017" />
-    <state width="1237" height="198" key="GridCell.Tab.0.bottom" timestamp="1634664835876">
+    <state width="1237" height="96" key="GridCell.Tab.0.bottom" timestamp="1634714871647">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="198" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1634664835876" />
-    <state width="1237" height="198" key="GridCell.Tab.0.center" timestamp="1634664835876">
+    <state width="1237" height="96" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1634714871647" />
+    <state width="1237" height="96" key="GridCell.Tab.0.center" timestamp="1634714871647">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="198" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1634664835876" />
-    <state width="1237" height="198" key="GridCell.Tab.0.left" timestamp="1634664835875">
+    <state width="1237" height="96" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1634714871647" />
+    <state width="1237" height="96" key="GridCell.Tab.0.left" timestamp="1634714871647">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="198" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1634664835875" />
-    <state width="1237" height="198" key="GridCell.Tab.0.right" timestamp="1634664835876">
+    <state width="1237" height="96" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1634714871647" />
+    <state width="1237" height="96" key="GridCell.Tab.0.right" timestamp="1634714871647">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="198" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1634664835876" />
-    <state width="1237" height="198" key="GridCell.Tab.1.bottom" timestamp="1634664835876">
+    <state width="1237" height="96" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1634714871647" />
+    <state width="1237" height="193" key="GridCell.Tab.1.bottom" timestamp="1634714313077">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="198" key="GridCell.Tab.1.bottom/0.0.1280.680@0.0.1280.680" timestamp="1634664835876" />
-    <state width="1237" height="198" key="GridCell.Tab.1.center" timestamp="1634664835876">
+    <state width="1237" height="193" key="GridCell.Tab.1.bottom/0.0.1280.680@0.0.1280.680" timestamp="1634714313077" />
+    <state width="1237" height="193" key="GridCell.Tab.1.center" timestamp="1634714313076">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="198" key="GridCell.Tab.1.center/0.0.1280.680@0.0.1280.680" timestamp="1634664835876" />
-    <state width="1237" height="198" key="GridCell.Tab.1.left" timestamp="1634664835876">
+    <state width="1237" height="193" key="GridCell.Tab.1.center/0.0.1280.680@0.0.1280.680" timestamp="1634714313076" />
+    <state width="1237" height="193" key="GridCell.Tab.1.left" timestamp="1634714313075">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="198" key="GridCell.Tab.1.left/0.0.1280.680@0.0.1280.680" timestamp="1634664835876" />
-    <state width="1237" height="198" key="GridCell.Tab.1.right" timestamp="1634664835876">
+    <state width="1237" height="193" key="GridCell.Tab.1.left/0.0.1280.680@0.0.1280.680" timestamp="1634714313075" />
+    <state width="1237" height="193" key="GridCell.Tab.1.right" timestamp="1634714313076">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="198" key="GridCell.Tab.1.right/0.0.1280.680@0.0.1280.680" timestamp="1634664835876" />
-=======
-    <option name="oldMeFiltersMigrated" value="true" />
->>>>>>> 8c2fc2419d454761b9cdd60f9bd10493b06d9e1b
+    <state width="1237" height="193" key="GridCell.Tab.1.right/0.0.1280.680@0.0.1280.680" timestamp="1634714313076" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/components/grid/BoardGridUI.java</url>
-          <line>200</line>
-          <option name="timeStamp" value="57" />
+          <line>880</line>
+          <option name="timeStamp" value="63" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/components/grid/BoardGridUI.java</url>
+          <line>820</line>
+          <option name="timeStamp" value="64" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/components/grid/BoardGridUI.java</url>
+          <line>824</line>
+          <option name="timeStamp" value="65" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/components/grid/BoardGridUI.java</url>
+          <line>900</line>
+          <option name="timeStamp" value="66" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
