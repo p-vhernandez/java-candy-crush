@@ -19,6 +19,7 @@ public class LevelButton extends JButton {
 
     private final int index;
     private final int width = 80, height = 80;
+    private Color background;
 
     private final Font font;
 
@@ -28,6 +29,7 @@ public class LevelButton extends JButton {
         this.label = String.valueOf(level);
         this.index = index;
         this.unlocked = unlocked;
+        this.background = Utils.halloweenOrange;
         this.font = Utils.generateFont(object, "../../resources/font/shlop-rg.ttf");
 
         Border emptyBorder = BorderFactory.createEmptyBorder();
@@ -40,6 +42,16 @@ public class LevelButton extends JButton {
     private void initializeListeners() {
         if (isUnlocked()) {
             addMouseListener(new MouseAdapter() {
+                @Override
+                public void mouseEntered(MouseEvent e) {
+                    background = Utils.halloweenOrangeHover;
+                    repaint();
+                }
+                @Override
+                public void mouseExited(MouseEvent e) {
+                    background = Utils.halloweenOrange;
+                    repaint();
+                }
                 @Override
                 public void mouseClicked(MouseEvent e) {
                     cardLevelChoice.selectLevel(index);
@@ -80,7 +92,7 @@ public class LevelButton extends JButton {
         g.fillRect(0, 0, width, height);
 
         if (unlocked) {
-            g.setPaint(Utils.halloweenOrange);
+            g.setPaint(background);
             g.fillOval(0, 0, width, height);
             g.setPaint(Utils.darkBackground);
         } else {

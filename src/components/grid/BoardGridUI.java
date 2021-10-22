@@ -10,7 +10,6 @@ import utils.helpers.TileType;
 import utils.Utils;
 
 import javax.imageio.ImageIO;
-import javax.swing.*;
 import javax.swing.Timer;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
@@ -22,13 +21,10 @@ import java.util.*;
 public class BoardGridUI {
 
     private boolean dragInMotion = false;
-    private boolean fireworkExplosion = false;
 
     private final BoardGrid controller;
 
     private final HashMap<TileType, BufferedImage> icons = new HashMap<>();
-
-    private boolean paintOnlyTileBorder = false;
 
     private final TileType[] types = new TileType[]{
             TileType.EYEBALL,
@@ -68,6 +64,7 @@ public class BoardGridUI {
                     controller.setTileDragStart(getTile(controller.getTiles(), e.getX(), e.getY()));
                     controller.getTileDragStart().setSelected(true);
                     controller.setPressed(true);
+                    controller.repaint();
                 }
             }
 
@@ -99,16 +96,13 @@ public class BoardGridUI {
     }
 
     public void paint(Graphics2D g) {
-        if (paintOnlyTileBorder) {
-            paintTile(controller.getTileDragStart(), g);
-        } else {
-            clearBoard(g);
-            repaintBoard(g);
 
-            if (potentialCrush != null) {
-                for (Explosion explosion : potentialCrush.getExplosions()) {
-                    explosion.draw(g);
-                }
+        clearBoard(g);
+        repaintBoard(g);
+
+        if (potentialCrush != null) {
+            for (Explosion explosion : potentialCrush.getExplosions()) {
+                explosion.draw(g);
             }
         }
     }
@@ -163,7 +157,11 @@ public class BoardGridUI {
         int iconX = tile.getTileX() + (Utils.getTileSize() - Utils.getIconSize()) / 2;
         int iconY = tile.getTileY() + (Utils.getTileSize() - Utils.getIconSize()) / 2;
 
-        g.setPaint(Utils.tileFill);
+        if (tile.isSelected()) {
+            g.setPaint(Utils.tileFillSelected);
+        } else {
+            g.setPaint(Utils.tileFill);
+        }
         g.fillRoundRect(tile.getTileX(), tile.getTileY(),
                 Utils.getTileSize(), Utils.getTileSize(),
                 5, 5);
@@ -716,14 +714,11 @@ public class BoardGridUI {
 
     public void removeCandies(ArrayList<BoardTile> crushedCandies) {
 
-        fireworkExplosion = false;
         controller.setCrushedCandies(crushedCandies);
         generateSpecialTiles(crushedCandies);
 
         for (BoardTile tile : crushedCandies) {
             controller.getTiles().get(tile.getTileRow()).get(tile.getTileCol()).setTileType(TileType.CRUSHED);
-            if (controller.getTiles().get(tile.getTileRow()).get(tile.getTileCol()).getTileType() == TileType.FIREWORK)
-                fireworkExplosion = true;
         }
 
         dropCandies();
@@ -861,6 +856,17 @@ public class BoardGridUI {
             }
             //order the array now
             Collections.sort(orderedRowCrush);
+            if (orderedRowCrush.size() >= 3) {
+                for (int j = 0; j < orderedRowCrush.size(); j++) {
+                    int col = orderedRowCrush.get(j);
+                    if (mummyCheck(controller.getTiles().get(i).get(col), crushedCandies)) {
+                        specialCoordinates.add(new int[] {i, col});
+                        specialTypes.add(TileType.MUMMY);
+                        orderedRowCrush.remove(j);
+                        j--;
+                    }
+                }
+            }
             for (int j = 3; j < orderedRowCrush.size(); j++) {
                 BoardTile thisTile = controller.getTiles().get(i).get(orderedRowCrush.get(j));
                 BoardTile tileOneBack = controller.getTiles().get(i).get(orderedRowCrush.get(j-1));
@@ -894,7 +900,7 @@ public class BoardGridUI {
             }
         }
 
-        //row
+        //col
         for (int i = 0; i < controller.getLevel().getNumColumns(); i++) {
             ArrayList<Integer> orderedColCrush = new ArrayList<>();
             for (BoardTile candy : crushedCandies) {
@@ -945,6 +951,23 @@ public class BoardGridUI {
         }
         specialCoordinates = new ArrayList<>();
         specialTypes = new ArrayList<>();
+    }
+
+    private boolean mummyCheck(BoardTile tile, ArrayList<BoardTile> crushedTiles) {
+        if ((tile.getTileRow() <= controller.getLevel().getNumRows()-3 &&
+                crushedTiles.contains(controller.getTiles().get(tile.getTileRow()+1).get(tile.getTileCol()))
+                && crushedTiles.contains(controller.getTiles().get(tile.getTileRow()+2).get(tile.getTileCol()))
+                && controller.getTiles().get(tile.getTileRow()+1).get(tile.getTileCol()).getTileType() == tile.getTileType()
+                && controller.getTiles().get(tile.getTileRow()+2).get(tile.getTileCol()).getTileType() == tile.getTileType())
+                || (tile.getTileRow() >= 2 &&
+                    crushedTiles.contains(controller.getTiles().get(tile.getTileRow()-1).get(tile.getTileCol()))
+                && crushedTiles.contains(controller.getTiles().get(tile.getTileRow()-2).get(tile.getTileCol()))
+                && controller.getTiles().get(tile.getTileRow()-1).get(tile.getTileCol()).getTileType() == tile.getTileType()
+                && controller.getTiles().get(tile.getTileRow()-2).get(tile.getTileCol()).getTileType() == tile.getTileType())) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }
 

@@ -33,8 +33,10 @@ public class Utils {
 
     public static final Color tileBorder = new Color(50, 168, 82);
     public static final Color tileFill = new Color(44, 54, 47);
+    public static final Color tileFillSelected = new Color(68, 110, 80);
     public static final Color darkBackground = new Color(44, 54, 47);
     public static final Color halloweenOrange = new Color(252, 127, 3);
+    public static final Color halloweenOrangeHover = new Color(135, 71, 7);
 
     public static Player player;
 
