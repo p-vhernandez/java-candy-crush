@@ -33,10 +33,10 @@ public class Level {
                 STANDARD_CANDY_CRUSHED = 0;
                 SPECIAL_CANDY_CRUSHED = 0;
                 SEVERAL_CRUSHES_BONUS = 0;
-                MAX_MOVEMENTS = 6;
+                MAX_MOVEMENTS = 7;
                 NUM_COLUMNS = 5;
                 NUM_ROWS = 5;
-                LEVEL_GOAL = 831;
+                LEVEL_GOAL = 1876;
 
                 break;
             }
@@ -45,10 +45,10 @@ public class Level {
                 STANDARD_CANDY_CRUSHED = 0;
                 SPECIAL_CANDY_CRUSHED = 0;
                 SEVERAL_CRUSHES_BONUS = 0;
-                MAX_MOVEMENTS = 6;
+                MAX_MOVEMENTS = 7;
                 NUM_COLUMNS = 8;
                 NUM_ROWS = 5;
-                LEVEL_GOAL = 942;
+                LEVEL_GOAL = 2120;
 
                 break;
             }
@@ -57,10 +57,10 @@ public class Level {
                 STANDARD_CANDY_CRUSHED = 0;
                 SPECIAL_CANDY_CRUSHED = 0;
                 SEVERAL_CRUSHES_BONUS = 0;
-                MAX_MOVEMENTS = 8;
+                MAX_MOVEMENTS = 9;
                 NUM_COLUMNS = 7;
                 NUM_ROWS = 7;
-                LEVEL_GOAL = 1345;
+                LEVEL_GOAL = 3290;
 
                 break;
             case 4:
@@ -68,10 +68,10 @@ public class Level {
                 STANDARD_CANDY_CRUSHED = 0;
                 SPECIAL_CANDY_CRUSHED = 0;
                 SEVERAL_CRUSHES_BONUS = 0;
-                MAX_MOVEMENTS = 8;
+                MAX_MOVEMENTS = 9;
                 NUM_COLUMNS = 10;
                 NUM_ROWS = 7;
-                LEVEL_GOAL = 1450;
+                LEVEL_GOAL = 4110;
 
                 break;
             case 5:
@@ -79,10 +79,10 @@ public class Level {
                 STANDARD_CANDY_CRUSHED = 0;
                 SPECIAL_CANDY_CRUSHED = 0;
                 SEVERAL_CRUSHES_BONUS = 0;
-                MAX_MOVEMENTS = 10;
+                MAX_MOVEMENTS = 11;
                 NUM_COLUMNS = 9;
                 NUM_ROWS = 9;
-                LEVEL_GOAL = 2105;
+                LEVEL_GOAL = 5930;
 
                 break;
             case 6:
@@ -90,10 +90,10 @@ public class Level {
                 STANDARD_CANDY_CRUSHED = 0;
                 SPECIAL_CANDY_CRUSHED = 0;
                 SEVERAL_CRUSHES_BONUS = 0;
-                MAX_MOVEMENTS = 10;
+                MAX_MOVEMENTS = 11;
                 NUM_COLUMNS = 12;
                 NUM_ROWS = 9;
-                LEVEL_GOAL = 2156;
+                LEVEL_GOAL = 6980;
 
                 break;
             case 7:
@@ -101,10 +101,10 @@ public class Level {
                 STANDARD_CANDY_CRUSHED = 0;
                 SPECIAL_CANDY_CRUSHED = 0;
                 SEVERAL_CRUSHES_BONUS = 0;
-                MAX_MOVEMENTS = 12;
+                MAX_MOVEMENTS = 13;
                 NUM_COLUMNS = 11;
                 NUM_ROWS = 11;
-                LEVEL_GOAL = 2560;
+                LEVEL_GOAL = 7840;
 
                 break;
             case 8:
@@ -112,10 +112,10 @@ public class Level {
                 STANDARD_CANDY_CRUSHED = 0;
                 SPECIAL_CANDY_CRUSHED = 0;
                 SEVERAL_CRUSHES_BONUS = 0;
-                MAX_MOVEMENTS = 12;
+                MAX_MOVEMENTS = 13;
                 NUM_COLUMNS = 14;
                 NUM_ROWS = 11;
-                LEVEL_GOAL = 2780;
+                LEVEL_GOAL = 8565;
 
                 break;
         }
