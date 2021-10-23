@@ -16,14 +16,11 @@ public class GoalReachedDialog extends JDialog {
     private final JLabel lblGameOver;
     private final JButton btnContinue, btnBack;
 
-    private final Level playedLevel;
-
     private static final int DIALOG_WIDTH = 450;
     private static final int DIALOG_HEIGHT = 150;
 
     public GoalReachedDialog(CardGameplay container, Level playedLevel) {
         this.container = container;
-        this.playedLevel = playedLevel;
 
         this.dialogPanel = new JPanel();
 

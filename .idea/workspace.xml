@@ -5,22 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6b4cf923-17ad-46fa-bee3-8a7e44728267" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/BoardTile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/BoardTile.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/cards/CardGamePlayModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/cards/CardGamePlayModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/cards/CardGameplay.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/cards/CardGameplay.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/cards/CardLevelChoice.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/cards/CardLevelChoice.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/cards/CardLevelChoiceModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/cards/CardLevelChoiceModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/cards/CardLevelChoiceUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/cards/CardLevelChoiceUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/cards/CardWelcome.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/cards/CardWelcome.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/cards/CardWelcomeUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/cards/CardWelcomeUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/grid/BoardGrid.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/grid/BoardGrid.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/grid/BoardGridModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/grid/BoardGridModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/grid/BoardGridUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/grid/BoardGridUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/topPanel/TopPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/topPanel/TopPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/CandyCrush.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/CandyCrush.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/Level.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/Level.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/helpers/Crush.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/helpers/Crush.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/dialogs/GoalReachedDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/dialogs/GoalReachedDialog.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -139,7 +124,7 @@
       <workItem from="1634681995088" duration="6793000" />
       <workItem from="1634715032630" duration="601000" />
       <workItem from="1634912278136" duration="6515000" />
-      <workItem from="1634982199470" duration="3946000" />
+      <workItem from="1634982199470" duration="4275000" />
     </task>
     <servers />
   </component>
