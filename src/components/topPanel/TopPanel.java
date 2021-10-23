@@ -2,8 +2,6 @@ package components.topPanel;
 
 import components.cards.CardGameplay;
 import utils.Level;
-import utils.dialogs.GameOverDialog;
-import utils.dialogs.GoalReachedDialog;
 
 import javax.swing.*;
 

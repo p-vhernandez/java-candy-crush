@@ -1,7 +1,6 @@
-package components;
+package utils;
 
 import utils.helpers.TileType;
-import utils.Utils;
 
 import java.awt.*;
 

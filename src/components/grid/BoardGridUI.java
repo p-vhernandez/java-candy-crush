@@ -1,6 +1,6 @@
 package components.grid;
 
-import components.BoardTile;
+import utils.BoardTile;
 import components.cards.CardGameplay;
 import utils.Level;
 import utils.helpers.Crush;
@@ -96,7 +96,6 @@ public class BoardGridUI {
     }
 
     public void paint(Graphics2D g) {
-
         clearBoard(g);
         repaintBoard(g);
 
@@ -162,16 +161,34 @@ public class BoardGridUI {
         } else {
             g.setPaint(Utils.tileFill);
         }
-        g.fillRoundRect(tile.getTileX(), tile.getTileY(),
-                Utils.getTileSize(), Utils.getTileSize(),
-                5, 5);
+
+        g.fillRoundRect(
+                tile.getTileX(),
+                tile.getTileY(),
+                Utils.getTileSize(),
+                Utils.getTileSize(),
+                5,
+                5
+        );
 
         g.setPaint(Utils.tileBorder);
-        g.drawRoundRect(tile.getTileX(), tile.getTileY(),
-                Utils.getTileSize(), Utils.getTileSize(),
-                5, 5);
+        g.drawRoundRect(
+                tile.getTileX(),
+                tile.getTileY(),
+                Utils.getTileSize(),
+                Utils.getTileSize(),
+                5,
+                5
+        );
 
-        g.drawImage(icons.get(tile.getTileType()), iconX, iconY, Utils.getIconSize(), Utils.getIconSize(), null);
+        g.drawImage(
+                icons.get(tile.getTileType()),
+                iconX,
+                iconY,
+                Utils.getIconSize(),
+                Utils.getIconSize(),
+                null
+        );
     }
 
     /**
@@ -526,12 +543,26 @@ public class BoardGridUI {
 
     }
 
+    /**
+     * Explodes the potential crush and updates
+     * the player score, movements, etc.
+     */
     private void manageExplosion() {
         CardGameplay.oneMovementLess();
         potentialCrush.explode(controller);
         CardGameplay.updateScore(potentialCrush.getCrushedCandies().size());
     }
 
+    /**
+     * Looks for all the candies of the swiped tile through the board
+     * and adds them to the potential crush in the board. Only in case
+     * the other swiped tile is not a special one too.
+     *
+     * @param specialCandy - [special candy, candy to crush]
+     * @param startTile    - tile that started the swipe
+     * @param endTile      - tile that ended the swipe
+     * @param spaceToMove  - along the board (tile size)
+     */
     private void explodeSameTypeCandies(BoardTile[] specialCandy, BoardTile startTile,
                                         BoardTile endTile, int spaceToMove) {
         if (!isSpecialCandy(specialCandy[1])) {
@@ -555,6 +586,12 @@ public class BoardGridUI {
         }
     }
 
+    /**
+     * Adds to the potential crush as many tiles as the type of
+     * special candy determines.
+     *
+     * @param specialCandy - the special candy that has been crushed.
+     */
     private void addExtraTilesToExplode(BoardTile[] specialCandy) {
         BoardTile special = specialCandy[0];
 
@@ -574,8 +611,14 @@ public class BoardGridUI {
         }
 
         if (special.getTileType() == TileType.MUMMY) {
-            for (int i = special.getTileRow() - 1; i <= special.getTileRow() + 1; i++) {
-                for (int j = special.getTileCol() - 1; j <= special.getTileCol() + 1; j++) {
+            // Preventing index out of bound
+            int minRow = Math.max(special.getTileRow() - 1, 0);
+            int maxRow = Math.min(special.getTileRow() + 1, controller.getLevel().getNumRows() - 1);
+            int minCol = Math.max(special.getTileCol() - 1, 0);
+            int maxCol = Math.min(special.getTileCol() + 1, controller.getLevel().getNumColumns() - 1);
+
+            for (int i = minRow; i <= maxRow; i++) {
+                for (int j = minCol; j <= maxCol; j++) {
                     potentialCrush.addCrushedCandy(controller.getTiles().get(i).get(j));
                 }
             }
@@ -682,6 +725,12 @@ public class BoardGridUI {
                 && tileDragEnd.getTileType() != TileType.EMPTY;
     }
 
+    /**
+     * Checks if there are more automatically
+     * generated crushes in the board.
+     * At the end of the process, it checks whether
+     * the player has won or lost the game.
+     */
     public void checkBoard() {
         Crush potentialCrush = new Crush();
 
@@ -713,18 +762,24 @@ public class BoardGridUI {
     }
 
     public void removeCandies(ArrayList<BoardTile> crushedCandies) {
-
         controller.setCrushedCandies(crushedCandies);
         generateSpecialTiles(crushedCandies);
 
         for (BoardTile tile : crushedCandies) {
-            controller.getTiles().get(tile.getTileRow()).get(tile.getTileCol()).setTileType(TileType.CRUSHED);
+            controller.getTiles()
+                    .get(tile.getTileRow())
+                    .get(tile.getTileCol())
+                    .setTileType(TileType.CRUSHED);
         }
 
         dropCandies();
         controller.repaint();
     }
 
+    /**
+     * Slide down animation when generating
+     * new tiles in the board.
+     */
     public void dropCandies() {
         controller.setEnabled(false);
         int[] crushedInCol = new int[controller.getLevel().getNumColumns()];
@@ -791,18 +846,25 @@ public class BoardGridUI {
         dropTimer.start();
     }
 
-    private void updateRowsCols(ArrayList<ArrayList<BoardTile>> newTiles, ArrayList<ArrayList<BoardTile>> tilesToUpdateByCol, ArrayList<BoardTile> crushedCandies) {
+    private void updateRowsCols(ArrayList<ArrayList<BoardTile>> newTiles,
+                                ArrayList<ArrayList<BoardTile>> tilesToUpdateByCol,
+                                ArrayList<BoardTile> crushedCandies) {
+
         for (int i = 0; i < tilesToUpdateByCol.size(); i++) {
             for (int j = 0; j < tilesToUpdateByCol.get(i).size(); j++) {
                 BoardTile tileToUpdate = tilesToUpdateByCol.get(i).get(j);
+
                 if (tileToUpdate.getTileY() >= 0) {
                     int rowShift = 0;
+
                     for (BoardTile crushedCandy : crushedCandies) {
                         if (crushedCandy.getTileCol() == i && crushedCandy.getTileRow() > tileToUpdate.getTileRow()) {
                             rowShift++;
                         }
                     }
+
                     tileToUpdate.setTileRow(tileToUpdate.getTileRow() + rowShift);
+
                     try {
                         controller.getTiles().get(tileToUpdate.getTileRow()).set(i, tileToUpdate);
                     } catch (IndexOutOfBoundsException e) {
@@ -811,17 +873,20 @@ public class BoardGridUI {
                 }
             }
         }
+
         for (ArrayList<BoardTile> col : newTiles) {
             for (BoardTile tile : col) {
                 controller.getTiles().get(tile.getTileRow()).set(tile.getTileCol(), tile);
             }
         }
+
         setSpecialTypes();
     }
 
     public ArrayList<ArrayList<BoardTile>> generateNewTiles(int[] crushedInCol, ArrayList<ArrayList<BoardTile>> tilesToUpdate) {
         ArrayList<ArrayList<BoardTile>> newTiles = new ArrayList<>();
         Random random = new Random();
+
         TileType[] types = {
                 TileType.ROUND_LOLLI,
                 TileType.ORANGE_CANDY,
@@ -832,142 +897,169 @@ public class BoardGridUI {
 
         for (int i = 0; i < controller.getLevel().getNumColumns(); i++) {
             newTiles.add(new ArrayList<>());
+
             for (int j = 1; j <= crushedInCol[i]; j++) {
                 TileType type = types[random.nextInt(5)];
-                BoardTile newTile = new BoardTile(type, j - 1, i,
-                        i * Utils.getTileSize(), -(crushedInCol[i] - j + 1) * Utils.getTileSize());
+
+                BoardTile newTile = new BoardTile(
+                        type,
+                        j - 1,
+                        i,
+                        i * Utils.getTileSize(),
+                        -(crushedInCol[i] - j + 1) * Utils.getTileSize()
+                );
+
                 newTiles.get(i).add(newTile);
                 tilesToUpdate.get(i).add(newTile);
-
             }
         }
+
         return newTiles;
     }
 
     private void generateSpecialTiles(ArrayList<BoardTile> crushedCandies) {
-
-        //row
+        // Row
         for (int i = 0; i < controller.getLevel().getNumRows(); i++) {
             ArrayList<Integer> orderedRowCrush = new ArrayList<>();
+
             for (BoardTile candy : crushedCandies) {
                 if (candy.getTileRow() == i) {
                     orderedRowCrush.add(candy.getTileCol());
                 }
             }
-            //order the array now
+
+            // Order the array now
             Collections.sort(orderedRowCrush);
+
             if (orderedRowCrush.size() >= 3) {
                 for (int j = 0; j < orderedRowCrush.size(); j++) {
                     int col = orderedRowCrush.get(j);
+
                     if (mummyCheck(controller.getTiles().get(i).get(col), crushedCandies)) {
-                        specialCoordinates.add(new int[] {i, col});
+                        specialCoordinates.add(new int[]{i, col});
                         specialTypes.add(TileType.MUMMY);
                         orderedRowCrush.remove(j);
+
                         j--;
                     }
                 }
             }
+
             for (int j = 3; j < orderedRowCrush.size(); j++) {
                 BoardTile thisTile = controller.getTiles().get(i).get(orderedRowCrush.get(j));
-                BoardTile tileOneBack = controller.getTiles().get(i).get(orderedRowCrush.get(j-1));
-                BoardTile tileTwoBack = controller.getTiles().get(i).get(orderedRowCrush.get(j-2));
-                BoardTile tileThreeBack = controller.getTiles().get(i).get(orderedRowCrush.get(j-3));
+                BoardTile tileOneBack = controller.getTiles().get(i).get(orderedRowCrush.get(j - 1));
+                BoardTile tileTwoBack = controller.getTiles().get(i).get(orderedRowCrush.get(j - 2));
+                BoardTile tileThreeBack = controller.getTiles().get(i).get(orderedRowCrush.get(j - 3));
                 BoardTile nextTile;
-                if (j+1 < orderedRowCrush.size()) {
-                    nextTile = controller.getTiles().get(i).get(orderedRowCrush.get(j+1));
+
+                if (j + 1 < orderedRowCrush.size()) {
+                    nextTile = controller.getTiles().get(i).get(orderedRowCrush.get(j + 1));
                 } else {
                     nextTile = null;
                 }
-                if (thisTile.getTileCol() == tileThreeBack.getTileCol()+3
+
+                if (thisTile.getTileCol() == tileThreeBack.getTileCol() + 3
                         && thisTile.getTileType() == tileOneBack.getTileType()
                         && thisTile.getTileType() == tileTwoBack.getTileType()
                         && thisTile.getTileType() == tileThreeBack.getTileType()) {
 
-                    if (nextTile != null && thisTile.getTileCol() == nextTile.getTileCol()-1 && thisTile.getTileType() == nextTile.getTileType()) {
-                        specialCoordinates.add(new int[] {nextTile.getTileRow(), nextTile.getTileCol()});
+                    if (nextTile != null
+                            && thisTile.getTileCol() == nextTile.getTileCol() - 1
+                            && thisTile.getTileType() == nextTile.getTileType()) {
+                        specialCoordinates.add(new int[]{nextTile.getTileRow(), nextTile.getTileCol()});
                         specialTypes.add(TileType.FIREWORK);
-                        orderedRowCrush.remove(j+1);
+                        orderedRowCrush.remove(j + 1);
                     } else {
-                        specialCoordinates.add(new int[] {thisTile.getTileRow(), thisTile.getTileCol()});
+                        specialCoordinates.add(new int[]{thisTile.getTileRow(), thisTile.getTileCol()});
                         specialTypes.add(TileType.POISON_GREEN);
                     }
+
                     orderedRowCrush.remove(j);
-                    orderedRowCrush.remove(j-1);
-                    orderedRowCrush.remove(j-2);
-                    orderedRowCrush.remove(j-3);
+                    orderedRowCrush.remove(j - 1);
+                    orderedRowCrush.remove(j - 2);
+                    orderedRowCrush.remove(j - 3);
+
                     j = 2;
                 }
             }
         }
 
-        //col
+        // Column
         for (int i = 0; i < controller.getLevel().getNumColumns(); i++) {
             ArrayList<Integer> orderedColCrush = new ArrayList<>();
+
             for (BoardTile candy : crushedCandies) {
                 if (candy.getTileCol() == i) {
                     orderedColCrush.add(candy.getTileRow());
                 }
             }
-            //order the array now
+
+            // Order the array now
             Collections.sort(orderedColCrush);
+
             for (int j = 3; j < orderedColCrush.size(); j++) {
                 BoardTile thisTile = controller.getTiles().get(orderedColCrush.get(j)).get(i);
-                BoardTile tileOneBack = controller.getTiles().get(orderedColCrush.get(j-1)).get(i);
-                BoardTile tileTwoBack = controller.getTiles().get(orderedColCrush.get(j-2)).get(i);
-                BoardTile tileThreeBack = controller.getTiles().get(orderedColCrush.get(j-3)).get(i);
+                BoardTile tileOneBack = controller.getTiles().get(orderedColCrush.get(j - 1)).get(i);
+                BoardTile tileTwoBack = controller.getTiles().get(orderedColCrush.get(j - 2)).get(i);
+                BoardTile tileThreeBack = controller.getTiles().get(orderedColCrush.get(j - 3)).get(i);
                 BoardTile nextTile;
-                if (j+1 < orderedColCrush.size()) {
-                    nextTile = controller.getTiles().get(orderedColCrush.get(j+1)).get(i);
+
+                if (j + 1 < orderedColCrush.size()) {
+                    nextTile = controller.getTiles().get(orderedColCrush.get(j + 1)).get(i);
                 } else {
                     nextTile = null;
                 }
-                if (thisTile.getTileRow() == tileThreeBack.getTileRow()+3
+
+                if (thisTile.getTileRow() == tileThreeBack.getTileRow() + 3
                         && thisTile.getTileType() == tileOneBack.getTileType()
                         && thisTile.getTileType() == tileTwoBack.getTileType()
                         && thisTile.getTileType() == tileThreeBack.getTileType()) {
 
-                    if (nextTile != null && thisTile.getTileRow() == nextTile.getTileRow()-1 && thisTile.getTileType() == nextTile.getTileType()) {
-                        specialCoordinates.add(new int[] {nextTile.getTileRow(), nextTile.getTileCol()});
+                    if (nextTile != null
+                            && thisTile.getTileRow() == nextTile.getTileRow() - 1
+                            && thisTile.getTileType() == nextTile.getTileType()) {
+                        specialCoordinates.add(new int[]{nextTile.getTileRow(), nextTile.getTileCol()});
                         specialTypes.add(TileType.FIREWORK);
-                        orderedColCrush.remove(j+1);
+                        orderedColCrush.remove(j + 1);
                     } else {
-                        specialCoordinates.add(new int[] {thisTile.getTileRow(), thisTile.getTileCol()});
+                        specialCoordinates.add(new int[]{thisTile.getTileRow(), thisTile.getTileCol()});
                         specialTypes.add(TileType.POISON_RED);
                     }
+
                     orderedColCrush.remove(j);
-                    orderedColCrush.remove(j-1);
-                    orderedColCrush.remove(j-2);
-                    orderedColCrush.remove(j-3);
+                    orderedColCrush.remove(j - 1);
+                    orderedColCrush.remove(j - 2);
+                    orderedColCrush.remove(j - 3);
+
                     j = 2;
                 }
             }
         }
-
     }
 
     private void setSpecialTypes() {
         for (int i = 0; i < specialCoordinates.size(); i++) {
-            controller.getTiles().get(specialCoordinates.get(i)[0]).get(specialCoordinates.get(i)[1]).setTileType(specialTypes.get(i));
+            controller.getTiles()
+                    .get(specialCoordinates.get(i)[0])
+                    .get(specialCoordinates.get(i)[1])
+                    .setTileType(specialTypes.get(i));
         }
+
         specialCoordinates = new ArrayList<>();
         specialTypes = new ArrayList<>();
     }
 
     private boolean mummyCheck(BoardTile tile, ArrayList<BoardTile> crushedTiles) {
-        if ((tile.getTileRow() <= controller.getLevel().getNumRows()-3 &&
-                crushedTiles.contains(controller.getTiles().get(tile.getTileRow()+1).get(tile.getTileCol()))
-                && crushedTiles.contains(controller.getTiles().get(tile.getTileRow()+2).get(tile.getTileCol()))
-                && controller.getTiles().get(tile.getTileRow()+1).get(tile.getTileCol()).getTileType() == tile.getTileType()
-                && controller.getTiles().get(tile.getTileRow()+2).get(tile.getTileCol()).getTileType() == tile.getTileType())
+        return (tile.getTileRow() <= controller.getLevel().getNumRows() - 3 &&
+                crushedTiles.contains(controller.getTiles().get(tile.getTileRow() + 1).get(tile.getTileCol()))
+                && crushedTiles.contains(controller.getTiles().get(tile.getTileRow() + 2).get(tile.getTileCol()))
+                && controller.getTiles().get(tile.getTileRow() + 1).get(tile.getTileCol()).getTileType() == tile.getTileType()
+                && controller.getTiles().get(tile.getTileRow() + 2).get(tile.getTileCol()).getTileType() == tile.getTileType())
                 || (tile.getTileRow() >= 2 &&
-                    crushedTiles.contains(controller.getTiles().get(tile.getTileRow()-1).get(tile.getTileCol()))
-                && crushedTiles.contains(controller.getTiles().get(tile.getTileRow()-2).get(tile.getTileCol()))
-                && controller.getTiles().get(tile.getTileRow()-1).get(tile.getTileCol()).getTileType() == tile.getTileType()
-                && controller.getTiles().get(tile.getTileRow()-2).get(tile.getTileCol()).getTileType() == tile.getTileType())) {
-            return true;
-        } else {
-            return false;
-        }
+                crushedTiles.contains(controller.getTiles().get(tile.getTileRow() - 1).get(tile.getTileCol()))
+                && crushedTiles.contains(controller.getTiles().get(tile.getTileRow() - 2).get(tile.getTileCol()))
+                && controller.getTiles().get(tile.getTileRow() - 1).get(tile.getTileCol()).getTileType() == tile.getTileType()
+                && controller.getTiles().get(tile.getTileRow() - 2).get(tile.getTileCol()).getTileType() == tile.getTileType());
     }
 }
 

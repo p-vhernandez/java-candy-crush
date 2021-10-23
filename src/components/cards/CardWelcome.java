@@ -2,15 +2,10 @@ package components.cards;
 
 import main.CandyCrush;
 import utils.Utils;
-import utils.dialogs.ErrorDialog;
 import utils.helpers.CardType;
 
 import javax.swing.*;
-import javax.swing.border.EmptyBorder;
 import java.awt.*;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.util.Objects;
 
 public class CardWelcome extends JPanel {
 

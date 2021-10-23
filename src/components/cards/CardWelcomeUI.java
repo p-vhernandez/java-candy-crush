@@ -94,6 +94,7 @@ public class CardWelcomeUI {
                 }
             }
         });
+
         textFieldUsername.addKeyListener(new KeyAdapter() {
             @Override
             public void keyPressed(KeyEvent e) {

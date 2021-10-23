@@ -22,10 +22,6 @@ public class BoardGridModel {
         return isEnabled;
     }
 
-    public boolean isPressed() {
-        return isPressed;
-    }
-    
     public void setEnabled(boolean b) {
         this.isEnabled = b;
     }

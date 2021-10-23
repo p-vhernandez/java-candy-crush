@@ -1,6 +1,6 @@
 package utils.helpers;
 
-import components.BoardTile;
+import utils.BoardTile;
 import components.grid.BoardGrid;
 
 import javax.swing.*;

@@ -62,7 +62,9 @@ public class CardGameplay extends JPanel {
     }
 
     public void goToNextLevel() {
-        this.model.goToNextLevel(new BoardGrid(new Level(this.model.getLevel().getDifficulty() + 5), this));
+        Level nextLevel = new Level(this.model.getLevel().getDifficulty() + 1);
+
+        this.model.goToNextLevel(new BoardGrid(nextLevel, this));
         topPanel.reloadLevelInfo(this.model.getLevel());
     }
 

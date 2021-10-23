@@ -35,7 +35,6 @@ public class CardLevelChoiceUI {
 
     protected void setUpButtons() {
         for (LevelButton button : controller.getLevelButtons()) {
-
             if (!button.isUnlocked()) {
                 button.setEnabled(false);
             }
