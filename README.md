@@ -4,6 +4,7 @@ Replica of the Candy Crush game for the Advance Programming of UI course.
 ## How to run the app
 
 ### Using the .jar file
+By just double clicking to execute the file, player will be able to start a new Halloween Candy Crush game.
 
 ### Using just the zip folder
 
