@@ -2,15 +2,10 @@ package components.cards;
 
 import main.CandyCrush;
 import utils.Utils;
-import utils.dialogs.ErrorDialog;
 import utils.helpers.CardType;
 
 import javax.swing.*;
-import javax.swing.border.EmptyBorder;
 import java.awt.*;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.util.Objects;
 
 public class CardWelcome extends JPanel {
 
@@ -33,8 +28,8 @@ public class CardWelcome extends JPanel {
         newLine.setForeground(Color.white);
         newLine.setAlignmentX(CENTER_ALIGNMENT);
 
-        Utils.setCustomFont(this, newLine,
-                "../../resources/font/creepster-rg.ttf", 60f, Font.PLAIN);
+        Utils.setCustomFont(CardWelcome.class, newLine,
+                "/resources/font/creepster-rg.ttf", 60f, Font.PLAIN);
 
         return newLine;
     }

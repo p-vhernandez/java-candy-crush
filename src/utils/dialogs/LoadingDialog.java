@@ -29,7 +29,8 @@ public class LoadingDialog extends JDialog {
         this.dialogPanel = new JPanel();
         this.animationPanel = new JPanel();
         this.loadingLabel = new JLabel("Loading");
-        this.loadingImage = Utils.generateImage(this, "../../resources/img/EYEBALL.png");
+        this.loadingImage = Utils.generateImage(LoadingDialog.class, "/resources/img/EYEBALL.png")
+                .getScaledInstance(32, 32, Image.SCALE_SMOOTH);
 
         xVelocity = 10;
         yVelocity = 20;
@@ -53,8 +54,8 @@ public class LoadingDialog extends JDialog {
         animationPanel.setBackground(Utils.darkBackground);
 
         loadingLabel.setForeground(Color.white);
-        Utils.setCustomFont(this, loadingLabel,
-                "../../resources/font/creepster-rg.ttf", 22f, Font.PLAIN);
+        Utils.setCustomFont(LoadingDialog.class, loadingLabel,
+                "/resources/font/creepster-rg.ttf", 22f, Font.PLAIN);
 
 
         dialogPanel.setLayout(new FlowLayout(FlowLayout.LEFT));

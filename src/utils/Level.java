@@ -24,7 +24,6 @@ public class Level {
         setUpLevelCharacteristics();
     }
 
-    // TODO: set up all level's characteristics
     // TODO: Higher up the level goals
     private void setUpLevelCharacteristics() {
         switch (difficulty) {
@@ -33,10 +32,10 @@ public class Level {
                 STANDARD_CANDY_CRUSHED = 0;
                 SPECIAL_CANDY_CRUSHED = 0;
                 SEVERAL_CRUSHES_BONUS = 0;
-                MAX_MOVEMENTS = 7;
+                MAX_MOVEMENTS = 58;
                 NUM_COLUMNS = 5;
                 NUM_ROWS = 5;
-                LEVEL_GOAL = 1876;
+                LEVEL_GOAL = 18760000;
 
                 break;
             }
@@ -71,7 +70,7 @@ public class Level {
                 MAX_MOVEMENTS = 9;
                 NUM_COLUMNS = 10;
                 NUM_ROWS = 7;
-                LEVEL_GOAL = 4110;
+                LEVEL_GOAL = 3110;
 
                 break;
             case 5:

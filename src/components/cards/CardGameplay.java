@@ -62,7 +62,9 @@ public class CardGameplay extends JPanel {
     }
 
     public void goToNextLevel() {
-        this.model.goToNextLevel(new BoardGrid(new Level(this.model.getLevel().getDifficulty() + 5), this));
+        Level nextLevel = new Level(this.model.getLevel().getDifficulty() + 1);
+
+        this.model.goToNextLevel(new BoardGrid(nextLevel, this));
         topPanel.reloadLevelInfo(this.model.getLevel());
     }
 
@@ -102,7 +104,7 @@ public class CardGameplay extends JPanel {
 
     private void writeInJSON(JSONObject jsonObject) {
         try {
-            FileWriter file = new FileWriter("src/resources/user/progress.json");
+            FileWriter file = new FileWriter(CardGameplay.class.getResource("/resources/user/progress.json").getPath());
             file.write(jsonObject.toJSONString());
             file.flush();
         } catch (Exception e) {

@@ -17,8 +17,8 @@ public class ErrorDialog extends JDialog {
     public ErrorDialog(String infoLabel) {
         this.dialogPanel = new JPanel();
 
-        this.lblError = Utils.generateDialogInfo(this, infoLabel);
-        this.btnDismiss = Utils.generateDialogDismissButton(this, "Ok");
+        this.lblError = Utils.generateDialogInfo(ErrorDialog.class, infoLabel);
+        this.btnDismiss = Utils.generateDialogDismissButton(ErrorDialog.class, "Ok");
 
         initialize();
     }

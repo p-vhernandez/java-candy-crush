@@ -3,7 +3,6 @@ package main;
 import components.cards.CardGameplay;
 import components.cards.CardLevelChoice;
 import components.cards.CardWelcome;
-import utils.dialogs.GameOverDialog;
 import utils.dialogs.LoadingDialog;
 import utils.Level;
 import utils.Utils;
@@ -15,7 +14,6 @@ import java.awt.*;
 public class CandyCrush extends JFrame {
 
     private LoadingDialog loadingDialog;
-    private GameOverDialog gameOverDialog;
 
     private JPanel cards;
 
@@ -63,8 +61,8 @@ public class CandyCrush extends JFrame {
     }
 
     private void setAppIcon() {
-        Image appIcon = Utils.generateImage(this,
-                "../resources/img/EYEBALL.png");
+        Image appIcon = Utils.generateImage(CandyCrush.class,
+                "/resources/img/EYEBALL.png");
         setIconImage(appIcon);
     }
 
@@ -99,7 +97,7 @@ public class CandyCrush extends JFrame {
     }
 
     private void closeLoadingDialog() {
-        Timer timer = new Timer(100, arg0 -> {
+        Timer timer = new Timer(5000, arg0 -> {
             loadingDialog.closeLoading();
             cardGameplay.enableBoardGrid(true);
         });

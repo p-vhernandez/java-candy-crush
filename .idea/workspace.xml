@@ -1,11 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="CandyCrush:jar" />
+    </artifacts-to-build>
+  </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6b4cf923-17ad-46fa-bee3-8a7e44728267" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/out/production/CandyCrush/META-INF/MANIFEST.MF" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CandyCrush.iml" beforeDir="false" afterPath="$PROJECT_DIR$/CandyCrush.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/BoardTile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/BoardTile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/cards/CardGamePlayModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/cards/CardGamePlayModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/cards/CardGamePlayUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/cards/CardGamePlayUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/cards/CardGameplay.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/cards/CardGameplay.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/cards/CardLevelChoice.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/cards/CardLevelChoice.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/cards/CardLevelChoiceModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/cards/CardLevelChoiceModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/cards/CardLevelChoiceUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/cards/CardLevelChoiceUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/cards/CardWelcome.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/cards/CardWelcome.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/cards/CardWelcomeUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/cards/CardWelcomeUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/grid/BoardGrid.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/grid/BoardGrid.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/grid/BoardGridModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/grid/BoardGridModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/grid/BoardGridUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/grid/BoardGridUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/topPanel/TopPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/topPanel/TopPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/topPanel/TopPanelUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/topPanel/TopPanelUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/CandyCrush.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/CandyCrush.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/Level.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/Level.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/Shadow.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/Utils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/Utils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/buttons/LevelButton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/buttons/LevelButton.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/dialogs/ErrorDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/dialogs/ErrorDialog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/dialogs/GameOverDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/dialogs/GameOverDialog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/dialogs/GoalReachedDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/dialogs/GoalReachedDialog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/dialogs/LoadingDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/dialogs/LoadingDialog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/helpers/Crush.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/helpers/Crush.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,13 +75,17 @@
     <property name="Repository.Attach.Annotations" value="false" />
     <property name="Repository.Attach.JavaDocs" value="false" />
     <property name="Repository.Attach.Sources" value="false" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/utils/dialogs/GoalReachedDialog.java" />
+    <property name="last_opened_file_path" value="C:/CandyCrush.jar" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="project.structure.last.edited" value="Artifacts" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.19885057" />
     <property name="two.files.diff.last.used.file" value="$PROJECT_DIR$/src/utils/dialogs/GoalReachedDialog.java" />
   </component>
   <component name="RecentsManager">
@@ -64,7 +99,7 @@
       <recent name="Model" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="JAR Application.CandyCrush">
     <configuration name="candy" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="main.Main" />
       <module name="CandyCrush" />
@@ -72,6 +107,16 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="CandyCrush" type="JarApplication">
+      <option name="JAR_PATH" value="C:/CandyCrush.jar" />
+      <option name="WORKING_DIRECTORY" value="C:\Users\jbies\StudioProjects\CandyCrush" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Application.candy" />
+      <item itemvalue="JAR Application.CandyCrush" />
+    </list>
   </component>
   <component name="SpellCheckerSettings" BundledDictionaries="0" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" Dictionaries="0" CorrectionsLimit="5" DefaultDictionary="application-level" UseSingleDictionary="true" />
   <component name="SvnConfiguration">
@@ -126,6 +171,11 @@
       <workItem from="1634912278136" duration="6515000" />
       <workItem from="1634921023237" duration="651000" />
       <workItem from="1634988210890" duration="7000" />
+      <workItem from="1634982199470" duration="5078000" />
+      <workItem from="1634988534667" duration="390000" />
+      <workItem from="1634989101249" duration="1647000" />
+      <workItem from="1634990782763" duration="1280000" />
+      <workItem from="1634993528104" duration="10714000" />
     </task>
     <servers />
   </component>
@@ -146,34 +196,42 @@
     </option>
   </component>
   <component name="WindowStateProjectService">
-    <state x="96" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1634657844838">
+    <state x="421" y="145" key="#BuildArtifactsBeforeRunChooser" timestamp="1635001858197">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="96" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1280.680@0.0.1280.680" timestamp="1634657844838" />
+    <state x="421" y="145" key="#BuildArtifactsBeforeRunChooser/0.0.1280.680@0.0.1280.680" timestamp="1635001858197" />
+    <state x="96" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1635005509941">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="96" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1280.680@0.0.1280.680" timestamp="1635005509941" />
     <state x="446" y="25" key="#com.intellij.ide.util.MemberChooser" timestamp="1634920472129">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="446" y="25" key="#com.intellij.ide.util.MemberChooser/0.0.1280.680@0.0.1280.680" timestamp="1634920472129" />
-    <state x="371" y="124" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1634657844017">
+    <state x="371" y="124" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1635005434757">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="371" y="124" key="#com.intellij.ide.util.TreeClassChooserDialog/0.0.1280.680@0.0.1280.680" timestamp="1634657844017" />
-    <state width="1237" height="272" key="GridCell.Tab.0.bottom" timestamp="1634988080423">
+    <state x="371" y="124" key="#com.intellij.ide.util.TreeClassChooserDialog/0.0.1280.680@0.0.1280.680" timestamp="1635005434757" />
+    <state x="421" y="95" key="FileChooserDialogImpl" timestamp="1635005505709">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="272" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1634988080423" />
-    <state width="1237" height="272" key="GridCell.Tab.0.center" timestamp="1634988080422">
+    <state x="421" y="95" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1635005505709" />
+    <state width="1237" height="190" key="GridCell.Tab.0.bottom" timestamp="1635005516834">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="272" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1634988080422" />
-    <state width="1237" height="272" key="GridCell.Tab.0.left" timestamp="1634988080422">
+    <state width="1237" height="190" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1635005516834" />
+    <state width="1237" height="190" key="GridCell.Tab.0.center" timestamp="1635005516834">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="272" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1634988080422" />
-    <state width="1237" height="272" key="GridCell.Tab.0.right" timestamp="1634988080422">
+    <state width="1237" height="190" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1635005516834" />
+    <state width="1237" height="190" key="GridCell.Tab.0.left" timestamp="1635005516833">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="272" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1634988080422" />
+    <state width="1237" height="190" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1635005516833" />
+    <state width="1237" height="190" key="GridCell.Tab.0.right" timestamp="1635005516834">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="190" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1635005516834" />
     <state width="1237" height="193" key="GridCell.Tab.1.bottom" timestamp="1634920782546">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
@@ -190,32 +248,20 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state width="1237" height="193" key="GridCell.Tab.1.right/0.0.1280.680@0.0.1280.680" timestamp="1634920782545" />
+    <state x="121" y="0" key="SettingsEditor" timestamp="1635005441762">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="121" y="0" key="SettingsEditor/0.0.1280.680@0.0.1280.680" timestamp="1635005441762" />
+    <state x="348" y="0" key="refactoring.ChangeSignatureDialog" timestamp="1634994705847">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="348" y="0" key="refactoring.ChangeSignatureDialog/0.0.1280.680@0.0.1280.680" timestamp="1634994705847" />
+    <state x="297" y="151" key="run.anything.popup" timestamp="1635005399261">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="297" y="151" key="run.anything.popup/0.0.1280.680@0.0.1280.680" timestamp="1635005399261" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/components/grid/BoardGridUI.java</url>
-          <line>880</line>
-          <option name="timeStamp" value="63" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/components/grid/BoardGridUI.java</url>
-          <line>820</line>
-          <option name="timeStamp" value="64" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/components/grid/BoardGridUI.java</url>
-          <line>824</line>
-          <option name="timeStamp" value="65" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/components/grid/BoardGridUI.java</url>
-          <line>102</line>
-          <option name="timeStamp" value="78" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
     <watches-manager>
       <configuration name="Application">
         <watch expression="parser" />

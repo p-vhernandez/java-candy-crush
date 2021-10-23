@@ -26,8 +26,8 @@ public class CardLevelChoiceUI {
         JLabel label = new JLabel("Choose your level");
         int horizontalMargin = 50;
         label.setPreferredSize(new Dimension(Utils.getWindowWidth() - horizontalMargin * 2, 100));
-        Utils.setCustomFont(this, label,
-                "../../resources/font/creepster-rg.ttf", 56f, Font.PLAIN);
+        Utils.setCustomFont(CardLevelChoiceUI.class, label,
+                "/resources/font/creepster-rg.ttf", 56f, Font.PLAIN);
         label.setForeground(Color.white);
 
         controller.add(label);
@@ -35,7 +35,6 @@ public class CardLevelChoiceUI {
 
     protected void setUpButtons() {
         for (LevelButton button : controller.getLevelButtons()) {
-
             if (!button.isUnlocked()) {
                 button.setEnabled(false);
             }

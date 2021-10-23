@@ -9,14 +9,10 @@ import main.CandyCrush;
 import javax.swing.*;
 
 import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
 import utils.Utils;
 import utils.helpers.CardType;
 
-import java.io.FileReader;
 import java.io.FileWriter;
-import java.io.IOException;
 import java.util.ArrayList;
 
 public class CardLevelChoice extends JPanel {
@@ -128,7 +124,7 @@ public class CardLevelChoice extends JPanel {
 
     private void addPlayerToJSON(JSONObject jsonObject) {
         try {
-            FileWriter file = new FileWriter("src/resources/user/progress.json");
+            FileWriter file = new FileWriter(CardGameplay.class.getResource("/resources/user/progress.json").getPath());
             file.write(jsonObject.toJSONString());
             file.flush();
         } catch (Exception e) {

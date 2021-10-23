@@ -12,6 +12,8 @@ import java.awt.*;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.URL;
 import java.util.Objects;
 
 public class Utils {
@@ -35,6 +37,7 @@ public class Utils {
     public static final Color tileFill = new Color(44, 54, 47);
     public static final Color tileFillSelected = new Color(68, 110, 80);
     public static final Color darkBackground = new Color(44, 54, 47);
+    public static final String JAR_LOCATION = System.getProperty("java.class.path").split(";")[0];
     public static final Color halloweenOrange = new Color(252, 127, 3);
     public static final Color halloweenOrangeHover = new Color(135, 71, 7);
 
@@ -97,14 +100,13 @@ public class Utils {
         errorDialog.setVisible(true);
     }
 
-    public static Image generateImage(Object object, String path) {
-        return Toolkit.getDefaultToolkit().getImage(object.getClass()
-                .getResource(path));
+    public static Image generateImage(Class object, String path) {
+        return Toolkit.getDefaultToolkit().getImage(object.getResource(path));
     }
 
-    public static Font generateFont(Object object, String path) {
+    public static Font generateFont(Class object, String path) {
         try {
-            InputStream is = object.getClass().getResourceAsStream(path);
+            InputStream is = object.getResourceAsStream(path);
 
             if (is != null) {
                 return Font.createFont(Font.TRUETYPE_FONT, Objects.requireNonNull(is));
@@ -117,14 +119,14 @@ public class Utils {
         }
     }
 
-    public static void setCustomFont(Object object, JLabel label, String path, float fontSize, int fontStyle) {
+    public static void setCustomFont(Class object, JLabel label, String path, float fontSize, int fontStyle) {
         Font customFont = Utils.generateFont(object, path);
         if (customFont != null) {
             label.setFont(customFont.deriveFont(fontStyle, fontSize));
         }
     }
 
-    public static JButton generateDefaultAppButton(Object object, String buttonText) {
+    public static JButton generateDefaultAppButton(Class object, String buttonText) {
         JButton button = new JButton(buttonText);
         button.setBackground(Utils.halloweenOrange);
         button.setForeground(Utils.darkBackground);
@@ -132,7 +134,7 @@ public class Utils {
         button.setAlignmentX(Component.CENTER_ALIGNMENT);
 
         button.setFont(Objects.requireNonNull(Utils.generateFont(
-                        object, "../../resources/font/caramel-rg.ttf")
+                        object, "/resources/font/caramel-rg.ttf")
                 ).deriveFont(Font.BOLD, 42f)
         );
 
@@ -154,13 +156,13 @@ public class Utils {
         dialogPanel.setBackground(Utils.darkBackground);
     }
 
-    public static JLabel generateDialogInfo(Object object, String infoLabel) {
+    public static JLabel generateDialogInfo(Class object, String infoLabel) {
         JLabel dialogLabel = new JLabel();
 
         dialogLabel.setText(infoLabel);
         dialogLabel.setForeground(Color.white);
-        Utils.setCustomFont(object, dialogLabel, "../../resources/font/deanna.ttf", 32f, Font.PLAIN);
-        dialogLabel.setIcon(new ImageIcon(Utils.generateImage(object, "../../resources/img/EYEBALL.png")
+        Utils.setCustomFont(object, dialogLabel, "/resources/font/deanna.ttf", 32f, Font.PLAIN);
+        dialogLabel.setIcon(new ImageIcon(Utils.generateImage(object, "/resources/img/EYEBALL.png")
                 .getScaledInstance(45, 45, Image.SCALE_SMOOTH)));
 
         dialogLabel.setBorder(new EmptyBorder(20, 0, 20, 0));
@@ -169,7 +171,7 @@ public class Utils {
         return dialogLabel;
     }
 
-    public static JButton generateDialogDismissButton(Object object, String buttonLabel) {
+    public static JButton generateDialogDismissButton(Class object, String buttonLabel) {
         JButton dialogButton = new JButton();
 
         dialogButton.setText(buttonLabel);
@@ -178,7 +180,7 @@ public class Utils {
         dialogButton.setAlignmentX(Component.CENTER_ALIGNMENT);
 
         dialogButton.setFont(Objects.requireNonNull(
-                        Utils.generateFont(object, "../../resources/font/caramel-rg.ttf"))
+                        Utils.generateFont(object, "/resources/font/caramel-rg.ttf"))
                 .deriveFont(Font.BOLD, 28f)
         );
 
@@ -188,9 +190,12 @@ public class Utils {
     public static JSONObject getPlayersJSONObject() {
         JSONParser parser = new JSONParser();
         JSONObject jsonObject = null;
+        InputStream is = Utils.class.getResourceAsStream("/resources/user/progress.json");
+        JSONParser jsonParser = new JSONParser();
 
         try {
-            jsonObject = (JSONObject) parser.parse(new FileReader("src/resources/user/progress.json"));
+            jsonObject = (JSONObject) jsonParser.parse(
+                    new InputStreamReader(is, "UTF-8"));
         } catch (IOException | ParseException e) {
             e.printStackTrace();
         }

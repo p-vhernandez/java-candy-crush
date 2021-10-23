@@ -16,25 +16,22 @@ public class GoalReachedDialog extends JDialog {
     private final JLabel lblGameOver;
     private final JButton btnContinue, btnBack;
 
-    private final Level playedLevel;
-
     private static final int DIALOG_WIDTH = 450;
     private static final int DIALOG_HEIGHT = 150;
 
     public GoalReachedDialog(CardGameplay container, Level playedLevel) {
         this.container = container;
-        this.playedLevel = playedLevel;
 
         this.dialogPanel = new JPanel();
 
         if (playedLevel.getDifficulty() == Utils.getTotalLevels()) {
-            this.lblGameOver = Utils.generateDialogInfo(this, "You finished the game! ");
+            this.lblGameOver = Utils.generateDialogInfo(GoalReachedDialog.class, "You finished the game! ");
         } else {
-            this.lblGameOver = Utils.generateDialogInfo(this, "Victory! ");
+            this.lblGameOver = Utils.generateDialogInfo(GoalReachedDialog.class, "Victory! ");
         }
 
-        this.btnContinue = Utils.generateDialogDismissButton(this, "Go to next level");
-        this.btnBack = Utils.generateDialogDismissButton(this, "Back to levels");
+        this.btnContinue = Utils.generateDialogDismissButton(GoalReachedDialog.class, "Go to next level");
+        this.btnBack = Utils.generateDialogDismissButton(GoalReachedDialog.class, "Back to levels");
 
         initialize();
     }

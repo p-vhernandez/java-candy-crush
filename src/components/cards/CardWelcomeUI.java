@@ -56,7 +56,7 @@ public class CardWelcomeUI {
         textFieldLabel.setAlignmentX(CENTER_ALIGNMENT);
         textFieldLabel.setAlignmentY(CENTER_ALIGNMENT);
         textFieldLabel.setText("Enter your username: ");
-        Utils.setCustomFont(this, textFieldLabel, "../../resources/font/caramel-rg.ttf", 48f, Font.PLAIN);
+        Utils.setCustomFont(CardWelcomeUI.class, textFieldLabel, "/resources/font/caramel-rg.ttf", 48f, Font.PLAIN);
         textFieldLabel.setForeground(Utils.tileBorder);
 
         textFieldUsername = new JTextField();
@@ -73,7 +73,7 @@ public class CardWelcomeUI {
     }
 
     private void setUpStartButton() {
-        startButton = Utils.generateDefaultAppButton(this,
+        startButton = Utils.generateDefaultAppButton(CardWelcomeUI.class,
                 Utils.getWelcomeButtonLabel());
 
         initializeListeners();
@@ -94,6 +94,7 @@ public class CardWelcomeUI {
                 }
             }
         });
+
         textFieldUsername.addKeyListener(new KeyAdapter() {
             @Override
             public void keyPressed(KeyEvent e) {

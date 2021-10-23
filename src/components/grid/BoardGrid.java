@@ -1,17 +1,13 @@
 package components.grid;
 
-import components.BoardTile;
+import utils.BoardTile;
 import components.cards.CardGameplay;
 import utils.Utils;
 import utils.Level;
-import utils.helpers.TileType;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 import java.util.ArrayList;
-import java.util.Random;
 
 public class BoardGrid extends JPanel {
 

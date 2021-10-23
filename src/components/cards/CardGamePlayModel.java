@@ -24,10 +24,6 @@ public class CardGamePlayModel {
         return grid;
     }
 
-    protected void setGrid(BoardGrid grid) {
-        this.grid = grid;
-    }
-
     protected void createNewGrid(BoardGrid newGrid) {
         this.grid = newGrid;
     }

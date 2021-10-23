@@ -55,10 +55,10 @@ public class TopPanelUI {
         lblCurrentScore.setForeground(Color.white);
         lblCurrentScore.setBorder(new EmptyBorder(0, 10, 0, 10));
 
-        Utils.setCustomFont(this, lblScore,
-                "../../resources/font/caramel-rg.ttf", 28f, Font.BOLD);
-        Utils.setCustomFont(this, lblCurrentScore,
-                "../../resources/font/creepster-rg.ttf", 32f, Font.PLAIN);
+        Utils.setCustomFont(TopPanelUI.class, lblScore,
+                "/resources/font/caramel-rg.ttf", 28f, Font.BOLD);
+        Utils.setCustomFont(TopPanelUI.class, lblCurrentScore,
+                "/resources/font/creepster-rg.ttf", 32f, Font.PLAIN);
 
         this.scorePanel.add(lblScore);
         this.scorePanel.add(lblCurrentScore);
@@ -75,8 +75,8 @@ public class TopPanelUI {
         this.lblMovements.setPreferredSize(new Dimension(Utils.getMovementsPanelWidth(),
                 Utils.getTopBarComponentsHeight()));
 
-        Utils.setCustomFont(this, lblMovements,
-                "../../resources/font/creepster-rg.ttf", 40f, Font.PLAIN);
+        Utils.setCustomFont(TopPanelUI.class, lblMovements,
+                "/resources/font/creepster-rg.ttf", 40f, Font.PLAIN);
         controller.add(lblMovements);
     }
 
@@ -95,10 +95,10 @@ public class TopPanelUI {
         lblScoreGoal.setForeground(Color.white);
         lblScoreGoal.setBorder(new EmptyBorder(0, 10, 0, 10));
 
-        Utils.setCustomFont(this, lblGoal,
-                "../../resources/font/caramel-rg.ttf", 28f, Font.BOLD);
-        Utils.setCustomFont(this, lblScoreGoal,
-                "../../resources/font/creepster-rg.ttf", 32f, Font.PLAIN);
+        Utils.setCustomFont(TopPanelUI.class, lblGoal,
+                "/resources/font/caramel-rg.ttf", 28f, Font.BOLD);
+        Utils.setCustomFont(TopPanelUI.class, lblScoreGoal,
+                "/resources/font/creepster-rg.ttf", 32f, Font.PLAIN);
 
         this.goalPanel.add(lblGoal);
         this.goalPanel.add(lblScoreGoal);

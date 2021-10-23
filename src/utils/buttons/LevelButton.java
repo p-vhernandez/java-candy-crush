@@ -30,7 +30,7 @@ public class LevelButton extends JButton {
         this.index = index;
         this.unlocked = unlocked;
         this.background = Utils.halloweenOrange;
-        this.font = Utils.generateFont(object, "../../resources/font/shlop-rg.ttf");
+        this.font = Utils.generateFont(CardLevelChoice.class, "/resources/font/shlop-rg.ttf");
 
         Border emptyBorder = BorderFactory.createEmptyBorder();
         this.setBorder(emptyBorder);

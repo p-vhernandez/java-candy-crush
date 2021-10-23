@@ -18,8 +18,8 @@ public class GameOverDialog extends JDialog {
     public GameOverDialog() {
         this.dialogPanel = new JPanel();
 
-        lblGameOver = Utils.generateDialogInfo(this, "Game over. ");
-        btnDismiss = Utils.generateDialogDismissButton(this, "Accept defeat");
+        lblGameOver = Utils.generateDialogInfo(GameOverDialog.class, "Game over. ");
+        btnDismiss = Utils.generateDialogDismissButton(GameOverDialog.class, "Accept defeat");
 
         initialize();
     }
