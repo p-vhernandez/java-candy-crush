@@ -7,6 +7,12 @@ Replica of the Candy Crush game for the Advance Programming of UI course.
 By just double clicking to execute the file, player will be able to start a new Halloween Candy Crush game.
 
 ### Using just the zip folder
+If you want to use the zip folder to run the application and you are having trouble because the json package is not found, you will just have to import the .jar file that is provided along with the source code and it's called "json-simple-1.1.jar".
+In order to do so: 
+1. Click on File > Project Structure...
+1. In the left side menu, click on the Global Libraries option.
+1. In the panel next to that menu, click on the + symbol and then select the mentioned file from the extracted project folder. 
+1. Click on "Apply" button and then close the dialog. The project should be ready to be run now! 
 
 
 ## How to play
