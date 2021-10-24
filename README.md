@@ -14,6 +14,8 @@ In order to do so:
 1. In the panel next to that menu, click on the + symbol and then select the mentioned file from the extracted project folder. 
 1. Click on "Apply" button and then close the dialog. The project should be ready to be run now! 
 
+Select the "candy" configuration in order to run the application and enjoy the game!
+
 
 ## How to play
 Since the project is based on the original Candy Crush game, the method of playing is basically the same one. 
