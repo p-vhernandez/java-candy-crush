@@ -32,10 +32,10 @@ public class Level {
                 STANDARD_CANDY_CRUSHED = 0;
                 SPECIAL_CANDY_CRUSHED = 0;
                 SEVERAL_CRUSHES_BONUS = 0;
-                MAX_MOVEMENTS = 58;
+                MAX_MOVEMENTS = 7;
                 NUM_COLUMNS = 5;
                 NUM_ROWS = 5;
-                LEVEL_GOAL = 18760000;
+                LEVEL_GOAL = 1576;
 
                 break;
             }
@@ -47,7 +47,7 @@ public class Level {
                 MAX_MOVEMENTS = 7;
                 NUM_COLUMNS = 8;
                 NUM_ROWS = 5;
-                LEVEL_GOAL = 2120;
+                LEVEL_GOAL = 1820;
 
                 break;
             }
@@ -59,7 +59,7 @@ public class Level {
                 MAX_MOVEMENTS = 9;
                 NUM_COLUMNS = 7;
                 NUM_ROWS = 7;
-                LEVEL_GOAL = 3290;
+                LEVEL_GOAL = 2465;
 
                 break;
             case 4:
@@ -70,7 +70,7 @@ public class Level {
                 MAX_MOVEMENTS = 9;
                 NUM_COLUMNS = 10;
                 NUM_ROWS = 7;
-                LEVEL_GOAL = 3110;
+                LEVEL_GOAL = 2630;
 
                 break;
             case 5:
@@ -81,7 +81,7 @@ public class Level {
                 MAX_MOVEMENTS = 11;
                 NUM_COLUMNS = 9;
                 NUM_ROWS = 9;
-                LEVEL_GOAL = 5930;
+                LEVEL_GOAL = 3579;
 
                 break;
             case 6:
@@ -92,7 +92,7 @@ public class Level {
                 MAX_MOVEMENTS = 11;
                 NUM_COLUMNS = 12;
                 NUM_ROWS = 9;
-                LEVEL_GOAL = 6980;
+                LEVEL_GOAL = 3980;
 
                 break;
             case 7:
@@ -103,7 +103,7 @@ public class Level {
                 MAX_MOVEMENTS = 13;
                 NUM_COLUMNS = 11;
                 NUM_ROWS = 11;
-                LEVEL_GOAL = 7840;
+                LEVEL_GOAL = 4370;
 
                 break;
             case 8:
@@ -114,7 +114,7 @@ public class Level {
                 MAX_MOVEMENTS = 13;
                 NUM_COLUMNS = 14;
                 NUM_ROWS = 11;
-                LEVEL_GOAL = 8565;
+                LEVEL_GOAL = 5780;
 
                 break;
         }
